@@ -15,6 +15,3 @@
    ![image](https://heny.github.io/h-note/server/static/linux简单操作-03.png)
 
 5. 停止所有项目：forever stopall
-
-![image-20200330112426835](static/linux简单操作/image-20200330112426835.png)
-
