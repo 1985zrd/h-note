@@ -4,19 +4,15 @@
 
 2. 启动某个项目：forever start 文件名
 
-   ![image](https://heny.github.io/h-note/server/static/linux简单操作-01.png)
+   ![image](static/linux简单操作/linux简单操作-01.png)
 
 3. 查看后台运行的项目：forever list
 
-   ![image](https://heny.github.io/h-note/server/static/linux简单操作-02.png)
+   ![image](static/linux简单操作/linux简单操作-02.png)
 
 4. 停止某个项目：forever stop [pid]
 
-   ![image](https://heny.github.io/h-note/server/static/linux简单操作-03.png)
-<<<<<<< HEAD
-=======
+   ![image](static/linux简单操作/linux简单操作-03.png)
 
 5. 停止所有项目：forever stopall
->>>>>>> a626acdd77d083768ff01661119967de5c956acb
 
-5. 停止所有项目：forever stopall
