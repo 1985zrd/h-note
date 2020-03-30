@@ -477,8 +477,8 @@ computed属性的结果会被缓存，除非依赖的响应式属性变化才会
 
 ## 视图更新
 
-1、变异方法：会触发视图更新，push()、pop()、unshift()、shift()、splice()、sort()、reverse()；
-2、非变异方法：不会改变原始数组，会返回一个新数组，filter()、concat()、slice()，在使用非变异方法时，可以将新数组赋值给旧数组；
+1. 变异方法：会触发视图更新，push()、pop()、unshift()、shift()、splice()、sort()、reverse()；
+2. 非变异方法：不会改变原始数组，会返回一个新数组，filter()、concat()、slice()，在使用非变异方法时，可以将新数组赋值给旧数组；
 
 
 
@@ -520,11 +520,10 @@ this.userProfile = Object.assign({}, this.userProfile, {
 
 ## 补充
 
-1、vscode的插件：vetur，可以自动补全，高亮提示；
-2、谷歌插件：vue
+1. vscode的插件：vetur，可以自动补全，高亮提示；
+2. 谷歌插件：vue
 
 - 谷歌插件需要到扩展管理开启本地网页访问；
-
 - 如果使用缩小版的js文件，控制台也不会显示；
 
 - 去掉烦人提示：
