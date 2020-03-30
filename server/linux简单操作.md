@@ -4,11 +4,11 @@
 
 2. 启动某个项目：forever start 文件名
 
-   ![image](static\linux简单操作-01.png)
+   ![image](static/linux简单操作-01.png)
 
 3. 查看后台运行的项目：forever list
 
-   ![image](static\linux简单操作-02.png)
+   ![image](static/linux简单操作-02.png)
 
 4. 停止某个项目：forever stop [pid]
 
