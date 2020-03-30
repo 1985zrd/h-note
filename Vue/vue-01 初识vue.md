@@ -343,7 +343,7 @@ computed{
 1. 使用v-for循环，必须加入一个key属性
 2. key的值必须是唯一的，最好是遍历的id，或者是index也行
 
-**作用：**主要是为了高效的更新虚拟DOM，更好的区分每个组件
+**作用：** 主要是为了高效的更新虚拟DOM，更好的区分每个组件
 
 ```html
 <li v-for="item in items" :key="item.id">...</li>
@@ -399,7 +399,7 @@ watch:{
 }
 ```
 
-**注意：**对于数组监听：只能监听push、pop、unshift、shift、splice的方法，中括号修改不能被监听
+**注意：** 对于数组监听：只能监听push、pop、unshift、shift、splice的方法，中括号修改不能被监听
 
 
 
@@ -409,7 +409,7 @@ watch:{
 
 > 不修改原始数据，同时还能通过运算，添加自己另外的东西，处理给页面呈现多种结果
 
-```vue
+```js
 <li v-for="num in number2">{{ num }}</li>
 data:{
     number:[1,2,3,4,5]
@@ -451,9 +451,9 @@ methods: {
 
 5. watch、computed的对比
 
-**相同点：**watch和计算属性都是函数；
+**相同点：** watch和计算属性都是函数；
 
-**不同点：**计算属性无论如何都要return一个值，watch不需要return值；
+**不同点：** 计算属性无论如何都要return一个值，watch不需要return值；
 
 watch 必须要在data属性中定义，而computed不需要，computed中会有大量的数据计算，最后return出去；（最重要的区别）
 
