@@ -13,5 +13,10 @@
 4. 停止某个项目：forever stop [pid]
 
    ![image](https://heny.github.io/h-note/server/static/linux简单操作-03.png)
+<<<<<<< HEAD
+=======
+
+5. 停止所有项目：forever stopall
+>>>>>>> a626acdd77d083768ff01661119967de5c956acb
 
 5. 停止所有项目：forever stopall
