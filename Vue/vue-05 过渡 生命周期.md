@@ -190,31 +190,31 @@ afterEnter (el) {
 
 * 创建期间的生命周期函数
 
-  * `beforeCreate`：实例刚在内存中被创建出来，此时，还没有初始化好data和methods属性；
+  * <font color=red>`beforeCreate`</font>：实例刚在内存中被创建出来，此时，还没有初始化好data和methods属性；
 
-  * `created`：实例已经在内存中创建ok，此时data和methods已经创建ok，还没编译模板，此时还没有el元素；
+  * <font color=red>`created`</font>：实例已经在内存中创建ok，此时data和methods已经创建ok，还没编译模板，此时还没有el元素；
 
-  * `beforeMount`：已经完成了模板的编译，可以访问$el，页面还没渲染；
+  * <font color=red>`beforeMount`</font>：已经完成了模板的编译，可以访问$el，页面还没渲染；
 
-  * `mounted`：已挂载，页面被渲染；一般在这里调取接口，ajax或axios等等；
+  * <font color=red>`mounted`</font>：已挂载，页面被渲染；一般在这里调取接口，ajax或axios等等；
 
     mounted执行完成不一定页面全部被渲染，可以在mounted里面使用this.$nextTick(()=>{})函数，页面渲染完成时执行；
 
 * 运行期间的生命周期函数
 
-  * `beforeUpdate`：数据更新时调用，页面还是旧数据，data里是新数据
-  * `updated`：组件DOM已经更新；updated不一定页面全部被重绘，可以使用this.$nextTick
-  * `activated`：keep-alive组件激活时被调用
-  * `deactivated`：keep-alive组件停用时被调用；
+  * <font color=red>`beforeUpdate`</font>：数据更新时调用，页面还是旧数据，data里是新数据
+  * <font color=red>`updated`</font>：组件DOM已经更新；updated不一定页面全部被重绘，可以使用this.$nextTick
+  * <font color=red>`activated`</font>：keep-alive组件激活时被调用
+  * <font color=red>`deactivated`</font>：keep-alive组件停用时被调用；
 
 * 销毁期间的生命周期函数
 
-  * beforeDestroy：实例销毁之前调用，在这一步，实例仍然可用
-  * destroyed：实例被销毁后调用； 调用后，当前Vue实例与挂载元素断开了，组件中的所有方法都不可用了；
+  * <font color=red>`beforeDestroy`</font>：实例销毁之前调用，在这一步，实例仍然可用
+  * <font color=red>`destroyed`</font>：实例被销毁后调用； 调用后，当前Vue实例与挂载元素断开了，组件中的所有方法都不可用了；
 
 一般不会自动调用销毁事件，如果需要调用销毁事件，可以写一个按键，定义一个函数，在函数内部调用this.$destroy()，进行手动销毁；尽量避免销毁，一般用不上，如果需要销毁，可以手动调用销毁；
 
-捕获错误：errorHandler
+捕获错误：<font color=red>`errorHandler`</font>
 
 ![image-20200330234228148](static/vue-05 过渡 生命周期/image-20200330234228148.png)
 
