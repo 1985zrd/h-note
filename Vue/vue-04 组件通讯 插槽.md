@@ -334,6 +334,18 @@ data(){
 <template v-slot='{user={firstName:'Guest'}}'></template>
 ```
 
+#### 多个slot处理
+
+```html
+<HeaderBar>
+	<template #left></template>
+    <template #center></template>
+    <template #right></template>
+</HeaderBar>
+```
+
+
+
 
 
 ## 动态组件
