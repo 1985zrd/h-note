@@ -1,11 +1,6 @@
 #!/usr/bin/env sh
 set -e
 
-# 上传
-git add .
-git commit -m '添加内容'
-git push
-
 # 部署
 vuepress build .
 

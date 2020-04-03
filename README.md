@@ -3,7 +3,7 @@ home: true
 heroImage: /logo.png
 heroText: 前端学习圈
 actionText: 关于作者 →
-actionLink: /about.md
+actionLink: /Vue/
 features:
 - title: 简洁易懂
   details: 使用Markdown进行编写的文件，更易阅读，方便理解；
