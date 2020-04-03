@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>过渡效果、生命周期 | 前端学习圈</title>
+    <meta name="description" content="一位小菜鸡">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.86c065f8.css" as="style"><link rel="preload" href="/assets/js/app.708942eb.js" as="script"><link rel="preload" href="/assets/js/2.c0515fc9.js" as="script"><link rel="preload" href="/assets/js/21.8128b0a7.js" as="script"><link rel="prefetch" href="/assets/js/10.7e2130a0.js"><link rel="prefetch" href="/assets/js/11.45dd8b9d.js"><link rel="prefetch" href="/assets/js/12.ff7255af.js"><link rel="prefetch" href="/assets/js/13.41591b58.js"><link rel="prefetch" href="/assets/js/14.9a85c661.js"><link rel="prefetch" href="/assets/js/15.b3df8ab6.js"><link rel="prefetch" href="/assets/js/16.705387a2.js"><link rel="prefetch" href="/assets/js/17.3c779539.js"><link rel="prefetch" href="/assets/js/18.f20162bb.js"><link rel="prefetch" href="/assets/js/19.f7a98551.js"><link rel="prefetch" href="/assets/js/20.87ab9542.js"><link rel="prefetch" href="/assets/js/22.37cd98cb.js"><link rel="prefetch" href="/assets/js/23.da83eb6c.js"><link rel="prefetch" href="/assets/js/24.45b47ad9.js"><link rel="prefetch" href="/assets/js/25.11572350.js"><link rel="prefetch" href="/assets/js/26.4159d489.js"><link rel="prefetch" href="/assets/js/27.d470e820.js"><link rel="prefetch" href="/assets/js/28.9d6e98a7.js"><link rel="prefetch" href="/assets/js/29.78bd88e2.js"><link rel="prefetch" href="/assets/js/3.e6720376.js"><link rel="prefetch" href="/assets/js/30.16bd39fb.js"><link rel="prefetch" href="/assets/js/4.88f64118.js"><link rel="prefetch" href="/assets/js/5.3c7ae1e5.js"><link rel="prefetch" href="/assets/js/6.ba7510ed.js"><link rel="prefetch" href="/assets/js/7.3a108297.js"><link rel="prefetch" href="/assets/js/8.8392fc9b.js"><link rel="prefetch" href="/assets/js/9.3ad6f573.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.86c065f8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端学习圈</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web前端" class="dropdown-title"><span class="title">web前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/" class="nav-link">
+  app
+</a></li><li class="dropdown-item"><!----> <a href="/es6/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/html5、css3/" class="nav-link">
+  html5、css3
+</a></li><li class="dropdown-item"><!----> <a href="/Javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/React/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/Server/" class="nav-link">
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/Vue/" class="nav-link router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/其他框架/" class="nav-link">
+  其他框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="功能" class="dropdown-title"><span class="title">功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/custom/" class="nav-link">
+  自定义页面
+</a></li><li class="dropdown-item"><!----> <a href="https://chat.heny.vip" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  消息传输站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/heny/h-note" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web前端" class="dropdown-title"><span class="title">web前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/" class="nav-link">
+  app
+</a></li><li class="dropdown-item"><!----> <a href="/es6/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/html5、css3/" class="nav-link">
+  html5、css3
+</a></li><li class="dropdown-item"><!----> <a href="/Javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/React/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/Server/" class="nav-link">
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/Vue/" class="nav-link router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/其他框架/" class="nav-link">
+  其他框架
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="功能" class="dropdown-title"><span class="title">功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/custom/" class="nav-link">
+  自定义页面
+</a></li><li class="dropdown-item"><!----> <a href="https://chat.heny.vip" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  消息传输站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/heny/h-note" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue文件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue/vue-01 初识vue.html" class="sidebar-link">初识Vue</a></li><li><a href="/Vue/vue-02 修饰符 表单.html" class="sidebar-link">修饰符、表单</a></li><li><a href="/Vue/vue-03 组件 Prop.html" class="sidebar-link">组件、Props</a></li><li><a href="/Vue/vue-04 组件通讯 插槽.html" class="sidebar-link">组件通讯、插槽</a></li><li><a href="/Vue/vue-05 过渡 生命周期.html" class="active sidebar-link">过渡效果、生命周期</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Vue/vue-05 过渡 生命周期.html#一、过渡效果" class="sidebar-link">一、过渡效果</a></li><li class="sidebar-sub-header"><a href="/Vue/vue-05 过渡 生命周期.html#过渡的自定义" class="sidebar-link">过渡的自定义</a></li><li class="sidebar-sub-header"><a href="/Vue/vue-05 过渡 生命周期.html#动画钩子" class="sidebar-link">动画钩子</a></li><li class="sidebar-sub-header"><a href="/Vue/vue-05 过渡 生命周期.html#使用animate-css动画库" class="sidebar-link">使用animate.css动画库</a></li><li class="sidebar-sub-header"><a href="/Vue/vue-05 过渡 生命周期.html#生命周期" class="sidebar-link">生命周期</a></li><li class="sidebar-sub-header"><a href="/Vue/vue-05 过渡 生命周期.html#脚手架工具vue-cli" class="sidebar-link">脚手架工具Vue-cli</a></li></ul></li><li><a href="/Vue/vue-06 路由.html" class="sidebar-link">Vue路由</a></li><li><a href="/Vue/vue-07 接口请求 跨域.html" class="sidebar-link">接口请求、跨域</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="过渡效果、生命周期"><a href="#过渡效果、生命周期" class="header-anchor">#</a> 过渡效果、生命周期</h1> <p>[TOC]</p> <h2 id="一、过渡效果"><a href="#一、过渡效果" class="header-anchor">#</a> 一、过渡效果</h2> <ul><li>定义动画 类</li></ul> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* 定义进入和离开时候的过渡状态 */</span>
+<span class="token selector">.v-enter-active, .v-leave-active</span> <span class="token punctuation">{</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> opacity .5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* 定义进入过渡的开始状态和离开过渡的结束状态 */</span>
+<span class="token selector">.v-enter, .v-leave-to</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>使用vue内置的transition标签把需要动画控制的元素包裹起来</li></ul> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>show<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>![image-20200330232746032](static/vue-05 过渡 生命周期/image-20200330232746032.png)</p> <p>图中可见：</p> <p>v-enter和v-leave-to的样式是一样的，可以写成一组样式</p> <p>v-enter-to和v-leave的样式是一样的，可以写成一组样式</p> <ul><li>四个时间点
+<ul><li>v-enter：进入之前元素的起始状态，还没进入</li> <li>v-enter-to：定义进入过渡结束状态</li> <li>v-leave：定义离开过渡的开始状态；</li> <li>v-leave-to：离开之后离开的终止状态，动画已经结束了；</li></ul></li> <li>两个时间段，在时间段设置过渡等等
+<ul><li>v-enter-active：进入动画的时间段发生的事情</li> <li>v-leave-active：离开动画的时间段发生的事情</li></ul></li></ul> <h4 id="列表渲染"><a href="#列表渲染" class="header-anchor">#</a> 列表渲染</h4> <p>在使用v-for循环时，需要使用transition-group标签包裹li，如果要为v-for循环动画时，必须为每一个元素</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition-group</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>...<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition-group</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>为列表删除定义移除的动画（固定写法）</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.v-move</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span>all .6s ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.v-leave-active</span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>给transition-group添加appear属性，实现页面刚展示出来的入场动画；因为transition-group标签被渲染成了span标签，可以添加一个tag转换ul标签包裹；</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition-group</span> <span class="token attr-name">appear</span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>ul<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>..</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="过渡的自定义"><a href="#过渡的自定义" class="header-anchor">#</a> 过渡的自定义</h2> <h4 id="自定义前缀"><a href="#自定义前缀" class="header-anchor">#</a> 自定义前缀</h4> <ul><li>定义样式中v是css中定义样式名字的开头，使用时在transition标签写上name名字</li> <li>前缀的作用：区分不同组件的动画；不同的组件使用不同的动画</li></ul> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>fade<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition</span><span class="token punctuation">&gt;</span></span>
+.fade-enter,.fade-leave-to{
+	opacity: 0
+}
+</code></pre></div><h4 id="自定义过渡类名"><a href="#自定义过渡类名" class="header-anchor">#</a> 自定义过渡类名</h4> <ul><li>enter-class</li> <li>enter-active-class</li> <li>enter-to-class</li> <li>leave-class</li> <li>leave-active-class</li> <li>leave-to-class</li></ul> <h2 id="动画钩子"><a href="#动画钩子" class="header-anchor">#</a> 动画钩子</h2> <p>使用类名的动画都无法设置半场的动画，需要用到动画钩子，使用动画钩子不需要再设置样式，在methods里面定义；</p> <p><strong>半场动画：</strong></p> <p>原来动画分为进入和离开，两场动画，半场动画只有进入的状态就消失了，每次点一下就显示隐藏了</p> <p>每个钩子对应一个事件，事件的第一个参数：el，表示要执行动画的那个dom元素；js原生的dom元素；动画钩子事件添加到transition标签里</p> <ul><li><p>@before-enter='beforeEnter' 进入之前，</p> <p>动画尚未开始，可以在这里设置元素动画之前的起始样式；</p></li> <li><p>@enter='enter'  进入</p> <p>这里可以设置动画起始完成之后的状态，enter和leave事件过渡的时候，回调函数必须有第二个参数，done，</p></li> <li><p>@after-enter='afterEnter'  进入之后</p> <p>动画完成之后执行的函数，该函数执行有延迟，需要在上一个函数进入调用一次；</p></li> <li><p>@enter-cancelled='enterCancelled' 进入取消（一般用不到）；</p></li></ul> <p>v-on:before-leave='beforeleave'</p> <p>v-on:leave='leave'</p> <p>v-on:after-ente='afterleave'</p> <p>v-on:leave-cancelled='leaveCancelled'</p> <h4 id="简单的例子"><a href="#简单的例子" class="header-anchor">#</a> 简单的例子</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">beforeEnter</span> <span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform<span class="token operator">=</span><span class="token string">'translate(0,0)'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">enter</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    el<span class="token punctuation">.</span>offsetWidth  <span class="token comment">//如果没有动画效果，设置这行代码，可以进行动画，或offsetHeight/top/right都行;</span>
+    el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform<span class="token operator">=</span><span class="token string">'translate(0,0)'</span><span class="token punctuation">;</span>
+    el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transition <span class="token operator">=</span> <span class="token string">'all 1s ease'</span><span class="token punctuation">;</span>
+    <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">//必须要调用一次，否则会出现延迟的情况; 相当于afterenter事件,立即调用最后一个事件;</span>
+<span class="token punctuation">}</span>
+<span class="token function">afterEnter</span> <span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>flag <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>flag<span class="token punctuation">;</span>  <span class="token comment">//进入之后让元素隐藏;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="使用animate-css动画库"><a href="#使用animate-css动画库" class="header-anchor">#</a> 使用animate.css动画库</h2> <ul><li>引入animate.css文件</li> <li>直接在transition标签上写动画名称</li></ul> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> 
+    <span class="token attr-name">leave-active-class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>animated fadeOutDown<span class="token punctuation">'</span></span> 
+    <span class="token attr-name">enter-active-class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>animated flipInX<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>isShow<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Baidu<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ul><li>使用animate动画库时，只需要定义两个时间段即可</li> <li>animate必须带一个animted的类名</li></ul> <h2 id="生命周期"><a href="#生命周期" class="header-anchor">#</a> 生命周期</h2> <h4 id="什么是生命周期"><a href="#什么是生命周期" class="header-anchor">#</a> 什么是生命周期</h4> <ul><li>通常叫作生命周期钩子函数，在经过它的阶段则会触发
+<ul><li>什么是生命周期：从vue实例创建、运行、到销毁期间的过程统称为生命周期；</li> <li>生命周期钩子：就是生命周期事件的别名；</li> <li>生命周期钩子=生命周期函数=生命周期事件；</li></ul></li></ul> <h4 id="生命周期的状态"><a href="#生命周期的状态" class="header-anchor">#</a> 生命周期的状态</h4> <ul><li><p>创建期间的生命周期函数</p> <ul><li><p><font color="red"><code>beforeCreate</code></font>：实例刚在内存中被创建出来，此时，还没有初始化好data和methods属性；</p></li> <li><p><font color="red"><code>created</code></font>：实例已经在内存中创建ok，此时data和methods已经创建ok，还没编译模板，此时还没有el元素；</p></li> <li><p><font color="red"><code>beforeMount</code></font>：已经完成了模板的编译，可以访问$el，页面还没渲染；</p></li> <li><p><font color="red"><code>mounted</code></font>：已挂载，页面被渲染；一般在这里调取接口，ajax或axios等等；</p> <p>mounted执行完成不一定页面全部被渲染，可以在mounted里面使用this.$nextTick(()=&gt;{})函数，页面渲染完成时执行；</p></li></ul></li> <li><p>运行期间的生命周期函数</p> <ul><li><font color="red"><code>beforeUpdate</code></font>：数据更新时调用，页面还是旧数据，data里是新数据</li> <li><font color="red"><code>updated</code></font>：组件DOM已经更新；updated不一定页面全部被重绘，可以使用this.$nextTick</li> <li><font color="red"><code>activated</code></font>：keep-alive组件激活时被调用</li> <li><font color="red"><code>deactivated</code></font>：keep-alive组件停用时被调用；</li></ul></li> <li><p>销毁期间的生命周期函数</p> <ul><li><font color="red"><code>beforeDestroy</code></font>：实例销毁之前调用，在这一步，实例仍然可用</li> <li><font color="red"><code>destroyed</code></font>：实例被销毁后调用； 调用后，当前Vue实例与挂载元素断开了，组件中的所有方法都不可用了；</li></ul></li></ul> <p>一般不会自动调用销毁事件，如果需要调用销毁事件，可以写一个按键，定义一个函数，在函数内部调用this.$destroy()，进行手动销毁；尽量避免销毁，一般用不上，如果需要销毁，可以手动调用销毁；</p> <p>捕获错误：<font color="red"><code>errorHandler</code></font></p> <p>![image-20200330234228148](static/vue-05 过渡 生命周期/image-20200330234228148.png)</p> <p>生命周期图解：</p> <p>在创建之前Vue初始化，没有其他操作；</p> <p>在创建之间，依然是初始化，这个时候没有出现el元素，可以访问data；</p> <p>在创建和挂载之间，做了大量的事情；</p> <p>首先判断是否有el元素，如果没有，分两个步骤：</p> <ul><li><p>没有：那生命周期就结束；</p></li> <li><p>手动调取$mount()这个方法，去挂载el元素，生命周期继续；</p></li></ul> <p>如果有el元素，这个时候我们要判断是否有render()这个函数，如果有，优先去渲染它，如果没有，就找template模板对象，如果有就渲染模板内容，如果没有就去找outerHtml，如果都没有就空白；</p> <p>渲染优先级：reder()函数&gt;template&gt;outerHtml</p> <p>在挂载之前，出现了el元素，这个时候的dom结构是虚拟dom结构，进行了占位；</p> <p>在挂载的时候，出现了el元素dom结构内容，替换成了实体内容；</p> <p><strong>当有子组件时的生命周期</strong>（了解之后对数据获取很重要）</p> <p>父组件created-&gt;父组件beforeMounte-&gt;子组件created-&gt;子组件mounted-&gt;父组件mounted</p> <p><strong>父组件通过异步获取数据，在子组件拿到数据的方法：</strong></p> <ol><li>在父组件渲染子组件时添加判断，有数据再渲染子组件</li> <li>通过computed事件来处理</li></ol> <p><strong>清除定时器或者事件监听</strong></p> <p>由于项目中有些页面难免会碰到需要定时器或者事件监听。但是在离开当前页面的时候，定时器如果不及时合理地清除，会造成业务逻辑混乱甚至应用卡死的情况，这个时就需要清除定时器事件监听，即在页面卸载（关闭）的生命周期函数里，清除定时器。</p> <div class="language-js extra-class"><pre class="language-js"><code>methods<span class="token operator">:</span><span class="token punctuation">{</span>
+  <span class="token function">resizeFun</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>tableHeight <span class="token operator">=</span> window<span class="token punctuation">.</span>innerHeight <span class="token operator">-</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'table'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>offsetTop <span class="token operator">-</span> <span class="token number">128</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">setTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">clearTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token comment">//清除定时器</span>
+        <span class="token function">clearInterval</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>timer<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>timer <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'resize'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resizeFun<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function">beforeDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'resize'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resizeFun<span class="token punctuation">)</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">clearTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="脚手架工具vue-cli"><a href="#脚手架工具vue-cli" class="header-anchor">#</a> 脚手架工具Vue-cli</h2> <ul><li><p>安装：npm i -g @vue/cli</p></li> <li><p>生成包</p> <ul><li>使用图形界面安装：vue ui</li> <li>使用cmd安装：vue create demo</li></ul></li></ul> <p>由于安装node-sass时，会卡住，建议设置下环境</p> <div class="language-js extra-class"><pre class="language-js"><code>yarn config <span class="token keyword">set</span> sass_binary_site http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>cdn<span class="token punctuation">.</span>npm<span class="token punctuation">.</span>taobao<span class="token punctuation">.</span>org<span class="token operator">/</span>dist<span class="token operator">/</span>node<span class="token operator">-</span>sass <span class="token operator">-</span>g
+</code></pre></div><ul><li><p>执行vue serve运行起来</p></li> <li><p>脚手架规范；</p> <ul><li>组件名字首字母必须大写</li> <li>冒号后面必须有一个空格</li> <li>函数名和括号和大括号之间必须有一个空格</li> <li>每一个文件最后面必须保留一个空行</li> <li>js中要使用单引号，否则报错</li> <li>一行结尾不应该有分号</li> <li>判断条件不能使用==，需要使用===</li> <li>双斜杠注释后面必须留有一个空格</li></ul></li> <li><p>脚手架目录结构</p></li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新：:</span> <span class="time">4/3/2020, 3:37:00 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Vue/vue-04 组件通讯 插槽.html" class="prev">
+        组件通讯、插槽
+      </a></span> <span class="next"><a href="/Vue/vue-06 路由.html">
+        Vue路由
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.708942eb.js" defer></script><script src="/assets/js/2.c0515fc9.js" defer></script><script src="/assets/js/21.8128b0a7.js" defer></script>
+  </body>
+</html>

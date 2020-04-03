@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{249:function(e,t,n){"use strict";n.r(t);var s={name:"other-pages"},a=n(28),c=Object(a.a)(s,(function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"other-pages"},[this._v("\n  哈哈哈哈, 这是一个vue组件文件\n")])}),[],!1,null,"20ce79a0",null);t.default=c.exports}}]);
