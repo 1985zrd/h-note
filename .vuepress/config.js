@@ -19,7 +19,6 @@ function getFile (dirname) {
 }
 
 module.exports = {
-	base: '/h-note/',
     title: '前端学习圈',
     description: '一位小菜鸡',
 		head: [
