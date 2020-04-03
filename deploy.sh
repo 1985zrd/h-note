@@ -5,9 +5,7 @@ set -e
 vuepress build .
 
 # 拉取下代码 防止出错
-git stash
 git pull
-git stash pop
 
 cd ./.vuepress/dist
 
