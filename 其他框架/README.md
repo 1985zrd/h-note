@@ -1,1 +1,1 @@
-this is<custom/>
+this is<custom/>, this is custom component
