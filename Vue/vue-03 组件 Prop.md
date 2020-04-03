@@ -1,6 +1,4 @@
-# 组件、Props
-
-[TOC]
+# Vue-03 组件、Props
 
 ## 一、组件
 

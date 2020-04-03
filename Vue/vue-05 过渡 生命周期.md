@@ -1,6 +1,4 @@
-# 过渡效果、生命周期
-
-[TOC]
+# Vue-05 过渡效果、生命周期
 
 ## 一、过渡效果
 
@@ -25,7 +23,7 @@
 </transition>
 ```
 
-![image-20200330232746032](static/vue-05 过渡 生命周期/image-20200330232746032.png)
+![image](https://raw.githubusercontent.com/heny/h-note/master/image/vue-05%20%E8%BF%87%E6%B8%A1%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-01.png)
 
 图中可见：
 
@@ -220,7 +218,7 @@ afterEnter (el) {
 
 捕获错误：<font color=red>`errorHandler`</font>
 
-![image-20200330234228148](static/vue-05 过渡 生命周期/image-20200330234228148.png)
+![image](https://raw.githubusercontent.com/heny/h-note/master/image/vue-05%20%E8%BF%87%E6%B8%A1%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-02.png)
 
 生命周期图解：
 

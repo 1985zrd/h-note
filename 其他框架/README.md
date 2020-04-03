@@ -1,1 +1,3 @@
-this is<custom/>, this is custom component
+## 说明
+
+文档请查看左侧目录

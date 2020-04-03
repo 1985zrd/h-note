@@ -4,7 +4,15 @@ set -e
 # 部署
 vuepress build .
 
+# 拉取下代码 防止出错
+git stash
+git pull
+git stash pop
+
 cd ./.vuepress/dist
+
+# 添加自定义域名转发
+echo 'note.heny.vip' > CNAME
 
 git init 
 git add -A

@@ -1,6 +1,4 @@
-# 接口请求、跨域
-
-[TOC]
+# Vue-07 接口请求、跨域
 
 ## 一、axios
 
@@ -125,7 +123,7 @@ export const getData = (url,data={},method='get')=>{
 
 * 在需要请求数据的地方引入getData即可
 
-![image-20200403152242765](static/vue-07 接口请求 跨域/image-20200403152242765.png)
+![image](https://raw.githubusercontent.com/heny/h-note/master/image/vue-07%20%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%20%E8%B7%A8%E5%9F%9F-01.png)
 
 
 
