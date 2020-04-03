@@ -1,7 +1,11 @@
-## 路由
+# Vue路由
+
+[TOC]
+
+## 一、路由
 
 * 后端路由：对于普通的网站，所有的超链接都是url地址，所有的url地址都对应服务器上对应的资源
-* 前端路由：在SPA单页面应用程序中，主要通过url中的hash（#号）来实现不同页面之间的切换；因为hash有个特点，http请求中不会包含hash相关的内容；
+* 前端路由：在SPA单页面应用程序中，主要通过url中的`hash`（#号）来实现不同页面之间的切换；因为`hash`有个特点，http请求中不会包含`hash`相关的内容；
 
 #### 搭建路由
 
@@ -42,7 +46,7 @@ new Vue({
 
 
 
-## 配置路由
+## 二、配置路由
 
 #### 配置方法
 
@@ -56,12 +60,12 @@ new Vue({
 
 在app.vue文件中填写
 
-* 路由中转：\<router-link to='/menu'>菜单\</router-link>
-* 用来显示要加载的组件：\<router-view/>
+* 路由中转：<font color=red>\<router-link to='/menu'></font>菜单<font color=red>\</router-link></font>
+* 用来显示要加载的组件：<font color=red>\<router-view/></font>
 
 
 
-## 动态路由
+## 三、动态路由
 
 #### path路径
 
@@ -81,6 +85,25 @@ path:'/movie'
 <router-link :to='{path:'movie',query:{id:123}}'>
 // 接收参数：$route.query.id
 ```
+
+
+
+#### 使用props代替$route.params接收参数
+
+* 多个时
+
+```js
+{components:{a:..,b:...},
+props:{a:true,b:false}};  //true为支持props，false为不支持;
+```
+
+* 单个时
+
+```js
+{component:a,props:true}
+```
+
+
 
 
 
@@ -116,7 +139,7 @@ watch: {
 
 
 
-## 路由嵌套
+## 四、路由嵌套
 
 1. 在父路由填写：children:[{path:''...}...]
 
@@ -135,7 +158,7 @@ watch: {
 
 
 
-## router激活的类
+## 五、router激活的类
 
 1. 在router/index.js文件中指定类名
 
@@ -148,7 +171,7 @@ new Router({linkActiveClass:'myactive'})；
 
 
 
-## 编程式导航
+## 六、编程式导航
 
 1. `push`：this.$router.push(url)；跳转带历史记录
 2. `replace`：this.$router.replace(url)；跳转不带历史记录
@@ -172,7 +195,7 @@ Router.prototype.push = function push(location) {
 
 
 
-## 命名视图
+## 七、命名视图
 
 定义多个router-view，实现一个url地址同时加载多个组件
 
@@ -194,24 +217,7 @@ children: [
 
 
 
-## 使用props代替$route.params接收参数
-
-* 多个时
-
-```js
-{components:{a:..,b:...},
-props:{a:true,b:false}};  //true为支持props，false为不支持;
-```
-
-* 单个时
-
-```js
-{component:a,props:true}
-```
-
-
-
-## 路由守卫
+## 八、路由守卫
 
 可以在路由地址变化的过程中进行一些验证
 
@@ -339,7 +345,7 @@ methods: {
 
 
 
-## 路由实例方法
+## 八、路由实例方法
 
 * router.addRoutes
 
@@ -351,15 +357,15 @@ router.addRoutes([]) // 数组填写路由对象即可;
 
 
 
-## vue组件name作用
+## 九、vue组件name作用
 
-1. 当项目使用keep-alive时,可搭配组件name进行缓存过滤
+1. 当项目使用`keep-alive`时,可搭配组件name进行缓存过滤
 2. vue-devtools调试工具里显示的组件名称是由vue中组件name决定的 
 3. 在路由跳转传参时，可以不写path，直接写路由名称，并可以传递params参数
 
 
 
-## Vue的路由实现
+## 十、Vue的路由实现
 
 > 使用hash模式和history两种模式实现
 
