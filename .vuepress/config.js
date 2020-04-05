@@ -40,13 +40,38 @@ let sidebar = webItems.reduce((p, c)=>{
   return p
 }, {})
 // console.log(sidebar, 'sidebar')
-
 module.exports = {
     title: '前端学习圈',
-    description: '一位不知名的初级菜鸟',
+		description: '一位不知名的初级菜鸟',
+		// theme: require.resolve('./theme/'),
 		head: [
-			['link', { rel: 'shortcut icon', type: "image/x-icon", href: `./favicon.ico` }]
+			['link', { rel: 'icon', type: "image/x-icon", href: `./favicon.ico` }],
+			['link', { rel: 'manifest', href: '/manifest.json' }],
+			['meta', { name: 'theme-color', content: '#3eaf7c' }],
+			['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+			['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+			['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
+			['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+			['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+			['meta', { name: 'msapplication-TileColor', content: '#000000' }]
 		],
+		plugins: {
+			'@vuepress/pwa': {
+				serviceWorker: true,
+				updatePopup: true
+			},
+			'@vssue/vuepress-plugin-vssue': {
+				// 设置 `platform` 而不是 `api`
+				platform: 'github',
+				locale: 'zh-CN',
+	
+				// 其他的 Vssue 配置
+				owner: 'heny',
+				repo: 'h-note',
+				clientId: 'c46829deab38f2de6c89',
+				clientSecret: '76a940144230049a7533df93f56940a20d400b22',
+			},
+		},
     themeConfig:{
 			repo: 'https://github.com/heny/h-note',
 			repoLabel: 'GitHub',
@@ -66,3 +91,4 @@ module.exports = {
 			sidebar
     }
 }
+// https://zhb333.github.io/readme-blog/2020/03/21/vuepress%E5%BC%80%E5%8F%91%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/

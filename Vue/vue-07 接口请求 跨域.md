@@ -2,7 +2,7 @@
 
 ## 一、axios
 
-#### 快速使用
+### 快速使用
 
 * 安装：npm install axios qs
 
@@ -25,7 +25,7 @@ Vue.prototype.$qs = qs
 //挂载到原型上就可以使用了，可以自己随意取名
 ```
 
-#### 优点
+### 优点
 
 * 从浏览器中创建 [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 * 从 node.js 创建 [http](http://nodejs.org/api/http.html) 请求
@@ -36,7 +36,7 @@ Vue.prototype.$qs = qs
 * 自动转换 JSON 数据
 * 客户端支持防御 [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
-#### 请求方法
+### 请求方法
 
 * get请求
 
@@ -67,7 +67,7 @@ this.$axios.all([this.get1(),this.get2()])
 
 
 
-#### axios拦截器
+### axios拦截器
 
 * 创建文件夹api/index
 
@@ -129,7 +129,7 @@ export const getData = (url,data={},method='get')=>{
 
 ## 二、vue-resource
 
-#### 快速使用
+### 快速使用
 
 * **安装：** yarn add vue-resource
 
@@ -140,7 +140,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 ```
 
-#### vue-cli配置模拟假数据
+### vue-cli配置模拟假数据
 
 地址：build文件夹--->webpack.dev.conf.js文件添加
 
@@ -193,7 +193,7 @@ const ip = require('ip')
 host: ip.address()   //将localhost改为ip.address();
 ```
 
-#### 接口调用方法
+### 接口调用方法
 
 * get方式（后台接参：req.query）
 
@@ -245,7 +245,7 @@ F12查看控制台---Network---headers；点击clear清除一下，再获取，�
 >
 > fetch可以跨网络异步获取资源
 
-#### 请求方法
+### 请求方法
 
 ```js
 fetch('https://wyy.heny.vip/banner').then(response=>response.json()).then(data=>{
@@ -260,7 +260,7 @@ async function fetchData(){
 }
 ```
 
-#### fetch与jQuery.ajax()的不同
+### fetch与jQuery.ajax()的不同
 
 * 当接收响应状态码是404或500，promise状态仍然是resolve，但是response的返回值ok属性是false；
 
@@ -272,7 +272,7 @@ fetch是一个实验的API，在生产环境不建议使用
 
 ## 四、跨域
 
-#### CORS（跨域资源共享）
+### CORS（跨域资源共享）
 
 * 优点：简单、只需在后台写一句话、GET、POST都支持 
 
@@ -280,14 +280,14 @@ fetch是一个实验的API，在生产环境不建议使用
 
 res.writeHead('Access-Control-Allow-Origin','*')
 
-#### JSONP(本质上是XHR，动态生成script标签)
+### JSONP(本质上是XHR，动态生成script标签)
 
 * 兼容性好
 * 只支持get方式
 
 因为script标签没有跨域的限制，所以是伪Ajax；
 
-#### 利用proxy代理
+### 利用proxy代理
 
 * 修改config---index.js文件下的proxyTable的值
 * 特点：跨域失败仅存在于(Ajax),NodeJS(A程序) ===》 PHP(B程序)后台之间是不存在跨域失败

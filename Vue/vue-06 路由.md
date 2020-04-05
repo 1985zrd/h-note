@@ -5,7 +5,7 @@
 * 后端路由：对于普通的网站，所有的超链接都是url地址，所有的url地址都对应服务器上对应的资源
 * 前端路由：在SPA单页面应用程序中，主要通过url中的`hash`（#号）来实现不同页面之间的切换；因为`hash`有个特点，http请求中不会包含`hash`相关的内容；
 
-#### 搭建路由
+### 搭建路由
 
 * src/router/index.js
 
@@ -46,7 +46,7 @@ new Vue({
 
 ## 二、配置路由
 
-#### 配置方法
+### 配置方法
 
 在src/router/index.js，导入组件名，并在routers里面配置路由
 
@@ -54,7 +54,7 @@ new Vue({
 * `name `为组件里面定义的name名字，组件里name名字还可以用在调试的时候；
 * `component` 为填写导入路由要显示的组件；
 
-#### 路由显示
+### 路由显示
 
 在app.vue文件中填写
 
@@ -65,7 +65,7 @@ new Vue({
 
 ## 三、动态路由
 
-#### path路径
+### path路径
 
 ```js
 path:'/movie/:id'
@@ -75,7 +75,7 @@ path: '/shop/:type/:id?  // 路由后面加问号表示可有可无
 // 接收参数：$route.params.id  传递params必须使用路由的name名
 ```
 
-#### 查询字符串
+### 查询字符串
 
 ```js
 path:'/movie'
@@ -86,7 +86,7 @@ path:'/movie'
 
 
 
-#### 使用props代替$route.params接收参数
+### 使用props代替$route.params接收参数
 
 * 多个时
 
@@ -105,7 +105,7 @@ props:{a:true,b:false}};  //true为支持props，false为不支持;
 
 
 
-#### 路由参数变化组件不更新
+### 路由参数变化组件不更新
 
 * 解决方案一：
 
@@ -186,7 +186,7 @@ Router.prototype.push = function push(location) {
 };
 ```
 
-#### $route和$router的区别
+### $route和$router的区别
 
 * `$route` 是“路由信息对象”，包括path，params，hash，query，fullPath，matched，name等路由信息参数。
 * `$router `是“路由实例”对象包括了路由的跳转方法，钩子函数等
@@ -223,7 +223,7 @@ children: [
 
 通过next可以阻止路由跳转，如果不调用next就不会执行下一步
 
-#### 全局守卫
+### 全局守卫
 
 填写位置：router/index.js
 
@@ -248,7 +248,7 @@ router.afterEach((to,from)=>{})
 
 
 
-#### 路由独享守卫
+### 路由独享守卫
 
 填写位置：router/index.js
 
@@ -262,7 +262,7 @@ router.afterEach((to,from)=>{})
 
 
 
-#### 组件内守卫
+### 组件内守卫
 
 路由生命周期钩子函数
 
@@ -284,7 +284,7 @@ beforeRouteEnter (to, from, next) {
 
 
 
-#### 数据获取方式
+### 数据获取方式
 
 * 导航完成后获取数据
 
@@ -324,7 +324,7 @@ methods: {
 
 
 
-#### watch监听路由
+### watch监听路由
 
 ```js
 watch: {
