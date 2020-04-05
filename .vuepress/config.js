@@ -73,9 +73,13 @@ module.exports = {
 			},
 		},
     themeConfig:{
-			repo: 'https://github.com/heny/h-note',
-			repoLabel: 'GitHub',
+			repo: 'heny/h-note',
+			repoLabel: '查看源码',
+			docsBranch: 'master',
+			editLinks: true,
+			editLinkText: '在GitHub上编辑此页',
 			lastUpdated: '上次更新：', // 前缀使用
+			smoothScroll: true,
 			nav:[
 				{ text: 'home', link:'/' },
 				{ text: 'web前端', items: webItems },
