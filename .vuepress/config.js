@@ -74,7 +74,7 @@ module.exports = {
 		},
     themeConfig:{
 			repo: 'heny/h-note',
-			repoLabel: '查看源码',
+			repoLabel: 'GitHub',
 			docsBranch: 'master',
 			editLinks: true,
 			editLinkText: '在GitHub上编辑此页',
