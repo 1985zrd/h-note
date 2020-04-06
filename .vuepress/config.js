@@ -80,6 +80,10 @@ module.exports = {
 			editLinkText: '在GitHub上编辑此页',
 			lastUpdated: '上次更新：', // 前缀使用
 			smoothScroll: true,
+			algolia: {
+				apiKey: '5afb4b8f5b191b92841aed8afa044013',
+				indexName: 'heny_h-note'
+			},
 			nav:[
 				{ text: 'home', link:'/' },
 				{ text: 'web前端', items: webItems },
