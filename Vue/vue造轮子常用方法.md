@@ -591,7 +591,7 @@ component: () => import('src/views/home')
 
    ![image-20200406224427526](https://raw.githubusercontent.com/heny/h-note/master/image/Vue%E9%80%A0%E8%BD%AE%E5%AD%90_01.png)
 
-   ![image-20200406224453979](image/Vue%E9%80%A0%E8%BD%AE%E5%AD%90_02.png)
+   ![image-20200406224453979](https://raw.githubusercontent.com/heny/h-note/master/image/Vue%E9%80%A0%E8%BD%AE%E5%AD%90_02.png)
 
 2. 将需要缓存和不需要缓存的视图组件区分开
 
