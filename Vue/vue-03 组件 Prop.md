@@ -187,6 +187,10 @@ prop:{
         default: function(){
             return {message: 'hello'}
         }
+        // 自定义验证
+        default: function(value){
+            return ['success','warrning'].indexOf(value) !== -1
+        }
     }
 }
 ```
@@ -196,6 +200,8 @@ prop:{
 ```js
 default: function(){return {message: 'hello'}}
 ```
+
+
 
 
 
