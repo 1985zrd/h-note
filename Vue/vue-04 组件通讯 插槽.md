@@ -173,7 +173,7 @@ created(){
 ```js
 // 使用eventBus要在组件销毁时卸载，否则会多次挂载，造成触发一次但多个响应的情况
 beforeDestroy () {
-    this.$eventBus.$off('addition', {})
+    this.$eventBus.$off('addition', null)
 }
 ```
 
@@ -366,7 +366,7 @@ data(){
 
 * 动态组件每点击下一个则会直接销毁上一个
 * 使用\<keep-alive>标签将添加了is特性的标签包裹起来，点击之后则会缓存下来当前的组件，不会销毁之前的组件，不再重新加载；主要用于保留组件状态，避免重新加载
-* 点击之后添加一个事件，并使用this.$children验证，显示多少个孩子
+* 点击之后添加一个事件，并使用`this.$children`验证，显示多少个孩子
 * 因为打印时，会先输出console.log，会出现验证延迟，所以可以添加一个方法，this.$nextTick()，括号里面写一个回调函数，等待页面渲染完成之后再打印console.log
 
 ```js
@@ -375,7 +375,7 @@ this.$nextTick(()=>{
 })
 ```
 
-nextTick 可以让我们在下次 DOM 更新循环结束之后执行延迟回调，用于获得更新后的 DOM
+`nextTick` 可以让我们在下次 DOM 更新循环结束之后执行延迟回调，用于获得更新后的 DOM
 
 
 
@@ -457,6 +457,14 @@ Vue.filter('rmb-swich',val=>{
     return '￥'+nums
 })
 ```
+
+可以直接使用正则格式化金钱：
+
+```js
+'12345678'.replace(/\B(?=(?:\d{3})+(?!\d))/g, ',')
+```
+
+
 
 
 
