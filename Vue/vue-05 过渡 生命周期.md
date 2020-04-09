@@ -23,7 +23,7 @@
 </transition>
 ```
 
-![image](https://raw.githubusercontent.com/heny/h-note/master/image/vue-05%20%E8%BF%87%E6%B8%A1%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-01.png)
+![image](http://notecdn.heny.vip/images/vue-05%20%E8%BF%87%E6%B8%A1%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-01.png)
 
 图中可见：
 
@@ -218,7 +218,7 @@ afterEnter (el) {
 
 捕获错误：<font color=red>`errorHandler`</font>
 
-![image](https://raw.githubusercontent.com/heny/h-note/master/image/vue-05%20%E8%BF%87%E6%B8%A1%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-02.png)
+![image](http://notecdn.heny.vip/images/vue-05%20%E8%BF%87%E6%B8%A1%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-02.png)
 
 生命周期图解：
 
