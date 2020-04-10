@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /logo.png
+heroImage: http://notecdn.heny.vip/images/logo.png?imageView2/1/w/1920/h/1080/q/75
 heroText: 前端学习圈
 actionText: 开始学习 →
 actionLink: /Vue/

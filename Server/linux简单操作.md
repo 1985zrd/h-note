@@ -15,4 +15,3 @@
    ![image](http://notecdn.heny.vip/images/linux%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C-03.png)
 
 5. 停止所有项目：forever stopall
-

@@ -45,7 +45,7 @@ module.exports = {
 		description: '一位不知名的初级菜鸟',
 		// theme: require.resolve('./theme/'),
 		head: [
-			['link', { rel: 'icon', type: "image/x-icon", href: `./favicon.ico` }],
+			['link', { rel: 'icon', type: "image/x-icon", href: '/favicon.ico' }],
 			['link', { rel: 'manifest', href: '/manifest.json' }],
 			['meta', { name: 'theme-color', content: '#3eaf7c' }],
 			['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
