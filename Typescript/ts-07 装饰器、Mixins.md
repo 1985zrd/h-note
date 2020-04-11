@@ -1,4 +1,4 @@
-# TS-07 装饰器
+# TS-07 装饰器、Mixins
 
 ## 装饰器
 
@@ -164,5 +164,59 @@ class ClassD {
         
     }
 }
+```
+
+
+
+## Mixin
+
+`js`中实现`Mixin`的方法
+
+```js
+class A {
+    getA(){}
+}
+class B {
+    getB(){}
+}
+const mixin = (target, from) => {
+    Object.getOwnPropertyNames(from).forEach(key => {
+        target[key] = from[key]
+    })
+}
+mixin(A.prototype, B.prototype)
+let a = new A()
+console.log(a)
+```
+
+`ts`中的`Mixin`，需要使用A和B的类型，使用`implement`而不是使用`extends`，这意味着需要在类里面实现A和B；
+
+```ts
+class A {
+    public isA: boolean
+    public getA(){}
+}
+class B {
+    public isB: boolean
+    public getB(){}
+}
+// 实现两个类使用逗号隔开
+class ClassAB implements A, B {
+    // 需要手动实现里面的方法
+    public isA:boolean = false
+    public isB:boolean = false
+    public getA: () => void
+    public getB: () => void
+    constructor(){}
+}
+function mixins(base: any, from: any[]){
+    from.forEach(item => {
+        Object.getOwnPropertyNames(item.prototype).forEach(key => {
+            base.prototype[key] = item.prototype[key]
+        })
+    })
+}
+mixins(ClassAB, [A, B])
+const ab = new ClassAB()
 ```
 

@@ -3,3 +3,5 @@ set -e
 
 # 部署
 vuepress build .
+
+cd -

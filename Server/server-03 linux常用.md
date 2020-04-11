@@ -16,7 +16,7 @@ ssh root@39.107.82.176
 3、基本操作：
 
 * 上传：rz 直接弹出上传窗口
-	* 下载：sz 直接弹出下载窗口
+* 下载：sz 直接弹出下载窗口
 
 
 
@@ -97,8 +97,9 @@ vim delony.sh
 cd /www/wwwroot/chart
 tar -xvf build.gz
 rm -rf build.gz
-3、之后点击一下delony.sh，之后在到服务器运行：sh ./delony.sh即可
 ```
+
+3、之后点击一下delony.sh，之后在到服务器运行：sh ./delony.sh即可
 
 
 
