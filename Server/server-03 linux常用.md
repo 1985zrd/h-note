@@ -1,30 +1,44 @@
 # Server-03 linux常用
+
+
 ## 本地直接连接linux
+
 ```shell
 ssh root@39.107.82.176
 ```
 
+
+
 ## 使用xshell上传网站
+
 1、安装：yum install lrzsz -y
 2、检查安装是否完成：rpm -qa | grep lrzsz
 3、基本操作：
-	* 上传：rz 直接弹出上传窗口
+
+* 上传：rz 直接弹出上传窗口
 	* 下载：sz 直接弹出下载窗口
 
 
+
 ## 本地cmd直接操作文件上传
+
 ```shell
-scp root@107.172.27.254:/home/test.txt .   //下载文件 
-scp test.txt root@107.172.27.254:/home   //上传文件 
-scp -r root@107.172.27.254:/home/test .    //下载目录 
-scp -r test root@107.172.27.254:/home    //上传目录
-scp -r * root@39.107.82.176:/home  // 上传当前目录所有文件和目录到远程
+# 下载文件
+scp root@107.172.27.254:/home/test.txt . 
+# 上传文件
+scp test.txt root@107.172.27.254:/home    
+# 下载目录
+scp -r root@107.172.27.254:/home/test .    
+# 上传目录
+scp -r test root@107.172.27.254:/home    
+# 上传当前目录所有文件和目录到远程
+scp -r * root@39.107.82.176:/home
 ```
 解决scp不需要输入密码直接上传
 1、在linux输入
 ```shell
-[/]# ssh-keygen -t rsa
-[/]# cd /root/.ssh
+ssh-keygen -t rsa
+cd /root/.ssh
 ```
 2、在本地执行以下命令，并一路回车创建ssh密钥
 ```shell
@@ -36,28 +50,33 @@ scp id_rsa.pub root@39.107.82.176
 ```
 3、文件上传之后到linux输入命令
 ```shell
-[]# cd /root/.ssh
-[.ssh]# cat id_rsa.pub >> authorized_keys
+cd /root/.ssh
+cat id_rsa.pub >> authorized_keys
 ```
 4、已经可以测试不输入密码直接上传了
 
 
+
 ## 本地直接打包加上传
+
 ```shell
-// 切换到build目录里
+# 切换到build目录里
 $ cd ./build
 $ tar -cvf build.gz *
-// 上传到www/wwwroot/chart目录
+# 上传到www/wwwroot/chart目录
 $ scp build.gz root@39.107.82.176:/www/wwwroot/chart
-// 连接到linux,并输入密码
+# 连接到linux,并输入密码
 $ ssh root@39.107.82.176
-// 切换到www/wwwroot/chart目录
-# cd /www/wwwroot/chart && ls
-// 解压
-# tar -xvf build.gz
+# 切换到www/wwwroot/chart目录
+cd /www/wwwroot/chart && ls
+# 解压
+tar -xvf build.gz
 ```
 
+
+
 ## 填写脚本自动上传
+
 1、本地脚本，在项目根目录创建文件夹delony.sh，只要是sh后缀都行
 ```shell
 #!bin/bash
@@ -81,7 +100,10 @@ rm -rf build.gz
 3、之后点击一下delony.sh，之后在到服务器运行：sh ./delony.sh即可
 ```
 
+
+
 ## Centos保持node项目后台运行
+
 1、安装：npm install forever -g（建议先设置好npm包源为淘宝源）
 2、使用方法
 （1）启动：forever start app.js （有两个warn不用管）
@@ -89,6 +111,8 @@ rm -rf build.gz
 （2）查看运行的项目：forever list
 （3）停止服务：forever stop [pid]
 （4）停止所有forever服务：forever stopall
+
+
 
 
 ## node项目保持后台运行

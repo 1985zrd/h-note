@@ -5,6 +5,8 @@ winscp | FileZilla： 连接ftp的；
 安装宝塔面板：https://www.bt.cn/bbs/thread-19376-1-1.html
 宝塔面板功能：直接在linux系统里面输入bt，会打开菜单，选择对应的指令即可；
 
+
+
 ## 二、上传网站
 1、将vue进行打包操作，并压缩，格式需要是zip的格式；
 2、添加站点，将域名添加为站点，之后点击进入目录，
@@ -12,11 +14,15 @@ winscp | FileZilla： 连接ftp的；
 3、进入文件目录之后，将压缩好的文件上传并解压，之后就可以访问了；
 
 
+
+
 ## 三、连接数据库
 1、安装好宝塔面板之后，安装mongodb和pm2
 ![image](http://notecdn.heny.vip/images/server-01 宝塔面板搭建服务器-02.png)
 2、在linux系统里面输入mongo，管理mongodb数据库；可以直接通过本地连接进行
 3、将json文件数据库传入服务器（直接将文件上传上面是不能访问的），之后在linux系统里面使用mongo import将数据库导入，并使用db.collections.find()查询一下，如果有数据，则上传成功了；
+
+
 
 
 ## 四、本地连接mongodb
@@ -103,7 +109,10 @@ server {
 }
 ```
 
+
+
 ## 八、配置https
+
 1、到阿云搜索ssl，之后云开通ssl，免费型的可以使用https一个二级域名；
 2、配置了https的域名，域名头部访问就不再是一个不安全的标示了；
 ![image](http://notecdn.heny.vip/images/server-01 宝塔面板搭建服务器-08.png)
