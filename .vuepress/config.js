@@ -18,6 +18,7 @@ function getFile (dirname) {
 }
 
 // test和link中间的需要填写一样
+// 删除其中的项，sidebar也会被删除
 const webItems = [
 	{text:'app',link:'/app/'},
 	{text:'es6',link: '/es6/'},
@@ -92,7 +93,7 @@ module.exports = {
 				{
 					text: '功能', 
 					items: [
-						{text: '自定义页面', link: '/custom/'},
+						// {text: '自定义页面', link: '/custom/'},
 						{text: '消息传输站', link: 'https://chat.heny.vip'}
 					]
 				}
