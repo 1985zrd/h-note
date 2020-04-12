@@ -29,6 +29,7 @@ const webItems = [
 	{text:'Server',link:'/Server/'},
 	{text:'Typescript',link:'/Typescript/'},
 	{text:'Vue',link:'/Vue/'},
+	{text:'node',link:'/node/'},
 	{text:'Webpack',link:'/Webpack/'},
 	{text:'其他框架',link:'/其他框架/'}
 ]
