@@ -34,7 +34,7 @@ bootstrap是移动设备优先；
 栅格系统列包含12个值，三个等宽：.col-xs-4；如果大于12，多余的列会另一起行；
 
 2、栅格参数
-![image](images/bootstrap_全局css样式-01.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-01.png)
 超小屏幕(<768px)：手机，col-xs
 小屏幕(>=768px)：平板，col-sm
 中等屏幕(>=992px)：桌面，col-md
@@ -42,7 +42,7 @@ bootstrap是移动设备优先；
 
 
 3、可用的显示隐藏
-![image](images/bootstrap_全局css样式-02.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-02.png)
 可用的属性：block，inline，inline-block；
 
 打印机可用的：
@@ -58,7 +58,7 @@ col-\*-offset-\*，向右侧偏移，可以实现居中；
 
 5、列嵌套
 在col里面添加row，则里面的row的12比较最大宽度也是该col的宽；
-![image](images/bootstrap_全局css样式-03.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-03.png)
 
 6、列排序
 col-\*-push-\*：向右去多个列；
@@ -74,11 +74,11 @@ p、li标签(段落)：设置了10px的底部margin；
 2、标题：
 （1）可以使用.h1-h6的类，等同于h1-h6；
 （2）<small>标签被h标签包裹，作为h标签的副标题；
-![image](images/bootstrap_全局css样式-04.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-04.png)
 
 3、中心内容
 p标签可以添加一个.lead，突出文本显示，普通的p标签和带lead的标签：
-![image](images/bootstrap_全局css样式-05.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-05.png)
 
 4、可以使用的标签
 del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
@@ -95,13 +95,13 @@ del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
 
 7、缩略语
 使用abbr标签，需要写title属性；地址可以使用address标签
-![image](images/bootstrap_全局css样式-06.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-06.png)
 
 8、引用样式
 （1）使用\<blockquote>标签，会多一个竖线；
-![image](images/bootstrap_全局css样式-07.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-07.png)
 （2）引用来源，在blockquote标签内，添加footer标明引用来源，来源名包进cite标签；
-![image](images/bootstrap_全局css样式-08.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-08.png)
 ```html
 <blockquote>
     <p>标签的引用</p>
@@ -114,27 +114,27 @@ del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
 （1）去掉样式：.list-unstyled；添加到ul；
 （2）在一行显示：.list-inline；添加到ul，默认有左右marign:5px；
 （3）给dl添加.dl-horizontal类，可以将其描述排在一行；
-![image](images/bootstrap_全局css样式-09.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-09.png)
 
 10、内联代码
 （1）使用<code>标签包裹代码片段，自带样式，
-![image](images/bootstrap_全局css样式-10.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-10.png)
 （2）用户输入，使用<kbd>标签
-![image](images/bootstrap_全局css样式-11.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-11.png)
 （3）代码块：<pre>标签；
-![image](images/bootstrap_全局css样式-12.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-12.png)
 （4）程序输出
 使用samp标签，和普通p标签的对比：
-![image](images/bootstrap_全局css样式-13.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-13.png)
 
 
 ## 五、表格
 1、给表格添加类：.table；基本样式：
-![image](images/bootstrap_全局css样式-14.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-14.png)
 2、条纹状表格：.table-striped类；会给tbody添加条纹；
-![image](images/bootstrap_全局css样式-15.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-15.png)
 3、带边框的表格：.table-bordered；每个单元格都增加边框；
-![image](images/bootstrap_全局css样式-16.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-16.png)
 4、鼠标移动到行悬停：.table-hover；滑过每一行都会变色，不建议搭配条纹使用；
 5、紧缩表格：.table-condensed；可以更紧凑，padding会减半；
 6、状态类的行：给tr添加类名.active、.success、.info、.warning、.danger
@@ -145,7 +145,7 @@ del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
     vertical-align: middle;
 }
 ```
-![image](images/bootstrap_全局css样式-17.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-17.png)
 总结：
 1、.table 加上边框
 2、.table-striped 加条纹
@@ -185,7 +185,7 @@ del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
     </label>
 </div>
 ```
-![image](images/bootstrap_全局css样式-18.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-18.png)
 
 
 
@@ -211,7 +211,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     </div>
 </form>
 ```
-![image](images/bootstrap_全局css样式-19.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-19.png)
 
 
 （4）button添加类btn和样式，添加type='submit'，需要对齐就得被form-group组包裹；
@@ -233,9 +233,9 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     </div>
 </div>
 ```
-![image](images/bootstrap_全局css样式-20.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-20.png)
 （2）控制大小，给input-group再添加相应的类名，input-group-lg/sm；输入框会自动变大；
-![image](images/bootstrap_全局css样式-21.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-21.png)
 （3）添加额外元素多选和单选
 将多选单选输入框添加到input-group-addon类名标签里，给多选和文本框同时添加aria-label='...'，多选单选不需要添加form-control类；
 ```html
@@ -246,7 +246,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     <input type="text" aria-label='...' class="form-control">
 </div>
 ```
-![image](images/bootstrap_全局css样式-22.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-22.png)
 （4）作为额外元素的按钮
 ```html
 <div class="input-group">
@@ -256,7 +256,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     </span>
 </div>
 ```
-![image](images/bootstrap_全局css样式-23.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-23.png)
 （5）作为额外元素的按钮式下拉菜单
 ```html
 <div class="input-group">
@@ -273,7 +273,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
       <input type="text" class="form-control" aria-label="...">
 </div><!-- /input-group -->
 ```
-![image](images/bootstrap_全局css样式-24.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-24.png)
 （6）分裂式的按钮
 ```html
 <div class="input-group">
@@ -295,7 +295,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
 </div>
 ```
-![image](images/bootstrap_全局css样式-25.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-25.png)
 
 6、选择框
 （1）多选和单选，需要给父元素的div标签添加checkbox、radio；如果是禁用的，也需要给父元素添加disabled；如果没有div父级元素，会导致布局出错；
@@ -306,7 +306,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     </label>
 </div>
 ```
-![image](images/bootstrap_全局css样式-26.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-26.png)
 （2）内联单选和多选框；
 给label标签添加类，.checkbox-inline或.radio-inline；可以在一行显示；
 ```html
@@ -320,7 +320,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
   <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
 </label>
 ```
-![image](images/bootstrap_全局css样式-27.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-27.png)
 
 
 7、下拉列表：给select添加.form-control；
@@ -330,7 +330,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
   <option>2</option>
 </select>
 ```
-![image](images/bootstrap_全局css样式-28.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-28.png)
 
 8、静态控件：将input标签替换p标签，添加.form-control-static类
 ```html
@@ -341,7 +341,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
     </div>
 </div>
 ```
-![image](images/bootstrap_全局css样式-29.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-29.png)
 
 9、帮助文本，可以对照帮助文本输入内容；
 给input标签添加属性aria-describedby='helpBlock'，这个helpBlock任意取名，在提示文本标签添加id名=这个属性，并添加类名help-block；
@@ -350,7 +350,7 @@ checked添加了列偏移；checked需要包裹一个div类名为checked的标�
 <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
 <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 ```
-![image](images/bootstrap_全局css样式-30.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-30.png)
 
 10、校验状态
 （1）.has-warning、.has-error、.has-success类添加到父元素，任何包含在此元素之内的.control-label、.form-control、.help-block元素都会变色；
@@ -370,7 +370,7 @@ label标签的类：如果不填写会没有文字颜色，如果没有label标�
 input标签：aria-describedby是为了屏幕阅读器绑定提示；和最后面的span标签是一对的；
 span标签：glyphicon（字体文件）    glyphicon-warning-sign警告图标    form-control-feedback排版 如不填写，会掉下来；
 建议：强烈建议使用input需要添加label标签，如果不想label标签显示，可以添加sr-only类，不添加label标签需要额外调整图标的位置；
-![image](images/bootstrap_全局css样式-31.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-31.png)
 
 11、输入框尺寸
 给input框添加类：input-lg、input-sm；
@@ -388,16 +388,16 @@ span标签：glyphicon（字体文件）    glyphicon-warning-sign警告图标  
 
 2、带有预定义样式的类：
 使用按钮必须有btn类，另外一个是图标类：btn-default；btn-info
-![image](images/bootstrap_全局css样式-32.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-32.png)
 
 3、尺寸
 可用的类：.btn-lg、.btn-sm、.btn-xs可以获得不同的尺寸；
-![image](images/bootstrap_全局css样式-33.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-33.png)
 .btn-block可以拉伸父元素的100%宽度；
 
 4、激活状态
 button是用:active实现的，a标签是用.active实现的；也可以给button加类；
-![image](images/bootstrap_全局css样式-34.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-34.png)
 
 5、禁用状态
 button按钮直接设置disabled='disabled'，
@@ -411,14 +411,14 @@ a标签添加disabled类；
 图片水平居中：.center-block；
 2、图片形状：也可以直接给a标签添加类，在a标签添加img，会增加一个带链接的图片；
 .img-rounded、.img-circle、.img-thumbnail
-![image](images/bootstrap_全局css样式-35.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-35.png)
 
 
 
 ## 九、辅助类
 1、文本颜色
 .text-muted、.text-primary、.text-success、.text-info、.text-warning、.text-danger；
-![image](images/bootstrap_全局css样式-36.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-36.png)
 2、情景背景
 和文本颜色类一样，将text改为bg：bg-success；
 
@@ -427,7 +427,7 @@ a标签添加disabled类；
 <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 ```
 4、三角符号：添加类.caret；
-![image](images/bootstrap_全局css样式-37.png)
+![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-37.png)
 
 5、快速浮动
 左浮动：pull-left；

@@ -16,7 +16,7 @@ ssh-keygen -t rsa -C 'heny@qq.com'   // 回车之后记得根据提示按下yes
 注意：如果提示ssh-keygen不是内部命令或者其他的报错，则需要以下配置
     找到git/usr/bin目录下的ssh-keygen.exe，之后配置到Path环境变量;
 
-![image-20200412204637296](images/git-01.png)
+![image-20200412204637296](http://notecdn.heny.vip/images/git-01.png)
 
 3、生成密钥之后就可以去官网绑定了
 
@@ -141,7 +141,7 @@ git pull   重新拉取代码；
 ## 六、git常见问题
 1、描述出错，怎么修改描述
 （1）通过git log找到上一个提交的commit_id
-![image](images/git-02.png)
+![image](http://notecdn.heny.vip/images/git-02.png)
 （2）通过：git reset --soft commit_id，执行一遍，之后就可以重新git commit了；
 
 
@@ -197,17 +197,17 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 ### vscode上传代码
 1、点击分支
-![image](images/git-03.png)
+![image](http://notecdn.heny.vip/images/git-03.png)
 2、点击对勾，之后弹出提示框，提示输入commit
-![image](images/git-04.png)
+![image](http://notecdn.heny.vip/images/git-04.png)
 3、点击推送，或者推送到（会提示选择分支）；
-![image](images/git-05.png)
+![image](http://notecdn.heny.vip/images/git-05.png)
 4、之后去git里面查看是否已经提交了代码；
-![image](images/git-06.png)
+![image](http://notecdn.heny.vip/images/git-06.png)
 
 
 ### vscode切换分支
-![image](images/git-07.png)
+![image](http://notecdn.heny.vip/images/git-07.png)
 
 
 
@@ -215,11 +215,11 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 使用gitlens使开发更方便，代码管理更容易
 1、搜索：gitlens  并安装，之后在每一行代码后面可以清晰的看见
-![image](images/git-08.png)
+![image](http://notecdn.heny.vip/images/git-08.png)
 2、侧边栏工具使用
-![image](images/git-09.png)
-![image](images/git-10.png)
+![image](http://notecdn.heny.vip/images/git-09.png)
+![image](http://notecdn.heny.vip/images/git-10.png)
 3、右上角实时对比分支修改内容
-![image](images/git-11.png)
+![image](http://notecdn.heny.vip/images/git-11.png)
 
 

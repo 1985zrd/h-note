@@ -4,7 +4,9 @@
 2、在vscode里安装Babel ES6/ES7
 
 
+
 ## 二、在react-native中使用标签需要引入；
+
 ```js
 import React from 'react'
 import {View,Text} from 'react-native'
@@ -20,7 +22,9 @@ export default class App extends React.Component{
 （3）modules.exports = App；
 
 
+
 ## 三、react-native中的行间样式
+
 1、引入：import {StyleSheet} from 'react-native'
 2、创建一个变量
 ```js
@@ -40,7 +44,10 @@ const styles = StyleSheet.create({
 
 7、text有一个属性：numberOfLines={1}，指定显示多少行，超出则变点状；
 
+
+
 ## 四、注意事项
+
 1、字符串内容必须放在text组件里，不能写在view里，flex不建议放在text组件上面；
 3、如果给子元素设置flex属性时，那么它的父元素必须设置固定高度或者flex属性；
 ```js
@@ -48,7 +55,10 @@ import Header from './header'
 return (<Header />)   //内容不要包裹view标签,否则header标签里面即使设置flex:1也没有高度;
 ```
 
+
+
 ## 五、事件
+
 1、传值；
 ```js
 <Header data={arr} />
@@ -59,7 +69,10 @@ return (<Header />)   //内容不要包裹view标签,否则header标签里面即
 ```
 3、在react-native中，想查看数据有没有传送过来可以使用console.warn，没有log；
 
+
+
 ## 六、react-native中的css样式
+
 在react-native中使用行间样式；
 1、padding
 paddingHorizontal：同时设置paddingleft/right
@@ -70,10 +83,21 @@ paddingVertical：同时设置paddingtop/bottom;
 3、在给文字设置样式时，必须设置在text元素上；
 
 4、使用图片：引入Image组件，src变成了soure，需要填写require；
-（1）加载本地：<Image soure={require(./img/1.png)}>
+（1）加载本地：\<Image soure={require(./img/1.png)}>
 （2）加载网络：soure={{uri:图片地址}}，必须设置宽高；
 
 5、背景图组件：ImageBackground，设置图片地址和image组件一样，可以在组件里面填写Text组件；
 
 6、ScrollView组件，滚动区域组件；内容是多高，则滚动区域有多高；
 注意：react-native中，内容超过屏幕宽度是不能滚动的，需要加入该组件；
+
+
+七、在项目根目录/app/src/main下，创建assets文件夹；
+
+maven{ url "http://maven.aliyun.com/nexus/content/groups/public/" }
+
+![image-20200412211628691](http://notecdn.heny.vip/images/rn-01%20react-native-01.md)
+
+![image-20200412211730136](http://notecdn.heny.vip/images/rn-01%20react-native-02.md)
+
+![image-20200412211742489](http://notecdn.heny.vip/images/rn-01%20react-native-03.md)
