@@ -1,5 +1,5 @@
 # js-06 定时器、时间、Math
-一、定时器
+## 一、定时器
 1、`setTimeout(函数，时间(毫秒))`;
 只执行一次，不用加单位，单位是毫秒；
 清楚Timeout定时器：clearTimeout(定时器);
@@ -34,7 +34,7 @@ if(!window.requestAnimationFrame){
 }
 ```
 
-二、时间对象
+## 二、时间对象
 1、创建时间，返回一个对象，这个对象里面就有各种属性和方法；
 时间对象时需要实例化获取方式来获取；
 （1）new Date();    获取当前时间；
@@ -116,12 +116,9 @@ t = s / 60 / 60 / 24
 （2）根据计算出的时间写出时间戳，也可以再加入补零的操作
 
 （3）倒计时思想：
-	* 
-获取时间，根据时间得到年月日，时分秒，
-	* 
-补零；
-	* 
-用一个定时器让时间跑起来；
+* 获取时间，根据时间得到年月日，时分秒，
+* 补零；
+* 用一个定时器让时间跑起来；
 
 
 
@@ -164,7 +161,7 @@ function format(value){
 }
 ```
 
-三、dayjs用法
+## 三、dayjs用法
 推荐使用dayjs，和moment用法一致，但是打包更小，moment打包之后200k，dayjs打包之后2k；
 支持链式调用
 1、安装：npm i dayjs
@@ -204,14 +201,10 @@ dayjs().subtract(1, 'months')
 dayjs().set('month', 3).month() // 获取
 ```
 4、查询
-	* 
-早于：dayjs('2010-10-20').isBefore('2010-10-21')
-	* 
-晚于：isAfter
-	* 
-闰年：dayjs().isLeapYear()
-	* 
-返回月份的天数：dayjs().dayslnMonth()
+* 早于：dayjs('2010-10-20').isBefore('2010-10-21')
+* 晚于：isAfter
+* 闰年：dayjs().isLeapYear()
+* 返回月份的天数：dayjs().dayslnMonth()
 
 
 

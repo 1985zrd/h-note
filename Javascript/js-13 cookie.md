@@ -1,5 +1,5 @@
 # js-13 cookie
-一、cookie
+## 一、cookie
 保存页面中的信息，比如用户名、密码等；比较小，只有4kb；
 不同浏览器的cookie是不相通的；
 谷歌浏览器的cookie不允许访问本地的cookie，只允许访问网上的，而火狐和ie可以访问本地的；
@@ -23,7 +23,7 @@ date.setDate(date.getDate() + 10);  //设置10天以后过期；
 date.toString(); //10天以后的字符串格式时间
 ```
 
-二、js-cookie操作方式
+## 二、js-cookie操作方式
 1、安装：npm i js-cookie
 2、用法：
 在项目中引入：import Cookie from 'js-cookie'
@@ -60,7 +60,7 @@ var cookie = Cookies.withConverter({
 // 之后使用cookie对象来进行读写操作
 ```
 
-三、web Storage（HTML5）
+## 三、web Storage（HTML5）
 localStorage的储存没有时间限制，永久保存，除非主动删除；
 sessionStorage用于临时保存同一窗口(或标签页)的数据，在关闭窗口之后将会删除这些数据；
 兼容：ie8+

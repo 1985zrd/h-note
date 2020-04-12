@@ -220,22 +220,14 @@ console.log(arr)
 场景：编程语言中的编译器、计算机内存存储变量和方法调用，浏览器的后退功能等等；
 
 Stack包含以下方法
-	* 
-push(e)：将新添加的元素添加至堆栈的顶部
-	* 
-pop()：删除栈顶的元素，同时返回已删除的元素
-	* 
-peek()：返回堆栈的顶部元素
-	* 
-isEmpty()：判断堆栈是否为空，如果为空返回true
-	* 
-clear()： 清空堆栈所有的元素
-	* 
-size()： 返回堆栈元素的数量，类似数组的长度
-	* 
-toArray()：以数组的形式返回堆栈的元素
-	* 
-toString()： 以字符串的形式输出堆栈的内容；
+* push(e)：将新添加的元素添加至堆栈的顶部
+* pop()：删除栈顶的元素，同时返回已删除的元素
+* peek()：返回堆栈的顶部元素
+* isEmpty()：判断堆栈是否为空，如果为空返回true
+* clear()： 清空堆栈所有的元素
+* size()： 返回堆栈元素的数量，类似数组的长度
+* toArray()：以数组的形式返回堆栈的元素
+* toString()： 以字符串的形式输出堆栈的内容；
 
 
 
@@ -345,20 +337,12 @@ function Node(element){
 }
 ```
 链表的方法：
-	* 
-append(element)：向链表尾部添加一个新的元素
-	* 
-insert(position,element)：向链表特定位置插入元素
-	* 
-remove(element)： 从链表移除一项
-	* 
-indexOf(element)： 返回链表中某元素的索引，如果没有返回-1
-	* 
-removeAt(position)：从特定位置移除一项
-	* 
-isEmpty()： 判断链表是否为空，如果为空返回true
-	* 
-size()： 返回链表包含的元素个数
-	* 
-toString()：重写继承Object类的tostring方法，因为我们使用了Node类；
+* append(element)：向链表尾部添加一个新的元素
+* insert(position,element)：向链表特定位置插入元素
+* remove(element)： 从链表移除一项
+* indexOf(element)： 返回链表中某元素的索引，如果没有返回-1
+* removeAt(position)：从特定位置移除一项
+* isEmpty()： 判断链表是否为空，如果为空返回true
+* size()： 返回链表包含的元素个数
+* toString()：重写继承Object类的tostring方法，因为我们使用了Node类；
 

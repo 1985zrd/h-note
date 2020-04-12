@@ -1,19 +1,19 @@
 # js-10 BOM
-一、BOM
+## 一、BOM
 bom（browser object model）
 包括：window、location、navigator、screen、history；
 window对象：在全局中定义的变量是window的属性，定义的函数是window的方法；window.a，在全局写的变量或函数都是使用window调用的，只是被省略了；
 
 
 
-二、打开关闭页面；
+## 二、打开关闭页面；
 1、open(http,name,attr,boolean);
         http地址，name名字，attr属性设置，boolean，false新历史，true替换历史；
 2、close()；直接调用方法，关闭当前窗口；
 
 
 
-三、网络状态
+## 三、网络状态
 在线online     离线offline
 监听当前的网络状态变动事件：
 ```js
@@ -27,7 +27,7 @@ PC端测试：点击NetWork，之后点击offline，可以测试；
 
 
 
-四、location（位置）
+## 四、location（位置）
 location既是window的属性，也是document的属性；
 window.onhashchange   当hash发生变化时触发；
 location.href="新地址"；强制跳转到新地址；不写地址为获取当前地址；
@@ -54,7 +54,7 @@ hash：#号开头；    "#contents"
 解密：unescape
 
 
-五、history
+## 五、history
 history：历史页面；
 history.back()；返回上一个；
 history.forward()；返回下一个；forward(前锋);
@@ -64,7 +64,7 @@ window.popstate = function(e){}    当点击后退会触发该事件；
 window.onhashchange，当hash值发生改变时触发，e.oldURL,e.newURL可以访问
 
 
-六、navigator
+## 六、navigator
 浏览器代号：navigator.appCodeName；
 服务器名称：navigator.appName；
 浏览器版本：navigator.appVersion；
@@ -86,7 +86,7 @@ window.onload = function () {
 }
 ```
 
-七、设备手机电池状态
+## 七、设备手机电池状态
 getBattery 电池状态
 ```js
 navigator.getBattery().then(battery => console.log(battery));
@@ -106,7 +106,7 @@ navigator.getBattery().then(battery => console.log(battery));
 使用场景：提示用户电量已充满，或者为了让用户有安全感，电量低于99%的时候来个弹框提示"该充电啦"✅
 
 
-八、使设备进行震动
+## 八、使设备进行震动
 vibration
 ```js
 // 震动一次
@@ -119,7 +119,7 @@ navigator.vibrate([200, 100, 300]);
 使用场景：通过振动来提供感官反馈，比如太久没有触摸屏幕的时候连续震动提醒用户✅
 
 
-九、页面显示隐藏
+## 九、页面显示隐藏
 ```js
 document.addEventListener("visibilitychange", () => {
     console.log(`页面可见性：${document.visibilityState}`);
@@ -133,7 +133,7 @@ document.visibilityState的状态值：
 
 
 
-十、页面方向陀螺仪
+## 十、页面方向陀螺仪
 deviceOrientation（如果IOS失效，可以将域名协议改为https）
 ![image](http://notecdn.heny.vip/images/js-10 BOM-01.png)
 从左到右分别为alpha、beta、gamma
@@ -150,7 +150,7 @@ let { alpha, beta, gamma } = event;
 
 
 
-十一、notification 桌面通知
+## 十一、notification 桌面通知
 PC端的桌面通知，如网页端的微信， 当收到消息时，右下角会出现一个通知（尽管你把浏览器最小化），因为这个通知时独立于浏览器的，是系统的一个原生控件：
 ```js
 const notice = new Notification("前端宇宙情报局", {
@@ -191,7 +191,7 @@ if (permission == "granted") {
 ```
 
 
-十二、全屏事件
+## 十二、全屏事件
 常用于在后台里面需要点击全屏时的事件
 ```js
 /**
@@ -222,7 +222,7 @@ const exitFullScreen = () => {
     }
 }
 ```
-十三、orientation
+## 十三、orientation
 监听用户手机设备的旋转方向变化；
 ```js
 window.addEventListener("orientationchange", () => {
@@ -233,14 +233,14 @@ window.addEventListener("orientationchange", () => {
 
 
 
-十四、弹窗
+## 十四、弹窗
 1、alert（"内容"）； 警告框；
 2、confirm("")；确认框，返回值布尔型，确认为true，取消为false；
 3、prompt("")；可以输入信息，返回值输入的信息，第二个参数默认value值；
 
 
 
-十五、浏览器位置信息
+## 十五、浏览器位置信息
 
 1、clientWidth  可视距离
 元素可视区域：clientWidth/Height；     width/height+padding    不包含边框
@@ -264,26 +264,18 @@ window.innerWidth  浏览器含滚动条的宽度
 （1）window.onscroll=function(){}   滚动浏览器；
 （2）window.scrollTo(x,y)  或者 scrollTo(options) 滚动窗口到指定位置；
 options支持的属性：
-	* 
-top：元素要移动的位置横坐标
-	* 
-left：元素要移动的位置纵坐标
-	* 
-behavior：元素的运动模式，smooth平滑滚动；
+* top：元素要移动的位置横坐标
+* left：元素要移动的位置纵坐标
+* behavior：元素的运动模式，smooth平滑滚动；
 
 
 （3）el.scrollIntoView() 滚动到可视区；
-	* 
-scrollIntoView(true)，如果是true则顶端对齐，如果是false，则底端对齐；
-	* 
-scrollIntoView(options)，包含以下属性对象：
+* scrollIntoView(true)，如果是true则顶端对齐，如果是false，则底端对齐；
+* scrollIntoView(options)，包含以下属性对象：
 
-		* 
-behavior：运动模式，smooth，平滑滚动
-		* 
-block：垂直对齐方式，值可以是：start、center、end或nearest
-		* 
-inline：水平方向对齐方式，值可以是：start、center、end或nearest
+	* behavior：运动模式，smooth，平滑滚动
+	* block：垂直对齐方式，值可以是：start、center、end或nearest
+	* inline：水平方向对齐方式，值可以是：start、center、end或nearest
 
 
 ```js
@@ -359,7 +351,7 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 })
 ```
 
-十五、css可用的属性；
+## 十五、css可用的属性；
 1、scroll-behavior: smooth，平滑滚动，给html和body加，或者给滚动的父元素加；
 2、scroll-snap属性：
 滚动窗口使用的：scroll-snap-type、scroll-padding；
@@ -367,50 +359,36 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 （1）scroll-snap-type
 属性指定能不能去捕捉当前滚动的窗口并让它对齐，以及所执行的方向跟严格程度；
 对齐方向属性：
-	* 
-x ：捕捉 X 轴上的位置
-	* 
-y ：捕捉 Y 轴上的位置
-	* 
-block ：捕捉块轴上的位置（逻辑意义上与 y 一样）
-	* 
-inline ：捕捉内联轴上的位置（逻辑意义上与 x 一样）
-	* 
-both ：捕捉两个方向上的位置
+* x ：捕捉 X 轴上的位置
+* y ：捕捉 Y 轴上的位置
+* block ：捕捉块轴上的位置（逻辑意义上与 y 一样）
+* inline ：捕捉内联轴上的位置（逻辑意义上与 x 一样）
+* both ：捕捉两个方向上的位置
 
 
 严格值：
-	* 
-none ：默认值，Mmmm，啥也不干
-	* 
-proximity ：一个感性的值，如果元素进入到了容器的捕捉位置范围内，则进行捕捉并滚动，否则就不管，至于这个范围是多少，约莫着 45%的位置吧（手动测的，W3C 没给出具体算法，瞎猜吧，哈哈哈）。
-	* 
-mandatory ：经常使用的值，强制性的，滚动结束后，一定会强制停在我们指定的地方。
+* none ：默认值，Mmmm，啥也不干
+* proximity ：一个感性的值，如果元素进入到了容器的捕捉位置范围内，则进行捕捉并滚动，否则就不管，至于这个范围是多少，约莫着 45%的位置吧（手动测的，W3C 没给出具体算法，瞎猜吧，哈哈哈）。
+* mandatory ：经常使用的值，强制性的，滚动结束后，一定会强制停在我们指定的地方。
 
 
 （2）scroll-snap-align属性指定捕捉窗口要捕捉的子元素位置
-	* 
-none ：默认值，啥也不干 0.0。
-	* 
-start ：跟开始位置对齐。
-	* 
-end ：跟结束位置对齐。
-	* 
-center ：居中对齐。
+* none ：默认值，啥也不干 0.0。
+* start ：跟开始位置对齐。
+* end ：跟结束位置对齐。
+* center ：居中对齐。
 
 
 （3）scroll-snap-stop 用来控制到达这些位置之后是否被捕获，还是到了指定的位置才被捕获；
-	* 
-normal ：默认值，滚动的时候，可以忽略捕捉位置。
-	* 
-always ：滚动的时候，不能忽略捕捉位置，还必须定位到第一个捕捉元素的位置。
+* normal ：默认值，滚动的时候，可以忽略捕捉位置。
+* always ：滚动的时候，不能忽略捕捉位置，还必须定位到第一个捕捉元素的位置。
 
 
 （4）scroll-margin   简写属性，跟margin一样，可以设置元素跟滚动条之间的外边框大小，可用值四个，scroll-margin-top/bottom/left/right
 （5）scroll-padding   跟scroll-margin类似；
 
 
-十六、onresize自适应布局
+## 十六、onresize自适应布局
 ```js
 window.onresize=function(){}  // 当页面窗口发生变化时触发；
 ```

@@ -1,5 +1,5 @@
 # js-01 javascript 初始
-一、js发展历史：
+## 一、js发展历史：
 
 ECMAScript（Europe Computer Manufacture Association)；语法，定义变量
 DOM（Document Object model） ; 文档对象模型；
@@ -8,19 +8,15 @@ BOM（Brower Object model）; 浏览器对象模型；
 javascript是一个单线程、非阻塞、异步、解释性脚本语言；
 V8是chrome里的javascript运行环境；
 1、javascript 是解释性脚本语言；
-	* 
-javascript原名不是JavaScript，而是Livescript；
-	* 
-js是用来解决用户和浏览器交互的问题；
-	* 
-ECMAScript是JavaScript的规范，JavaScript是ECMAScript的实现；
-	* 
-ECMAScript方言：Jscript、ActionScript；
+* javascript原名不是JavaScript，而是Livescript；
+* js是用来解决用户和浏览器交互的问题；
+* ECMAScript是JavaScript的规范，JavaScript是ECMAScript的实现；
+* ECMAScript方言：Jscript、ActionScript；
 
 
 2、Javascript的创造者Netscape（网景公司）
 
-二、script引入方法
+## 二、script引入方法
 
 1、行间样式，在标签内直接写onclick点击事件。
 ```html
@@ -36,7 +32,7 @@ ECMAScript方言：Jscript、ActionScript；
 ```
 
 
-三、基本使用语法
+## 三、基本使用语法
 1、注释
 单行注释：//     多行注释：/**/    。
 单行注释一般用在一行代码上，多行注释一般用在函数上边；
@@ -97,7 +93,7 @@ a=a-b;
 
 
 
-四、简单交互
+## 四、简单交互
 
 1、找到谁
 通过id名获取元素：`document.getElementById("box")`;
@@ -112,7 +108,7 @@ a=a-b;
 
 
 
-四、获取元素
+## 四、获取元素
 1、通过标签名获取元素；
 `document.getElementsByTagName("")`;
 获取到的都是类数组；当只有一个类名时，可以直接在括号后加中括号下标；
@@ -144,7 +140,7 @@ btn1.onclick = function(){
 }
 ```
 
-五、鼠标事件
+## 五、鼠标事件
 
 元素.事件 = function(){}
 
@@ -180,7 +176,7 @@ btn1.onclick = function(){
 
 
 
-六、操作内容
+## 六、操作内容
 
 1、获取内容
 元素.innerHTML   可以识别标签；
@@ -192,7 +188,7 @@ btn1.onclick = function(){
 
 
 
-七、表单操作内容
+## 七、表单操作内容
 
 表单有三种，input,textarea,select。
 
@@ -208,7 +204,7 @@ select.value = ""; 改变默认选中项；
 
 
 
-八、操作元素属性
+## 八、操作元素属性
 
 1、获取
     变量名.属性名。例如:a.href；
@@ -220,7 +216,7 @@ select.value = ""; 改变默认选中项；
 
 
 
-九、操作元素样式
+## 九、操作元素样式
 
 1、获取
     元素.style.属性值；只能获取行内样式；
@@ -234,7 +230,7 @@ select.value = ""; 改变默认选中项；
 
 
 
-六、document.write()；
+## 六、document.write()；
 document.write() 和 innerHTML 的功能类似，操作标签的内容，但是 document.write() 只能操作 body 的内容。
 
 document.write() 和 innerHTML 的区别：
@@ -245,7 +241,7 @@ document.write() 和 innerHTML 的区别：
 4.document.write() == document.body.innerHTML。
 
 
-十、常用方法
+## 十、常用方法
 1、document.write(); 在页面添加内容。
 2、prompt()；打开浏览器弹窗输入；
 2、alert 弹窗

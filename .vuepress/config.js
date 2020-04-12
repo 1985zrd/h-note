@@ -24,6 +24,7 @@ const webItems = [
 	{text:'es6',link: '/es6/'},
 	{text:'html5、css3',link:'/html5、css3/'},
 	{text:'Javascript',link:'/Javascript/'},
+	{text:'jQuery',link:'/jQuery/'},
 	{text:'React',link:'/React/'},
 	{text:'Server',link:'/Server/'},
 	{text:'Typescript',link:'/Typescript/'},

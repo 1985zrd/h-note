@@ -1,5 +1,5 @@
 # js-17 拖拽API、文件上传、下载
-一、接收input上传事件
+## 一、接收input上传事件
 1、使用input标签的type类型为file；
 ```js
 <input type='file' id='files' multiple />
@@ -42,7 +42,7 @@ arr.forEach(i => {
     fd.append('arr', i)
 })
 ```
-二、文件对象-FileReader读取文件
+## 二、文件对象-FileReader读取文件
 1、回调方法：
 onload：文件读取完成
 onabort：中断时触发
@@ -99,7 +99,7 @@ files.onchange = function (e) {
 }
 ```
 
-三、拖拽上传
+## 三、拖拽上传
 对于input标签，监听onchange事件，存在e.target.files上面；
 对于拖拽事件，fileList存放在拖拽事件的回调函数e.dataTransfer.files上面
 ```js
@@ -118,7 +118,7 @@ div.ondrop = e => {
 }
 ```
 
-四、粘贴上传
+## 四、粘贴上传
 ```js
 <input id='upload' type='text' />
 upload.addEventListener('paste', function(e){
@@ -127,7 +127,7 @@ upload.addEventListener('paste', function(e){
 })
 ```
 
-五、拖拽API
+## 五、拖拽API
 1、属性
 draggable  将div设置为 draggable=true 可以被拖拽，img和a标签不加这个属性就可以拖拉，一般可以给这两个标签设置false；
 ```js
@@ -152,7 +152,7 @@ e.dataTransfer.files 获取被drop的外部文件
 
 
 
-六、下载
+## 六、下载
 1、创建a标签，之后给a标签添加download属性；
 ```js
 <a href='./1.docs' download='文件.docs' >下载</a>
@@ -164,7 +164,7 @@ e.dataTransfer.files 获取被drop的外部文件
 https://blog.csdn.net/topc2000/article/details/79793057
 
 
-七、复制
+## 七、复制
 官网： https://github.com/zenorocha/clipboard.js
 1、安装：
 npm i clipboard
@@ -225,7 +225,7 @@ clipboard.destroy();
 ```
 
 
-八、图片压缩
+## 八、图片压缩
 一种方案：安装：npm install exif-js；
 ```js
 // 图像压缩
@@ -320,10 +320,10 @@ github地址： https://github.com/WangYuLue/image-conversion（支持按照指�
 
 
 
-九、图片预览插件
+## 九、图片预览插件
 教程： https://www.cnblogs.com/Jimc/p/10132177.html
 官网： https://github.com/fengyuanchen/viewerjs
 
 
-十、切片上传、断点续传
+## 十、切片上传、断点续传
 地址： https://juejin.im/post/5dff8a26e51d4558105420ed
