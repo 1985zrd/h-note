@@ -1,13 +1,11 @@
-# rn-01 react-native
-## 一、react-native开始工作；
+# RN-01 react-native
+## 一、react-native开始工作
 1、在vscode里面进入设置，开启exspanion，使用时，输入单词，之后再按一下tab键，该方法支持所有html支持的方法；比如：view*3；
 2、在vscode里安装Babel ES6/ES7
 
+## 二、在react-native中使用标签需要引入
 
-
-## 二、在react-native中使用标签需要引入；
-
-```js
+```jsx
 import React from 'react'
 import {View,Text} from 'react-native'
 export default class App extends React.Component{
@@ -17,24 +15,28 @@ export default class App extends React.Component{
 }
 ```
 在模板中导出有三种模式
-（1）export default class  直接导出一个类
-（2）export default App；
-（3）modules.exports = App；
+（1）`export default class`  直接导出一个类
+（2）`export default App`；
+（3）`modules.exports = App`；
 
 
 
 ## 三、react-native中的行间样式
 
-1、引入：import {StyleSheet} from 'react-native'
-2、创建一个变量
+1、引入：
 ```js
+import {StyleSheet} from 'react-native'
+```
+2、创建一个变量
+```jsx
 const styles = StyleSheet.create({
     colors:{color:'red',width:100}
 })
-使用时: <Text style={styles.colors}></Text>
+// 使用时: 
+<Text style={styles.colors}></Text>
 ```
 3、多个第行间样式，使用数组的形式；
-```js
+```jsx
 <View style={[styles.box,styles.box1]}></View>
 ```
 4、在react-native中，默认是flex布局，默认方向是纵向的，可以直接使用flex布局；
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
 
 1、字符串内容必须放在text组件里，不能写在view里，flex不建议放在text组件上面；
 3、如果给子元素设置flex属性时，那么它的父元素必须设置固定高度或者flex属性；
-```js
+```jsx
 import Header from './header'
 return (<Header />)   //内容不要包裹view标签,否则header标签里面即使设置flex:1也没有高度;
 ```
@@ -60,11 +62,11 @@ return (<Header />)   //内容不要包裹view标签,否则header标签里面即
 ## 五、事件
 
 1、传值；
-```js
+```jsx
 <Header data={arr} />
 ```
 2、点击事件
-```js
+```jsx
 <Header onPress={()=>alert('哈哈')}/>
 ```
 3、在react-native中，想查看数据有没有传送过来可以使用console.warn，没有log；
@@ -83,8 +85,14 @@ paddingVertical：同时设置paddingtop/bottom;
 3、在给文字设置样式时，必须设置在text元素上；
 
 4、使用图片：引入Image组件，src变成了soure，需要填写require；
-（1）加载本地：\<Image soure={require(./img/1.png)}>
-（2）加载网络：soure={{uri:图片地址}}，必须设置宽高；
+（1）加载本地：
+```html
+<Image soure={require(./img/1.png)}>
+```
+（2）加载网络：，必须设置宽高；
+```js
+soure={{uri:图片地址}}
+````
 
 5、背景图组件：ImageBackground，设置图片地址和image组件一样，可以在组件里面填写Text组件；
 
@@ -92,12 +100,14 @@ paddingVertical：同时设置paddingtop/bottom;
 注意：react-native中，内容超过屏幕宽度是不能滚动的，需要加入该组件；
 
 
-七、在项目根目录/app/src/main下，创建assets文件夹；
 
+## 七、在运行react native下载慢时，添加以下代码
+
+```json
 maven{ url "http://maven.aliyun.com/nexus/content/groups/public/" }
+```
+![image](http://notecdn.heny.vip/images/rn-01%20react-native-01.png)
 
-![image-20200412211628691](http://notecdn.heny.vip/images/rn-01%20react-native-01.md)
+![image](http://notecdn.heny.vip/images/rn-01%20react-native-02.png)
 
-![image-20200412211730136](http://notecdn.heny.vip/images/rn-01%20react-native-02.md)
-
-![image-20200412211742489](http://notecdn.heny.vip/images/rn-01%20react-native-03.md)
+![image](http://notecdn.heny.vip/images/rn-01%20react-native-03.png)

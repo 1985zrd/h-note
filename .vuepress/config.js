@@ -20,7 +20,7 @@ function getFile (dirname) {
 // test和link中间的需要填写一样
 // 删除其中的项，sidebar也会被删除
 const webItems = [
-	{text:'app',link:'/app/'},
+	{text:'React-Native',link:'/React-Native/'},
 	{text:'es6',link: '/es6/'},
 	{text:'html5、css3',link:'/html5、css3/'},
 	{text:'Javascript',link:'/Javascript/'},
@@ -31,6 +31,7 @@ const webItems = [
 	{text:'Vue',link:'/Vue/'},
 	{text:'node',link:'/node/'},
 	{text:'Webpack',link:'/Webpack/'},
+	{text:'小程序',link:'/小程序/'},
 	{text:'其他框架',link:'/其他框架/'}
 ]
 
@@ -42,7 +43,7 @@ let sidebar = webItems.reduce((p, c)=>{
   }]
   return p
 }, {})
-// console.log(sidebar, 'sidebar')
+// console.log(JSON.stringify(sidebar, null, 2), 'sidebar')
 module.exports = {
     title: '前端学习圈',
 		description: '一位不知名的初级菜鸟',
