@@ -5,13 +5,17 @@
 3. wx.navigateBack()；返回；不需要写参数；
 4. wx.switchTab()；tab切换，只能切换tabBar页面；
 5. wx.reLaunch()   关闭所有页面，重定向，可以打开任意页面
+
 属性：url ，路径填写pages下的组件；记得带上/；如：/pages/info/info；
+
 events，页面通过接口，当数据过多时，可以使用；
+
 查看官网地址：https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html
 
 
 
 getCurrentPages()  获取当前页面路由；
+
 注意：调用页面路由带的参数可以在onLoad中获取；
 
 ## 二、界面
@@ -42,19 +46,33 @@ getCurrentPages()  获取当前页面路由；
 
 ## 三、数据缓存
 1. 设置
+
 wx.setStorage({})  设置缓存   以key，data存取；success为成功的回调；
+
 wx.setStoargeSync(key,value)    同步设置  如果错误使用try,catch；
 
+
+
 2. 获取
+
 wx.getStorage({})  获取缓存  没有设置好也会调用，调用key获取
+
 wx.getStoargeSync()    同步获取
 
+
+
 3. 移除
+
 wx.removeStorage({})  传入key，success为成功回调；
+
 wx.removeStorageSync(key)    从本地缓存移除指定key
 
+
+
 4. 清除
+
 wx.clearStorageSync()  同步清除缓存
+
 wx.clearStorage();
 
 
@@ -67,7 +85,9 @@ wx.clearStorage();
 * method： get/post
 
 
+
 技巧：减少请求的次数
+
 （1）将请求的数据存放在Storage里面，做判断，将Storage赋为一个空，之后判断storage是否为空，如果为空则获取数据，并存入数据，如果不为空，则不获取；
 ```js
 let arr = wx.getStorage() || []

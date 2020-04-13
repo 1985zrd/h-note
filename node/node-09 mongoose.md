@@ -1,15 +1,21 @@
 # node-09 mongoose
 ## 一、mongoose
 1. 原生mongodb:
+
 可以安装：npm i mongodb（原生的mongodb写法）
+
 现在都是使用mongoose，封装的mongodb；
 
 2. mongoose安装
+
 npm i mongoose；安装到项目文件夹；
 
 3. mongoose对象：
+
 （1）Schema：约束（设计集合[表]结构的同时约束数据类型）；
+
 （2）Model：模型 | 表 | 集合，用来操作具体的数据；
+
 （3）document：一条一条的记录
 
 4. mongoose操作mongodb的步骤
@@ -48,24 +54,31 @@ modelObj.create({uname:'hny',age:18,sex:'男'},(err)=>{
 
 ## 二、Model.find()方法
 1. Model.find(conditions[,projection][,options][,callback]);  返回一个数组；
+
 （1）conditions：find条件，查询的条件值可以为正则；
 
 （2）projection：要展示的字段，0为不显示，1为显示，如果不需要设置，可以写null；
 也可以使用字符串，用空格分开，不显示的用-减号；
+
 示例：model.find({name:/li/i},'name -_id',()=>{})；
 
 （3）options：查询选项，sort(排序)，limit(限制)，skip(跳过)；
 
 （4）callback：回调函数，查找到的结果，从回调函数中获取所以函数需要两个形参(err,docs)；
+
 示例：model.find({name:'hny'},null,{skip:5},(err,dosc)=>{})；
 
+
 如果不传递回调函数，则不会自动执行，返回一个query对象，需要调用exec()方法才能执行；
+
 推荐使用不传递回调函数，方便前者指定复杂的条件，可以通过链式调用；
 
 
 ## 三、Model.update()方法
 1. model.update(条件,修改的内容[,options][,callback])；
+
 （1）修改多条需要加{multi:true}；
+
 （2）不建议使用update(),建议使用以下两种方法
 2. model.updateOne()；
 3. model.updateMany()；
@@ -86,7 +99,9 @@ modelObj.create({uname:'hny',age:18,sex:'男'},(err)=>{
 
 ## 六、文档对象
 1. 添加数据：
+
 cur = model({})；cur.save()；直接使用model创建数据，之后保存；
+
 不需要调用model.create就可以创建数据；
 
 2. find查找到数据之后可以直接操作查找到的数据，之后调用save()一下；

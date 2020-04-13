@@ -15,9 +15,13 @@ export default class App extends React.Component{
 }
 ```
 在模板中导出有三种模式
+
 （1）`export default class`  直接导出一个类
+
 （2）`export default App`；
+
 （3）`modules.exports = App`；
+
 
 
 
@@ -40,6 +44,7 @@ const styles = StyleSheet.create({
 <View style={[styles.box,styles.box1]}></View>
 ```
 4. 在react-native中，默认是flex布局，默认方向是纵向的，可以直接使用flex布局；
+
 给元素设置flex:1，则默认占满剩余空间，如果是根节点，则是整个屏幕，可以给根节点设置flex:1，之后设置背景，则是整个屏幕的背景；
 
 5. 在命名时组件使用大驼峰命名（首字母大写），变量命名小驼峰命名，在使用css样式时，不能使用中划线，需要使用驼峰命名
@@ -77,7 +82,9 @@ return (<Header />)   //内容不要包裹view标签,否则header标签里面即
 
 在react-native中使用行间样式；
 1. padding
+
 paddingHorizontal：同时设置paddingleft/right
+
 paddingVertical：同时设置paddingtop/bottom;
 
 2. 设置样式不需要添加px；
@@ -97,6 +104,7 @@ soure={{uri:图片地址}}
 5. 背景图组件：ImageBackground，设置图片地址和image组件一样，可以在组件里面填写Text组件；
 
 6. ScrollView组件，滚动区域组件；内容是多高，则滚动区域有多高；
+
 注意：react-native中，内容超过屏幕宽度是不能滚动的，需要加入该组件；
 
 

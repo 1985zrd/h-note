@@ -6,6 +6,7 @@
 3. 打包命令：`npx webpack`
 
 `webpack`是一个打包工具，打包输出后的结果；
+
 默认直接js模块化；
 
 
@@ -30,6 +31,7 @@ module.exports = {
 }
 ```
 2. 指定配置文件的名字：`npx webpack --config <名字>`
+   
    如果执行的代码太长，可以在`package.json`里面的scripts来添加；
 
 ```json
@@ -76,7 +78,9 @@ module.exports = {
 }
 ```
 4. 自动创建html文件并引入；
+
 （1）安装：yarn add html-webpack-plugin -D
+
 （2）配置html
 
 ```js
@@ -105,10 +109,13 @@ module.exports = {
 2. `loader`的用法：字符串只用一个loader，多个使用数组
 3. `loader`的顺序：从右向左执行，从下到上执行；
 4. `loader`还可以写成对象的形式
+
 如：`{use:[{loader:'',options:{}}]}`，可以在`options`传入东西
 
 案例：
+
 配置css-loader
+
 1. yarn add css-loader style-loader -D
 
 ```js
@@ -130,6 +137,7 @@ module.exports = {
 }
 ```
 2. 添加scss处理
+
 （1）安装：`yarn add sass-loader node-sass -D`（sass-loader依赖node-sass）
 
 ```js
@@ -139,7 +147,9 @@ rules: [
 ]
 ```
 3. css抽离成单文件（默认是在html模块里面的）
+
 （1）安装：`yarn add mini-css-extract-plugin -D`
+
 （2）将`rules`里面的`style-loader`替换成该插件，如果需要多个文件，可以声明多个插件即可
 
 ```js
@@ -161,7 +171,9 @@ module.exports = {
 }
 ```
 4. 自动添加兼容前缀
+
 （1）安装：`yarn add postcss-loader autoprefixer -D`
+
 （2）配置rules
 
 ```js
@@ -178,6 +190,7 @@ module.exports = {
 }
 ```
 5. css打包成一行
+
 （1）安装插件：`yarn add optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin -D`
 
 ```js

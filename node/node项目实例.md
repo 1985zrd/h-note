@@ -1,13 +1,21 @@
 # node项目实例
 博客项目简介：基于Node.js+Express+Mongodb+Mongoose开发
 ## 一、创建文件夹：
+
 项目目录：my_blog
+
 app.js入口文件
+
 views：视图模板
+
 static：存放静态资源
+
 controller：控制路由
+
 models：使用db的模板
+
 libs：后端使用
+
 uploads：接收上传的图片文件夹
 
 ## 二、下载模板
@@ -16,11 +24,13 @@ http://www.cssmoban.com/cssthemes/8138.shtml
 
 ## 三、下载第三方包
 1. 根据项目需求，下载所需的第三方包；
+
 express、mongoose、ejs、formidable(表单)、uuid(图名)
 
 
 ## 四、设计路由
 1. 根据需求设计路由，并将html模板中相同的部分使用ejs模板引入；
+
 （可以先设计登录页面，之后判断是否登录，才能发表文章）
 
 
@@ -41,6 +51,7 @@ form.parse(req, function(err, fields, files) {
 // fs.renameSync(old,new)；将文件放到uploads文件夹；
 ```
 文件上传之后是临时保存的，需要移动一下；
+
 3. 使用form.uploadDir修改文件夹存放目录；
 ```js
 form.uploadDir = path.resolve(__dirname, '..','target')
@@ -56,16 +67,23 @@ upload(formData) // 将formData发送给后端
 
 ## 六、添加数据库
 1. 连接：
+
 （1）在libs文件夹创建一个专门连接的js文件
+
 （2）里面只引入mongoose和连接，
+
 （3）之后在app.js头部引入；
 ```js
 require('./libs/connectdb.js')
 ```
 2. 创建db
+
 （1）在models创建一个文章db；
+
 （2）定义Schema约束
+
 （3）定义一个添加文章的函数，两个形参（传入的值，回调函数）；
+
 （4）如果添加出错return callback(err)，如果成功return callback(null);
 ```js
 // 添加时间：
@@ -85,11 +103,17 @@ function addArticle(data,callback){
 }
 ```
 3. 处理数据
+
 （1）处理拿到的数据，引入数据文件；
+
 （2）在添加文章路由文件引入设计的db模块；
+
 （3）将图片的路径添加到fields对象中，再添加一个用户id，获取哪个用户上传的；
+
 （4）将fields对象作为实参调用添加文章的函数
+
 （5）处理添加成功或者失败；
+
 （5）使用ejs模板往前台传入数据；
 ```js
 fields.uname = uname;  //设计一个用户名，方便后期渲染
@@ -263,9 +287,13 @@ Articledb.findArticle({del:1},{},{limit:9,sort:{addtime:-1}},(err,docs)=>{
 
 ## 八、设计列表页
 1. 计算出数据库总的页数，之后设计path路径或查询字符串；
+
 使用model.countDcuments(data,callback);
+
 2. 通过limit和skip定义每页显示的条数，并计算出总的页数；
+
 方法：(页数-1)*条数；
+
 3. 在前端页面通过for循环渲染页数；
 
 
@@ -279,6 +307,7 @@ Articledb.findArticle({del:1},{},{limit:9,sort:{addtime:-1}},(err,docs)=>{
 1. 判断sessionid是否存在，如果不存在，则跳转到提示页面，让用户登录；
 2. 利用session获取当前的用户，并使用查询数据库；
 3. 将当前用户发表的文章渲染到当前用户的首页；
+
 技巧：渲染页面时可以做一个表格，给每一行添加一个修改和删除的按钮；
 
 

@@ -42,17 +42,22 @@ jQuery库的类型分为两种，分别是生产版本（最小化和压缩版�
 
 
 它们的区别是：
+
     开发版：完整无压缩版本，主要用于测试、学习、和开发；
+
     生产版：经过工具压缩或经过服务器开启 Gzip 压缩，主要应用于产品和项目；
+
 ![image](http://notecdn.heny.vip/images/jq-01 什么是jQuery-01.png)
 
 
 ## 五、jQuery版本：
 jQuery 库分为 1.x 的版本和 2.x、3.x 的版本，1.x 的版本兼容 IE678，而 2.x、3.x的版本不兼容 IE678。
+
 国内多数网站还在使用1.x的版本
 
 ## 六、引入方式
 jQuery 不需要安装，他就是一个 js 文件，把下载的 jQuery 放到一个公共的位置，想要在某个页面上使用 jQuery 时，只需要在相关的 HTML 文档中引入该库文件即可。
+
 一般可以放在 head 标签中或者 </body> 标签前面，但是一定要注意，要在其它 js 文件前面引入 jQuery 库。
 
 当我们需要使用 jQuery 的时候，会在 HTML 文档中引入 jquery.js, 可以通过以下两种方式引入：
@@ -68,6 +73,7 @@ jQuery 不需要安装，他就是一个 js 文件，把下载的 jQuery 放到�
 <!-- <script src=”js/jquery.min.js”></script> -->
 ```
 注：引入jquery必须放在所有其他script标签之前；
+
     jquery中2.0以上的版本不兼容ie6,7,8；
 
 
@@ -85,7 +91,9 @@ $(‘#f00’) 和 jQuery(‘#foo’) 是等价的，$.ajax 和 jQuery.ajax 是�
 2. $(function(){})；简写；
 
 和原生文档加载完的区别：
+
 ①原生：必须把所有的元素都加载完（包括图片），并且只能写一个onload；
+
 ②jquery：只把页面的结构加载完，读取到标签就可以了，可以写多个；
 
 3. $(document).ready() 同 window.onload 的区别：

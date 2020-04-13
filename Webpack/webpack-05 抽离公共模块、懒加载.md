@@ -1,6 +1,7 @@
 # Webpack-05 抽离公共模块、懒加载
 ## 一、抽离公共模块
 如果a.js和b.js是公共的模块，在index.js和other.js文件里面都引入了，打包时则是打包两份，因此可以将a.js和b.js抽离出来，只打包一份
+
 1. 配置optimization
 ```js
 module.exports = {
@@ -27,7 +28,9 @@ module.exports = {
 
 ## 二、懒加载
 场景：比如点击一个按钮之后加载一个js文件
+
 使用webpack内置的import语法，默认会返回一个promise，
+
 ```js
 const btn = document.createElement('button')
 btn.addEventListener('click', function(){
@@ -37,6 +40,7 @@ btn.addEventListener('click', function(){
 })
 ```
 如果打包失败则需要安装一个插件，
+
 安装：yarn add @babel/plugin-syntax-dynamic-import
 ```js
 // 放到解析js的下面

@@ -32,13 +32,18 @@ z-index:改变元素层级，只用在加了定位的元素上，数值越高层
 1. 相对于浏览器进行定位，定位之后脱离文档流不占位。
 3. 提升层级
 4. 配合top,left,right,bottom使用
+
 添加fixed需要添加-webkit-transform: translateZ(0) 防止webkit抖动；
 
 ## 五、粘合定位
 position: sticky；
+
 是relative和fixed的结合体；
+
 当元素在屏幕内，表现为relative，当溢出屏幕，表现为fixed；
+
 作用：特别适合导航的跟随定位效果；
+
  
 
 ## 六、 脱离文档流的属性
@@ -46,17 +51,23 @@ position: sticky；
 2.float:right;
 3.position:absolute;
 4.position:fixed;
+
 浮动，脱离文档流但是不脱离文本流。
+
 定位：既脱离文档流，也脱离文本流。
+
 脱离文档流的元素就不区分块还是内联，都可以设置宽高等盒模型的样式。
+
  
 
 
 ## 七、 BFC(块级格式化上下文)
 1. 什么是BFC
+
 Block Formatting Context：指页面中的一个渲染区域，并且拥有一套渲染规则，他决定了其子标签如何定位，以及与其他标签的相互关系和作用。
 
 2. 如何生成BFC
+
 既然BFC是一块渲染区域，那这块渲染区域到底在哪，它又是有多大，这些由生成BFC的标签决定，CSS2.1中规定满足下列CSS声明之一的标签便会生成BFC。
 	1. 根标签 html
 	2. float的值不为none(为left/right)。
@@ -78,11 +89,17 @@ Block Formatting Context：指页面中的一个渲染区域，并且拥有一�
 
 
 4. BFC解决的问题
+
 1）外边距折叠 (margin重叠的问题)
+
 2）自适应两栏或三栏布局。
+
 3）防止字体环绕
+
 4）清除浮动 
+
 5) margin塌陷问题 
+
 
 
 

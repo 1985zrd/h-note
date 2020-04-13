@@ -1,8 +1,11 @@
 # html-17 移动端布局
 ## 一、响应式布局
 1. 响应式的图片
+
 需要给图片设置max-width:100%;height:auto;
+
 2. 响应式的字体
+
 html{font-size:100%;}
 
 之后可以设置响应式的字体：
@@ -14,12 +17,16 @@ html{font-size:100%;}
 
 响应式网站的优点：
 1. 减少工作量
+
 网站、设计、代码、内容都 只需要一份
+
 多出来的工作量只是JS脚本、CSS样式做一些改变
+
 2. 节省时间
 3. 每个设备都能得到正确的设计
 
 响应式网站的缺点：
+
 1. 会加载更多的样式和脚本资源
 2. 设计比较难精确定位和控制
 3. 老版本浏览器兼容不好
@@ -60,11 +67,17 @@ orientation:portrait   //竖屏
 <meta name="viewport" content="" />
 ```
 width=device-width
+
 height：设置的viewport高度（一般不设置）
+
 initial-scale=1.0：页面初始缩放比例，可以为小数
+
 minimum-scale：最小缩放比例，可以为小数
+
 maximum-scale:最大缩放比例，可以为小数
+
 user-scalable：是否允许用户缩放页面，“no”不允许，“yes”允许
+
 
 使用rem布局，100px=1rem；自适应；
 ```html

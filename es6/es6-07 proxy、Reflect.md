@@ -1,6 +1,7 @@
 # es6-07 proxy、Reflect
 ## 一、proxy
 1. 代理，可以修改对象的原操作；
+
 proxy的两个参数，都是对象，第一个是要代理的对象，第二个是对象的所属操作
 ```js
 var proxy = new Proxy(target, handler)
@@ -69,6 +70,7 @@ fproxy.foo === "Hello, foo" // true
 
 3. Proxy实例的方法
 （1）get()
+
 get方法可以继承，不需要再递归代理了
 ```js
 let proxy = new Proxy({},{
@@ -81,6 +83,7 @@ let obj = Object.create(proxy)
 obj.foo  // 'GET foo'
 ```
 （2）set()，拦截对象的设置，接受四个参数，依次为目标对象，属性名，属性值和proxy实例本身，最后一个参数可选
+
 例子：不能设置大于200的age；
 ```js
 let validator = {
@@ -96,8 +99,11 @@ let validator = {
 let person = new Proxy({}, validator)
 ```
 （3）apply()
+
 apply方法拦截函数的调用、call和apply的操作
+
 apply接收三个参数，分别是目标对象，目标对象的上下文对象(this)和目标对象的参数数组
+
 ```js
 var handler = {
     apply(target, ctx, args){
@@ -125,7 +131,9 @@ proxy.apply(null, [7, 8])   // 30
 Reflect.apply(proxy, null, [9,10])
 ```
 （4）has()
+
 用来拦截hasProperty操作，判断对象是否具有某个属性时，典型的操作就是in运算符
+
 例子：隐藏'_'开头的属性不被检测到
 ```js
 var handler = {
@@ -139,6 +147,7 @@ var handler = {
 let proxy = new Proxy({foo:'foo',_prop:'foo'}, handler)
 ```
 （5）construct()
+
 construct方法用于拦截new命令，接受三个参数，依次为目标对象，构造函数的参数对象，创造实例对象时，new命令作用的构造函数；
 ```js
 var handler = {
@@ -152,7 +161,9 @@ construct必须返回一个对象，否则会报错
 
 ## 二、Reflect
 1. 概述
+
 （1）Object上的明显属性语言内部的方法都放到了Reflect对象上，未来的新方法将只部署在Reflect对象上
+
 （2）修改了某些Object方法的返回结果，让其变得合理，Object在无法定义属性时，会抛出一个错误，而Reflect只会返回false
 ```js
 // 老写法
@@ -208,6 +219,7 @@ Proxy(target, {
 
 
 （1）get(target,name,receiver)
+
 查找target对象的name属性，如果没有该属性返回undefined
 ```js
 var myObject = {
@@ -270,9 +282,13 @@ const instance = Reflect.construct(Greeting, ['张三']);
 ```
 如果第一个参数不是函数，则报错
 
+
 （4）apply(func,thisArg,args)
+
 方法等同于Function.prototype.apply.call(func,thisArg,args),用于绑定this对象后执行给定函数，
-一般来说，如果要绑定一个函数的this对象，可以这样写fn.apply(obj, args)，但是如果函数定义了自己的apply方法，就只能写成Function.prototype.apply.call(fn, obj, args)，采用Reflect对象可以简化这种操作。
+
+一般来说，如果要绑定一个函数的this对象，可以这样写fn.apply(obj, args)，但是如果函数定义了自己的apply方法，就只能写成Function.prototype.apply.call(fn, obj, args)，采用Reflect对象可以简
+化这种操作。
 ```js
 const ages = [11, 33, 12, 54, 18, 96];
 // 旧写法
@@ -285,6 +301,7 @@ const oldest = Reflect.apply(Math.max, Math, ages);
 const type = Reflect.apply(Object.prototype.toString, youngest, []);
 ```
 （5）ownKeys(target)
+
 方法用于返回对象的所有属性，等同于Object.getOwnPropertyNames与Object.getOwnPropertySymbols之和，可以返回Symbol
 ```js
 var obj = {name: 'hhh', age:18}

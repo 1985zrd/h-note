@@ -8,6 +8,7 @@
 
 
 拓展知识：
+
 块元素尽量不要转换内联块元素，为了使块元素在一行显示，用浮动。
 
 
@@ -15,27 +16,38 @@
 
 ## 二、图片下面空白距离清除方法
     图片默认最下边有空白，因为默认图片是基线对齐的；
+
 1. 给图片转块：display:block;
 2. 给图片设置垂直对齐方式：
+
 vertical-align: top/middle/bottom;
+
 居上，中，下对齐，默认是baseline，基线对齐；
+
 3. 给图片的父元素设置：font-size:0;line-height:0;（常用）
+
 缺点：文字字号和行高都是0，需要重新设置文字的字号和行高。
 
 
 ## 三、对齐方式
 1.水平对齐方式：text-align：center；
+
 针对行内元素和文字设置居中对齐的，给块元素设置居中，里面的行内元素，文字元素都会居中对齐。
 
 
 2.块元素居中对齐：margin：0 auto；
+
 块元素在有宽度的情况下居中对齐。
+
 auto可以用到很多的地方，表示自动的意思。margin值设置三个的时候，中间写auto代表三个值；
 
 
 3.内联元素，内联块元素居中对齐：vertical-align: top/middle/bottom;，也可以写px/em/rem
+
 不影响块级元素中的内容对齐，它只针对行内元素或行内块元素，特别是行内块元素，通常用来控制图片/表单与文字的对齐。
+
 让一行文字在一个块中，垂直居中；对图片也管用；
+
 vertical-align属性是参照line-height来设置的;
 ```css
 display:table-cell; 
@@ -44,6 +56,7 @@ text-align: center;
 ```
 
 4. vertical-align: middle，需要给两个内联元素都设置，如果解决不了，也可以使用ex单位，一个ex是字体的x-height字体尺寸的一半，比如：vertical-align: -.5ex；也可以直接居中；
+
 如果是12px的字体想要垂直居中，可以尝试line-height: 2.4ex;
 ```html
 // 两个内联元素都加上
@@ -56,6 +69,7 @@ text-align: center;
 ## 四、浮动
 1. 浮动元素按照指定的方向发生浮动，碰到父元素的边缘或者相邻的浮动元素就停下来了。
 2. 浮动元素脱离文档流不占位。不脱离文本流。
+
     文档流（普通流）：文档中可显示对象在排列时所占用的位置，从上到下排列，从左到右排列
 3. 浮动元素的父元素高度撑不起来，父元素高度为0，下面的元素往上移动。(问题)
 
@@ -65,13 +79,18 @@ text-align: center;
 
 清除浮动的办法：
 1. 给浮动元素的父元素加高度，
+
         很多的html页面都是内容撑开的高度，不便于后期维护，不推荐使用。
 2. 给浮动元素的父元素加overflow：hidden、scroll、auto 都可以。
+
 缺点：会不兼容ie6，解决办法：后面添加_zoom:1;（了解）
+
 当添加了overflow在父元素没有高度的时候，会计算子元素的高度，知道子元素的高度之后，就会自动，撑起父元素。
+
 一般用auto，auto自动添加滚动条，scroll会默认有滚动条，影响直观。
 
 3. 在浮动元素的后面，加一个空的块元素，一定要加块元素，给块元素起class名，并给这个块元素设置样式clear:both(会导致代码冗长)
+
 缺点：如果有100个地方写了浮动，就需要加一百个div。
 4. 给浮动元素的父元素加class名，给class加上以下属性；
 
@@ -111,23 +130,39 @@ text-align: center;
 ## 六、 以下内容作为了解
 
     1.list-style-type: 标记类型
+
 可能的值：
+
 none 无标记。
+
 disc 默认。标记是实心圆。
+
 circle 标记是空心圆。
+
 square 标记是实心方块。
+
 decimal 标记是数字。
+
 decimal-leading-zero 0开头的数字标记。(01, 02, 03, 等。)
+
 lower-roman 小写罗马数字(i, ii, iii, iv, v, 等。)
+
 upper-roman 大写罗马数字(I, II, III, IV, V, 等。)
+
 lower-alpha 小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。)
+
 upper-alpha 大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。)
 
+
+
 2. list-style-position 标记位置
+
 inside 列表项目标记放置在文本以内。
+
 outside 默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外。
 
 3.list-style-image 图像标记
+
 把图像设置为列表中的项目标记
 
 

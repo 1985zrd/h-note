@@ -20,48 +20,63 @@
 	12. 服务器发送事件。
 
 简洁的主题结构：
+
 html5支持不用head、body、还有一些结束标签，浏览器会自动补齐。
 
 
 
 ## 三、使用iconfont图标
-1.https://www.iconfont.cn/ 官网下载文件，并用link引入iconfont.css文件。
-2.引入方式：
+1. https://www.iconfont.cn/ 官网下载文件，并用link引入iconfont.css文件。
+2. 引入方式：
+
 a. font class
+
 建立一个新标签，class="iconfont 图标代码" ，
+
 b. unicode
+
 拷贝生成的@font-face代码，拷贝iconfont样式，span标签里填写&#xe61c;值。
+
 c. symbol
+
 script引入生成的js文件，加入通用icon代码，挑选响应图标获取类名。
+
 d. 表单加入提示图标
+
 input起类名放iconfont，value值填写图标代码，填写unicode生成的代码。
+
 e. before引入，content:"\e900"; 如果图标不显示则改变加入字体文件font-family:"iconfont";。
-3.iconfont改变样式的方法：
+
+3. iconfont改变样式的方法：
+
 a. font-size 改变图标的大小
+
 b. color 改变图标的颜色
+
 c. font-weight:改变图标的边框粗细；
+
 d. symbol方式修改颜色，打开js文件，搜索fill，并修改填充的颜色值。
 
 
 
 ## 四、新增的语义化标签
-1.hearder：定义文档的页眉，头部；
+1. hearder：定义文档的页眉，头部；
 
-2.nav：定义导航链接的部分；
+2. nav：定义导航链接的部分；
 
-3.footer：定义文档或节的页眉底部；
+3. footer：定义文档或节的页眉底部；
 
-5.section：定义文档中的节，可以替换div，语义不强烈，相当于一个块。
+5. section：定义文档中的节，可以替换div，语义不强烈，相当于一个块。
 ```html
 <article>
     <section></section>
 </article>
 ```
-6.aside：侧边栏，侧边的都可以用到；
+6. aside：侧边栏，侧边的都可以用到；
 
-4.article：定义文章；
+4. article：定义文章；
 
-7.hgroup；表示标题组，需要和h1-h6组合使用，可以在一个页面使用多个h1标签；一个标题组可以使用一个h1标题，标题组外面只能有一个h1标题。
+7. hgroup；表示标题组，需要和h1-h6组合使用，可以在一个页面使用多个h1标签；一个标题组可以使用一个h1标题，标题组外面只能有一个h1标题。
 
 ```html
 <article>
@@ -76,14 +91,17 @@ d. symbol方式修改颜色，打开js文件，搜索fill，并修改填充的�
 
 
 
-8.figure；主要用作表示内容的附属信息（如图片、表格、代码等），如果删除，不影响整体文档流和文章的完整性。
+8. figure；主要用作表示内容的附属信息（如图片、表格、代码等），如果删除，不影响整体文档流和文章的完整性。
+
 figure属性值：
-9，figcaption：标题；
+
+9. figcaption：标题；
 ```html
 <figure> <img src="" alt="" /> //是个内联块 <figcaption>图片说明</figcaption> </figure>
 ```
 
 time表示时间的标签，没有任何样式，常用于js可以修改时间。
+
 mark用来标记文字。
 ```html
 <p><time>04月15号</time>今天<mark>学习</mark>HTML5</p>
@@ -104,9 +122,11 @@ mark用来标记文字。
 ## 六、HTML5新增表单属性
 
 复习之前学过的表单元素：
+
 text、password、radio、checkbox、button、submit、reset、file、image、
 
 h5表单，新增添加了常用的验证信息，只能输入限定值，才能被提交上去。
+
 h5新增表单属性input  的type类型:
 
 ```html
@@ -127,10 +147,12 @@ h5新增表单属性input  的type类型:
 
 ## 七、html5新增的属性
 1. contenteditable    可以编辑的文字；
+
 ```html
 <p contenteditable="true">1</p> 
 ```
 contenteditable="true" 放在标签里可以编辑的文字。
+
 该标签可以自适应高度，而textarea不能自适应高度；
 
 
@@ -139,9 +161,11 @@ contenteditable="true" 放在标签里可以编辑的文字。
 <bdo dir="rtl">该段落文字从右到左显示。</bdo>
 ```
 dir 改变文本的方向，ltr 从左向右，rtl 从右向左，，auto 自动；
+
 必须使用bdo标签，覆盖文本方向，适用于需要倒过来显示的文本，很少使用；
 
 3. hidden    元素进行隐藏；
+
 4. title    元素的额外信息，鼠标放在元素上面显示；
 
 
@@ -177,14 +201,19 @@ step 数字间隔步长（number、range）
 accesskey="键位" 规定激活（使元素获得焦点）元素快捷键。一般alt+s。
 
 fieldset    对表单中的相关元素进行分组，会在相关表单元素周围绘制边框；可以嵌套，可以有多个；
+
 legend    为fieldset定义标题；
 
 利用list来设置下拉选项菜单；
+
 用datalist替换select，option作为选项，
+
 类似于百度，点击之后出现一堆选项。
 
 建立连接：
+
 在input标签设置list="名"，在datalist设置id="名"。
+
 注意：option里面必须输入value值，否则不能选择。
 
 ```html
@@ -197,6 +226,7 @@ legend    为fieldset定义标题；
 
 
 修改单选框复选框默认样式html代码：
+
 清除表单默认样式：-webkit-appearance:none;
 
 第一种写法：
@@ -243,6 +273,7 @@ input[type=number] {
 ## 九、HTML5新增多媒体标签
 
 1.audio音频标签；
+
 第一种：直接src地址写
 ```html
 <audio src="" controls loop muted autoplay></audio>
@@ -256,10 +287,15 @@ input[type=number] {
 </audio>
 ```
 src 路劲
+
 controls: 加入控制器
+
 loop 循环播放
+
 muted 静音
+
 autoplay 自动播放
+
 
 浏览器及格式样式：
 
@@ -272,9 +308,13 @@ autoplay 自动播放
 
 
 2.video插入视频
+
 属性值：src controls loop muted autoplay，
+
 width 设置video的宽度
+
 height 设置video的高度
+
 poster 设置视频播放器默认显示的图片（缩略图）
 
 注意：如果需要修改播放器的高宽，必须等比例缩放，4:3或16:9，否则会出现多一段；
@@ -309,6 +349,7 @@ poster 设置视频播放器默认显示的图片（缩略图）
 ## 课外知识：
 
 1.number属性值：
+
 清除number默认样式，及上下箭头：
 ```css
 /*在chrome下移除input[number]的上下箭头*/
@@ -340,8 +381,11 @@ appearance:none;
 -webkit-appearance:none;
 ```
 以上三种属性清除下拉框的默认样式；
+
 background: url("arrow.png") no-repeat scroll right center transparent; 放下拉框的图片
+
 padding-right: 14px; 空出箭头的位置；
 
 ie浏览器清除下拉框的样式
+
 select::-ms-expand{ display: none; }

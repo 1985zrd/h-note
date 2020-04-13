@@ -1,14 +1,19 @@
 # node-06 加密 cookie ejs
 ## 一、find
+
 find方法：find()返回符合条件的元素，之后的值不会再调用执行函数，如果找不到返回undefined，不会改变原数组；
+
 语法：arr.find((item,index,arr)=>{})；
+
 findIndex：返回符合条件的元素的索引位置，没有返回-1，不改变原数组；
 
 
 ## 二、加密
 1. 引入模板：require('crypto')；
 2. 散列算法(哈希)加密：
+
 散列算法也叫哈希算法，把任意长度的输入变换成固定长度的输出，常见有md5,sha1,sha256等,需要跟一个密钥，密钥随便写；
+
     crypto.createHmac('md5','hny#@!').update(str).digest('hex');
 3. 哈希算法：
 ```js
@@ -18,29 +23,48 @@ crypto.createHash('md5').update(str).digest('hex')；
 
 
 ## 三、cookie
+
 主要解决http协议无状态问题（没有记忆）；
+
 1. 在nodejs使用cookie
+
 （1）设置：res.setHeader('Set-Cookie',['name=hny','age=18']);
+
 （2）获取：req.headers；（也可以使用中间件来获取req.cookie）
 
+
+
 2. 在express中使用cookie
+
 需要使用中间件：cookie-parser；之后使用app.use(cookieParser())；使用一下；
+
 （1）设置：res.cookie(name,value[,option])；
+
 可选：expires : 时间对象   new Date( new Date().getTime() +1*24*60*60*1000 )
+
         expires : 时间对象   new Date( Date.now() +1*24*60*60*1000 )
+
         maxAge：1*24*60*60*1000；以毫秒为单位；
+
     httpOnly：布尔值，客户端不能设置cookie；
+
     path：只允许指定的位置访问；
+
     domain：只允许指定的域名访问；
+
     修改host文件：C:\Windows\System32\drivers\etc；ip地址+域名；指定域名为本地域名；
+
 （2）获取：req.cookies；
 
 ## 四、cookie-session；
     需要npm 下载一下；
 1. 引用：require('cookie-session')；
 2. 使用：app.use(cookieSession({})；
+ 
     对象里面：name:cookie名字,
+ 
                      keys:[]；密钥，随意多个； 必填；需要方括号;
+ 
                      maxAge；过期时间，以毫秒为单位；
 3. 设置cookie：req.session.username = 'hny';
 4. 获取cookie：req.session.username；
@@ -50,11 +74,17 @@ crypto.createHash('md5').update(str).digest('hex')；
 
 
 cookie和session的区别：
+
 （1）(失效)Session 会在浏览器关闭之后失效，Cookie 则可以在理论上永久有效(设置过期时间)。
+
 （2）(存放)Cookie 数据存放在客户的浏览器上， Session 数据存放在服务器上。
+
 （3）(黑客)Cookie 不安全，黑客可以分析本地的 Cookie, 并进行 Cookie 欺骗。 而 Session 保存在远程服务器上，相对安全（重要的信息应该存在session）;
+
 （4）(限制)Cookie有大小限制，一般是4KB。 域名20-50个以内，Session 则没有这方面的限制。
+
 （5）(禁用)浏览器的设置可能禁用 Cookie，这时所有关于 Cookie 的应用都将失败，但是 Session 却永远不会有这个问题；
+
 
 session与cookie的联系： 
     Session 依赖 cookie，因为 session id 存在客户端。
@@ -62,8 +92,11 @@ session与cookie的联系：
    
 
 ## 五、模板引擎ejs
+
 渲染页面：新闻列表页中的显示的内容不同，但显示的风格都一样，就可以作为一个模板，实际上就是渲染页面；
+
 前端渲染：前端渲染都使用的ajax的技术，但不利于seo优化；
+
 后端渲染：使用模板引擎，有利于seo优化；
 
 
@@ -74,13 +107,22 @@ app.set('views',[__dirname+'/views','template'])    //按照顺序指定模板�
 app.engine('html',require('ejs').__express)     //告诉express html以ejs模板引擎去渲染
 ```
 3. res.render('index',[,data])；使用ejs引擎；
+
 注意：传入的index文件不需要后缀，会自动去views文件夹中找模板文件，后面传入数据，多个可使用对象，在ejs模板中使用：
+
 （1）<%= 键名%>；必须一一般的字符才用%=，如果如果使用标签会被转换成实体符号;
+
 （2）如果是标签：<%- 键名%>；
+
 （3）使用js遍历循环：
+
     第一行写左大括号，中间写语句，最后一行写右大括号；
+
     <% for(let i=0;i<arr.length;i++){%>
+
             <%=arr[i]%>
+
             <%}%>；
+
 （4）使用公共模板：<% include header %>；
                             

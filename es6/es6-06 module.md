@@ -3,6 +3,7 @@
 模块功能主要由两个命令构成：export和import，export命令用于规定模块的对外接口，Import命令用于输入其他模块提供的功能；
 
 1. export：规定模块对外接口
+
 如果希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量
 * 默认导出：export default Person（导入时可指定模块任意名称，无需知晓内部真实名称）
 * 单独导出：export const name = 'bruce'
@@ -13,7 +14,9 @@
 
 
 2. import：导入模块内部功能
+
 使用export命令定义了模块的对外接口后，其他js文件就可以通过import命令加载这个模块，import命令具有提升效果，会提升到整个模块的头部，首先执行。是因为import命令是编译阶段执行的，在代码运行之前，如果多次重复执行同一句import语句，那么只会执行一次，而不会执行多次；
+
 * 默认导入：import Person from './Person'
 * 整体导入：import * as Person from './Person'
 * 按需导入：import {age, name, sex} from './Person'
@@ -24,13 +27,18 @@
 
 
 3. 赋值引入
+
 动态加载import，返回Promise，可以调用then方法；
 ```js
 component: () => import('./views/about.vue')
 ```
 4. import与require的区别
+
+
 require是commjs的规范，import是es6的规范；
+
 require是同步加载，import是异步加载；
+
 require加载方式：
 ```js
 // 导出
@@ -43,8 +51,11 @@ moudle.exports = {}
 require('')
 ```
 ## 二、require.context
+
 如果require参数含有表达式，比如：require('./template/'+name+'.ejs')，就可以使用require.context；
+
 1. require.context(dir,deep,reg)
+
 * dir：要搜索的文件夹目录
 * deep：是否还应该搜索它的子目录
 * reg：匹配文件的正则表达式；
@@ -54,6 +65,7 @@ require('')
 require.context('./test',false,/\.vue$/) //匹配test目录以.vue结尾的文件名, 不深度匹配;
 ```
 2. require.context模块导出返回一个require函数，这个函数可以接收一个参数，request；
+
 导出的方法有3个属性：
 * resolve：
 * keys：也是一个函数，返回一个数组，数组里面是所有的文件名

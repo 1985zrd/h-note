@@ -107,10 +107,15 @@ rm -rf build.gz
 
 1. 安装：npm install forever -g（建议先设置好npm包源为淘宝源）
 2. 使用方法
+
 （1）启动：forever start app.js （有两个warn不用管）
+
 ![image](http://notecdn.heny.vip/images/server-03 linux常用-01.png)
+
 （2）查看运行的项目：forever list
+
 （3）停止服务：forever stop [pid]
+
 （4）停止所有forever服务：forever stopall
 
 

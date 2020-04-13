@@ -5,10 +5,15 @@
      硬盘文件是：/dev/sd[a-p]
      光盘文件是：/dev/sr0等
 3. linux支持类型：
+
 压缩包：.gz、.bz2. .tar.bz2. .tgz等
+
 二进制软件包：.rpm
+
 网页文件：.html、.php
+
 脚本文件：.sh
+
 配置文件：.conf
 4. linux所有存储设备都必须挂载之后用户才能使用，包括硬盘、u盘和光盘
 5. windows的应用程序不能直接在linux下运行；
@@ -54,14 +59,22 @@
 
 ## 四、ls命令
 1. ls：显示目录文件（/bin/ls），选项[-ald] [文件或目录]
+
     例：ls -a /home
+
 -a 显示所有文件，包括隐藏文件
+
 -l 详细信息显示
+
 -d 查看目录属性；
 
+
 2. 基本属性
+
 文件类型：（- 文件 d 目录 l 软链接文件）
+
 u 所有者 g所属组 o其他人；
+
 r 读 w 写 x执行；  x执行：可以执行文件或进入目录等；
 
 
@@ -69,32 +82,59 @@ r 读 w 写 x执行；  x执行：可以执行文件或进入目录等；
 
 ## 五、 文件操作命令
 1. 命令格式：命令 [-选项] [参数]
+
 创建目录：mkdir (-p可以递归创建)
+
 创建文件：touch
+
 生成链接文件：ln -s [old][new]  -s生成软链接；
+
 类似window快捷方式；软链接的文件权限都是rwxrwxrwx；
 
+
+
 删除空目录：rmdir
+
 删除文件：rm -rf 文件或目录   r强行删除，f强制执行；
+
 shopt -s extglob执行之后可以执行：rm -rf !(排除的某个文件不被删除)
+
 shopt -s ，查看extglob是否为on
 
+
+
 复制：cp -rp [old][new]   r复制p保留文件属性；
+
 剪切或重命名：mv [old][new]
 
 
+
+
+
 查看命令：
+
 cd 切换目录；
+
 pwd 显示当前目录
+
 ls 显示所有文件
+
 ll 显示所以文件包含文件属性；
 
+
+
 显示文件内容
+
 cat 正序显示； -n显示行号；
+
 tac 反向列示
+
 more 分页显示（f或空格翻页，enter换行，q或Q退出）
+
 less 分页显示，可以向上翻页；
+
 head 显示文件前面几行；（在文件前面添加-n，指定行数）
+
 tail 显示文件后面几行（-n，指定行数）
 
 
@@ -102,17 +142,26 @@ tail 显示文件后面几行（-n，指定行数）
 
 ## 六、权限管理命令
 1. chmod：改变文件或目录权限（/bin/chmod）
+
 chmod [{ugoa}{+-=}{rwx}] [文件或目录]
     [mode=421] [文件或目录]
     -R 递归修改；
 2. 权限的数字表示：r=4  w=2 x=1； 示例：rwxrw-r--   764
+
 示例：chmod g+w testfile    赋予testfile文件所属组添加写权限
+
   chmod -R 777 testdir    修改testdir目录下所有文件具有全部权限；
+
 3. chown：改变文件或目录的所有者（/bin/chown）
+
 chown [用户] [文件或目录]
+
 4. chgrp：改变文件或目录的所属组（/bin/chgrp）
+
 chgrp [用户组] [文件或目录]
+
 5. umask：显示、设置文件的缺省权限（shell内置）
+
 umask [S]    -S以 rwx形式显示新建文件缺省权限
 
 
@@ -120,34 +169,44 @@ umask [S]    -S以 rwx形式显示新建文件缺省权限
 
 ## 七、搜索
 1. find：文件搜索（/bin/find）
+
 find [搜索范围] [匹配条件]
 
 2. find /etc -name init
+
 在目录etc查找文件init    -iname可以不区分大小写
 
 3. find / -size +204800
+
 在根目录下查找大于100M的文件    +n 大于 -n 小于 n 等于
 
 4. find /home -user shenchao
+
 在根目录下查找所有者为shencao的文件    -group根据所属组找
 
 5. find /etc -cmin -5
+
 在etc下查找5分钟内被修改过属性的文件和目录
+
 -amin 访问时间    -cmin 文件属性    -mmin 文件内容
 
 6. find /etc -size +163840 -a -size -204800
+
 查找大于80MB小于100MB文件      -a 两个条件同时满足    -o满足一个
 
 7. find /etc -name inittab -exec ls -l {} \;
+
 查找initab文件并显示其详细信息        -exec/-ok  命令    {} \对搜索结果执行操作
 
 8. -type 根据文件类型查找；  f文件 d目录 l软链接
       -inum 根据i节点查找；
 
 9. locate：在文件资源库中查找（/usr/bin/locate）
+
 locate 文件名
 
 12. grep：在文件中搜寻字串匹配的行并输出
+
 grep -iv [指定字串] [文件]     -i不区别大小写 -v排队指定字串
 
 
@@ -380,7 +439,9 @@ vi为黑色，vim为红色
 2. 使用vim打开locale.conf文件
 
 vim /etc/locale.conf
+
 3. 编辑文件后保存退出
 
 LANG="zh_CN.UTF-8" // en_US.UTF-8为英文
+
 4. 最后重启 reboot

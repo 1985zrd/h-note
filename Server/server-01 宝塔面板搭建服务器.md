@@ -1,8 +1,12 @@
 # Server-01 宝塔面板搭建服务器
 ## 一、下载软件
+
 putty | xshell：连接远程linux服务器
+
 winscp | FileZilla： 连接ftp的；
+
 安装宝塔面板：https://www.bt.cn/bbs/thread-19376-1-1.html
+
 宝塔面板功能：直接在linux系统里面输入bt，会打开菜单，选择对应的指令即可；
 
 

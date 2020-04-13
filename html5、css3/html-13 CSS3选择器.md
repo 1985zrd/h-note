@@ -24,57 +24,91 @@ width:calc(100% - 20px) 函数；
 
 ## 三、结构性伪类选择器
 child用法必须保证是连续数的，从父级元素里面开始算第几个的。
+
 n是从0开始走的，第一个是2\*0+1，第二个是2\*1+1，
+
 几n就是几的倍数。
 
 nth-child（n）用法：
 1. nth-child(3)
-表示选择列表中的第3个标签，代码如下：
-li:nth-child(3){background:#fff}
 
+表示选择列表中的第3个标签，代码如下：
+```css
+li:nth-child(3){background:#fff}
+```
 2. nth-child(2n)
+
 表示选择列表中的偶数标签，即选择 第2. 第4. 第6…… 标签，代码如下：
+```css
 li:nth-child(2n){background:#fff}
+```
 
 3. nth-child(2n-1)
+
 表示选择列表中的奇数标签，即选择 第1. 第3. 第5. 第7……标签，代码如下：
+```css
 li:nth-child(2n-1){background:#fff}
-
+```
 4. nth-child(n+3)
+
 表示选择列表中的标签从第3个开始到最后，代码如下：
+```css
 li:nth-child(n+3){background:#fff}
-
+```
 5. nth-child(-n+3)
-表示选择列表中的标签从0到3，即小于3的标签，代码如下：
-li:nth-child(-n+3){background:#fff}
 
+表示选择列表中的标签从0到3，即小于3的标签，代码如下：
+```css
+li:nth-child(-n+3){background:#fff}
+```
 6. nth-last-child(3)
+
 表示选择列表中的倒数第3个标签，代码如下：
+```css
 li:nth-last-child(3){background:#fff}
+```
 
 first-child用法：
+
 1. first-child
+
 first-child表示选择列表中的第一个标签。代码如下：
+```css
 li:first-child{background:#fff}
+```
 
 last-child用法：
+
 1. last-child
+
 last-child表示选择列表中的最后一个标签，代码如下：
+```css
 li:last-child{background:#fff}
+```
 
 高级用法：
+
 nth-child(n+2):nth-child(odd):nth-child(-n+9)
+
 使用我们将会选中的子元素是从第2位到第9位，并且只包含奇数位。
 
 type用法：
+
 type用法是选择所有父级元素里面第几次出现的
 1. nth-of-type(n)
+
 选择父元素中第几次出现的元素；
+
 2. nth-last-of-type(n)
+
 选择父元素中倒数第几次出现的元素；
+
 3. nth-of-type(odd)/(2n-1)
+
 选择父元素中出现的奇数次元素；
+
 4. nth-of-type(even)/(2n);
+
 选择父元素中出现的偶数次元素；
 
 
@@ -82,29 +116,40 @@ type用法是选择所有父级元素里面第几次出现的
 ## 四、属性选择器
 
 1. div[title]
+
 选择所有div标签包含有title的属性；
+
 2. div[title=value]
+
 选择所有div标签包含value值相等的元素
+
 3. div[title*=value]
+
 选中包含字母的所有标签；
 
 4. div[title~=value]
+
 选中单独的单词的标签；
 
 5. div[title^=value]
+
 选中以value开头的标签；
 
 6. div[title$=value]
+
 选中以value值结尾的标签；
 
 7. 属性选择器也可以单独选择；
+
 [title=value]
 
 
 
 
 补充：
+
 :not()，选择器匹配非指定元素选择器的每个元素；
+
 li:not(:last-child){ //选择除最后一行的所有元素 margin-bottom:20px; }
 
 
@@ -138,12 +183,14 @@ li:not(:last-child){ //选择除最后一行的所有元素 margin-bottom:20px; 
 1. 在E元素内部的开始位置和结束位创建一个元素，该元素为行内元素，且必须要结合content属性使用。
 
 2. 为什么用双冒号：
+
 E:after、E:before 在旧版本里是伪元素，CSS3的规范里“:”用来表示伪类，“::”用来表示伪元素，但是在高版本浏览器下E:after、E:before会被自动识别为E::after、E::before，这样做的目的是用来做兼容处理，":" 与 "::" 区别在于区分伪类和伪元素。
 
 3. before,aften其实是一个盒子，这个盒子是内联元素，转块可以改变宽高，content属性是伪元素的内容，使用时必须配合使用，也称为是一个能插入元素的选择器，改变属性可以利用改变父元素继承。
 
 
 补充：
+
 ●滑过选中设置好的伪元素： div:hover::before；(鼠标放在div上将before选出来，选出来之后是不用加content的，因为前面已经加了），也可以做动画效果，因为before是一个独立的盒子，可以单独做效果，如果写一个文字是无法做效果的；
 
 
@@ -154,16 +201,25 @@ content属性可以使用attr()函数，取元素的属性名；
 
 ## 六、圆角
 先写top或bottom，后写left或ight
+
 border-radius:50%;/或者边框的一半；
+
 一个值：表示所有角；
+
 两个值：表示左上 右下，右上 左下；
+
 三个值：表示左上，右上 左下，右下；
+
 四个值：左上，右上，右下，左下；
+
 八个值：左上  右上  右下  左下（水平半径）/左上  右上  右下  左下(垂直半径)
 
 border-top-left-radius:50px; 左上角圆角50px；
+
 一个值：水平和垂直半径
+
 两个值：水平半径和垂直半径
+
 
 
 
@@ -177,6 +233,7 @@ border-top-left-radius:50px; 左上角圆角50px；
 5. color   可选，颜色
 6. inset   可选，把盒子外阴影（outset）设置为内阴影
 7. 多个阴影用逗号隔开。
+
 box-shadow: 0px 0px 10px black (inset); 阴影样式:x轴 y轴 模糊值 颜色（在内部）
 
 文字的阴影：text-shadow
@@ -186,28 +243,38 @@ box-shadow: 0px 0px 10px black (inset); 阴影样式:x轴 y轴 模糊值 颜色�
 
 ## 八、背景
 1.可以设置多个背景图，中间以逗号隔开，
+
     多个定位用空格隔开，第一个写的在上面，第二个在下面。
 
 
 
 2.backgroud-size，背景大小
-1. 一个值：默认是宽度，
-2. 两个值：宽度，高度。
-cover:等比例缩放，直到图片最后一条边重合边框大小，裁剪多余的部分；
-contain:等比例缩放，直到图片完全进入方框，多余的填充背景颜色；
+	1. 一个值：默认是宽度，
+	2. 两个值：宽度，高度。
+	cover:等比例缩放，直到图片最后一条边重合边框大小，裁剪多余的部分；
+
+	contain:等比例缩放，直到图片完全进入方框，多余的填充背景颜色；
+
 给img设置：
 object-fit: cover/contain/none;
 
 
 3. background-origin，规定背景图片的定位区域
+
 border-box  从border开始
+
             padding-box 从padding开始
+
            content-box 从content开始
 
 4. background-clip，规定背景的绘制区域
+
 绘制区域，默认是从边框开始的，设置绘制区域代表从部分开始显
+
 content-box：内容区域（如果需要仅绘制边框可以使用box-shadow，设置内阴影）
+
 border-box: 边框区域（默认值）
+
 padding-box: 内边距区域
 
 
@@ -215,6 +282,7 @@ padding-box: 内边距区域
 5. 背景渐变
 
 1. 线型渐变：渐变色可以多重叠加变成其他的颜色，可以写多个中间用逗号隔开。
+
 linear-gradient(单位，颜色值，颜色值)，（也可以只写两个颜色值）
 
 		1. 单位可以写一个或两个方向，可以写度数。
@@ -243,16 +311,22 @@ repeating-linear-gradient(); 重复线性渐变。
 
 ## 九、用户界面
 1. resize是否可由用户调整元素的尺寸。
+
     resize:none;
 
 下面这几个要配合overflow: auto/hidden/scroll;使用
 
 resize: horizontal; 用户可以改变水平方向的尺寸
+
 resize: vertical; 用户可以改变垂直方向的尺寸
+
 resize: both; 用户可以改变水平和垂直方向的尺寸
 
+
  2. box-sizing 允许你以特定的方式定义匹配某个区域的特定元素。
+
 box-sizing: border-box;    设置的padding、border往盒子里面收缩；
+
 box-sizing: content-box;(默认值)  设置的padding、border往外面长大；
 
 
@@ -272,7 +346,9 @@ display:-webkit-box;    //旧版弹性盒子;
 overflow:hidden;        //超出内容隐藏;
 ```
 3. white-space属性
+
 （1）nowrap，文本不换行
+
 （2）pre-line，保留换行符，在textarea输入的回车会换行；
 
 

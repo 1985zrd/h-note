@@ -1,7 +1,10 @@
 # node-04 express 跨域 运行机制、热更新
 ## 一、第三方包 express
+
 下载官网： http://www.expressjs.com.cn
+
 安装：npm i express；
+
 安装之后：npm init -y   建立package.json；
 
 1. 创建一个服务器；
@@ -11,8 +14,11 @@ let app = express()   // 使用
 app.listen(80)   // 监听
 app.get('/',(req,res)=>{})   //设置路由
 ```
+
 2. 请求方式可以使用get,post,put,delete......；
+
     app.all：代表全部路由，一般写在页面最底部，用来响应404的；
+
     当多个相同的路径不同的请求方式时，找到一个则不找下一个；
 ```js
 const app = require('express')()
@@ -20,26 +26,47 @@ app.listen(8080,()=>{console.log('监听成功...');
 app.get('/',(req,res)=>{res.send('哈哈')});
 ```
 ## 二、url参数
+
 1. 传参：
+
 （1）get传参时，通过?后面传参；
+
 （2）post传参点击postman软件的params添加；
 
+
+
 2. 接收参数：
+
 （1）查询字符串接收使用req.query；
+
 （2）path路径使用req.params；
+
 path路径是伪静态，对网络蜘蛛有优化，写地址需要带动态的，需要冒号写:name；
+
     :nid/:page，接收之后是{nid:123,page:11}；
 
+
+
 3. 使用 URLSearchParams接口；（前端可以直接使用），
+
 不需要连接服务用；
+
 var query = new URLSearchParams(url);
+
 可以使用for...of遍历；
+
 获取单个字段：query.get(key); 括号获取具体的名；
+
 查询：query.has(key)；判断是否存在；
+
 添加字段：query.append(key,value)；
+
 删除：query.delete(key)；
+
 修改：query.set(key,value)；
+
 转回去：query.toString()；转回路由；
+
 urlsearchParams配合Object.fromEntries()；将假对象转换为真对象；
 ```js
 Object.fromEntries(new URLSearchParams('foo=bar&baz=qux'))
@@ -47,13 +74,17 @@ Object.fromEntries(new URLSearchParams('foo=bar&baz=qux'))
 ```
 
 ## 三、路由
+
 1. 设计路由
+
 （1）请求方式：get、post、put、delete.....
+
 （2）根据path（请求地址）不同，返回不同的响应；
 
 2. url地址还可以写正则表达式，
 
 3. res.send()：括号填写需要显示的内容，能根据返回的内容自动识别返回的类型（不需要设置头信息就可以显示）；
+
 里面也可以存放script标签，这样可以向前台传输alert和location跳转页面；
 
 4. res.sendFile(path)；开放静态页面；需要填写绝对路径
@@ -69,8 +100,11 @@ res.sendFile(`${__dirname}/index.html`)
 作用：将路由地址的部分单独拧出来；
 
 1. 创建：
+
 （1）使用express.Router()创建模块化；
+
 （2）使用routers.get()设置路由；
+
 （3）使用module.exports = router；将设置的路由暴露出来；
 ```js
 //* /router/users.js
@@ -80,7 +114,9 @@ routers.get()
 module.exports = router
 ```
 2. 引入
+
 （1）将创建的js文件引入，本地文件需要加'./'，
+
 （2）使用app.use(routes)引用；
 ```js
 const routes = require('./router/users.js')
@@ -175,7 +211,9 @@ app.listen(80, ()=>{
 之后就可以直接npm start启动服务了
 
 ## 八、javascript运行机制
+
 javascript是单线程的
+
 主要用途是与用户交互，操作dom，因此只能是单线程，
 
 所有同步任务都会放到栈中，回调函数都会放在任务对列，只有执行栈全部清空才会执行任务队列，回调函数比如定时器。
@@ -184,6 +222,7 @@ setTimout的最小时间是4ms，低于4毫秒自动设为4ms。
 
 
 nodejs的     
+
 process.nextTick(不推荐使用)和setImmediate的值是一个回调函数。
 
 process.nextTick 方法可以在当前"执行栈"的尾部之前执行。比settimeout先执行，
