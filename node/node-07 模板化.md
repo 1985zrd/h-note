@@ -1,8 +1,8 @@
 # node-07 模板化
-一、CommonJS规范
-1、commonjs主要是为了实现代码重用，commonjs是同步加载的；
+## 一、CommonJS规范
+1. commonjs主要是为了实现代码重用，commonjs是同步加载的；
 
-2、在commonjs规范中：
+2. 在commonjs规范中：
 	* 
 一个js文件就是一个模块，拥有单独的作用域；
 	* 
@@ -18,17 +18,17 @@
 
 一起暴露：moudle.exports = {}
 
-3、所有代码都运行在模块作用域中，避免全局变量污染，模块加载一次就在缓存里面了，多次加载都是读取缓存的，模块是按顺序同步加载的；
+3. 所有代码都运行在模块作用域中，避免全局变量污染，模块加载一次就在缓存里面了，多次加载都是读取缓存的，模块是按顺序同步加载的；
 
-4、require（同步加载）的功能：读取并执行一个js文件，然后返回该模块的exprots对象，如果没有该模块就会报错；
+4. require（同步加载）的功能：读取并执行一个js文件，然后返回该模块的exprots对象，如果没有该模块就会报错；
 
 
 模块化的好处：模块化是指解决一个复杂问题时自顶向下逐层把系统划分成若干模块的过程，有多种属性，分别反映其内部特性。模块化是一种处理复杂系统分解为更好的可管理模块的方式。
 
 
-二、es6中的模块化：
+## 二、es6中的模块化：
 如果只暴露一个就使用export default，import时不需要花括号；
-1、export暴露（模块）：
+1. export暴露（模块）：
 （1）单个暴露：
 ```js
 export let m = 1;
@@ -50,7 +50,7 @@ export default x = 1;
 ```
 一般适用于一个参数时；
 
-2、import（入口文件）：
+2. import（入口文件）：
 普通暴露语法： import { 属性名... } from 'filePath'
 默认暴露语法：import 属性名 from 'filePath'；
 
@@ -58,22 +58,22 @@ export default x = 1;
 
 
 
-三、浏览器使用nodejs的模块
-1、browserify官网：browserify.org
-2、安装：npm install -g browserify
-3、用法：browserify 源文件 -o 目标文件
+## 三、浏览器使用nodejs的模块
+1. browserify官网：browserify.org
+2. 安装：npm install -g browserify
+3. 用法：browserify 源文件 -o 目标文件
      实例：browserify ./src/app.js -o ./dist/bundle.js
-4、browserify打包成功以后没有提示，如果没有文件夹会自动创建文件夹，如果重复则自动覆盖；
+4. browserify打包成功以后没有提示，如果没有文件夹会自动创建文件夹，如果重复则自动覆盖；
 
 
 
 
-四、ES6转ES5
-1、介绍：
+## 四、ES6转ES5
+1. 介绍：
 主要是用来兼容低版本浏览器的；
 babel官网：www.babeljs.cn
 babel的功能：将es6语法转成es5语法、还能操作jsx语法(react)等
-2、安装
+2. 安装
 
 安装babel-cli, babel-preset-es2015和browserify:
 
@@ -104,12 +104,12 @@ npm run start | npm start  除了start可以省略run，其它都不能省略
 
 
 
-五、amd、cmd；
+## 五、amd、cmd；
 
-1、amd:规范
+1. amd:规范
    requirejs  实现的amd规范；
 
 
-2、cmd:规范
+2. cmd:规范
    seajs 实现的cmd规范；
 

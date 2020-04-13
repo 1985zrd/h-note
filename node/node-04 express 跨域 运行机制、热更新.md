@@ -1,17 +1,17 @@
 # node-04 express 跨域 运行机制、热更新
-一、第三方包 express
+## 一、第三方包 express
 下载官网： http://www.expressjs.com.cn
 安装：npm i express；
 安装之后：npm init -y   建立package.json；
 
-1、创建一个服务器；
+1. 创建一个服务器；
 ```js
 const express = require('express')   // 引入
 let app = express()   // 使用
 app.listen(80)   // 监听
 app.get('/',(req,res)=>{})   //设置路由
 ```
-2、请求方式可以使用get,post,put,delete......；
+2. 请求方式可以使用get,post,put,delete......；
     app.all：代表全部路由，一般写在页面最底部，用来响应404的；
     当多个相同的路径不同的请求方式时，找到一个则不找下一个；
 ```js
@@ -19,18 +19,18 @@ const app = require('express')()
 app.listen(8080,()=>{console.log('监听成功...');
 app.get('/',(req,res)=>{res.send('哈哈')});
 ```
-二、url参数
-1、传参：
+## 二、url参数
+1. 传参：
 （1）get传参时，通过?后面传参；
 （2）post传参点击postman软件的params添加；
 
-2、接收参数：
+2. 接收参数：
 （1）查询字符串接收使用req.query；
 （2）path路径使用req.params；
 path路径是伪静态，对网络蜘蛛有优化，写地址需要带动态的，需要冒号写:name；
     :nid/:page，接收之后是{nid:123,page:11}；
 
-3、使用 URLSearchParams接口；（前端可以直接使用），
+3. 使用 URLSearchParams接口；（前端可以直接使用），
 不需要连接服务用；
 var query = new URLSearchParams(url);
 可以使用for...of遍历；
@@ -46,29 +46,29 @@ Object.fromEntries(new URLSearchParams('foo=bar&baz=qux'))
 // { foo: "bar", baz: "qux" }
 ```
 
-三、路由
-1、设计路由
+## 三、路由
+1. 设计路由
 （1）请求方式：get、post、put、delete.....
 （2）根据path（请求地址）不同，返回不同的响应；
 
-2、url地址还可以写正则表达式，
+2. url地址还可以写正则表达式，
 
-3、res.send()：括号填写需要显示的内容，能根据返回的内容自动识别返回的类型（不需要设置头信息就可以显示）；
+3. res.send()：括号填写需要显示的内容，能根据返回的内容自动识别返回的类型（不需要设置头信息就可以显示）；
 里面也可以存放script标签，这样可以向前台传输alert和location跳转页面；
 
-4、res.sendFile(path)；开放静态页面；需要填写绝对路径
+4. res.sendFile(path)；开放静态页面；需要填写绝对路径
 ```js
 res.sendFile(`${__dirname}/index.html`)
 ```
-5、所有路由都是从'/'根开始的；
+5. 所有路由都是从'/'根开始的；
 
-6、app.method(path,callback)；获取响应方式；
+6. app.method(path,callback)；获取响应方式；
 
 
-四、路由模块化
+## 四、路由模块化
 作用：将路由地址的部分单独拧出来；
 
-1、创建：
+1. 创建：
 （1）使用express.Router()创建模块化；
 （2）使用routers.get()设置路由；
 （3）使用module.exports = router；将设置的路由暴露出来；
@@ -79,7 +79,7 @@ const routers = express.Router()   // 创建模块化
 routers.get() 
 module.exports = router
 ```
-2、引入
+2. 引入
 （1）将创建的js文件引入，本地文件需要加'./'，
 （2）使用app.use(routes)引用；
 ```js
@@ -88,14 +88,14 @@ app.use('/api/users', routes)
 ```
 之后users.js文件夹下面的所有api访问都需要添加/api/users的前缀了；
 
-五、express跨域问题
-1、将以下内容加到路由下面的头信息，设置之后不需要跨域了；cors解决的；
+## 五、express跨域问题
+1. 将以下内容加到路由下面的头信息，设置之后不需要跨域了；cors解决的；
 ```js
 res.header('Access-Control-Allow-Origin', '*');
 res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
 res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE,OPTIONS');
 ```
-2、使用中间件给所有请求添加请求头
+2. 使用中间件给所有请求添加请求头
 ```js
 app.use('/', (req,res,next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -105,7 +105,7 @@ app.use('/', (req,res,next) => {
 })
 ```
 
-2、查看ajax完整的错误信息
+2. 查看ajax完整的错误信息
 ```js
 error: (XMLHttpRequest, textStatus, errorThrown) => {
     console.log(XMLHttpRequest.responseText);
@@ -115,29 +115,29 @@ error: (XMLHttpRequest, textStatus, errorThrown) => {
 }
 ```
 
-六、接收前端传入的数据post
-1、下载第三方npm包(body-parser)；
+## 六、接收前端传入的数据post
+1. 下载第三方npm包(body-parser)；
 
-2、引入模块
+2. 引入模块
 ```js
 const bodyParser = require('body-parser')
 ```
-3、加载json中间键
+3. 加载json中间键
 ```js
 app.use(bodyParser.json())
 ```
-4、加载解析urlencoded请求体的中间件。
+4. 加载解析urlencoded请求体的中间件。
 ```js
 app.use(bodyParser.urlencoded({extended:false}));
 ```
-5、req.body，显示传入的data数据；
+5. req.body，显示传入的data数据；
 
 使用postman测试接口：点击params---body----x-www-form-urlencoded；
 
 
-七、node修改自动重启  热更新
-1、全局安装：npm i -g nodemon
-2、在项目根目录（和服务入口文件同级）创建一个文件，nodemon.json并写入，之后启动项目需要nodemon index.js启动
+## 七、node修改自动重启  热更新
+1. 全局安装：npm i -g nodemon
+2. 在项目根目录（和服务入口文件同级）创建一个文件，nodemon.json并写入，之后启动项目需要nodemon index.js启动
 ```json
 {
     "restartable": "rs",
@@ -159,14 +159,14 @@ app.use(bodyParser.urlencoded({extended:false}));
     "ext": "js json"
 }
 ```
-3、修改入口文件
+3. 修改入口文件
 ```js
 const debug = require('debug')('my-application')
 app.listen(80, ()=>{
     debug('服务器运行在80端口上')
 })
 ```
-4、修改package.json的script运行脚本
+4. 修改package.json的script运行脚本
 ```json
 "scripts": {
     "start": "nodemon ./index.js"
@@ -174,7 +174,7 @@ app.listen(80, ()=>{
 ```
 之后就可以直接npm start启动服务了
 
-八、javascript运行机制
+## 八、javascript运行机制
 javascript是单线程的
 主要用途是与用户交互，操作dom，因此只能是单线程，
 

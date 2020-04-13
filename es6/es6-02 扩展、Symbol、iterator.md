@@ -20,14 +20,14 @@ function fn(a,b){
 }
 ```
 
-2、将一个字符串转换为数组的方法：
+2. 将一个字符串转换为数组的方法：
 ```js
 str.split('')；
 [...str]；
 Array.from(str)
 ```
 
-3、es6扩展运算符对象的使用：
+3. es6扩展运算符对象的使用：
 （1）解构赋值：
 ```js
 let {x,y,...z} = {x:1,y:2,a:3,b:4};
@@ -90,7 +90,7 @@ console.log(obj[s1])
 
 Symbol作为对象属性的好处：只能使用Symbol变量来访问，不能通过Symbol来访问
 
-2、Symbol的实例方法
+2. Symbol的实例方法
 （1）Symbol.for()
 使用Symbol.for创建symbol值时，会先在全局搜索是否有创建过传入的字符串，如果有则直接返回，如果没有，则创建新的；
 全局包括：当前页面、iframe、service worker；
@@ -113,7 +113,7 @@ Symbol.keyFor(s5) // undefined
 Symbol.keyFor(s6) // hh
 ```
 
-3、11个内部的Symbol值；
+3. 11个内部的Symbol值；
 （1）Symbol.hasInstance  调用instanceof时触发
 ```js
 let obj = {

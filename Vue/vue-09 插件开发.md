@@ -136,4 +136,4 @@ npm publish 包名@版本号
 
 ## 遇到的bug：
 
-1、发布npm包报错： https://blog.csdn.net/weixin_38080573/article/details/88080556
+1. 发布npm包报错： https://blog.csdn.net/weixin_38080573/article/details/88080556

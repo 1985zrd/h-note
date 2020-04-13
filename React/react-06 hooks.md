@@ -1,9 +1,9 @@
 # React-06 hooks
 ## 一、useState代替state状态机
 不使用类的方式，仅使用函数的方式，也可以定义state状态机以及生命周期
-1、使用数组解构的方式，取count和setCount，一个是值，一个是设置值
-2、在useState后面，括号里面填写默认值，可以是任意类型；
-3、如果useState设置初始值需要经过复杂计算获得，可以使用一个函数；
+1. 使用数组解构的方式，取count和setCount，一个是值，一个是设置值
+2. 在useState后面，括号里面填写默认值，可以是任意类型；
+3. 如果useState设置初始值需要经过复杂计算获得，可以使用一个函数；
 ```js
 import React, {useState} from 'react'
 export default () => {
@@ -17,7 +17,7 @@ export default () => {
     )
 }
 ```
-4、当定义的hooks是引用数据类型时的修改方法
+4. 当定义的hooks是引用数据类型时的修改方法
 ```js
 const [item, setItem] = useState([
     {id: 1, name: 'zs'},
@@ -34,15 +34,20 @@ setItem(items=>[
 ])
 ```
 注意事项：
+
 （1）hooks中，声明useState没有对应的key值，是通过useState出现的顺序来定的，因此，不能通过if...else语句调用，这样出现的顺序会发生变化的；
+
 （2）hooks在class声明中是没有
+
 （3）当useState的值是调用函数得到的话，需要使用函数式
+
 ```js
 const [rows, setRows] = useState(() => createRows(props.count))
 ```
 
 ## 二、useEffect代替常用生命周期函数
-1、useEffect函数代替了两个生命周期：componentDidMount、componentDidupdate、componentWillUnmount
+1. useEffect函数代替了两个生命周期：componentDidMount、componentDidupdate、componentWillUnmount
+
 当在函数返回一个值时，会在组件注销时调用，比如可以在组件注销时清楚定时器
 ```js
 import React, {useEffect} from 'react'
@@ -58,15 +63,17 @@ useEffect(()=>{
     fetch()
 },[])
 ```
-2、useEffect的第二个参数
+2. useEffect的第二个参数
+
 （1）第二个为依赖值，当传入是空数组时，告诉useEffect只在挂载时渲染一次，之后不在执行（因为空数组不存在依赖值）；
+
 （2）当传入的是具体的值时，则在依赖的值发生改变时才会执行useEffect；
 ```js
 useEffect(()=>{},[])  // 只调用一次,里面的state或props改变不会再次执行;
 useEffect(()=>{},[count]) // 当count值发生改变时会执行useEffect里面的代码;
 ```
 
-3、useEffect可以返回一个函数，相当于componentWillUnmount
+3. useEffect可以返回一个函数，相当于componentWillUnmount
 ```js
 function counter(){
     const [list, setList] = React.useState([])
@@ -85,7 +92,8 @@ function counter(){
 // 当组件被卸载时，不设置state;
 ```
 
-4、useEffect和componentDidUpdate的区别
+4. useEffect和componentDidUpdate的区别
+
 在componentDidUpdate中，当状态改变时，每次获取的都是最新的值，并没有过程
 ```js
 useEffect(()=>{
@@ -117,7 +125,7 @@ function Counter(){
 ```
 
 
-5、useEffect函数分离，如果fetch不使用useCallback包裹的话,useEffect会无限执行,因为每次函数创建都会执行,useEffect会认为是在更新
+5. useEffect函数分离，如果fetch不使用useCallback包裹的话,useEffect会无限执行,因为每次函数创建都会执行,useEffect会认为是在更新
 ```js
 const fetch = useCallback(async ()=>{
     /*.....*/
@@ -128,8 +136,10 @@ React.useEffect(()=>{
 },[fetch])  //必须传入使用到的变量作为依赖项
 ```
 
-6、useLayoutEffect 同步执行副作用
+6. useLayoutEffect 同步执行副作用
+
 useLayoutEffect会在render，DOM更新之后同步触发函数，会优于useEffect异步触发函数，对DOM的操作建议使用useLayoutEffect，
+
 官方建议在useEffect不能实现功能的情况使用useLayoutEffect
 ```js
 function App() {
@@ -174,7 +184,7 @@ const memoValue = useMemo(()=>computeCangeValue(a,b),[a,b])
 
 
 ## 六、useRef
-1、在函数式声明组件当中，是不能给标签绑定ref来获取元素的，可以通过定义useRef来给标签绑定ref，通过访问定义的.current可以访问到值
+1. 在函数式声明组件当中，是不能给标签绑定ref来获取元素的，可以通过定义useRef来给标签绑定ref，通过访问定义的.current可以访问到值
 ```js
 import React,{useRef} from 'react'
 export default function(){
@@ -192,15 +202,16 @@ export default function(){
     )
 }
 ```
-2、也可以useRef也可以保存任何可变值，
+2. 也可以useRef也可以保存任何可变值，
 ```js
 const cur = useRef(count) //count是定义的数值;
 cur.current //取值是count的值;
 ```
 当count被改变时,cur始终是之前的count的初始值（state变更不会触发useRef变更），如果需要cur也被改变，需要给cur.current = count，重新赋值，这样可以始终取count的最新值；
+
 绑定定时器setTimeout、setInterval时，建议使用useRef，而不是useState；
 
-4、如果需要逻辑复杂的运算：
+4. 如果需要逻辑复杂的运算：
 ```js
 // 每次渲染都会被执行一次
 const ref = useRef(new IntersectionObserver(onIntersect))
@@ -216,11 +227,11 @@ function getObserver(){
 ```
 
 ## 七、useImperativeHandle
-1、useImperativeHandle应该与forwardRef一起使用，使用方法如下，在createHandler函数里面返回一个对象，父组件就可以使用该对象了
+1. useImperativeHandle应该与forwardRef一起使用，使用方法如下，在createHandler函数里面返回一个对象，父组件就可以使用该对象了
 ```js
 useImperativeHandle(ref, createHandler, [deps])
 ```
-2、demo例子
+2. demo例子
 ```js
 // 子组件需要接收ref
 function Child(props,ref){
@@ -274,7 +285,9 @@ dispatch建议在context中，向下传递更方便
 
 ## 九、useContext
 为了用来传值
+
 在父组件中创建createContext()，之后使用.Provider嵌套组件，通过value进行传值；
+
 ```js
 import React from 'react'
 const AppContext = React.createContext()
@@ -317,13 +330,18 @@ export default function(){
 ```
 **总结：**
 useState：传入我们所需的初始状态，返回一个常量状态以及改变状态的函数；
+
 useEffect：第一个参数接受一个callback，每次组件更新都会执行这个callback，并且callback可以返回一个函数，该函数会在组件销毁前执行。如果useEffect内部有依赖外部的属性，并且希望依赖属性不改变就不重复执行useEffect的话，可以传入一个依赖数组作为第二个参数；
+
 useRef：如果你需要有一个地方来存储变化的数据；
+
 useCallback：如果你需要一个不会随着组件更新而重新创建的callback；
 
 ## 十、自定义Hook
 通过自定义hook，可以将组件逻辑提取到可重用的函数中；
+
 自定义hook是一个函数，以use开头，函数内部可以调用其他的hook
+
 自定义hook返回的不再是组件了，而是值，值可以是所有类型的值；
 
 官方例子：
@@ -451,12 +469,12 @@ function Forms(){
 
 ## 十一、redux-react-hook
 react-redux 7.1以下的版本使用，7.1之后的版本，自己暴露了useSelector和useDispatch方法；
-1、地址：https://www.jianshu.com/p/a9809958133d
-2、安装
+1. 地址：https://www.jianshu.com/p/a9809958133d
+2. 安装
 ```js
 npm i redux-react-hook
 ```
-3、修改入口文件，绑定store
+3. 修改入口文件，绑定store
 ```js
 import {StoreContext} from 'redux-react-hook'
 ReactDOM.render(
@@ -475,7 +493,8 @@ function App(){
     console.log(store.getState())
 }
 ```
-4、useMappedState函数
+4. useMappedState函数
+
 必须使用useCallback函数包裹，因为每次传入一个新的mapState函数，将无限递归，useMappedState接收第二个参数，进行对比是否重新渲染
 ```js
 import {useMappedState} from 'redux-react-hook'
@@ -485,7 +504,7 @@ function App(){
     const  {name} = useMappedState(mapState, shallowEqual)
 }
 ```
-5、useDispatch函数
+5. useDispatch函数
 ```js
 import {useDispatch} from 'redux-react-hook'
 function App(){
@@ -495,18 +514,20 @@ function App(){
 ```
 
 ## hooks常见问题
-1、声明hooks函数时，声明的函数组件名必须首字母大写
+1. 声明hooks函数时，声明的函数组件名必须首字母大写
 ```js
 function Person(){}
 export default Person
 ```
-2、依赖项的设置注意事项
+2. 依赖项的设置注意事项
+
 （1）props、import的变量、创建的变量在依赖项函数中使用了就必须设置；
+
 （2）useState需要设置依赖项
 
-3、使用 eslint-plugin-react-hooks插件来控制Eslint可以方便的为我们检测数组依赖
+3. 使用 eslint-plugin-react-hooks插件来控制Eslint可以方便的为我们检测数组依赖
 
-4、当添加依赖被频繁调用时，在useEffect中设置值时，可以使用函数形式来设置，当然，在useEffect中还是访问不到值；
+4. 当添加依赖被频繁调用时，在useEffect中设置值时，可以使用函数形式来设置，当然，在useEffect中还是访问不到值；
 ```js
 useEffect(()=>{
     setCount(preCount => preCount + 1)
@@ -514,7 +535,7 @@ useEffect(()=>{
 ```
 一个页面可以写多个useEffect，可以放多个useEffect；
 
-5、在依赖列表中不能省略函数
+5. 在依赖列表中不能省略函数
 ```js
 function Example({someProp}){
     function doSomething(){
@@ -545,7 +566,7 @@ function Example({someProp}){
     },[doSomething])
 }
 ```
-6、如果state值依赖state值，又频繁执行useEffect的情况，不能添加依赖
+6. 如果state值依赖state值，又频繁执行useEffect的情况，不能添加依赖
 * 尝试用useReducer Hook把state更新逻辑移到effect之外，useReducer的dispatch的身份永远是稳定的，即使reducer函数是定义在组件内部并且依赖props；
 
 

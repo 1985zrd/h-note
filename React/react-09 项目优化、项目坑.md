@@ -1,10 +1,12 @@
 # React-09 项目优化、项目坑
 ## 一、项目优化
-1、减少标签
-<></>可以使用空标签，当输入的为空标签时，渲染的默认是<React.Fragment></React.Fragment>
+1. 减少标签
+`<></>`可以使用空标签，当输入的为空标签时，渲染的默认是`<React.Fragment></React.Fragment>`
 
-2、React.StrictMode：严格模式
+2. React.StrictMode：严格模式
+
 严格模式只在开发模式下运行，不会与生产模式冲突，可以在任何地方使用，如同Fragment；
+
 Strict mode有助于：
 * 识别具有不安全生命周期的组件
 * 有关旧式字符串ref用法的警告（使用第三方库很难确保不使用这些生命周期的方法，加上这个可以帮忙判断）
@@ -14,12 +16,13 @@ Strict mode有助于：
 
 
 
-2、将组件使用memo包裹；React.memo可以和函数组件包裹，也可以包裹类组件
+2. 将组件使用memo包裹；React.memo可以和函数组件包裹，也可以包裹类组件
 ```js
 function App(){}
 const App2 = React.memo(App)
 ```
-3、关于类组件重复渲染问题
+3. 关于类组件重复渲染问题
+
 （1）使用shouldComponentUpdate来解决
 ```js
 shuldComponentUpdate(nextProps,nextState){
@@ -35,14 +38,18 @@ class App extends React.PureComponent{}  // 会根据props是否变化, 来解�
 ```
 
 
-4、关于首屏加载慢
+4. 关于首屏加载慢
+
 下载骨架屏：https://github.com/danilowoz/react-content-loader#examples
+
 使用ReactDOMServer来加载首屏；
 
-5、长列表优化
+5. 长列表优化
+
 使用官方推荐的长列表：react-window；
 
-6、错误边界处理
+6. 错误边界处理
+
 （1）创建一个文件ErrorBoundary.js，写入以下内容
 ```js
 export default class ErrorBoundary extends React.Component {
@@ -80,9 +87,10 @@ function App(){
 }
 ```
 
-路由按需加载
-1、安装：react-loadable
-2、使用
+### 路由按需加载
+
+1. 安装：react-loadable
+2. 使用
 ```js
 import Loadable from 'react-loadable' // 引入按需加载
 import Loading from '@/common/Loading' // 引入loading组件, 加载组件时显示
@@ -94,7 +102,7 @@ const SelectComponent = Loadable({
 
 
 ## 二、项目坑
-1、在声明state时，初始化不要使用null，将null换为空字符串则不会报错；
+1. 在声明state时，初始化不要使用null，将null换为空字符串则不会报错；
 
 在有使用请求数据，数据为对象时，获取对象里面的对象会报错，可以在render(){}的return前面判断一下，如果没有数据，则return
 
@@ -103,16 +111,19 @@ if(!this.state.list) return true // 则不会执行下面的;
 // 请求数组没有数据同理
 if(!arr.length) return true //true必须填写 否则报错;
 
-2、不要操作innerHTML，在html代码里面填写三目运算符;
+2. 不要操作innerHTML，在html代码里面填写三目运算符;
 
-3、在做项目时，需要状态的东西要定义state，不然每次渲染会重新声明，无法保存
+3. 在做项目时，需要状态的东西要定义state，不然每次渲染会重新声明，无法保存
 
-4、解决项目需要点击两次的问题（所有两次都可以通过定时器解决）
+4. 解决项目需要点击两次的问题（所有两次都可以通过定时器解决）
+
 原因：是因为第一次没有拿到数据就去渲染了，所以数据不是最新的，延时一下就解决了；
+
 ![image](http://notecdn.heny.vip/images/react-09 项目优化、项目坑-01.png)
 
 
-5、解决ios输入框导致页面上移
+5. 解决ios输入框导致页面上移
+
 将以下代码放到生命周期DidMount里面
 ```js
 let timer
@@ -132,7 +143,8 @@ const inputFocus = e => {
 父元素.addEventListener('focusin', inputFocus, false)
 ```
 
-6、解决 <font color=red>Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method</font>报红
+6. 解决 <font color=red>Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method</font>报红
+
 原因：在willMount中有setState的事件，
 ```js
 class Test extends React.Component {
@@ -174,7 +186,8 @@ const MyApi = {
 };
 ```
 
-7、解决链接出现callback is not defined
+7. 解决链接出现callback is not defined
+
 在window上面添加一个callback方法即可；
 ```js
 window.callback = function () {}

@@ -54,10 +54,15 @@ fn && fn();    前面为真，才看后面的；
 ```
 
 8. js基础技巧
+
 （1）计数器
+
 js最基础的使用技巧
+
 实例：多个复选框全选可以创建一个计数器，选中一个计数器+1，判断计数器是否和复选框的个数一样，如果一样，则让全选按钮被选中；
+
 （2）保存this指向
+
 函数里面再创建一个函数时，这时的this指向就变了，可以创建一个变量，保存this指向，里面就可以随便使用该变量，也不用担心this的指向问题， 也可以使用箭头函数避免这个问题
 ```js
 // vue示例
@@ -81,9 +86,13 @@ methods: {
 9. 取名字：
 
 设置的都用：set开头
+
 获取的都用：get开头
+
 卸载都用: un
+
 创建块：demo(演示),wrap(包装),box(盒子),panel（面版）
+
 
 10. 调用一个方法，如果这个方法没有前缀，则this指向window；有前缀指向调用的，所以谁调用的函数，这个this就指向谁
 
@@ -116,6 +125,7 @@ div.onclick = function(){
 ```
 
 15. 函数需要传参时加个判断：n = typeof(n) == 'undefined' ? 2000 : n 
+
 如果有参数，就返回创建的函数，如果没有参数，返回默认的参数
 
 16. 点的形式都可以使用中括号的形式；
@@ -144,18 +154,22 @@ window.addEventListener('scroll',()=>{});
 ```
 
 20. 给代码添加debugger可以测试bug；
+
 debugger可以查看我写的浏览器技巧   断点内容；
 
 21. arguments.callee属性包含当前正在执行的函数
+
 主要用途是由于函数内部需要调用自己，可以直接使用arguments.callee调用，如果直接写当前函数名，该函数就会紧紧耦合在一起，由于函数名只是一个包含指针的变量，因此将另一个函数名也指向同一个函数，则不可用了，因为调用自己的名字不一样了
 
 
 调用arguments.callee.toString()返回这个匿名函数；
+
 arguments.callee可以直接调用当前函数；
 
 arguments.callee.caller 这个属性中保存着调用当前函数的函数的引用(可以查看红宝书的详细介绍115页)
 
 22. `obj.hasOwnProperty(i)`相当于以下
+
 `Object.prototype.hasOwnProperty.call(obj,i）`
 
 23. 随机id
@@ -190,6 +204,7 @@ function arrIndexExchange(array,x,y){
 ```
 
 28. 生成uuid
+
 uuid的格式为：8-4-4-4-12
 ```js
 function S4(){
@@ -213,7 +228,9 @@ const copyFun = cont => {
 ```
 
 30. String.fromCharCode()   //括号填写数字，将Unicode码转回英文；
+
 例子：取随机26个小写英文字母，
+
 在ASCII码中，26个小写英文字母在97-122之间
 ```js
 String.fromCharCode(97+Math.ceil(Math.random()*25))  //返回一个小写字母
@@ -246,6 +263,7 @@ function formatUrl(search, o={}){
 ```
 
 32. 实现图片的异步加载
+
 img文档： https://www.w3school.com.cn/jsref/dom_obj_image.asp
 ```js
 // data-*  是html5的新特性
@@ -317,13 +335,15 @@ function formatStatistics (num) {
 ```
 
 38. 对接url传输加密
+
 （1）encodeURIComponent对链接加密，将url上面的符号添加%转码
+
 （2）decodeURIComponent对加密的url进行解密
 
 
 
 ## 对象的方法
-1、判断对象的数据类型
+1. 判断对象的数据类型
 ```js
 const isType = type => target => `[object ${type}]` === Object.prototype.toString.call(target)
 const isArray = isType('Array')
@@ -342,7 +362,7 @@ function isType(type){
 '[object 类型]' === Object.prototype.toString.call(形参)
 ```
 
-4、isPrototypeOf：检测对象是否是另一个对象的原型；
+4. isPrototypeOf：检测对象是否是另一个对象的原型；
 ```js
 var obj = {name:'haha'}
 var obj2 = Object.create(obj)
@@ -352,7 +372,8 @@ obj.isPrototypeOf(obj)
 Child.prototype.isPrototypeOf(obj)
 ```
 
-5、hasOwnProperty：判断某个属性是否存在于某个对象当中，也可以使用in；
+5. hasOwnProperty：判断某个属性是否存在于某个对象当中，也可以使用in；
+
 hasOwnProperty不会判断到原型去；in会判断到原型去；
 ```js
 let eh = {say:'haha'}
@@ -360,9 +381,12 @@ console.log('say' in eh) // true
 eh.hasOwnProperty('say') // true
 ```
 
-6、Object.keys();  //传入对象，以数组方式返回对象的所有key名；
+6. Object.keys();  //传入对象，以数组方式返回对象的所有key名；
+
 Object.values()； // 传入对象，以数组方式返回对象的所有value值；
+
 Object.entries()；  // 传入对象，以二维数组的形式返回键名键值，相当于将对象快速转换为map对象；
+
 判断对象不为空可以：Object.keys(obj).length；
 
 案例：以Object.values来循环遍历对象
@@ -373,10 +397,11 @@ for(let i of Object.values(meals)){
 }
 ```
 
-7、Object.setPrototypeOf(obj1,obj2)
+7. Object.setPrototypeOf(obj1,obj2)
+
 将obj2作为原型，放到obj1里；
 
-8、动态属性名  声明一个变量；使用中括号代替，也可以是对象变量属性；
+8. 动态属性名  声明一个变量；使用中括号代替，也可以是对象变量属性；
 ```js
 // 动态属性名
 let dys = 'email'
@@ -386,7 +411,7 @@ let flag = true
 let user = {name: 'join',[flag?'c':'d']:2}
 ```
 
-9、动态属性名
+9. 动态属性名
 ```js
 let obj = [{name:'lis',flag:'no'},{name:'zs',flag:'yes'}]
 Array.from(obj,({name,flag})=>{
@@ -396,7 +421,7 @@ Array.from(obj,({name,flag})=>{
 // [{lis:no},{zs:yes}]
 ```
 
-10、有条件的象征对象  在对象里面使用...去使用布尔值；
+10. 有条件的象征对象  在对象里面使用...去使用布尔值；
 ```js
 function obj(flag){
     return {
@@ -416,7 +441,7 @@ let arr = [
 ]
 ```
 
-11、解构原始对象   // 提取两部分，分为两个对象；
+11. 解构原始对象   // 提取两部分，分为两个对象；
 ```js
 let obj = {name:'lishi',age:18,city:'北京'}
 let user = {},userOther={};

@@ -53,9 +53,9 @@ module.exports = {
 
 
 ## 三、启动服务
-1、`webpack`打包时，默认是访问文件路径的；
-2、安装：`yarn add webpack-dev-server -D` 安装开发依赖；
-3、安装之后直接运行：`npx webpack-dev-server`，默认在本地启的服务器是`localhost:8080`，默认以当前目录作为静态目录，可以在`devServer`选项配置；
+1. `webpack`打包时，默认是访问文件路径的；
+2. 安装：`yarn add webpack-dev-server -D` 安装开发依赖；
+3. 安装之后直接运行：`npx webpack-dev-server`，默认在本地启的服务器是`localhost:8080`，默认以当前目录作为静态目录，可以在`devServer`选项配置；
 
 ```js
 // webpack.config.js
@@ -75,7 +75,7 @@ module.exports = {
     "dev": "webpack-dev-server"
 }
 ```
-4、自动创建html文件并引入；
+4. 自动创建html文件并引入；
 （1）安装：yarn add html-webpack-plugin -D
 （2）配置html
 
@@ -101,15 +101,15 @@ module.exports = {
 
 ## 四、配置loader
 
-1、`loader`的特点：希望单一；
-2、`loader`的用法：字符串只用一个loader，多个使用数组
-3、`loader`的顺序：从右向左执行，从下到上执行；
-4、`loader`还可以写成对象的形式
+1. `loader`的特点：希望单一；
+2. `loader`的用法：字符串只用一个loader，多个使用数组
+3. `loader`的顺序：从右向左执行，从下到上执行；
+4. `loader`还可以写成对象的形式
 如：`{use:[{loader:'',options:{}}]}`，可以在`options`传入东西
 
 案例：
 配置css-loader
-1、yarn add css-loader style-loader -D
+1. yarn add css-loader style-loader -D
 
 ```js
 module.exports = {
@@ -129,7 +129,7 @@ module.exports = {
     }
 }
 ```
-2、添加scss处理
+2. 添加scss处理
 （1）安装：`yarn add sass-loader node-sass -D`（sass-loader依赖node-sass）
 
 ```js
@@ -138,7 +138,7 @@ rules: [
     {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']}
 ]
 ```
-3、css抽离成单文件（默认是在html模块里面的）
+3. css抽离成单文件（默认是在html模块里面的）
 （1）安装：`yarn add mini-css-extract-plugin -D`
 （2）将`rules`里面的`style-loader`替换成该插件，如果需要多个文件，可以声明多个插件即可
 
@@ -160,7 +160,7 @@ module.exports = {
     ]
 }
 ```
-4、自动添加兼容前缀
+4. 自动添加兼容前缀
 （1）安装：`yarn add postcss-loader autoprefixer -D`
 （2）配置rules
 
@@ -177,7 +177,7 @@ module.exports = {
     plugins: [require('autoprefixer')]
 }
 ```
-5、css打包成一行
+5. css打包成一行
 （1）安装插件：`yarn add optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin -D`
 
 ```js

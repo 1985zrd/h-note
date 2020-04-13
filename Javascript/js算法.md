@@ -1,11 +1,16 @@
 # js算法
 ## 数组去重
 
-1、两个循环判断
+1. 两个循环判断
+
 判断问题：拿第一个和每一个去做比较，所以需要用到两个循环；
+
 （1）写两个循环，第一个循环数组第一个数据，第二个循环让每一个和第一个做比较。
+
 （2）第二循环j=i+1，再判断第二个循环的下标是否和第一个循环的下标的字符相同，如果是相同的，则删除一个
+
 （3）删除之后数组变短，让j减一，重新做比较。
+
 ```js
 for(var i=0;i<ary.length;i++){
     for(var k=i+1;k<ary.length;k++){ 
@@ -20,11 +25,11 @@ for(var i=0;i<ary.length;i++){
     }
 }
 ```
-2、使用set去重
+2. 使用set去重
 ```js
 Array.from(new Set([1,2,2,3])
 ```
-3、使用reduce去重
+3. 使用reduce去重
 ```js
 let arr = [1,2,3,4,4,1]
 let newArr = arr.reduce((pre,cur)=>{
@@ -35,7 +40,7 @@ let newArr = arr.reduce((pre,cur)=>{
     }
 },[])
 ```
-4、使用filter去重；
+4. 使用filter去重；
 ```js
 function unique (array) {
   var str = '';
@@ -53,7 +58,8 @@ function unique (array) {
 
 ## 数组乱序
 
-1、原地洗牌，不需要声明额外的数组从而更加节约内存占用率，
+1. 原地洗牌，不需要声明额外的数组从而更加节约内存占用率，
+
 原理：依次遍历数组的元素，将当前元素和之后的所有元素中随机选取一个，进行交换
 ```js
 function shuffle(arr){
@@ -65,7 +71,7 @@ function shuffle(arr){
     return arr
 }   // 传入一个数组则乱序
 ```
-2、非原地洗牌
+2. 非原地洗牌
 ```js
 function sort2(arr){
   let arr2 = []
@@ -77,7 +83,7 @@ function sort2(arr){
   return arr2
 }
 ```
-3、使用sort进行乱序
+3. 使用sort进行乱序
 ```js
 let sort2 = arr => arr.sort(()=>Math.random() - 0.5)
 ```
@@ -86,12 +92,15 @@ let sort2 = arr => arr.sort(()=>Math.random() - 0.5)
 
 ## 数组排序
 
-1、选择数组排序
+1. 选择数组排序
+
 判断问题：拿第一个和每一个去做比较，如果大于第二个，则让第一个到第二个位置去；
+
 （1）写两个循环，第二个循环j=i+1;，不比较本身。
+
 （2）判断数组的第一个字符i是否大于数组的第二个j字符，如果大于第一个字符，则调换位置。
 
-2、冒泡数组排序
+2. 冒泡数组排序
 ```js
 for(var i=0;i<ary.length;i++){
     for(var k=0;k<ary.length;k++){
@@ -103,7 +112,7 @@ for(var i=0;i<ary.length;i++){
     }
 }
 ```
-3、sort()排序
+3. sort()排序
 ```js
 arr.sort();
 从大到小==>  arr.sort((a,b)=>b-a)
@@ -119,17 +128,17 @@ obj.b.c = 'lalala'
 console.log(obj2.b.c)   // 'lalala'
 ```
 深拷贝：
-1、JSON方法
+1. JSON方法
 ```js
 let obj = {name: 'zs',age:18}
 let obj2 = JSON.parse(JSON.stringify(obj))
 obj2.name = 'ww'
 ```
-2、jquery深拷贝
+2. jquery深拷贝
 ```js
 var obj2 = $.extend(true,{},obj3)
 ```
-3、浅拷贝+递归
+3. 浅拷贝+递归
 ```js
 // 第二个参数可传可不传;
 function deepClone(origin,target={}){
@@ -154,18 +163,18 @@ function deepClone(origin,target={}){
 
 ## 对象合并
 
-1、jquery
+1. jquery
 ```js
 var obj2 = $.extend({},obj1,obj3,obj4)
 ```
-2、vue中
+2. vue中
 ```js
 vm.userPro = Object.assign({},obj1,obj2)
 ```
 
 ## 扁平化数组
 
-1、reduce
+1. reduce
 ```js
 let arr = [1,2,[3,4,[5,6]]]
 function fn(arr){
@@ -175,12 +184,12 @@ function fn(arr){
 }
 fn(arr) // [1,2,3,4,5,6]
 ```
-2、toString和split方法，仅对数字有效
+2. toString和split方法，仅对数字有效
 ```js
 let arr = [1,2,[3,4,[5,6]]]
 let arr2 = JSON.parse(`[${arr.toString()}]`)
 ```
-3、使用递归遍历
+3. 使用递归遍历
 ```js
 let arr = [1,2,[3,4,[5,6]]]
 function fn(arr){
@@ -194,13 +203,13 @@ function fn(arr){
     return res
 }
 ```
-4、flat()
+4. flat()
 括号里面传入数字，表示扁平化几个，当传入Infinity时，会扁平所有的数组；
 ```js
 var arr = [1[,2,3,[4,5,6]]]
 arr.flat(Infinity)
 ```
-5、使用...扩展运算符，最实用的一个方法
+5. 使用...扩展运算符，最实用的一个方法
 ```js
 let arr = [1,2,[{name:'h'},[{age:18}]]]
 while(arr.some(Array.isArray)){
@@ -217,6 +226,7 @@ console.log(arr)
 
 ### 栈（Stack）简介
 什么是栈：栈是一种高效的数据结构（后进先出(LIFO)原则的有序集合），因为数据只能在栈顶添加或删除，所以这样的操作很快，而且容易实现。
+
 场景：编程语言中的编译器、计算机内存存储变量和方法调用，浏览器的后退功能等等；
 
 Stack包含以下方法
@@ -323,7 +333,9 @@ function decimalToBinary(decNumber){
 为何要使用链表：因为数组有缺陷，增删元素时往往需要移动元素，而链表在内存中的放置并不是连续的，元素通过next属性指向下个元素，所以链表增删元素，不需要移动元素，只需要更改next的指向即可；
 
 使用场景：在javascript中，最重要的链：作用域链和原型链；
+
 链表的创建：
+
 首先创建一个用来保存链表里的数据
 ```js
 /**

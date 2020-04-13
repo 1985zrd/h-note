@@ -1,6 +1,6 @@
 # Webpack-02 处理js、暴露全局变量
 ## 一、处理js
-1、安装`babel`、`babel-loader`
+1. 安装`babel`、`babel-loader`
 `@babel/core`    // babel核心模块，
 `@babel/preset-env`   // 转化模块,转化成标准、js语法
 
@@ -8,7 +8,7 @@
 yarn add babel-loader @babel/core @babel/preset-env -D
 ```
 
-2、配置
+2. 配置
 
 ```js
 rules: [
@@ -24,7 +24,7 @@ rules: [
     }
 ]
 ```
-3、es6类写法打包，babel官网搜索decorators可以查看在线教程
+3. es6类写法打包，babel官网搜索decorators可以查看在线教程
 yarn add @babel/plugin-proposal-class-properties -D
 
 ```js
@@ -47,7 +47,7 @@ rules: [
     }
 ]
 ```
-4、类的装饰器
+4. 类的装饰器
 安装：yarn add @babel/plugin-proposal-decorators -D
 ```js
 { "plugins": [ 
@@ -55,7 +55,7 @@ rules: [
     ["@babel/plugin-proposal-class-properties", { "loose" : true }] 
 ] }
 ```
-5、节省代码大小，抽离公共的代码，使用generator语法
+5. 节省代码大小，抽离公共的代码，使用generator语法
 （1）yarn add @babel/plugin-transform-runtime -D， transform-runtime可以抽离webpack打包公共的代码；
 yarn add @babel/runtime -S，runtime针对运行时的，需要装在生产依赖
 ```json
@@ -126,7 +126,7 @@ module.exports = {
 
 ## 四、打包图片
 
-1、解析js的img
+1. 解析js的img
 安装yarn add file-loader -D
 默认会保存图片到build目录下，图片必须使用require或import导入才会被打包，否则会默认为一个字符串，当使用background-img不需要require，因为css-loader会自己转化require；
 ```js
@@ -141,7 +141,7 @@ module.exports = {
     }
 }
 ```
-2、解析html标签的img
+2. 解析html标签的img
 安装：yarn add html-withimg-loader -D
 ```js
 rules: [{
@@ -149,7 +149,7 @@ rules: [{
     use: 'html-withimg-loader'
 }]
 ```
-3、将图片转化base64引入
+3. 将图片转化base64引入
 安装 yarn add url-loader -D
 当转换base64之后就不会加载http的请求了，但文件会比原文件大三分之一
 ```js
@@ -166,7 +166,7 @@ rules: [{
     }
 }]
 ```
-4、图片优化
+4. 图片优化
 使用imagemin-webpack-plugin可以压缩图片
 使用webpack-spritesmith 插件制作雪碧图
 
@@ -174,14 +174,14 @@ rules: [{
 
 ## 五、打包文件分类
 
-1、在loader里面配置，在输出的文件名可以直接加一个路径，如：'css/1.css'，
-2、给所有的css或img添加统一的引入地址
+1. 在loader里面配置，在输出的文件名可以直接加一个路径，如：'css/1.css'，
+2. 给所有的css或img添加统一的引入地址
 ```js
 output: {
     filename: 'bundle.js',
     publicPath: 'http://baidu.com'
 }
 ```
-3、给单独的文件添加统一的引入地址，
+3. 给单独的文件添加统一的引入地址，
 在单独的loader里面添加publicPath即可；
 

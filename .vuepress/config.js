@@ -22,7 +22,7 @@ function getFile (dirname) {
 const webItems = [
 	{text:'React-Native',link:'/React-Native/'},
 	{text:'es6',link: '/es6/'},
-	{text:'html5、css3',link:'/html5、css3/'},
+	{text:'html5. css3',link:'/html5. css3/'},
 	{text:'Javascript',link:'/Javascript/'},
 	{text:'jQuery',link:'/jQuery/'},
 	{text:'React',link:'/React/'},

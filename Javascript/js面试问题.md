@@ -57,9 +57,13 @@ parseInt('10',3) // 3,满足条件,返回3
 ## 用js实现一个无限累加的函数add
 
 add(1) //1
+
 add(1)(2)(3) // 6
+
 add(1)(2)(4)(5) //12
+
 因为打印函数时会自动调用toString()方法，因此实现方法如下：
+
 ```js
 function add(a){
     function sum(b){
@@ -75,9 +79,13 @@ function add(a){
 
 ## 写一个函数，输入一个数组a，找到里面是否存在三个不同的元素，使得a[i]+a[j]==a[k]，如果能找到输出true，找不到输出false
 举例：
+
 输入：var a1 = [1,5,10,25,9,17,100]   输出false
+
 输入：var a2 = [2,99,3,5]  可以找到2+3=5，输出true
+
 输入：var a3 = [1,50,0,5]    输出false；
+
 ```js
 function fn(arr){
     for(var i=0;i<arr.length;i++){
@@ -200,8 +208,11 @@ Object.defineProperty的优势如下:
 
 ## 对象遍历方法
 （1）使用for...in方法遍历
+
 （2）使用Object.keys、Object.values方法遍历
+
 （3）使用Object.entries、Object.fromEntries方法遍历
+
 ```js
 let obj={
     tom: 18,

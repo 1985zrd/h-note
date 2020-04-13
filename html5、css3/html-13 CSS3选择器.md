@@ -28,37 +28,37 @@ n是从0开始走的，第一个是2\*0+1，第二个是2\*1+1，
 几n就是几的倍数。
 
 nth-child（n）用法：
-1、nth-child(3)
+1. nth-child(3)
 表示选择列表中的第3个标签，代码如下：
 li:nth-child(3){background:#fff}
 
-2、nth-child(2n)
-表示选择列表中的偶数标签，即选择 第2、第4、第6…… 标签，代码如下：
+2. nth-child(2n)
+表示选择列表中的偶数标签，即选择 第2. 第4. 第6…… 标签，代码如下：
 li:nth-child(2n){background:#fff}
 
-3、nth-child(2n-1)
-表示选择列表中的奇数标签，即选择 第1、第3、第5、第7……标签，代码如下：
+3. nth-child(2n-1)
+表示选择列表中的奇数标签，即选择 第1. 第3. 第5. 第7……标签，代码如下：
 li:nth-child(2n-1){background:#fff}
 
-4、nth-child(n+3)
+4. nth-child(n+3)
 表示选择列表中的标签从第3个开始到最后，代码如下：
 li:nth-child(n+3){background:#fff}
 
-5、nth-child(-n+3)
+5. nth-child(-n+3)
 表示选择列表中的标签从0到3，即小于3的标签，代码如下：
 li:nth-child(-n+3){background:#fff}
 
-6、nth-last-child(3)
+6. nth-last-child(3)
 表示选择列表中的倒数第3个标签，代码如下：
 li:nth-last-child(3){background:#fff}
 
 first-child用法：
-1、first-child
+1. first-child
 first-child表示选择列表中的第一个标签。代码如下：
 li:first-child{background:#fff}
 
 last-child用法：
-1、last-child
+1. last-child
 last-child表示选择列表中的最后一个标签，代码如下：
 li:last-child{background:#fff}
 
@@ -68,36 +68,36 @@ nth-child(n+2):nth-child(odd):nth-child(-n+9)
 
 type用法：
 type用法是选择所有父级元素里面第几次出现的
-1、nth-of-type(n)
+1. nth-of-type(n)
 选择父元素中第几次出现的元素；
-2、nth-last-of-type(n)
+2. nth-last-of-type(n)
 选择父元素中倒数第几次出现的元素；
-3、nth-of-type(odd)/(2n-1)
+3. nth-of-type(odd)/(2n-1)
 选择父元素中出现的奇数次元素；
-4、nth-of-type(even)/(2n);
+4. nth-of-type(even)/(2n);
 选择父元素中出现的偶数次元素；
 
 
 
 ## 四、属性选择器
 
-1、div[title]
+1. div[title]
 选择所有div标签包含有title的属性；
-2、div[title=value]
+2. div[title=value]
 选择所有div标签包含value值相等的元素
-3、div[title*=value]
+3. div[title*=value]
 选中包含字母的所有标签；
 
-4、div[title~=value]
+4. div[title~=value]
 选中单独的单词的标签；
 
-5、div[title^=value]
+5. div[title^=value]
 选中以value开头的标签；
 
-6、div[title$=value]
+6. div[title$=value]
 选中以value值结尾的标签；
 
-7、属性选择器也可以单独选择；
+7. 属性选择器也可以单独选择；
 [title=value]
 
 
@@ -113,21 +113,21 @@ li:not(:last-child){ //选择除最后一行的所有元素 margin-bottom:20px; 
 
 ## 四、状态伪类选择器
 
-1、checked 选中的元素；
+1. checked 选中的元素；
 
-2、enabled 可用的状态；
+2. enabled 可用的状态；
 
-3、disabled 禁用状态；
+3. disabled 禁用状态；
 
-4、focus 选中鼠标点击获取的焦点；
+4. focus 选中鼠标点击获取的焦点；
 
-5、::first-line 选中文本中第一行文字；
+5. ::first-line 选中文本中第一行文字；
 
-6、::first-letter 文本中的第一个单词或字，用于金钱的地方
+6. ::first-letter 文本中的第一个单词或字，用于金钱的地方
 
-7、p::selection 改变鼠标选中文字的样式(必须双冒号)；
+7. p::selection 改变鼠标选中文字的样式(必须双冒号)；
 
-8、target 选择当前活动的元素，可以不写标签，直接:target。
+8. target 选择当前活动的元素，可以不写标签，直接:target。
         给a标签href地址里面写#name，给需要选中的标签添加id=name；
 
 
@@ -135,12 +135,12 @@ li:not(:last-child){ //选择除最后一行的所有元素 margin-bottom:20px; 
 
 
 ## 五、before,after
-1、在E元素内部的开始位置和结束位创建一个元素，该元素为行内元素，且必须要结合content属性使用。
+1. 在E元素内部的开始位置和结束位创建一个元素，该元素为行内元素，且必须要结合content属性使用。
 
-2、为什么用双冒号：
+2. 为什么用双冒号：
 E:after、E:before 在旧版本里是伪元素，CSS3的规范里“:”用来表示伪类，“::”用来表示伪元素，但是在高版本浏览器下E:after、E:before会被自动识别为E::after、E::before，这样做的目的是用来做兼容处理，":" 与 "::" 区别在于区分伪类和伪元素。
 
-3、before,aften其实是一个盒子，这个盒子是内联元素，转块可以改变宽高，content属性是伪元素的内容，使用时必须配合使用，也称为是一个能插入元素的选择器，改变属性可以利用改变父元素继承。
+3. before,aften其实是一个盒子，这个盒子是内联元素，转块可以改变宽高，content属性是伪元素的内容，使用时必须配合使用，也称为是一个能插入元素的选择器，改变属性可以利用改变父元素继承。
 
 
 补充：
@@ -199,12 +199,12 @@ contain:等比例缩放，直到图片完全进入方框，多余的填充背景
 object-fit: cover/contain/none;
 
 
-3、background-origin，规定背景图片的定位区域
+3. background-origin，规定背景图片的定位区域
 border-box  从border开始
             padding-box 从padding开始
            content-box 从content开始
 
-4、background-clip，规定背景的绘制区域
+4. background-clip，规定背景的绘制区域
 绘制区域，默认是从边框开始的，设置绘制区域代表从部分开始显
 content-box：内容区域（如果需要仅绘制边框可以使用box-shadow，设置内阴影）
 border-box: 边框区域（默认值）
@@ -212,9 +212,9 @@ padding-box: 内边距区域
 
 
 
-5、背景渐变
+5. 背景渐变
 
-1、线型渐变：渐变色可以多重叠加变成其他的颜色，可以写多个中间用逗号隔开。
+1. 线型渐变：渐变色可以多重叠加变成其他的颜色，可以写多个中间用逗号隔开。
 linear-gradient(单位，颜色值，颜色值)，（也可以只写两个颜色值）
 
 		1. 单位可以写一个或两个方向，可以写度数。
@@ -228,7 +228,7 @@ repeating-linear-gradient(); 重复线性渐变。
 
 
 
-2、径向渐变
+2. 径向渐变
 
 		1. radial-gradient()，
 		1. at改变圆心的位置，x轴，y轴；
@@ -242,7 +242,7 @@ repeating-linear-gradient(); 重复线性渐变。
 
 
 ## 九、用户界面
-1、resize是否可由用户调整元素的尺寸。
+1. resize是否可由用户调整元素的尺寸。
     resize:none;
 
 下面这几个要配合overflow: auto/hidden/scroll;使用
@@ -251,27 +251,27 @@ resize: horizontal; 用户可以改变水平方向的尺寸
 resize: vertical; 用户可以改变垂直方向的尺寸
 resize: both; 用户可以改变水平和垂直方向的尺寸
 
- 2、box-sizing 允许你以特定的方式定义匹配某个区域的特定元素。
+ 2. box-sizing 允许你以特定的方式定义匹配某个区域的特定元素。
 box-sizing: border-box;    设置的padding、border往盒子里面收缩；
 box-sizing: content-box;(默认值)  设置的padding、border往外面长大；
 
 
 
 ## 十、文本变点状
-1、单行变点状：
+1. 单行变点状：
 ```css
 white-space:nowrap;     //超出文本不换行
 text-overflow:ellipsis;    //超出文本变点状
 overflow:hidden;        //超出文本内容隐藏
 ```
-2、多行变点状：
+2. 多行变点状：
 ```css
 display:-webkit-box;    //旧版弹性盒子;
 -webkit-box-orient:vertical;    //项目往下排;
 -webkit-line-clamp:2;    //超出两行文本变点状;
 overflow:hidden;        //超出内容隐藏;
 ```
-3、white-space属性
+3. white-space属性
 （1）nowrap，文本不换行
 （2）pre-line，保留换行符，在textarea输入的回车会换行；
 

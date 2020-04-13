@@ -92,11 +92,11 @@ mark用来标记文字。
 
 
 ## 五、语义化标签的IE兼容问题处理
-1、创建元素，给元素转块
+1. 创建元素，给元素转块
 ```html
 <script> document.createElement('header'); </script>
 ```
-2、引入html5shiv.js文件
+2. 引入html5shiv.js文件
 ```html
 <script src="html5shiv.js"></script>
 ```
@@ -126,7 +126,7 @@ h5新增表单属性input  的type类型:
 ```
 
 ## 七、html5新增的属性
-1、contenteditable    可以编辑的文字；
+1. contenteditable    可以编辑的文字；
 ```html
 <p contenteditable="true">1</p> 
 ```
@@ -134,15 +134,15 @@ contenteditable="true" 放在标签里可以编辑的文字。
 该标签可以自适应高度，而textarea不能自适应高度；
 
 
-2、右到左显示
+2. 右到左显示
 ```html
 <bdo dir="rtl">该段落文字从右到左显示。</bdo>
 ```
 dir 改变文本的方向，ltr 从左向右，rtl 从右向左，，auto 自动；
 必须使用bdo标签，覆盖文本方向，适用于需要倒过来显示的文本，很少使用；
 
-3、hidden    元素进行隐藏；
-4、title    元素的额外信息，鼠标放在元素上面显示；
+3. hidden    元素进行隐藏；
+4. title    元素的额外信息，鼠标放在元素上面显示；
 
 
 ## 八、form表单新增的相关属性

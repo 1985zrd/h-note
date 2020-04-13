@@ -1,3 +1,4 @@
+# reset.css
 网址：https://css-tricks.com/video-screencasts/174-using-local-overrides-in-devtools/
 ```css
 @media screen and (prefers-reduced-motion:reduce) {
@@ -170,7 +171,7 @@ textarea {
 @for $i from 12 through 24 {
   @if $i < 16 {
     .f#{$i} {
-      font-size: #{$i}px; // 12、13、14、15、16px;
+      font-size: #{$i}px; // 12. 13. 14. 15. 16px;
     }
   } @else if $i % 2 == 0 {
     .f#{$i} {

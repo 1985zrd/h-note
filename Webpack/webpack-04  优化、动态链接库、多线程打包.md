@@ -1,13 +1,13 @@
 # Webpack-04  优化、动态链接库、多线程打包
 ## 一、分析包内容
 用于查看哪个包占用内容多大
-1、安装：webpack-bundle-analyzer
+1. 安装：webpack-bundle-analyzer
 ```cmd
 npm install webpack-bundle-analyzer -S
 // or
 yarn add -D webpack-bundle-analyzer
 ```
-2、配置webpack.js
+2. 配置webpack.js
 ```js
 // 分析包内容 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
@@ -19,7 +19,7 @@ module.exports = {
 };
 ```
 ## 二、优化
-1、noParse
+1. noParse
 由于包没有引用其他模块，因此使用该方法，不去解析某个包，比如jquery
 ```js
 module: {
@@ -27,7 +27,7 @@ module: {
     rules: []
 }
 ```
-2、exclude &  include
+2. exclude &  include
 exclude不包含某个文件夹，include包含某个文件夹，一般两者使用其一即可，
 一般解析js文件时，也会找node_module，因此需要加上exclude
 ```js
@@ -39,7 +39,7 @@ module: {
     }]
 }
 ```
-3、webpack.IgnorePlugin
+3. webpack.IgnorePlugin
 忽略包内部引入的所有文件，使用IgnorePlugin配置
 当引入moment时，会默认加载所有的locale文件，因此需要忽略掉，只引入zh-cn文件
 ```js
@@ -53,7 +53,7 @@ module.exports = {
 
 ## 三、dllplugin 动态链接库
 由于每次打包很慢，因为每次都在对react库重新进行打包，因此需要提取一下
-1、创建一个新的js文件，并打包一次
+1. 创建一个新的js文件，并打包一次
 （1）安装clean-webpack-plugin插件，用于清除之前冗余的dll文件
 （1）webpack.config.other.js     名字随意
 ```js
@@ -87,7 +87,7 @@ module.exports = {
 <script src='/_dll_react.js'></script>
 <script src='/_dll_other.js'></script>
 ```
-2、修改webpack.config.js文件
+2. 修改webpack.config.js文件
 ```js
 const webpack = require('webpack')
 module.exports = {
@@ -103,8 +103,8 @@ module.exports = {
 
 ## 四、多线程打包
 当项目比较大时，可以使用happypack打包，如果项目比较小，使用happypack打包不如原来的打包速度更快
-1、安装：yarn add happypack
-2、替换rules里面的use规则
+1. 安装：yarn add happypack
+2. 替换rules里面的use规则
 ```js
 const Happypack = require('happypack')
 module.exports = {
@@ -133,9 +133,9 @@ module.exports = {
 ```
 
 ## 五、webpack内置优化项
-1、tree-shaking   摇晃树
+1. tree-shaking   摇晃树
 import引入的代码在生产环境下，会自动去除掉没用的代码，简称tree-shaking，摇晃树
-2、scope hosting   作用域提升
+2. scope hosting   作用域提升
 在webpack3以上，会自动简化代码，如果声明的过于简洁，比如单个数字，webpack会直接省略掉
 
 

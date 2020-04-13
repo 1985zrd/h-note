@@ -1,20 +1,24 @@
 # js-10 BOM
 ## 一、BOM
 bom（browser object model）
+
 包括：window、location、navigator、screen、history；
+
 window对象：在全局中定义的变量是window的属性，定义的函数是window的方法；window.a，在全局写的变量或函数都是使用window调用的，只是被省略了；
 
 
 
 ## 二、打开关闭页面；
-1、open(http,name,attr,boolean);
-        http地址，name名字，attr属性设置，boolean，false新历史，true替换历史；
-2、close()；直接调用方法，关闭当前窗口；
+1. open(http,name,attr,boolean);
+
+    http地址，name名字，attr属性设置，boolean，false新历史，true替换历史；
+2. close()；直接调用方法，关闭当前窗口；
 
 
 
 ## 三、网络状态
-在线online     离线offline
+在线`online`     离线`offline`
+
 监听当前的网络状态变动事件：
 ```js
 window.addEventlistener('online',xxx);
@@ -23,54 +27,90 @@ window.addEventlistener('offline',()=>{
 })
 ```
 PC端测试：点击NetWork，之后点击offline，可以测试；
+
 手机端：关闭移动网络之后就可以提示了；
 
 
 
 ## 四、location（位置）
-location既是window的属性，也是document的属性；
-window.onhashchange   当hash发生变化时触发；
-location.href="新地址"；强制跳转到新地址；不写地址为获取当前地址；
+`location`既是`window`的属性，也是document的属性；
 
-location.assign('地址')；跳转有历史记录；
-location.replace('地址')；跳转没有历史记录（免登录常用）
-location.reload()；刷新，重新加载页面；
+`window.onhashchange`   当hash发生变化时触发；
 
-了解（不需要加小括号）：
-href：获取当前的url；    "http://www.baidu.com"
-host：获取服务器名称和端口；    "www.baidu.com:80"
-hostname：不带端口号的服务器；    "www.baidu.com"
-pathname：目录部分；    /wileyCDA/
-port：返回端口号    "8080"
-protocol：协议；   "https:"
-search：以?开头；    "?q=javascript"
-hash：#号开头；    "#contents"
+`location.href="新地址"`；强制跳转到新地址；不写地址为获取当前地址；
 
-链接加密：encodeURIComponent
-链接解密：decodeURIComponent
+`location.assign('地址')`；跳转有历史记录；
+
+`location.replace('地址')`；跳转没有历史记录（免登录常用）
+
+`location.reload()`；刷新，重新加载页面；
+
+
+
+**了解（不需要加小括号）：**
+
+`href`：获取当前的url；    "http://www.baidu.com"
+
+`host`：获取服务器名称和端口；    "www.baidu.com:80"
+
+`hostname`：不带端口号的服务器；    "www.baidu.com"
+
+`pathname`：目录部分；    /wileyCDA/
+
+`port`：返回端口号    "8080"
+
+`protocol`：协议；   "https:"
+
+`search`：以?开头；    "?q=javascript"
+
+`hash`：#号开头；    "#contents"
+
+
+
+链接加密：`encodeURIComponent`
+
+链接解密：`decodeURIComponent`
+
 作用场景：用于免登录，需要带上redirectUrl，登录之后跳转的地址，建议使用链接加密一下
+
 扩展：
-加密汉字：escape
-解密：unescape
+
+加密汉字：`escape`
+
+解密：`unescape`
+
 
 
 ## 五、history
-history：历史页面；
-history.back()；返回上一个；
-history.forward()；返回下一个；forward(前锋);
-history.go(num)；0:当前，-1上一个，1下一个；也可以2或-2；
-history.pushState({p: '/b'},null,'/b')，在网址后面添加b；  不会刷新
-window.popstate = function(e){}    当点击后退会触发该事件；
-window.onhashchange，当hash值发生改变时触发，e.oldURL,e.newURL可以访问
+`history`：历史页面；
+
+`history.back()`；返回上一个；
+
+`history.forward()`；返回下一个；forward(前锋);
+
+`history.go(num)`；0:当前，-1上一个，1下一个；也可以2或-2；
+
+`history.pushState({p: '/b'},null,'/b')`，在网址后面添加b；  不会刷新
+
+`window.popstate = function(e){}`    当点击后退会触发该事件；
+
+`window.onhashchange`，当hash值发生改变时触发，`e.oldURL`,`e.newURL`可以访问
+
 
 
 ## 六、navigator
 浏览器代号：navigator.appCodeName；
+
 服务器名称：navigator.appName；
+
 浏览器版本：navigator.appVersion；
+
 检测Cookies：navigator.cookieEnabled；
+
 硬件平台：navigator.platform；
+
 浏览器信息：navigator.userAgent；
+
 代理语言：navigator.systemLanguage；
 
 ```js
@@ -116,6 +156,7 @@ navigator.vibrate(100);
 navigator.vibrate([200, 100, 300]);
 ```
 效果如下：不好意思你得用你自己的手握住手机才能感受得到;
+
 使用场景：通过振动来提供感官反馈，比如太久没有触摸屏幕的时候连续震动提醒用户✅
 
 
@@ -126,7 +167,9 @@ document.addEventListener("visibilitychange", () => {
 });
 ```
 document.visibilityState的状态值：
+
 当页面离开时会触发该函数，hidden的属性值
+
 当页面显示时，会返回一个visible
 
 使用场景：当程序切到后台的时候，如果当前有视频播放或者一些动画执行，可以先暂停✅
@@ -135,7 +178,9 @@ document.visibilityState的状态值：
 
 ## 十、页面方向陀螺仪
 deviceOrientation（如果IOS失效，可以将域名协议改为https）
+
 ![image](http://notecdn.heny.vip/images/js-10 BOM-01.png)
+
 从左到右分别为alpha、beta、gamma
 ```js
 window.addEventListener("deviceorientation", event => {
@@ -234,35 +279,45 @@ window.addEventListener("orientationchange", () => {
 
 
 ## 十四、弹窗
-1、alert（"内容"）； 警告框；
-2、confirm("")；确认框，返回值布尔型，确认为true，取消为false；
-3、prompt("")；可以输入信息，返回值输入的信息，第二个参数默认value值；
+1. alert（"内容"）； 警告框；
+2. confirm("")；确认框，返回值布尔型，确认为true，取消为false；
+3. prompt("")；可以输入信息，返回值输入的信息，第二个参数默认value值；
 
 
 
 ## 十五、浏览器位置信息
 
-1、clientWidth  可视距离
+1. clientWidth  可视距离
+
 元素可视区域：clientWidth/Height；     width/height+padding    不包含边框
+
 元素的边框值：clientLeft/Top；
+
 屏幕可视区域： document.documentElement.clientWidth/Height 
 
-2、offset  元素的实际距离
+2. offset  元素的实际距离
 元素的实际宽高：offsetWidth/Height；    width/height+padding+border;   包含边框
+
 元素离body的宽高：offsetLeft/Top        如果父元素有定位属性，那么就是离父元素边缘的宽高；
 
 window.innerWidth  浏览器含滚动条的宽度
+
 或者outerWidth
 
-3、scroll  卷动的距离
-元素实际内容的宽高：scrollWidth/height
-元素被卷起的宽高：scrollLeft/Top；
-元素.scrollIntoView()   可以滚动到该元素；往括号里面填写对象：{behavior: 'smooth'}可以平滑滚动；
+3. scroll  卷动的距离
+元素实际内容的宽高：`scrollWidth/height`
+
+元素被卷起的宽高：`scrollLeft/Top`；
+
+`元素.scrollIntoView()`  可以滚动到该元素；往括号里面填写对象：{behavior: 'smooth'}可以平滑滚动；
 
 
-4、浏览器滚动事件
+
+4. 浏览器滚动事件
 （1）window.onscroll=function(){}   滚动浏览器；
+
 （2）window.scrollTo(x,y)  或者 scrollTo(options) 滚动窗口到指定位置；
+
 options支持的属性：
 * top：元素要移动的位置横坐标
 * left：元素要移动的位置纵坐标
@@ -287,16 +342,25 @@ document.documentElement || document.body.parentNode;   //两种方式；兼容
 //用来获取页面中被卷起的高度、宽度;
 ```
 
-5、总结
+5. 总结
 clientWidth ------ padding+content 可视宽
+
 offsetWidth ------ content + padding + border 占位宽
+
 scrollWidth ------ 页面内容的实际宽度
+
 clientTop ------ border
+
 offsetTop ------ 相对父元素的之间的距离
+
 scrollTop ------ 被卷起的高度
+
 document.body.scrollTop || document.documentElement.scrollTop （body）
+
 document.documentElement.clientWidth 屏幕宽
+
 ![image](http://notecdn.heny.vip/images/js-10 BOM-03.png)
+
 
 ```js
 元素.getBoundingClientRect()
@@ -313,9 +377,11 @@ document.documentElement.clientWidth 屏幕宽
 }
 ```
 注意：top是距离文档顶部的距离，y则是距离可视窗口（浏览器屏幕）的顶部距离，如果浏览器滚动，top值不变，y值会变 ✅
+
 ![image](http://notecdn.heny.vip/images/js-10 BOM-04.png)
 
 即插即用的滚动代码
+
 使用的是缓冲运动，算法是：A = A + (B - A) / 2
 ```js
 /**
@@ -352,12 +418,15 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 ```
 
 ## 十五、css可用的属性；
-1、scroll-behavior: smooth，平滑滚动，给html和body加，或者给滚动的父元素加；
-2、scroll-snap属性：
+1. scroll-behavior: smooth，平滑滚动，给html和body加，或者给滚动的父元素加；
+2. scroll-snap属性：
 滚动窗口使用的：scroll-snap-type、scroll-padding；
+
 滚动子元素使用的：scroll-snap-align、scroll-snap-stop、scroll-margin；
+
 （1）scroll-snap-type
 属性指定能不能去捕捉当前滚动的窗口并让它对齐，以及所执行的方向跟严格程度；
+
 对齐方向属性：
 * x ：捕捉 X 轴上的位置
 * y ：捕捉 Y 轴上的位置
@@ -385,6 +454,7 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 
 
 （4）scroll-margin   简写属性，跟margin一样，可以设置元素跟滚动条之间的外边框大小，可用值四个，scroll-margin-top/bottom/left/right
+
 （5）scroll-padding   跟scroll-margin类似；
 
 
@@ -403,5 +473,7 @@ window.onload = window.onresize = function(){
 
 ## 高频面试题
 ● 什么是 window 对象 ? 什么是 document 对象 ?
+
 ● offsetWidth、clientWidth、scrollTop 的区别？
+
 ● 如何获取 url 地址中搜索内容？

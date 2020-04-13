@@ -33,7 +33,7 @@ module.exports = {
 
 
 ## 二、配置source-map
-1、当为production生产模式时，代码会被压缩成一行，我们无法进行调试，因此可以对source-map进行配置
+1. 当为production生产模式时，代码会被压缩成一行，我们无法进行调试，因此可以对source-map进行配置
 ```js
 module.exports = {
     ...
@@ -65,7 +65,7 @@ module.exports = {
 ```
 
 ## 四、webpack小插件
-1、每次打包删除dist目录
+1. 每次打包删除dist目录
 安装：yarn add clean-webpack-plugin -D
 ```js
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -75,7 +75,7 @@ module.exports = {
     ]
 }
 ```
-2、将js代码之外的文件也打包到dist目录下
+2. 将js代码之外的文件也打包到dist目录下
 安装：yarn add copy-webpack-plugin -D
 ```js
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -87,7 +87,7 @@ module.exports = {
     ]
 }
 ```
-3、打包版权声明，webpack内置的插件
+3. 打包版权声明，webpack内置的插件
 打包之后会将写入的话添加到每个js文件开头
 ```js
 const webpack = require('webpack')
@@ -125,7 +125,7 @@ module.exports = {
     }
 }
 ```
-2、在服务端启动webpack，不需要npm run dev了，直接运行server.js文件自动启动webpack，将前后端开发到一起，请求数据不存在跨域问题
+2. 在服务端启动webpack，不需要npm run dev了，直接运行server.js文件自动启动webpack，将前后端开发到一起，请求数据不存在跨域问题
 安装：yarn add webpack-dev-middleware -D
 ```js
 // server.js
@@ -164,7 +164,7 @@ module.exports = {
 
 ```
 ## 七、定义环境变量
-1、通过webpack.DefinePlugin添加全局变量，写好之后在项目里面可以直接通过DEV进行判断，是什么环境了；
+1. 通过webpack.DefinePlugin添加全局变量，写好之后在项目里面可以直接通过DEV进行判断，是什么环境了；
 ```js
 module.exports = {
     plugins: [
@@ -184,7 +184,7 @@ if(DEV){
 }
 console.log(url)
 ```
-2、添加两个配置文件
+2. 添加两个配置文件
 生产配置文件：webpack.prod.js
 开发配置文件：webpack.dev.js
 基础配置文件：webpack.base.js       通过基础引入prod或dev；

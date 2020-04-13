@@ -1,9 +1,9 @@
 # node-08 mongodb
-一、mongodb
-1、为什么要使用数据库
+## 一、mongodb
+1. 为什么要使用数据库
     把数据进行持久化，之前学习的文件数据持久化不安全，而且操作数据不方便；
 
-2、Mongodb简介
+2. Mongodb简介
 （1）MongoDB是一个NoSQL的数据库；
 （2）MongoDB是一款文档型数据库；
 （3）数据库指的就是一个存储数据的仓库，数据库可以使我们完成对数据的持久化的操作
@@ -21,7 +21,7 @@ Nosql当中
 比如淘宝用的Mysql数据库
 安装mysql--taobao--user|product.....小明（人|对象|文档|纪录）；
 
-3、安装MongoDB
+3. 安装MongoDB
 官网：https://www.mongodb.com
 下载：https://www.mongodb.com/download-center/community
 安装时，有一个东西不能勾选，否则会一直卡住；
@@ -30,7 +30,7 @@ Nosql当中
 图形化工具：Studio 3T
 无限试用： https://www.lanzous.com/i4jycdc
 
-4、使用MongoDB数据库
+4. 使用MongoDB数据库
 （1）启动数据库服务
 2）在C盘根目录下创建data文件夹，在data下创建db文件夹
 3）进入安装的mongoDB目录，在bin文件夹下打开cmd，输入：mongod
@@ -46,7 +46,7 @@ Nosql当中
 一般不需要指定路径；
 
 
-5、数据库的概念：
+5. 数据库的概念：
 数据库（database）：
     ---在MongoDB中，数据库和集合会在创建文档时会自动创建；
 集合（collections）：
@@ -58,18 +58,18 @@ Nosql当中
 
 
 
-一、数据库基本操作
-1、连接mongodb：
+## 一、数据库基本操作
+1. 连接mongodb：
 启动mongodb：mongod；启动之后不能关闭
 连接mongodb：mongo；
-2、mongodb基本语法：
+2. mongodb基本语法：
 show dbs：查看所有数据库；
 use demo：使用数据库，没有则创建
            db：当前使用的数据库；
 show collections：显示当前数据库中的集合
 
-二、插入db数据
-1、db.集合.insert()；
+## 二、插入db数据
+1. db.集合.insert()；
 括号可以写数组、对象；
 如果添加的对象里的键名在前面没有，也不影响；
 示例：db.shops.insert([{gid:1,gname:'张三'},{gid:2,gname:'李四'}])；
@@ -80,18 +80,18 @@ show collections：显示当前数据库中的集合
 --id生成的原理：机器码+时间戳
 
 
-三、查找find()；
+## 三、查找find()；
 db.user.find()；
-1、不填写参数时，默认显示全部的数据(表)；
+1. 不填写参数时，默认显示全部的数据(表)；
 
-2、db.user.find({查询条件},{要显示的属性[1:显示,0:隐藏]})
+2. db.user.find({查询条件},{要显示的属性[1:显示,0:隐藏]})
 
 db.user.find({gname:'张三'},{gid:1,_id:0}); // 显示gname是张三的，只显示gid；
 
-3、查询的关键词
+3. 查询的关键词
 $lt(小于)、$lte(小于等于)、$gt、$gte、$ne(不等于)、$in(包含)、$nin(not)、$or(或)
 
-4、使用关键词
+4. 使用关键词
 小于：db.user.find({age:{$lt:8}}) 
 包含：db.user.find({age:{$in:[18,20]}})  $in必须有中括号;
 或者：db.user.find({$or:[{age:18},{age:20}]})   等价于$in;
@@ -103,31 +103,31 @@ db.goods.find({cateid:11,$or:[{price:{$gt:4000}},{gname:'小米手机'}]})
 mongodb底层不会隐式转换数据类型，如果数字加引号，则查询时也必须加引号；
 mongodb就是提供了一个JavaScript运行环境
 
-5、limit() 限制条数；
+5. limit() 限制条数；
 
 db.goods.find().limit(5)
 
-6、skip()；跳过；
+6. skip()；跳过；
 分页规则：skip中的值=(页数-1)*条数；
 
 db.goods.find().limit(5).skip(5);
 
-7、sort()；排序
+7. sort()；排序
 有两个值：1：升序，-1：倒序
 sort值可以是多个条件，下面示例当价格相当则按照gid排序；
 
 db.goods.find({cateId:{$in:[11,12]}}).sort({price:-1,gid:1})
 
-8、count()；返回记录条数；
+8. count()；返回记录条数；
 
 db.goods.find().count();
 
 
-四、修改update()；
-1、db.goods.update({find条件},{对象})
+## 四、修改update()；
+1. db.goods.update({find条件},{对象})
 如果直接这样写，会把满足条件的记录修改成一个新对象；
 
-2、修改移除
+2. 修改移除
 修改$set：db.goods.update({},{$set:{}},{multi:true})；如果修改多个需要加{multi:true}；
 移除$unset：db.goods.update({},{$unset:{}});  属性值不能省略；
 注意：update()默认只修改满足条件的一条记录，修改多个需要加{multi:true};
@@ -140,22 +140,22 @@ ObjectId()；是mongodb新增的一种类型；直接运行会生成一个新的
 如果是使用_id查询，需要使用_id:ObjectId('id')；
 
 
-五、删除remove()；
-1、物理删除
+## 五、删除remove()；
+1. 物理删除
 db.<collection>.remove({find条件},是否删除一条)；默认删除多条；
 直接使用remove()叫物理删除，不安全
 
-2、逻辑删除
+2. 逻辑删除
 开发中使用的是逻辑删除，一般都是用逻辑删除的；
 逻辑删除需要定义一个id，并自定义值，例：1：删除，0：修改；
 需要删除的时候使用update()修改定义的id值；实在不需要可以使用remove()删除；
 
 
-六、其他方法
-1、db.<collection>.drop()；删除集合(表)；
+## 六、其他方法
+1. db.<collection>.drop()；删除集合(表)；
 remove只会清空集合里面的数据，不会删除集合；
 
-2、优化mongodb：
+2. 优化mongodb：
 
 循环添加
 ```js
@@ -173,22 +173,22 @@ for(let x=0;x<30000;x++){
 db.goods.insert(arr);
 ```
 
-七、数据库备份
+## 七、数据库备份
 注意：使用命令导出必须退出mongo环境；
-1、导出mongodump备份：
+1. 导出mongodump备份：
 
 mongodump -d 数据库 -o 文件路径；
 （2）常用：mongodump -d myblog -o c:/data/dbs;
 （3）-d省略导出所有数据库；
 
-2、还原数据库
+2. 还原数据库
 
 mongorestore -d 数据库 --drop 文件路径；
 --drop：先删除所有的记录，然后恢复；
 （2）常用：mongorestore c:/data/dbs；还原所有；
 dump和还原格式是json和bson，无法指定表；
 
-3、mongoexport 导出表，或者表中部分字段；
+3. mongoexport 导出表，或者表中部分字段；
 
 mongoexport -d 数据库 -c 表名 -f 字段 -q 条件导出 --csv -o 文件名；
 
@@ -199,7 +199,7 @@ mongoexport -d 数据库 -c 表名 -f 字段 -q 条件导出 --csv -o 文件名�
 
 格式可以是dat、csv、json都行；
 
-4、导入表
+4. 导入表
 （1）还原非csv文件整张表；
 ```shell
 mogoimport -d 数据库 -c 表名 --upsert --drop文件名；
@@ -223,14 +223,14 @@ mongoimport -d 数据库 -c 表名 --type 类型 --headerline --upsert --drop �
 mongoimport -d demo -c users --type csv --headerline --file /data/users.csv;
 ```
 
-六、其他数据库
-1、将数据放在json文件的缺陷：检索、查询、更新、删除比较麻烦；
+## 六、其他数据库
+1. 将数据放在json文件的缺陷：检索、查询、更新、删除比较麻烦；
 
-2、数据库分为两类：
+2. 数据库分为两类：
 （1）sql数据库（关系型数据库）：SQLserver、Mysql、Orcale、Mongodb；
 （2）NoSql数据库（非关系型数据库）：不仅仅是sql。Mongodb；
 
-3、数据库主要分成两种
+3. 数据库主要分成两种
 关系型数据库：关系数据库中全部是表；
 数据库<表<记录：传统的数据库存放的是表，表里的数据叫记录(信息|数据)；
 非关系型数据库：Nosql 是以json的键值对存储数据，存放的是集合，集合里面的是对象；
@@ -241,8 +241,8 @@ mongoimport -d demo -c users --type csv --headerline --file /data/users.csv;
 删除：delete from 文件名 where uname='admin'；
 添加：insert into 文件名 (uname,upwd)values('zs','123')；
 
-4、一般情况下：一个项目对应一个数据库；
+4. 一般情况下：一个项目对应一个数据库；
 一个数据库就是一个文件夹，
 无论什么数据库都要安装在电脑上，具体的数据存储在数据库文件中，其实也是文件，数据库需要特殊形式打开；
-5、mongodb：非关系型数据库
+5. mongodb：非关系型数据库
 数据库<集合<对象(文档|记录)；

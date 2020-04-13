@@ -1,8 +1,8 @@
 # html-17 移动端布局
 ## 一、响应式布局
-1、响应式的图片
+1. 响应式的图片
 需要给图片设置max-width:100%;height:auto;
-2、响应式的字体
+2. 响应式的字体
 html{font-size:100%;}
 
 之后可以设置响应式的字体：
@@ -13,16 +13,16 @@ html{font-size:100%;}
 ```
 
 响应式网站的优点：
-1、减少工作量
+1. 减少工作量
 网站、设计、代码、内容都 只需要一份
 多出来的工作量只是JS脚本、CSS样式做一些改变
-2、节省时间
-3、每个设备都能得到正确的设计
+2. 节省时间
+3. 每个设备都能得到正确的设计
 
 响应式网站的缺点：
-1、会加载更多的样式和脚本资源
-2、设计比较难精确定位和控制
-3、老版本浏览器兼容不好
+1. 会加载更多的样式和脚本资源
+2. 设计比较难精确定位和控制
+3. 老版本浏览器兼容不好
 
 
 
@@ -49,13 +49,13 @@ orientation:portrait   //竖屏
 
 ## 三、移动端布局
 
-1、页面html头部代码说明：
+1. 页面html头部代码说明：
 ```html
 <meta name="keywords" content=" "> 关键字
 <meta name="description" content=""> 描述
 <link rel="icon" href="images/icon.ico">插入logo标题
 ```
-2、设置viewport（至少记住三个）
+2. 设置viewport（至少记住三个）
 ```html
 <meta name="viewport" content="" />
 ```
@@ -122,19 +122,19 @@ function Resize(){
 
 
 ## 五、使用插件自动转换px
-1、搜索安装：postcss-px2rem
+1. 搜索安装：postcss-px2rem
 
 
 
 
 ## 六、移动端调试
-1、多页面调试
+1. 多页面调试
 ```html
 <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
 <script>new VConsole();</script>
 ```
 ![image](http://notecdn.heny.vip/images/html-17_移动端布局-01.png)
-2、 eruda调试工具
+2.  eruda调试工具
 ```html
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda"></script>
 <script>eruda.init();</script>

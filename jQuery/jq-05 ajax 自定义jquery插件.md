@@ -2,16 +2,16 @@
 ## 一、ajax
 ajax的优势和不足：
 ● 优势：
-        1、不需要插件支持
-        2、优秀的用户体验
-        3、提高 web 程序的性能
-        4、减轻服务器和带宽的负担
+        1. 不需要插件支持
+        2. 优秀的用户体验
+        3. 提高 web 程序的性能
+        4. 减轻服务器和带宽的负担
 ● 不足：    
-        1、破坏浏览器前进、后退按钮的正常功能
-        2、对搜索引擎的支持不足
+        1. 破坏浏览器前进、后退按钮的正常功能
+        2. 对搜索引擎的支持不足
 
 
-1、$.ajax({}),括号内容填写一个对象；里面写参数
+1. $.ajax({}),括号内容填写一个对象；里面写参数
 常用参数：
 ```js
 $.ajax({
@@ -29,7 +29,7 @@ $.ajax({
 });
 ```
 
-2、$.get()；
+2. $.get()；
 $.get(url,{}，function(){},type)；
 第一个参数：url地址；
 第二个参数：向后台发送的数据；
@@ -37,12 +37,12 @@ $.get(url,{}，function(){},type)；
 第四个参数：返回类型，一般是json；
 以get方式传递数据，只能处理成功的信息，想要处理失败的信息需要使用$.ajax()；
 
-3、$.post()；
+3. $.post()；
 ```js
 $.post(url,{},function(){},type)；
 ```
 
-4、get 请求和 post 请求的区别
+4. get 请求和 post 请求的区别
         （1）get 请求参数跟在 URL 后进行传递，而 post 请求则是作为 HTTP 消息的实体内容发送给 WEB 服务器。当然，在 ajax 请求中，这种区别对用户是不可见的。
 
         （2）get 请求方式对传输的数据有大小限制（通常不能大于 2KB），而使用 post 方式传递的数据量要比 get 方式大得多（理论上不受限制）。
@@ -52,7 +52,7 @@ $.post(url,{},function(){},type)；
         （4）get 方式和 post 方式传递的数据在服务器端获取也不相同。在 php 中，get 方式的数据可以用 $_GET[] 获取，而 post 方式可以用 $_POST[] 获取。两种方式都可以用 $_REQUEST[] 来获取。
 
 
-5、.load(url,[data],[callback]);
+5. .load(url,[data],[callback]);
 将服务器的数据或其他文件的内容加载到调用元素的内容中，如果调用的元素不存在，则不会调用；
 常用于加载页面的一个片段，放的一个空标签，往里面填写内容；
 url插入地址，callback方法完成后所执行的函数名称；
@@ -70,11 +70,11 @@ setInterval(function() {
 ## 二、jQuery中的jsonp
 
 jsonp 是 jQuery 中的跨域处理；
-1、跨域
+1. 跨域
 跨域概念：a.cn 下面的 js 不能调用 b.cn 中的js。因为 a.cn 和 b.cn是不同域，所以跨域就出现了。
 同域的概念：域名、端口、协议相同。
 
-2、jQuery 的 jsonp 如何发起跨域请求及其原理
+2. jQuery 的 jsonp 如何发起跨域请求及其原理
 先准备两个环境：
 我们一个用京东的：https://p.3.cn/prices/mgets?skuIds=J_5089253&type=1
 另一个用我们本地的环境，这样两个就会产生跨域，直接发起 ajax 请求，如下图 , 浏览器会发出警告
@@ -91,7 +91,7 @@ $.ajax({
 });
 ```
 ![image](http://notecdn.heny.vip/images/jq-05 ajax 自定义jquery插件-01.png)
-3、jsonp方式及其原理解析；
+3. jsonp方式及其原理解析；
 ```js
 // 请求的 url 地址
 var url = ‘https://p.3.cn/prices/mgets?skuIds=J_5089253&type=1’;
@@ -111,7 +111,7 @@ $(function() {
 
 这种方式比较麻烦，需要自己写脚本发起请求，然后写个回调函数处理数据，不是很方便。
 
-4、jQuery 的 jsonp 方式跨域请求
+4. jQuery 的 jsonp 方式跨域请求
         在 jQuery 中，只需配置一个 dataType:'jsonp'，就可以发起一个跨域请求。jsonp指定服务器返回的数据类型为 jsonp 格式，可以看发起的请求路径，自动带了一个callback=xxx，xxx 是 jQuery 随机生成的一个回调函数名称。
         注意：jsonp 方式不支持 POST 方式跨域请求，就算指定成 POST 方式，会自动转为 GET 方式；而后端如果设置成 POST 方式了，那就请求不了了；
 
@@ -130,8 +130,8 @@ $(function() {
     <input type=”text” name=”c” value=”3”>
 </form>
 ```
-        1、$(‘form’).serialize() 返回的是 a=1&b=2&c=3，它其实是把 name 值和 value值用等号连接成一组，用 & 再把每个组连接起来，这样，一个表单的数据，可以很方便的发送给后端。
-        2、$(‘form’).serializeArray() 返回的是一个数组数组里的每一项是一个对象，对象里有 name 和 value 两个属性，分别对应 input 的 name 和 value。返回值：[{ name : 'a' , value : '1' },{ name : 'b' , value : '2' },{ name: 'c' , value : '3' }]
+        1. $(‘form’).serialize() 返回的是 a=1&b=2&c=3，它其实是把 name 值和 value值用等号连接成一组，用 & 再把每个组连接起来，这样，一个表单的数据，可以很方便的发送给后端。
+        2. $(‘form’).serializeArray() 返回的是一个数组数组里的每一项是一个对象，对象里有 name 和 value 两个属性，分别对应 input 的 name 和 value。返回值：[{ name : 'a' , value : '1' },{ name : 'b' , value : '2' },{ name: 'c' , value : '3' }]
 
 
 
@@ -141,9 +141,9 @@ $(function() {
 
 跨域问题：a.cn去请求b.cn；
 解决跨域三种方法：
-1、代理：让服务器代理请求；
-2、XHR2（XMLHTTPREQUESTLevel2）IE10不支持；
-3、jsonP；
+1. 代理：让服务器代理请求；
+2. XHR2（XMLHTTPREQUESTLevel2）IE10不支持；
+3. jsonP；
 jsonP原理：利用script标签中没有跨域的限制，所以将要请求的地址放到script标签的src中，同时在请求的地址后面添加一个回调函数（&callback=aa），这个aa是自定义一个函数的作用，就是去包裹请求回来的数据，需要在aa函数中写一个形参用来接收请求到的数据；
 
 在使用$.ajax()中，需要在对象里填写dataType，指定值jsonP，回调函数默认使用success函数；
@@ -154,13 +154,13 @@ jsonP原理：利用script标签中没有跨域的限制，所以将要请求的
 
 ## 五、validate
 
-1、操作方法
+1. 操作方法
 一款基于jquery用于验证表单的插件，使用前需要引入jquery文件；
 内置验证规则，支持自定义验证规则，简单强大的验证信息提示；
 下载地址：https://jqueryvalidation.org/
 下载好之后找到解压文件里面的dist/jquery.validate.js,和dist/localization/messages_zh.js；导出这两个文件，并引入；
 
-2、$("form").validate()；接收的是一个对象；对象的值：
+2. $("form").validate()；接收的是一个对象；对象的值：
 rules：验证规则，值是一个对象，填写需要验证的内容，里面的键名是form表单的name名；
 如果只是简单的规则required这些也可以直接写到标签的class类名里面；
 单选项作为键名写到函数对象中，需要写true；
@@ -194,7 +194,7 @@ equalTo:"#field"    密码必须一样；
 (16) max:5                      输入值不能大于5
 (17) min:10                     输入值不能小于10
 
-3、美化提示文字；validate的属性名；
+3. 美化提示文字；validate的属性名；
 （1）errorClass：错误时使用的class类名；默认是error；
 （2）errorElement：包裹错误文字的标签；默认是label；
 （3）success：成功执行的操作，在标签验证通过时触发；
@@ -211,7 +211,7 @@ equalTo:"#field"    密码必须一样；
 默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面。
 
 
-4、将错误信息放置到统一的容器显示：
+4. 将错误信息放置到统一的容器显示：
 （1）errorContainer：显示或者隐藏验证信息，可以自动实现有错误信息出现时把容器属性变为显示，无错误时隐藏，需要用到将错误信息统一放置的时候使用,值为容器,
 （2）errorLabelContainer：把错误信息统一放在一个容器里；jquery选择器；
 （3）wrapper：用什么标签再把上边的errorElement包起来；
@@ -222,7 +222,7 @@ errorLabelContainer: $("div.container ul"),
 wrapper: "li"
 ```
 
-5、设置validate默认值；
+5. 设置validate默认值；
 ```js
 $.validator.setDefaults({
     submitHandler:function(){
@@ -230,7 +230,7 @@ $.validator.setDefaults({
 });
 ```
 
-6、自定义添加验证规则
+6. 自定义添加验证规则
 $.validator.addMethod(name,method,message);
 name：规则名字，message：输入错误提示信息；
 method：是一个函数，三个形参：value,element,pram；
@@ -253,17 +253,17 @@ $.validator.addMethod("passd",function(value){
 下载地址：https://github.com/carhartl/jquery-cookie
 cookie插件是基于jquery的cookie插件，使用时必须同时引入jquery文件；
 
-1、设置
+1. 设置
 设置：$.cookie(名，值)；
 设置有过期时间：$.cookie(名，值，{expires:7})；
 设置路径：$.cookie(名，值，{expires:7,path:"/"})；/放在根目录；
 
-2、获取：
+2. 获取：
 $.cookie(名)；传入一个名，返回值；
 当传入没有的名时，返回undefined；
 当不传入参数的时候，返回一个对象；
 
-3、删除
+3. 删除
 $.removeCookie(名)；删除；
 当有值时，删除返回true，当传入的名没有时，返回false；
 当删除一个带路径的，需要把路径也加上，加入路径需要写一个对象；
@@ -273,11 +273,11 @@ $.removeCookie("name",{path:"/"})；
 
 ## 七、自定义插件
 
-1、基于对象的插件；
+1. 基于对象的插件；
 $.fn.extend({}),在对象里面写插件；键名键值的方式写函数，取方法时直接点调用；
 为了能在函数里面写$符，需要写一个闭包，括号外面写一个
 注：写方法时为了能够链式调用需要加个return返回出去；
-2、全局插件
+2. 全局插件
 $.extend({})，全局调用：$.方法();
 .selector可以和.context一起使用，确定查询的选择器，不是方法，不需要加小括号；
 .selector返回选择器里面填写的内容；
@@ -287,11 +287,11 @@ $.extend({})，全局调用：$.方法();
 
 ## 八、使用别人的插件
 
-1、去网上搜，下载，下载后的文件，一般都是一个压缩包，也可以是一个文件夹；
-2、引入下载后的css文件；
-3、引入下载后的js文件；
-4、使用f12找到需要的板块，之后复制class类名，查看页面源代码，搜索复制的class类名，复制html中的结构的代码；
-5、复制html中实现功能的代码到页面加载的事件中；
+1. 去网上搜，下载，下载后的文件，一般都是一个压缩包，也可以是一个文件夹；
+2. 引入下载后的css文件；
+3. 引入下载后的js文件；
+4. 使用f12找到需要的板块，之后复制class类名，查看页面源代码，搜索复制的class类名，复制html中的结构的代码；
+5. 复制html中实现功能的代码到页面加载的事件中；
 一般情况在使用插件的时候，测试的时候，先把这个代码直接复制到一个div（一个标签），调整整体的大小，位置，样式，然后直接放在自己的页面的某个位置当中，进行使用；
 
 
@@ -299,9 +299,14 @@ $.extend({})，全局调用：$.方法();
 
 ## 高频面试题
 ● 怎么解决跨域问题？
+
 ● ajax 的缺点？
+
 ● ajax 如何实现异步定时 5 秒刷新？
+
 ● 页面编码和被请求的资源编码如果不一致如何处理？
+
 ● jquery 中 $.get() 提交和 $.post() 提交有区别吗？
+
 ● jquery.extend 与 jquery.fn.extend 的区别？
 

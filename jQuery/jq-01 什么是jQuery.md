@@ -30,8 +30,8 @@ jQuery强调的理念是写得少，做得多（write less, do more），jQuery�
 
 ## 三、下载jQuery
 
-1、去官方网站下载：http://jquery.com/
-2、去 CDN 下载：https://www.bootcdn.cn/jquery/
+1. 去官方网站下载：http://jquery.com/
+2. 去 CDN 下载：https://www.bootcdn.cn/jquery/
 
 
 
@@ -81,39 +81,39 @@ $(‘#f00’) 和 jQuery(‘#foo’) 是等价的，$.ajax 和 jQuery.ajax 是�
 
 ## 八、页面加载
 
-1、$(document).ready(function(){});
-2、$(function(){})；简写；
+1. $(document).ready(function(){});
+2. $(function(){})；简写；
 
 和原生文档加载完的区别：
 ①原生：必须把所有的元素都加载完（包括图片），并且只能写一个onload；
 ②jquery：只把页面的结构加载完，读取到标签就可以了，可以写多个；
 
-3、$(document).ready() 同 window.onload 的区别：
-        1、执行时机不同，window.onload 必须等待网页中所有的内容加载完毕后（包括图片）才能执行，而 $(document).ready() 是网页中所有 DOM 结构绘制完毕就执行，可能 DOM 元素关联的东西并没有加载完。
-        2、window.onload 只能写一个 , 多个时后面的会覆盖掉前面的，而 $(document).ready() 可以写多个，不会覆盖。
-        3、window.onload没有简写形式，而$(document).ready()可以简写成$(function (){})。
+3. $(document).ready() 同 window.onload 的区别：
+        1. 执行时机不同，window.onload 必须等待网页中所有的内容加载完毕后（包括图片）才能执行，而 $(document).ready() 是网页中所有 DOM 结构绘制完毕就执行，可能 DOM 元素关联的东西并没有加载完。
+        2. window.onload 只能写一个 , 多个时后面的会覆盖掉前面的，而 $(document).ready() 可以写多个，不会覆盖。
+        3. window.onload没有简写形式，而$(document).ready()可以简写成$(function (){})。
 
 
 
 ## 九、元素
 
-1、dom元素：原生获取的就是dom元素（[HTMLCollection]）；
-2、jquery元素：k.fn.init的元素就是jquery元素（k.fn.init）;
+1. dom元素：原生获取的就是dom元素（[HTMLCollection]）；
+2. jquery元素：k.fn.init的元素就是jquery元素（k.fn.init）;
 
 
 
 ## 十、转换元素
 
 使用jquery元素不能使用原生的方法，不能混着用，可以转换元素使用；
-1、$(li)，将使用dom获取li变量的元素转换为jquery的元素；
-2、jquery转dom：①$("li").get(下标)，②$("li")[下标]
+1. $(li)，将使用dom获取li变量的元素转换为jquery的元素；
+2. jquery转dom：①$("li").get(下标)，②$("li")[下标]
 转dom加下标，转jquery加$；
 
 
 
 ## 十一、和其他框架冲突
 jQuery使用$符号的方式，还可以直接使用jQuery；
-1、让渡：jQuery.noConflict();   
+1. 让渡：jQuery.noConflict();   
     将$符让给其他的库使用，自己还可以使用jQuery来代替$；
     如果jQuery库还想使用$符,可以使用闭包，将jQuery作为实参，$作为形参；
 
@@ -122,4 +122,4 @@ jQuery使用$符号的方式，还可以直接使用jQuery；
     $("li");
 })(jQuery);    使用$作为形参使用；
 ```
-2、改变：var j = jQuery.noConflict()；声明任意变量来替换$符；改变之后不能再使用$；
+2. 改变：var j = jQuery.noConflict()；声明任意变量来替换$符；改变之后不能再使用$；

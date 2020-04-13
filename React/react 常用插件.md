@@ -14,9 +14,9 @@ https://www.jianshu.com/p/f8d2ef372adf
 ```
 
 ## 滚动插件
-1、安装：npm i react-scroll
-2、官网：https://github.com/fisshy/react-scroll
-2、基础使用：
+1. 安装：npm i react-scroll
+2. 官网：https://github.com/fisshy/react-scroll
+2. 基础使用：
 （1）滚动方法
 ```js
 import Scroll from 'react-scroll'
@@ -54,10 +54,11 @@ import {Link} from 'react-scroll'
 ```
 
 ## 组件懒加载
-1、安装：react-lazyload
+1. 安装：react-lazyload
+
 可以为图片或者组件提供懒加载功能，当滚动条滚动到该图片上方时才会去加载图片，可以更合理去加载资源，也可以设置高度来在未加载时预留出位置；
 
-2、基本使用
+2. 基本使用
 ```js
 import React from 'react'
 import LazyLoad from 'react-lazyload'
@@ -75,9 +76,10 @@ function App(){
     <img />
 </LazyLoad>
 ```
-3、
+3. 
 
-4、常用工具函数
+4. 常用工具函数
+
 （1）forceCheck   手动重新触发检查视口中的元素， 当LazyLoad组件进入视口而没有调整大小或滚动事件时很有用，例如，当组件的容器被隐藏然后可见时。
 ```js
 import forceCheck from 'react-lazyload'
@@ -87,12 +89,12 @@ forceCheck() // 在生命周期调用
 
 
 ## React动画
-1、安装：npm i react-transition-group
-2、引入
+1. 安装：npm i react-transition-group
+2. 引入
 ```js
 import {CSSTransition} from 'react-transition-group'
 ```
-3、属性
+3. 属性
 * in 开头
 * timeout 动画的时间
 * appear  一加载就执行
@@ -117,7 +119,7 @@ import {CSSTransition} from 'react-transition-group'
     </div>
 </CSSTransition>
 ```
-4、类名
+4. 类名
 * fade.enter    进入时的类名
 * fade.enter-active   进入时执行的类名
 * fade.exit    离开时的类名
@@ -127,7 +129,7 @@ import {CSSTransition} from 'react-transition-group'
 
 
 
-5、TransitionGroup，如果多个动画特效，需要用该组件包裹
+5. TransitionGroup，如果多个动画特效，需要用该组件包裹
 ```js
 <TransitionGroup key={index}>
     <CSSTransition>

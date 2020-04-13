@@ -11,9 +11,9 @@ ssh root@39.107.82.176
 
 ## 使用xshell上传网站
 
-1、安装：yum install lrzsz -y
-2、检查安装是否完成：rpm -qa | grep lrzsz
-3、基本操作：
+1. 安装：yum install lrzsz -y
+2. 检查安装是否完成：rpm -qa | grep lrzsz
+3. 基本操作：
 
 * 上传：rz 直接弹出上传窗口
 * 下载：sz 直接弹出下载窗口
@@ -35,12 +35,12 @@ scp -r test root@107.172.27.254:/home
 scp -r * root@39.107.82.176:/home
 ```
 解决scp不需要输入密码直接上传
-1、在linux输入
+1. 在linux输入
 ```shell
 ssh-keygen -t rsa
 cd /root/.ssh
 ```
-2、在本地执行以下命令，并一路回车创建ssh密钥
+2. 在本地执行以下命令，并一路回车创建ssh密钥
 ```shell
 ssh-keygen -t rsa
 ```
@@ -48,12 +48,12 @@ ssh-keygen -t rsa
 ```shell
 scp id_rsa.pub root@39.107.82.176
 ```
-3、文件上传之后到linux输入命令
+3. 文件上传之后到linux输入命令
 ```shell
 cd /root/.ssh
 cat id_rsa.pub >> authorized_keys
 ```
-4、已经可以测试不输入密码直接上传了
+4. 已经可以测试不输入密码直接上传了
 
 
 
@@ -77,7 +77,7 @@ tar -xvf build.gz
 
 ## 填写脚本自动上传
 
-1、本地脚本，在项目根目录创建文件夹delony.sh，只要是sh后缀都行
+1. 本地脚本，在项目根目录创建文件夹delony.sh，只要是sh后缀都行
 ```shell
 #!bin/bash
 npm run build
@@ -86,7 +86,7 @@ tar -cvf build.gz *
 scp build.gz root@39.107.82.176:/www/wwwroot/chart
 ssh root@39.107.82.176
 ```
-2、运行之后会直接到服务器
+2. 运行之后会直接到服务器
 ```shell
 touch delony.sh
 chmod 777 delony.sh
@@ -99,14 +99,14 @@ tar -xvf build.gz
 rm -rf build.gz
 ```
 
-3、之后点击一下delony.sh，之后在到服务器运行：sh ./delony.sh即可
+3. 之后点击一下delony.sh，之后在到服务器运行：sh ./delony.sh即可
 
 
 
 ## Centos保持node项目后台运行
 
-1、安装：npm install forever -g（建议先设置好npm包源为淘宝源）
-2、使用方法
+1. 安装：npm install forever -g（建议先设置好npm包源为淘宝源）
+2. 使用方法
 （1）启动：forever start app.js （有两个warn不用管）
 ![image](http://notecdn.heny.vip/images/server-03 linux常用-01.png)
 （2）查看运行的项目：forever list

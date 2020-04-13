@@ -1,6 +1,6 @@
 # es6-07 proxy、Reflect
 ## 一、proxy
-1、代理，可以修改对象的原操作；
+1. 代理，可以修改对象的原操作；
 proxy的两个参数，都是对象，第一个是要代理的对象，第二个是对象的所属操作
 ```js
 var proxy = new Proxy(target, handler)
@@ -49,7 +49,7 @@ fproxy.prototype === Object.prototype // true
 fproxy.foo === "Hello, foo" // true
 ```
 
-2、proxy支持的所有操作
+2. proxy支持的所有操作
 * get(target,key,receiver)：拦截对象属性的读取，比如：proxy.foo和proxy['foo']
 * set(target,key,receiver)：拦截对象属性的设置，比如：proxy.foo=v或proxy['foo'] = v，返回一个布尔值
 * has(target,key)：拦截key in proxy的操作，返回一个布尔值
@@ -67,7 +67,7 @@ fproxy.foo === "Hello, foo" // true
 
 
 
-3、Proxy实例的方法
+3. Proxy实例的方法
 （1）get()
 get方法可以继承，不需要再递归代理了
 ```js
@@ -151,7 +151,7 @@ construct必须返回一个对象，否则会报错
 
 
 ## 二、Reflect
-1、概述
+1. 概述
 （1）Object上的明显属性语言内部的方法都放到了Reflect对象上，未来的新方法将只部署在Reflect对象上
 （2）修改了某些Object方法的返回结果，让其变得合理，Object在无法定义属性时，会抛出一个错误，而Reflect只会返回false
 ```js
@@ -190,7 +190,7 @@ Proxy(target, {
 ```
 上面例子中，proxy方法拦截target对象的属性赋值行为，采用Reflect.set方法将值赋值给对象的属性，确保完成原有的行为，然后再部署额外的功能
 
-2、Reflect的静态方法，一共13个；
+2. Reflect的静态方法，一共13个；
 * apply(target,thisArg,args)
 * construct(target,args)
 * get(target,name,receiver)

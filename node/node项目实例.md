@@ -1,6 +1,6 @@
 # node项目实例
 博客项目简介：基于Node.js+Express+Mongodb+Mongoose开发
-一、创建文件夹：
+## 一、创建文件夹：
 项目目录：my_blog
 app.js入口文件
 views：视图模板
@@ -10,23 +10,23 @@ models：使用db的模板
 libs：后端使用
 uploads：接收上传的图片文件夹
 
-二、下载模板
+## 二、下载模板
 http://www.cssmoban.com/cssthemes/8138.shtml
 
 
-三、下载第三方包
-1、根据项目需求，下载所需的第三方包；
+## 三、下载第三方包
+1. 根据项目需求，下载所需的第三方包；
 express、mongoose、ejs、formidable(表单)、uuid(图名)
 
 
-四、设计路由
-1、根据需求设计路由，并将html模板中相同的部分使用ejs模板引入；
+## 四、设计路由
+1. 根据需求设计路由，并将html模板中相同的部分使用ejs模板引入；
 （可以先设计登录页面，之后判断是否登录，才能发表文章）
 
 
-五、接收上传文件
-1、有上传文件必需修改form表头格式：enctype='multipart/form-data'，原生ajax或fetch的post不需要设置Content-Type；
-2、接收文件下载：formidable插件
+## 五、接收上传文件
+1. 有上传文件必需修改form表头格式：enctype='multipart/form-data'，原生ajax或fetch的post不需要设置Content-Type；
+2. 接收文件下载：formidable插件
 ```js
 const formidable = require('formidable');
 var form = new formidable.IncomingForm();
@@ -41,12 +41,12 @@ form.parse(req, function(err, fields, files) {
 // fs.renameSync(old,new)；将文件放到uploads文件夹；
 ```
 文件上传之后是临时保存的，需要移动一下；
-3、使用form.uploadDir修改文件夹存放目录；
+3. 使用form.uploadDir修改文件夹存放目录；
 ```js
 form.uploadDir = path.resolve(__dirname, '..','target')
 ```
-4、下载uuid生成唯一的名字给文件命名，需要注意扩展名；
-5、如果前端发送的file文件收取不到，则可以new一个formData
+4. 下载uuid生成唯一的名字给文件命名，需要注意扩展名；
+5. 如果前端发送的file文件收取不到，则可以new一个formData
 ```js
 let formData = new FormData()
 formData.append('file', file)
@@ -54,15 +54,15 @@ upload(formData) // 将formData发送给后端
 ```
 
 
-六、添加数据库
-1、连接：
+## 六、添加数据库
+1. 连接：
 （1）在libs文件夹创建一个专门连接的js文件
 （2）里面只引入mongoose和连接，
 （3）之后在app.js头部引入；
 ```js
 require('./libs/connectdb.js')
 ```
-2、创建db
+2. 创建db
 （1）在models创建一个文章db；
 （2）定义Schema约束
 （3）定义一个添加文章的函数，两个形参（传入的值，回调函数）；
@@ -84,7 +84,7 @@ function addArticle(data,callback){
     })
 }
 ```
-3、处理数据
+3. 处理数据
 （1）处理拿到的数据，引入数据文件；
 （2）在添加文章路由文件引入设计的db模块；
 （3）将图片的路径添加到fields对象中，再添加一个用户id，获取哪个用户上传的；
@@ -236,7 +236,7 @@ let articleRouter = require('./ArticleRouter.js')
 app.use('/blog', articleRouter)   // articleRouter的每个路由都得添加一个blog
 ```
 
-七、渲染页面
+## 七、渲染页面
 （1）定义查询数据库
 ```js
 function findArticle(conditions,projection,options,callback){
@@ -262,39 +262,39 @@ Articledb.findArticle({del:1},{},{limit:9,sort:{addtime:-1}},(err,docs)=>{
 
 
 ## 八、设计列表页
-1、计算出数据库总的页数，之后设计path路径或查询字符串；
+1. 计算出数据库总的页数，之后设计path路径或查询字符串；
 使用model.countDcuments(data,callback);
-2、通过limit和skip定义每页显示的条数，并计算出总的页数；
+2. 通过limit和skip定义每页显示的条数，并计算出总的页数；
 方法：(页数-1)*条数；
-3、在前端页面通过for循环渲染页数；
+3. 在前端页面通过for循环渲染页数；
 
 
 ## 九、登录页面
-1、将输入的用户名调用到后台数据库查询，判断传入的数据的长度是否为0；
-2、当账号正确之后验证密码是否正确，正确之后开始设置session；
-3、渲染页面msg提示信息页面；
+1. 将输入的用户名调用到后台数据库查询，判断传入的数据的长度是否为0；
+2. 当账号正确之后验证密码是否正确，正确之后开始设置session；
+3. 渲染页面msg提示信息页面；
 
 
 ## 十、用户首页
-1、判断sessionid是否存在，如果不存在，则跳转到提示页面，让用户登录；
-2、利用session获取当前的用户，并使用查询数据库；
-3、将当前用户发表的文章渲染到当前用户的首页；
+1. 判断sessionid是否存在，如果不存在，则跳转到提示页面，让用户登录；
+2. 利用session获取当前的用户，并使用查询数据库；
+3. 将当前用户发表的文章渲染到当前用户的首页；
 技巧：渲染页面时可以做一个表格，给每一行添加一个修改和删除的按钮；
 
 
 
 ## 十一、修改文章
-1、点击修改用path路径给后台传入一个_id，后台利用_id查询数据；
-2、设计两个路由和添加修改文章的页面；
-3、将获取到的_id的数据渲染到页面（先显示，后修改），并添加一个隐藏域_id，添加一个图片显示的标签；
-4、将发表文章的js内容复制到修改文章，将创建文章改成findByIdAndUpdate()；
-5、修改失败回到修改页面，需要将id传到path路径；
+1. 点击修改用path路径给后台传入一个_id，后台利用_id查询数据；
+2. 设计两个路由和添加修改文章的页面；
+3. 将获取到的_id的数据渲染到页面（先显示，后修改），并添加一个隐藏域_id，添加一个图片显示的标签；
+4. 将发表文章的js内容复制到修改文章，将创建文章改成findByIdAndUpdate()；
+5. 修改失败回到修改页面，需要将id传到path路径；
 
 
 ## 十二、删除文章
-1、设计一个调用ajax的函数，将点击的_id传到后台；
-2、在后台将收到的_id的值改为逻辑删除；
+1. 设计一个调用ajax的函数，将点击的_id传到后台；
+2. 在后台将收到的_id的值改为逻辑删除；
 
 
 ## 十三、文章详情页面
-1、点击之后将_id通过ajax传到后台，将内容显示出来；
+1. 点击之后将_id通过ajax传到后台，将内容显示出来；

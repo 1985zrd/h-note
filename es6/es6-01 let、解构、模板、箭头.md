@@ -16,20 +16,20 @@ html：标记的标签是预定义的；
 
 
 ## 二、json对象
-1、什么是json?
+1. 什么是json?
 JSON(JavaScript Object Notation, JS 对象节点)，主要用来在不同语言之间交换数据
 
-2、json基本语法：
+2. json基本语法：
 json只有两种数据格式：json对象 、json对象数组
 （1）属性名必须用双引号，属性值如果不是数字，则必须用引号；
 （2）属性值可以是字符串、数字、布尔型、数组、对象，但不能是函数或dom对象
 （3）属性名与属性值用冒号:分隔，不同的属性名与属性值之间用逗号分隔
 
-3、JSON对象方法:
+3. JSON对象方法:
 （1）JSON.parse():将普通的json字符串转换成json对象
 （2）JSON.stringify():将json对象转换成json字符串
 
-4、JSON.stringify的特性
+4. JSON.stringify的特性
 （1）对于 undefined、任意的函数以及 symbol 三个特殊的值分别作为对象属性的值、数组元素、单独的值时的不同返回结果。
 * undefined、任意的函数以及 symbol 作为对象属性值时 JSON.stringify() 跳过（忽略）对它们进行序列化
 * undefined、任意的函数以及 symbol 作为数组元素值时，JSON.stringify() 将会将它们序列化为 null
@@ -45,7 +45,7 @@ json只有两种数据格式：json对象 、json对象数组
 （8）对包含循环引用的对象（对象之间相互引用，形成无限循环）执行此方法，会抛出错误。
 （9）所有以 symbol 为属性键的属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们。
 
-5、JSON.stringify的第二个参数、第三个参数
+5. JSON.stringify的第二个参数、第三个参数
 （1）第二个参数
 * 作为函数时，它有两个参数，键（key）和值（value），函数类似就是数组方法 map、filter 等方法的回调函数，对每一个属性值都会执行一次该函数（期间我们还简单实现过一个 map 函数）。
 * 如果 replacer 是一个数组，数组的值代表将被序列化成 JSON 字符串的属性名。
@@ -66,7 +66,7 @@ JSON.stringify(obj, Object.keys(obj).sort())
 
 
 ## 三、Object扩展
-1、Object.defineProperty(obj,attr,descriptor)；
+1. Object.defineProperty(obj,attr,descriptor)；
 修改或添加一个属性；并返回这个对象，如果不指定参数，则默认为false，
 obj: 需要被操作的目标对象
 attr: 需要被操作或设置的属性名，有则修改，没有则添加；
@@ -92,14 +92,14 @@ Object.defineProperty(obj1,'age',{
 })
 ```
 
-2、Object.defineProperties(obj, props)；
+2. Object.defineProperties(obj, props)；
 添加或修改多个新属性，并返回该对象；
  obj：需要添加或修改属性的对象；
 props：一个对象，添加或修改的配置，如果写原有的属性名就是修改；
 如果需要修改现有的，就不能使用get和set属性；
 
 
-3、Object.create(prototype, [descriptors])
+3. Object.create(prototype, [descriptors])
 作用: 使用一个新对象继承现有的对象的原型并添加自己的属性，可以使用现有对象的属性；
 ```js
 let obj = {age:18}
@@ -127,32 +127,32 @@ obj2 = Object.create(obj,{
 
 
 
-4、 Object.getOwnPropertyDescriptor（一个）
+4.  Object.getOwnPropertyDescriptor（一个）
 返回指定对象上一个自有属性对应的属性值描述符；
 语法: Object.getOwnPropertyDescriptor(obj, prop)
 obj是一个对象，prop属性名称；
 
-5、Object.getOwnPropertyDescriptors(obj)（所有）
+5. Object.getOwnPropertyDescriptors(obj)（所有）
 返回指定对象所有的属性描述符；返回一个对象：{name: {…}, age: {…}, funll: {…}}
 语法: Object.getOwnPropertyDescriptors(obj)
 
 
 
 ## 四、es6简述
-1、ECMAscript 与 Javascript的关系：
+1. ECMAscript 与 Javascript的关系：
 ECMAscript是规范，而Javascript是规范的具体实现，两者不能相提并论。
 
-2、ECMA的几个重要版本：
+2. ECMA的几个重要版本：
     ECMA这个组织在2015年之前，使用的都是ECMAscript 5这个版本；
     ECMA在2015年6月份正式颁布ES6，而之后的版本变化不大，以后每年6月份颁布新
     版本(这个组织提的一些新规定)；
     ECMA在2016年颁布的版本称之ES7
 
 ## 五、let和const
-1、ES6之前定义变量的方式：
+1. ES6之前定义变量的方式：
 使用var声明，也可以不使用var直接声明，var声明的能够变量提升；
 
-2、ES6定义变量的方式：      
+2. ES6定义变量的方式：      
 let声明变量，区别：
 （1）没有变量提升,报错referenceError；
 （2）必须先声明后使用
@@ -205,10 +205,10 @@ let {name = '未定义'} = obj
 解构对象时，键名必须一 一对应，当变量名不一样时，为undefined;
 如果填写的键名没有，可以赋默认值，以等号赋值，如果对象有的话赋的默认值不起作用；
 
-3、函数传参时，如果是一个对象可以function fn({name,age})；
+3. 函数传参时，如果是一个对象可以function fn({name,age})；
 解构函数时，可以直接将形参写成对象解构来接收；
 
-4、传参解构方式  
+4. 传参解构方式  
 （1）重新命名法
 ```js
 function fn({component:Component})    // 因为component是保留字,所以需要重新改名
@@ -227,7 +227,7 @@ function fn({name='未定义'}={}){
 }
 ```
 
-5、对象的扩展运算符
+5. 对象的扩展运算符
 （1）解构赋值
 ```js
 let {x,a,...z} = {x:1,y:2,a:3,b:4}
@@ -326,16 +326,16 @@ let ab = Object.assign({}, a, b)
 
 ## 七、模板字符串
 如果只是单纯的声明字符串和单引号、双引号一样的。并且模板字符串里面可以解析变量和运行一些表达式。 模板字符串思想来源于后端；
-1、模板字符串使用``；
-2、变化的部分使用${xxx}定义，可以写函数以及运算表达式；
-3、模板字符串可以换行不报错；
+1. 模板字符串使用``；
+2. 变化的部分使用${xxx}定义，可以写函数以及运算表达式；
+3. 模板字符串可以换行不报错；
 
 
 ## 八、对象的简写
-1、对象的简写形式：如果属性值是变量的，对象里面直接写变量名就可以了；
+1. 对象的简写形式：如果属性值是变量的，对象里面直接写变量名就可以了；
 var obj = {name,age,city}；属性名是变量；
 
-2、对象函数的简写，直接写函数名(){}，去掉冒号和function，一般用在表单里面需要给后台传数据时使用；
+2. 对象函数的简写，直接写函数名(){}，去掉冒号和function，一般用在表单里面需要给后台传数据时使用；
 ```js
 let obj = {
     name: 'hh',
@@ -343,7 +343,7 @@ let obj = {
 }
 ```
 
-3、对象里面可以直接访问super原型，super后面必须跟属性，super关键字为原型对象，只能用在对象的方法之中，只有对象的简写方法才能使用，才能让JavaScript引擎确认
+3. 对象里面可以直接访问super原型，super后面必须跟属性，super关键字为原型对象，只能用在对象的方法之中，只有对象的简写方法才能使用，才能让JavaScript引擎确认
 ```js
 let obj = {name: 'hhh'}
 let fired = {
@@ -360,7 +360,7 @@ super.name等同于：Object.getPrototypeOf(this).foo或
 Object.getPrototypeOf(this).foo.call(this)
 ```
 
-4、对象也可以直接使用get和set
+4. 对象也可以直接使用get和set
 ```js
 let obj = {
     _wheels: 4,
@@ -376,7 +376,7 @@ let obj = {
 }
 ```
 
-5、属性的遍历
+5. 属性的遍历
 （1）for...in
 for..in循环遍历对象自身的和继承的可枚举属性（不含Symbol属性），如果不需要遍历继承的属性，可以加入判断
 ```js
@@ -418,15 +418,15 @@ Reflect.ownKeys({[Symbol()]:0,b:0,10:0,2:0,a:0})
 
 ## 九、箭头函数
 匿名函数使用的；
-1、箭头函数要先定义后调用，调用时不能放到箭头函数的前面；
+1. 箭头函数要先定义后调用，调用时不能放到箭头函数的前面；
     fn = () =>{console.log(1)}
-2、箭头函数不能new实例化，会报错：fn is not constractor;
-3、箭头函数中的形参只有一个时，不需要小括号；
+2. 箭头函数不能new实例化，会报错：fn is not constractor;
+3. 箭头函数中的形参只有一个时，不需要小括号；
     fn=x=>{console.log(x)}；
-4、箭头函数体只有一句代码时，可以不写{}，但要注意这一句代码的结果会作为返回值返回出去,
+4. 箭头函数体只有一句代码时，可以不写{}，但要注意这一句代码的结果会作为返回值返回出去,
     fn = x => x;    默认被使用return返回；需要console.log打印；
-5、如果箭头函数体有多条语句，则要写{}，若有返回值时，则要使用return 明确返回出去
-6、箭头函数的this指向外层函数；
+5. 如果箭头函数体有多条语句，则要写{}，若有返回值时，则要使用return 明确返回出去
+6. 箭头函数的this指向外层函数；
 
 函数默认值：
 es6提供了函数默认值的设置语法；
@@ -444,8 +444,8 @@ function fn(x,y,c=10){};
 
 对象中的this：
 对象内部方法的this指向调用这些方法的对象；
-1、函数的定义位置不影响其this指向，this指向只和调用函数的对象有关；
-2、多层嵌套的对象，内部方法的this指向离被调用函数最近的对象（window也是对象，其内部对象调用方法的this指向内部对象，而非window）；
+1. 函数的定义位置不影响其this指向，this指向只和调用函数的对象有关；
+2. 多层嵌套的对象，内部方法的this指向离被调用函数最近的对象（window也是对象，其内部对象调用方法的this指向内部对象，而非window）；
 ```js
 //1
 var o = {
@@ -500,8 +500,8 @@ dom事件处理函数中的this
 当函数被当做监听事件处理函数时，this指向触发该事件的元素（针对于addEventListener）；
 
 内联事件：
-1、当代码被内联处理函数调用时，它的this指向监听器所在的dom元素；
-2、当代码被包括在函数内部的执行时，其this指向等同于函数直接被调用；
+1. 当代码被内联处理函数调用时，它的this指向监听器所在的dom元素；
+2. 当代码被包括在函数内部的执行时，其this指向等同于函数直接被调用；
 
 定时器的this
 对于延时函数内部的回调函数的this指向全局对象window（当然我们可以通过bind方法改变其内部函数的this指向）
@@ -520,8 +520,8 @@ var p = new Person();//3秒后返回构造函数新生成的对象 Person{...}
 
 箭头函数中的this
 由于箭头函数不绑定this，它会捕获其所在（定义的位置） 上下文的this值，作为自己的this值；
-1、所以call()/apply()/bind()/方法对于箭头函数来说只是传入参数，对它的this毫无影响；
-2、考虑到this是词层面上的，严格模式中与this相关的规则都将被忽略；（可以忽略是否在严格模式下的影响）；
+1. 所以call()/apply()/bind()/方法对于箭头函数来说只是传入参数，对它的this毫无影响；
+2. 考虑到this是词层面上的，严格模式中与this相关的规则都将被忽略；（可以忽略是否在严格模式下的影响）；
 ```js
 function Stud(){
     this.a = 1;

@@ -1,36 +1,36 @@
 # lodash常用方法
 ## Array
-1、compact(arr)   去除所有的非假值元素
+1. compact(arr)   去除所有的非假值元素
 ```js
 _.compact([0, 1, false, 2, '', 3]);
 // => [1, 2, 3]
 ```
 
-2、difference 过滤数组值，返回新数组
+2. difference 过滤数组值，返回新数组
 ```js
 _.difference([3,2,1], [4,2]) 
 // => [3,1]
 ```
 
-3、map转对象：_.fromPairs(pairs)
+3. map转对象：_.fromPairs(pairs)
 ```js
 _.fromPairs([['fred', 30], ['barney', 40]]);
 // => { 'fred': 30, 'barney': 40 }
 ```
 
-4、map转对象：.zipObject
+4. map转对象：.zipObject
 ```js
 _.zipObject(['a','b'],[1,2])
 // => {'a':1,'b':2}
 ```
 
-5、_.zipObjectDeep()
+5. _.zipObjectDeep()
 ```js
 _.zipObjectDeep(['a.b[0].c','a.b[1].d'],[1,2])
 // => {'a':{'b':[{'c':1},{'d': 2}]}}
 ```
 
-6、flattenDeep(arr)   扁平化
+6. flattenDeep(arr)   扁平化
 ```js
 _.flattenDeep([1, [2, [3, [4]], 5]]);
 // => [1, 2, 3, 4, 5]
@@ -38,7 +38,8 @@ _.flattenDeep([1, [2, [3, [4]], 5]]);
 
 
 ## 集合
-1、find、every、filter、findLast、some
+1. find、every、filter、findLast、some
+
 以上函数用法雷同
 ```js
 var users = [
@@ -52,9 +53,9 @@ _.find(users, {age: 1})     // { 'user': 'pebbles', 'age': 1,  'active': true }
 _.find(users, o => o.age < 40)    // { 'user': 'barney',  'age': 36, 'active': true }
 ```
 
-2、each(obj,(value,key|index,obj))、eachRight；forEach的别名，可以循环对象
+2. each(obj,(value,key|index,obj))、eachRight；forEach的别名，可以循环对象
 
-3、includes(obj,value,[fromIndex=0])    可以查找对象，使用的是全等，不会类型转换；
+3. includes(obj,value,[fromIndex=0])    可以查找对象，使用的是全等，不会类型转换；
 ```js
 _.includes([1,2,3], 1) // true
 _.includes([1,2,3], 1,2) // false
@@ -62,7 +63,7 @@ _.includes('pebbles','eb') // true
 _.includes({'user':'fred','age':40}, 'fred') // true
 ```
 
-4、map
+4. map
 ```js
 let obj = [
     {name: 'hh', age: 18},
@@ -71,7 +72,7 @@ let obj = [
 _.map(obj,'name') // ['hh','hen']
 ```
 
-5、orderBy
+5. orderBy
 ```js
 var users = [
   { 'user': 'fred',   'age': 48 },
@@ -88,7 +89,8 @@ _.orderBy(users, ['user', 'age'], ['asc', 'desc'])  // asc为升序,desc为降�
  {"user":"fred","age":40}]
 ```
 
-6、partition
+6. partition
+
 相当于filter，返回一个分成两组的数组，第一组为查找到为true的所有项，第二组为false的所有项
 ```js
 var users = [
@@ -110,14 +112,14 @@ _.partition(users, 'active');
 ```
 
 ## 比较
-1、_.isEqual  执行深比较确定两者值是否相等，不支持函数和DOM节点比较
+1. _.isEqual  执行深比较确定两者值是否相等，不支持函数和DOM节点比较
 ```js
 let obj = {a:'1'}
 let obj2 = {a: '1'}
 _.isEqual(obj, obj2) // true
 ```
 
-2、isEqualWith(value,other,[customizer])  接收定制检测方法
+2. isEqualWith(value,other,[customizer])  接收定制检测方法
 ```js
 function isGreeting(value) {
   return /^h(?:i|ello)$/.test(value);
@@ -138,11 +140,12 @@ _.isEqualWith(array, other, customizer);
 ```
 
 ## Lang方法
-1、clone 浅拷贝
-2、cloneDeep 深拷贝
+1. clone 浅拷贝
+
+2. cloneDeep 深拷贝
 
 ## 工具函数
-1、flow
+1. flow
 传入一个数组，数组里面放其他函数，会依次以前一个函数结果传入到下一个去执行，this会绑定到创建函数，每个连续调用，传入的参数都是前一个函数的结果
 ```js
 const square = n => {

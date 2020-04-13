@@ -1,7 +1,7 @@
 # Webpack-05 抽离公共模块、懒加载
 ## 一、抽离公共模块
 如果a.js和b.js是公共的模块，在index.js和other.js文件里面都引入了，打包时则是打包两份，因此可以将a.js和b.js抽离出来，只打包一份
-1、配置optimization
+1. 配置optimization
 ```js
 module.exports = {
     optimization: {

@@ -25,6 +25,7 @@ vscode快捷键
 	23. div*9{$}  出来9个div包含数字1-9;
 
 网页截图：ctrl+shift+p capture full size screenshot
+
 切换屏幕：alt+ctrl+方向键
 
 ## vscode常用插件
@@ -63,20 +64,27 @@ vscode快捷键
 
 ## 自动补齐node代码：
 npm install -g typings
+
 typings install dt~node --global --save
+
 typings install dt~express --global
+
 typings install dt~lodash --global
+
 创建jsconfig.json空文件
 
 
 
 
+
 ## 自定义代码补齐snippets
-1、打开方法
+1. 打开方法
+
 （1）首选项==>用户代码片段
+
 （2）ctrl+shift+p 打开命令面板，输入snippets后回车
 
-2、使用方法
+2. 使用方法
 ```json
 "html template": {
     "prefix": "vh",  //vh是使用时输入的代码
@@ -87,25 +95,30 @@ typings install dt~lodash --global
     "description": "htmls template"  //为提示内容;
 }
 ```
-3、符号介绍
+3. 符号介绍
 	* ${1:content}，代表第一个占位符，也可以直接$1；
 	* ${2:label}，代表第二个占位符，使用tab进行切换，以此类推
 	* $0，tab切换最后的位置；
 	* 使用$1content光标会到第一个去
 
 
-4、填写body内容规范
+4. 填写body内容规范
+
 （1）字符串间如果值里包含特殊字符需要 \ 进行转义
+
 （2）换行：\r或者\n
+
 （3）tab键制表符：\t
+
 （4）如果换行，需要加逗号；
+
 
 
 
 ## 添加右键vscode打开
 ![image](http://notecdn.heny.vip/images/VScode使用技巧-01.png)
-1、新建1.reg（一样要是reg后缀）
-2、找到VsCode安装目录，替换即可
+1. 新建1.reg（一样要是reg后缀）
+2. 找到VsCode安装目录，替换即可
 ```shell
 Windows Registry Editor Version 5.00
 
@@ -137,13 +150,17 @@ Windows Registry Editor Version 5.00
 Cmder添加右键： Cmder.exe /REGISTER ALL（需要管理员运行）
 
 ## Vs code格式化处理方案
-1、安装插件
+1. 安装插件
+
 （1）ESlint：javascript代码检测工具，可以配置每次保存时格式化
+
 （2）vetur：可以格式化html、标准css，标准js（有分号、双引号那种）、vue文件
+
 （3）Prettier-code formatter：只关注格式化，没有eslint检查语法能力
+
 （4）Manta's Stylus Supremacy：格式化stylus插件（不用就不装），因为vetur会把css格式化有分号、大括号那种，此插件可以格式化成stylus风格
 
-2、配置vscode，在文件-》首选项-》设置，点击右上角的打开json
+2. 配置vscode，在文件-》首选项-》设置，点击右上角的打开json
 ```json
 {
      // vscode默认启用了根据文件类型自动设置tabsize的选项
@@ -185,12 +202,14 @@ Cmder添加右键： Cmder.exe /REGISTER ALL（需要管理员运行）
 
 ## 解决'-'分隔符不能双击选中
 添加到setting中；
+
 ```json
 "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
 ```
 
 ## 配置path autocomplete插件
 配置该插件必须安装插件：path autocomplete
+
 可以自动补齐引入目录，当使用项目别名引入文件时，也可以自动补齐了，也可以专门针对项目设置，添加到项目.vscode/setting.json文件里
 ```json
 "path-autocomplete.pathMappings": {
@@ -199,13 +218,13 @@ Cmder添加右键： Cmder.exe /REGISTER ALL（需要管理员运行）
 ```
 
 ## VsCode直接使用debugger
-1、场景：在浏览器debugger时，当查看到某个文件的错误时，需要修改文件，就得到编辑器里面找到该文件，比较鸡肋，现在使用vscode的debugger时，则是直接往文件里面跳转，可以直接方便的进行修改
+1. 场景：在浏览器debugger时，当查看到某个文件的错误时，需要修改文件，就得到编辑器里面找到该文件，比较鸡肋，现在使用vscode的debugger时，则是直接往文件里面跳转，可以直接方便的进行修改
 
-2、好处：在编辑器里面直接调试，也可以明显的显示每个变量当前值，更方便操作
+2. 好处：在编辑器里面直接调试，也可以明显的显示每个变量当前值，更方便操作
 
-3、安装软件：Debugger for Chrome插件
+3. 安装软件：Debugger for Chrome插件
 
-4、配置vscode  debugger
+4. 配置vscode  debugger
 ```json
 {
   "version": "0.2.0",
@@ -244,12 +263,16 @@ Cmder添加右键： Cmder.exe /REGISTER ALL（需要管理员运行）
 
 
 
-5、项目断点
+5. 项目断点
+
 可以直接在文件右侧点击红色小点，也可以直接填写debugger，打完断点就可以按f5开始了，操作和chrome的断点操作是一样的；
 ![image](http://notecdn.heny.vip/images/VScode使用技巧-03.png)
 
 
 命令行操作
+
 安装之后可以在cmd终端使用code命令，常用命令如下：
+
 code ./   以当前目录在vscode中打开
+
 code      文件名   快速开始当前该文件编辑，如果是新文件按ctrl+s自动保存在目录上；

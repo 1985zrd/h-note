@@ -2,7 +2,9 @@
 ## 目录
 
 在src，创建目录
+
 assets、common、components、router
+
 如果需要引入api，可以在common文件下面创建一个api的文件；
 
 表单验证框架：rc-form，用法可以直接参照antd的form表单，使用方法一致；
@@ -10,13 +12,13 @@ assets、common、components、router
 
 ## 在react中使用stylus
 
-1、打开git bash，依次运行以下代码
+1. 打开git bash，依次运行以下代码
 ```bash
 git init
 git add .
 git common -m 'description'
 ```
-2、打开cmd运行：
+2. 打开cmd运行：
 ```cmd
 npm run eject
 yarn add stylus stylus-loader
@@ -24,7 +26,8 @@ yarn add stylus stylus-loader
 注意：此时重启，可能会报错，删除node_nodules，执行yarn install重新安装所有的包重启即可；
 
 
-3、到项目文件夹下，找到config --> webpack.config.js
+3. 到项目文件夹下，找到config --> webpack.config.js
+
 （1）在320行左右，添加以下代码
 ```js
 oneOf: [
@@ -44,17 +47,17 @@ oneOf: [
 
 ## 搭建redux + persist数据持久化 + redux-devtools扩展查看;
 
-1、下载安装：
+1. 下载安装：
 `npm i redux react-redux redux-persist redux-devtools-extension redux-thunk`
 
-2、创建store/reducers/index.js
+2. 创建store/reducers/index.js
 ```js
 import { combineReducers } from 'redux'
 export default combineReducers({
     /*...*/
 })
 ```
-3、创建store/index.js
+3. 创建store/index.js
 ```js
 import { applyMiddleware, createStore } from 'redux'
 import rootReducer from './reducers' //自动获取index.js
@@ -81,10 +84,11 @@ export const store = createStore(
 )
 export const persistor = persistStore(store)
 ```
-4、创建store/actions，store/action-types.js
+4. 创建store/actions，store/action-types.js
+
 在actions文件夹里面，导出触发的方法，在action-types.js里面管理变量名；
 
-5、在src/index.js文件配置
+5. 在src/index.js文件配置
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -107,11 +111,11 @@ ReactDOM.render(
 
 ## 引入图片的两种方式
 
-1、使用import引入
+1. 使用import引入
 ```js
 import IMG from '../...'
 ```
-2、在状态机引入
+2. 在状态机引入
 ```js
 state = {
     img: require('....')
@@ -126,10 +130,12 @@ state = {
 
 ## 在脚手架中修改端口号
 
-1、node_model ==> react-script ==> script ==> start.js 
+1. node_model ==> react-script ==> script ==> start.js 
+
 找到DEFAULT_PORT，并修改即可，修改了服务器需要进行重启；
 
-2、在启动时直接修改端口启动
+2. 在启动时直接修改端口启动
+
 在package.json里面修改script-->start
 ```json
 "scripts":{
@@ -137,16 +143,17 @@ state = {
 }
 ```
 &    为并行执行，同时执行，
+
 && 为继发执行，前一个成功才执行后一个
 
-3、直接在config.overrides.js修改
+3. 直接在config.overrides.js修改
 ```js
 process.env.PORT = 3006
 ```
 
 
 ## 给React挂载内容，方便组件不引入直接调用
-1、index.js，修改入口文件
+1. index.js，修改入口文件
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -154,7 +161,7 @@ import App from './App'
 React.message = 'hhhh' // 直接使用React添加
 ReactDOM.render(<App/>,document.getElementById('root'))
 ```
-2、在组件中使用
+2. 在组件中使用
 ```js
 import React, {message} from 'react'
 export default ()=>{
@@ -164,13 +171,15 @@ export default ()=>{
 
 ## 配置webpack
 
-1、 安装
+1.  安装
 
 `yarn add react-app-rewired customize-cra -D`
+
 由于customize-cra依赖react-app-rewired，所以需要安装两个插件
+
 官网： https://github.com/arackaf/customize-cra
 
-2、修改package.json
+2. 修改package.json
 ```json
 "scripts": { 
     "start": "react-app-rewired start", 
@@ -179,12 +188,12 @@ export default ()=>{
     "eject": "react-scripts eject" 
 },
 ```
-3、在项目根目录新建：config-overrides.js
+3. 在项目根目录新建：config-overrides.js
 ```js
 const { override } = require('customize-cra'); 
 module.exports = {};
 ```
-4、添加配置，跨域设置、增加less支持、px转rem、ant-design-mobile按需加载、打包压缩js和css、关闭console
+4. 添加配置，跨域设置、增加less支持、px转rem、ant-design-mobile按需加载、打包压缩js和css、关闭console
 ```js
 // 安装less less-loader
 yarn add less less-loader -D
@@ -276,7 +285,7 @@ module.exports = {
 }
 ```
 
-5、添加webpack其他插件
+5. 添加webpack其他插件
 ```js
 const { override, addWebpackPlugin } = require('customize-cra'); 
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
@@ -285,7 +294,7 @@ module.exports = override(
     addWebpackPlugin(new AntdDayjsWebpackPlugin())
 );
 ```
-6、自定义override的函数
+6. 自定义override的函数
 ```js
 const curtomFn = () => config => {
     ...
@@ -300,7 +309,8 @@ module.exports = override(
     }
 )
 ```
-7、配置flex布局在低版本手机不兼容
+7. 配置flex布局在低版本手机不兼容
+
 直接修改package.json文件
 ```json
 "browserslist": {
@@ -312,8 +322,10 @@ module.exports = override(
     "last 3 iOS versions"
 }
 ```
-8、如果要使用类的装饰器decorators
+8. 如果要使用类的装饰器decorators
+
 由于是实验性功能，官方不建议使用，因此需要手动开启
+
 npm i @babel/plugin-proposal-decorators
 ```js
 const { override, fixBabelImports, addLessLoader, addDecoratorsLegacy } = require('customize-cra'); 
@@ -324,10 +336,10 @@ module.exports = override(
 
 ## 代理src
 
-1、安装插件
+1. 安装插件
 `yarn add react-app-rewired customize-cra`
-2、在项目根目录创建一个config-overrides.js，用于修改默认配置；
-3、代理文件路径
+2. 在项目根目录创建一个config-overrides.js，用于修改默认配置；
+3. 代理文件路径
 ```js
 const { override, addWebpackAlias } = require('customize-cra')
 const path = require('path')
@@ -344,9 +356,9 @@ module.exports = override(
 
 打包
 
-1、在package.json配置文件中添加一句 "homepage": ".",
+1. 在package.json配置文件中添加一句 "homepage": ".",
 ![image](http://notecdn.heny.vip/images/react-08 React搭建项目-02.png)
-2、之后运行npm run build；
+2. 之后运行npm run build；
 
 
 
@@ -373,7 +385,7 @@ footer={[
 ```
 
 ## react百度埋点技巧
-1、创建utils/tracking.js
+1. 创建utils/tracking.js
 ```js
 import { getPreHost } from '@/basic/utils';
 // 判断环境, 生产环境才统计
@@ -390,11 +402,11 @@ if (getPreHost() === 'prod') {
 }
 ```
 
-2、创建完成在index.js手动引入
+2. 创建完成在index.js手动引入
 ```js
 require('src/utils/tracking')
 ```
-3、创建utils/index ，添加节流函数和百度统计方法
+3. 创建utils/index ，添加节流函数和百度统计方法
 ```js
 /**
 * 节流函数
@@ -425,7 +437,7 @@ export function trackData() {
 }
 ```
 
-4、创建Tracking.js组件
+4. 创建Tracking.js组件
 ```js
 import React from 'react'
 import {withRouter} from 'react-router-dom'
@@ -442,7 +454,7 @@ class Tracking extends React.Component {
 }
 export default withRouter(Tracking);
 ```
-5、在index创建App.js时，使用Tracking.js组件进行包裹，所有代码写在该组件下面
+5. 在index创建App.js时，使用Tracking.js组件进行包裹，所有代码写在该组件下面
 ```js
 import Tracking from './Tracking'
 class App extends React.Component {
@@ -455,7 +467,7 @@ class App extends React.Component {
     }
 }
 ```
-6、埋点示例
+6. 埋点示例
 ```js
 import {trackData} from 'utils'
 export default function (){

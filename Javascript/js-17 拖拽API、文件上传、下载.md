@@ -1,6 +1,6 @@
 # js-17 拖拽API、文件上传、下载
 ## 一、接收input上传事件
-1、使用input标签的type类型为file；
+1. 使用input标签的type类型为file；
 ```js
 <input type='file' id='files' multiple />
 
@@ -9,23 +9,26 @@ if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
   throw new Error("当前浏览器对FileAPI的支持不完善");
 }
 ```
-2、监听文件的选择，选择文件之后会触发change事件，input事件file保存在event.target.files对象里面，是一个伪数组；
+2. 监听文件的选择，选择文件之后会触发change事件，input事件file保存在event.target.files对象里面，是一个伪数组；
 ```js
 files.addEventListener('change', function (e) {
     const { files } = event.target
     console.log('上传的文件是', files)
 }, false)
 ```
-3、由于没有使用form表单，上传的事件是需要创建一个formData事件，并将文件添加进去，就可以发送到后端了；
+3. 由于没有使用form表单，上传的事件是需要创建一个formData事件，并将文件添加进去，就可以发送到后端了；
 注意：使用formdata上传后台不需要
 ```js
 let fd = new FormData()
 fd.append('files', file)
 // 将fd对象发送给后端就可以了
 ```
-4、获取formData的值
+4. 获取formData的值
+
 方法一：可以直接使用[...formdata]可以获取到二维数组，查看formdata的值;
+
 方法二：使用formdata.keys()返回一个iterator对象, 并使用for of循环遍历就可以了
+
         使用formData里面的getAll或get方法获取, get获取的是一个，getAll获取全部
 ```js
 let arr = fd.keys()
@@ -33,7 +36,8 @@ for(var props of arr){
     fd.getAll(props)
 }
 ```
-5、formData添加数组
+5. formData添加数组
+
 直接将数组放进formData里面将会是[object ..]，需要循环添加
 ```js
 let arr = [1,2]
@@ -43,19 +47,32 @@ arr.forEach(i => {
 })
 ```
 ## 二、文件对象-FileReader读取文件
-1、回调方法：
-onload：文件读取完成
-onabort：中断时触发
-onerror：出错时触发
-onloadstart：文件上传开始
-onloadend：读取结束时，不论成功或失败
-onprogress：读取中
-2、读取操作：传入参数是file对象；
-readAsArrayBuffer
-readAsDataURL：从文件读取URL数据
-readAsBinaryString：将文件读取为二进制码
-readAsText：从文件读取字符串
-abort()：终止读取操作
+1. 回调方法：
+
+`onload`：文件读取完成
+
+`onabort`：中断时触发
+
+`onerror`：出错时触发
+
+`onloadstart`：文件上传开始
+
+`onloadend`：读取结束时，不论成功或失败
+
+`onprogress`：读取中
+
+2. 读取操作：传入参数是file对象；
+
+`readAsArrayBuffer`
+
+`readAsDataURL`：从文件读取URL数据
+
+`readAsBinaryString`：将文件读取为二进制码
+
+`readAsText`：从文件读取字符串
+
+`abort()`：终止读取操作
+
 ```js
 // 读取图片并显示到页面上
 files.addEventListener('change', function (e) {
@@ -83,8 +100,10 @@ files.addEventListener('change', function (e) {
     }
 }, false)
 ```
-3、大文件分片读取
+3. 大文件分片读取
+
 由于file是blob的一个特例，blob上有一个slice方法，和字符串slice方法一样用法
+
 写好hello world内容的txt文件，截取hello五个字符，代码中每个英文字母占1个字节，通过file.size可以获取到所有的字节
 ```js
 files.onchange = function (e) {
@@ -101,6 +120,7 @@ files.onchange = function (e) {
 
 ## 三、拖拽上传
 对于input标签，监听onchange事件，存在e.target.files上面；
+
 对于拖拽事件，fileList存放在拖拽事件的回调函数e.dataTransfer.files上面
 ```js
 // 使得drop事件可以触发
@@ -128,48 +148,68 @@ upload.addEventListener('paste', function(e){
 ```
 
 ## 五、拖拽API
-1、属性
-draggable  将div设置为 draggable=true 可以被拖拽，img和a标签不加这个属性就可以拖拉，一般可以给这两个标签设置false；
+1. 属性
+
+`draggable`  将div设置为 draggable=true 可以被拖拽，img和a标签不加这个属性就可以拖拉，一般可以给这两个标签设置false；
 ```js
 <div draggable='true'>此区域可拖拉</div>
 ```
-2、拖拽事件
-（1）被拖动的元素事件
-dragstart   开始拖动时触发
-drag   拖动过程中持续触发
-dragend  拖动结束触发
-（2）目标元素事件
-dragenter   进入目标时触发，该事件会冒泡，必须阻止冒泡和默认行为；
-dragover   在目标区域拖拽持续触发，若想被拖拉的节点放进来，必须阻止默认动作 event.preventDefault()，防止拖拉效果被重置；
-dragleave  离开目标时触发
-drop   释放目标时触发，在该节点阻止默认行为event.preventDefault()，比如：打开其他链接；
+2. 拖拽事件
 
-3、dataTransfer对象
+（1）被拖动的元素事件
+
+`dragstart`   开始拖动时触发
+
+`drag`   拖动过程中持续触发
+
+`dragend`  拖动结束触发
+
+（2）目标元素事件
+
+`dragenter`   进入目标时触发，该事件会冒泡，必须阻止冒泡和默认行为；
+
+`dragover`   在目标区域拖拽持续触发，若想被拖拉的节点放进来，必须阻止默认动作 event.preventDefault()，防止拖拉效果被重置；
+
+`dragleave`  离开目标时触发
+
+`drop`   释放目标时触发，在该节点阻止默认行为event.preventDefault()，比如：打开其他链接；
+
+
+3. dataTransfer对象
+
 （1）主要用来读写需要传递的数据
+
 e.dataTransfer.setData('传输名',传输对象) 用于提交传输对象，可以在dragstart事件上面添加
+
 e.dataTransfer.getData('传输名') 用于获取传输对象，可以在目标上面的ondrop事件添加
+
 e.dataTransfer.files 获取被drop的外部文件
 
 
 
+
 ## 六、下载
-1、创建a标签，之后给a标签添加download属性；
+1. 创建a标签，之后给a标签添加download属性；
 ```js
 <a href='./1.docs' download='文件.docs' >下载</a>
 ```
 注意：
+
 如果是txt文件和img文件，则谷歌浏览器会直接打开，而不是下载
+
 如果是服务器方式运行网页，则无论是img还是txt都会直接进行下载操作
-2、后端下载链接如果提示非法下载，需要修改content-type
+
+2. 后端下载链接如果提示非法下载，需要修改content-type
+
 https://blog.csdn.net/topc2000/article/details/79793057
 
 
 ## 七、复制
 官网： https://github.com/zenorocha/clipboard.js
-1、安装：
+1. 安装：
 npm i clipboard
 
-2、使用方法
+2. 使用方法
 （1）复制input标签里面的内容
 ```js
 <input id='foo' value='hhhhhhh'/>
@@ -189,7 +229,7 @@ let clipboard = Clipboard('.li')
 ```js
 <input data-clipboard-action='cut' value='hhhhhhh' />
 ```
-3、事件，复制之后的回调函数
+3. 事件，复制之后的回调函数
 ```js
 var clipboard = new ClipboardJS('.btn');
 
@@ -207,7 +247,7 @@ clipboard.on('error', function(e) {
 });
 ```
 
-4、修改默认方法
+4. 修改默认方法
 ```js
 new ClipboardJS('.btn', {
     target: function(trigger) {
@@ -218,7 +258,7 @@ new ClipboardJS('.btn', {
     }
 });
 ```
-5、如果是单页面应用，需要清理创建的事件，单页面需要写在生命周期触发
+5. 如果是单页面应用，需要清理创建的事件，单页面需要写在生命周期触发
 ```js
 var clipboard = new ClipboardJS('.btn');
 clipboard.destroy();
@@ -315,13 +355,15 @@ function compressionImg(file, callback) {
 
 export default compressionImg;
 ```
-2、二种方案
+2. 二种方案
+
 github地址： https://github.com/WangYuLue/image-conversion（支持按照指定kb来压缩，也支持按照质量压缩）
 
 
 
 ## 九、图片预览插件
 教程： https://www.cnblogs.com/Jimc/p/10132177.html
+
 官网： https://github.com/fengyuanchen/viewerjs
 
 
