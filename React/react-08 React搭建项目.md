@@ -351,13 +351,13 @@ module.exports = override(
     })  // 将常用的几个文件夹挂载;
 )
 ```
-![image](http://notecdn.heny.vip/images/react-08 React搭建项目-01.png)
+![image](http://notecdn.heny.vip/images/react-08_React搭建项目-01.png)
 
 
 打包
 
 1. 在package.json配置文件中添加一句 "homepage": ".",
-![image](http://notecdn.heny.vip/images/react-08 React搭建项目-02.png)
+![image](http://notecdn.heny.vip/images/react-08_React搭建项目-02.png)
 2. 之后运行npm run build；
 
 

@@ -459,7 +459,7 @@ ReactDOM.render(
     document.getElementById('root'));
 ```
 5. 接下来打开浏览器调试工具，就可以查看到浏览器缓存的数据
-![image](http://notecdn.heny.vip/images/react-04 其他Api，动画-03.png)
+![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-03.png)
 
 
 

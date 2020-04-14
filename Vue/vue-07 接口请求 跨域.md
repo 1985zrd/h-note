@@ -123,7 +123,7 @@ export const getData = (url,data={},method='get')=>{
 
 * 在需要请求数据的地方引入getData即可
 
-![image](http://notecdn.heny.vip/images/vue-07%20%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%20%E8%B7%A8%E5%9F%9F-01.png)
+![image](http://notecdn.heny.vip/images/vue-07_接口请求_跨域-01.png)
 
 
 

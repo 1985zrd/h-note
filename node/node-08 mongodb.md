@@ -40,7 +40,7 @@ Nosql当中
 
 安装时，有一个东西不能勾选，否则会一直卡住；
 
-![image](http://notecdn.heny.vip/images/node-08 mongodb-01.png)
+![image](http://notecdn.heny.vip/images/node-08_mongodb-01.png)
 
 安装之后添加环境；
 

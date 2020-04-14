@@ -18,6 +18,8 @@ getCurrentPages()  获取当前页面路由；
 
 注意：调用页面路由带的参数可以在onLoad中获取；
 
+
+
 ## 二、界面
 1. wx.showToast({})   显示消息提示框，会自动消失
 * title： 提示的内容
@@ -76,7 +78,9 @@ wx.clearStorageSync()  同步清除缓存
 wx.clearStorage();
 
 
+
 ## 四、请求网络
+
 1. wx.request()    微信请求需要开启详情里面的不校验开启，上线需要在后台开发设置添加合法域名，线上请求地址必须是https；
 * url： 请求地址；
 * data： 一个对象，将需要传入的参数写入，也可以直接在url后面填写
@@ -97,5 +101,8 @@ if(arr){
 ```
 （2）新建一个目录，放js文件，将json数据复制到一个变量上，将这个变量导出；之后在需要的目录下引入该文件；引入必须填写相对路径；
 
+
+
 ## 五、微信分享
+
 1. 链接：https://qydev.weixin.qq.com/wiki/index.php?title=%E5%BE%AE%E4%BF%A1JS-SDK%E6%8E%A5%E5%8F%A3&oldid=1667
