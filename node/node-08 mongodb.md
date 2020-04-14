@@ -229,7 +229,7 @@ ObjectId()；是mongodb新增的一种类型；直接运行会生成一个新的
 
 
 ## 六、其他方法
-1. db.<collection>.drop()；删除集合(表)；
+1. `db.<collection>.drop()`；删除集合(表)；
 remove只会清空集合里面的数据，不会删除集合；
 
 2. 优化mongodb：

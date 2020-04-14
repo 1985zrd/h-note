@@ -22,7 +22,7 @@ function getFile (dirname) {
 const webItems = [
 	{text:'React-Native',link:'/React-Native/'},
 	{text:'es6',link: '/es6/'},
-	{text:'html5. css3',link:'/html5. css3/'},
+	{text:'html5、css3',link:'/html5、css3/'},
 	{text:'Javascript',link:'/Javascript/'},
 	{text:'jQuery',link:'/jQuery/'},
 	{text:'React',link:'/React/'},
@@ -59,12 +59,13 @@ module.exports = {
 			['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
 			['meta', { name: 'msapplication-TileColor', content: '#000000' }]
 		],
-		plugins: {
-			'@vuepress/pwa': {
+		plugins:[
+			['@vuepress/pwa', {
 				serviceWorker: true,
 				updatePopup: true
-			},
-			'@vssue/vuepress-plugin-vssue': {
+				}
+			],
+			['@vssue/vuepress-plugin-vssue', {
 				// 设置 `platform` 而不是 `api`
 				platform: 'github',
 				locale: 'zh-CN',
@@ -74,8 +75,10 @@ module.exports = {
 				repo: 'h-note',
 				clientId: 'c46829deab38f2de6c89',
 				clientSecret: '76a940144230049a7533df93f56940a20d400b22',
-			},
-		},
+				}
+			],
+			require('./copy')
+		],
     themeConfig:{
 			repo: 'heny/h-note',
 			repoLabel: 'GitHub',

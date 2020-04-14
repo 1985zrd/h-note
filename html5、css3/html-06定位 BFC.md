@@ -12,7 +12,7 @@
 
 ## 二、提升层级
 z-index:改变元素层级，只用在加了定位的元素上，数值越高层级越大，正常文档流层级是0。
- 
+
 
 
 ## 三、绝对定位：position:absolute;
@@ -47,10 +47,10 @@ position: sticky；
  
 
 ## 六、 脱离文档流的属性
-1.float:left;
-2.float:right;
-3.position:absolute;
-4.position:fixed;
+1. float:left;
+2. float:right;
+3. position:absolute;
+4. position:fixed;
 
 浮动，脱离文档流但是不脱离文本流。
 

@@ -20,7 +20,7 @@ Switch
 
 （2）Switch是唯一的，只呈现一条路由，确保该标签下面的路由标签始终渲染一个路由
 
-（3）Switch的所有子元素只能是<Route>或<Redirect>
+（3）Switch的所有子元素只能是`<Route>`或`<Redirect>`
 
 ```js
 <Switch>

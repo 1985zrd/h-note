@@ -65,6 +65,7 @@ console.log(typeof age)  // 'undefined'
 注意：判断undefined == null时，结果为true，因为undefined值是派生自null值的，无论在什么情况下都没有必要把一个变量的值显式地设置为undefined；
 
 面试题：
+
 （1）undefined和null的区别：
 
 null表示值为空，但是是object对象，
@@ -280,8 +281,8 @@ function (); 事件处理函数；空格后面可以设置函数名；
 
 调用函数：函数名()；加小括号是直接执行，事件不需要加小括号；
 
-
 **总结:**
+
 基本数据类型：Number，String，Boolean，Undefined，Null
 
 引用数据类型：Object，Array，Function，RegExp，Date，Error
@@ -338,9 +339,12 @@ const types = Function.prototype.call.bind(Object.prototype.toString)
 // 这个方法始终将Object.prototype.toString作为函数传递给call,等价于:Object.prototype.toString.call();
 ```
 **理解:**
-    1. Object.prototype.toString.call, call前面的代码就是this指向;
-    2. 因为bind是返回绑定的函数, 因此将toString函数放进去作为第一个参数;
-    3. 由于call需要一个方法来调用, 因此将Function.prototype作为前缀;
+
+1. Object.prototype.toString.call, call前面的代码就是this指向;
+2. 因为bind是返回绑定的函数, 因此将toString函数放进去作为第一个参数;
+3. 由于call需要一个方法来调用, 因此将Function.prototype作为前缀;
+
+
 
 改造:
 ```js
@@ -449,9 +453,9 @@ console.log(obj1.__proto__ === obj2.__proto__) //true
 js赋值运算符是从右往左的，var a = 1，把1的值赋给a；'.'是优先级最高的运算符；
 
 ### 数字运算符：
-+ - * / %(取余) ++(自增)   --(自减)
+\+ \- \* \/ \%(取余) ++(自增)   --(自减)
 
-+ 号遇到字符串变成拼接；
+\+ 号遇到字符串变成拼接；
 
 ++(--) 在前，先运算，后赋值；
 
@@ -471,7 +475,7 @@ b= 5;
 ```
 
 ### 赋值运算符：
-=     +=     -=    *=     /=    %=
+=     +=     -=    \*=     /=    %=
 
 a+=2 为 a=a+2;
 
@@ -481,7 +485,7 @@ a+=2 为 a=a+2;
 
 
 ### 比较运算符：
->  >=  <  <=  !=(不等于)     !==(绝对不等于)   ==(等于)  ===(绝对等于)
+\>  \>=  <  <=  !=(不等于)     !==(绝对不等于)   ==(等于)  ===(绝对等于)
 
 '!='   不等于只看值是否相同，不看类型
 

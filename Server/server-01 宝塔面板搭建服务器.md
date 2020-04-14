@@ -58,7 +58,10 @@ winscp | FileZilla： 连接ftp的；
 ```
 ![image](http://notecdn.heny.vip/images/server-01 宝塔面板搭建服务器-07.png)
 
+
+
 ## 七、nginx常用配置
+
 ```sh
 server {
     listen 80;
@@ -112,6 +115,10 @@ server {
     }
 }
 ```
+
+nginx：try_file常用配置：https://www.hi-linux.com/posts/53878.html
+
+总结笔记：http://jsanntq.cn/2020/04/07/Nginx/
 
 
 

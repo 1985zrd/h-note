@@ -73,12 +73,13 @@ vue init webpack mydemo
 v-once、v-text、v-html、v-bind、v-on、v-if、v-else-if、v-else、v-show、v-for、v-model、computed、watch、Vue.set、Vue.component、keep-alive、slot、Vue.filter
 
 * 事件修饰符
-.stop、prevent、.capture、.self、.once、
-.enter、.tab、.space、.delete、.up、.down、enter.left、.right、
-.ctrl、.alt、.shift、.meta、
-click.left、.middle、.right
-.lazy、.number、.trim
-$refs、$event
+
+  .stop、prevent、.capture、.self、.once、
+  .enter、.tab、.space、.delete、.up、.down、enter.left、.right、
+  .ctrl、.alt、.shift、.meta、
+  click.left、.middle、.right
+  .lazy、.number、.trim
+  $refs、$event
 
 * 八种组件通讯
 1. props / $emit
@@ -91,15 +92,18 @@ $refs、$event
 8. $attrs、$listeners
 
 * 自定义指令
-directives、bind、unbind、inserted、update
+
+  directives、bind、unbind、inserted、update
 
 * 过渡
-v-enter-active、v-leave-active、v-enter、v-leave
+
+  v-enter-active、v-leave-active、v-enter、v-leave
 
 before-enter、enter、after-enter、enter-cancelled
 
 * 生命周期
-beforeCreate、created
+
+  beforeCreate、created
 
 beforeMount、mounted
 
@@ -113,7 +117,8 @@ errorCaptured、serverPrefetch
 
 
 * 路由
-router-link、router-view、active-class、this.$router.push/replace/go、
+
+  router-link、router-view、active-class、this.$router.push/replace/go、
 
 beforeEach、afterEach
 
@@ -131,10 +136,12 @@ create-react-app demo
 ReactDOM.render()、htmlFor、className、defaultValue、this.change、this.change.bind(this,'')、()=>this.change('')、this.setState
 
 * 生命周期
-constructor、componentWillMount、render()、componentDidMount、shouldcomponentUpdate、componentWillUpdate、componentDidUpdate
+
+  constructor、componentWillMount、render()、componentDidMount、shouldcomponentUpdate、componentWillUpdate、componentDidUpdate
 
 * 路由
-Router、NavLink、activeClassName
+
+  Router、NavLink、activeClassName
 
 引入：Switch、Route、Redirect  from react-router-dom
 
@@ -150,20 +157,24 @@ ng new mydemo
 []='img'、*ngFor、*ngIf、(click)=add()、[ngStyle]、[(ngModel)]、
 
 * 路由
-router-outlet、routerLinkActive、
+
+  router-outlet、routerLinkActive、
 
 
 ## 小程序
 bind、catch、capture-bind、wx:if、wx:elif、wx:else、wx:for、scroll-view、swiper、icon、button、image、view、text、
 
 * 生命周期
-onLoad、onShow、onReady、onHide、onUnload
+
+  onLoad、onShow、onReady、onHide、onUnload
 
 * 普通事件
-onPullDownRefresh、onReachBottom、onPageScroll、tap、touchstart、touchmove、touchcancel、touchend
+
+  onPullDownRefresh、onReachBottom、onPageScroll、tap、touchstart、touchmove、touchcancel、touchend
 
 * 常用的方法
-wx.navigateTo、wx.showToast、wx.showsModal、wx.showLoadding、wx.request、wx.setStroage、wx.getStorage、wx.removeStroage、wx.celarStorage
+
+  wx.navigateTo、wx.showToast、wx.showsModal、wx.showLoadding、wx.request、wx.setStroage、wx.getStorage、wx.removeStroage、wx.celarStorage
 
 
 

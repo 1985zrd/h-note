@@ -1,4 +1,14 @@
 {
+  "name": "h-note",
+  "keywords": [
+    "note", 
+    "h-note", 
+    "heny", 
+    "web", 
+    "javascript",
+    "前端学习圈"
+  ],
+  "author": "heny",
   "scripts": {
     "start": "vuepress dev .",
     "build": "vuepress build ."

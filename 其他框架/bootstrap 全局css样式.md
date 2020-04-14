@@ -94,7 +94,7 @@ p、li标签(段落)：设置了10px的底部margin；
 
 （1）可以使用.h1-h6的类，等同于h1-h6；
 
-（2）<small>标签被h标签包裹，作为h标签的副标题；
+（2）`<small>`标签被h标签包裹，作为h标签的副标题；
 
 ![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-04.png)
 
@@ -157,11 +157,11 @@ del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
 
 10. 内联代码
 
-（1）使用<code>标签包裹代码片段，自带样式，
+（1）使用`<code>`标签包裹代码片段，自带样式，
 ![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-10.png)
-（2）用户输入，使用<kbd>标签
+（2）用户输入，使用`<kbd>`标签
 ![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-11.png)
-（3）代码块：<pre>标签；
+（3）代码块：`<pre>`标签；
 ![image](http://notecdn.heny.vip/images/bootstrap_全局css样式-12.png)
 （4）程序输出
 使用samp标签，和普通p标签的对比：
@@ -199,7 +199,7 @@ del、s、ins、u、small，在bootstrap可以放心使用b、i标签；
 ## 六、表单
 1. 内联表单：form-inline，水平表单：form-horizontal（需要栅格布局）
 
-1. 表单组：<div class='form-group'>
+1. 表单组：`<div class='form-group'>`
 
 2. 表单需要给input添加类名：.form-control；设置了这个类名，宽度就是100%；
 

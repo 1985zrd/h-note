@@ -16,7 +16,10 @@ Object.defineProperty(window,'a',{
     get(){return +=val};
 })
 ```
+
+
 ## 找出字符串中连续出现最多的字符和个数;
+
 ```js
 'abcaakjbb' => {'a':2,'b':2}
 'acccbbajk' => {'c':3}
@@ -35,7 +38,10 @@ arr.forEach(item=>{
     obj[item] = obj[item] ? obj[item]+1 : 1
 })   // 可以拆分成对象数组; 
 ```
+
+
 ## ['1','2','3'].map(parseInt)    //值是什么，为什么
+
 parseInt()   传递两个参数，第一个为要转换的整数，第二个参数：一个介于2和36之间的整数，表示上述字符串的基数，默认为10，返回值是一个整数或NaN；
 上题转换之后，实际上是：
 ```js
@@ -53,6 +59,8 @@ parseInt('10',1) // 1进制 只允许解析0,因此NaN
 parseInt('10',2) // 2,满足条件,返回2
 parseInt('10',3) // 3,满足条件,返回3
 ```
+
+
 
 ## 用js实现一个无限累加的函数add
 
@@ -77,7 +85,10 @@ function add(a){
 }
 ```
 
+
+
 ## 写一个函数，输入一个数组a，找到里面是否存在三个不同的元素，使得a[i]+a[j]==a[k]，如果能找到输出true，找不到输出false
+
 举例：
 
 输入：var a1 = [1,5,10,25,9,17,100]   输出false
@@ -110,7 +121,11 @@ function fn (arr) {
 }
 ```
 
+
+
 ## 由 input 转换成 output
+
+```js
 let input = [
     { "id": "17", "caption": "颜色", "types": ["黑", "棕"] },
     { "id": "23", "caption": "材质", "types": ["牛皮"] },
@@ -124,6 +139,10 @@ let output = [
     { "17": "棕", "23": "牛皮", "24": "41" },
     { "17": "棕", "23": "牛皮", "24": "42" }
 ]
+```
+
+
+
 ```js
 function t(input){
     return input.reduce((ret,outterItem)=>{
@@ -147,7 +166,9 @@ function t(input){
 ```
 
 
+
 ## {1:222,2:333,5:444}放进一个12月份的数组里，没有的写null；
+
 ```js
 let obj = {1:222,2:333,5:444}
 function fn(obj){
@@ -158,7 +179,9 @@ function fn(obj){
 ```
 
 
+
 ## 深拷贝原理：（数组，对象都可用）
+
 ```js
 function deepCopy( obj ){
     if( Object.prototype.toString.call( obj ) === '[object Object]' ){
@@ -180,7 +203,9 @@ function deepCopy( obj ){
 ```
 
 
+
 ## Proxy与Object.defineProperty的优劣对比?
+
 Proxy的优势如下:
 * Proxy可以直接监听对象而非属性
 * Proxy可以直接监听数组的变化
@@ -195,7 +220,9 @@ Object.defineProperty的优势如下:
 
 
 
+
 ## 从url输入到页面展现到底发生了什么
+
 * DNS解析，将域名解析成ip地址
 * TCP连接，TCP三次握手
 * 发送HTTP请求

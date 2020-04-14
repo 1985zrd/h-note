@@ -18,13 +18,16 @@ ssh-keygen -t rsa -C 'heny@qq.com'   // 回车之后记得根据提示按下yes
 ```
 注意：如果提示ssh-keygen不是内部命令或者其他的报错，则需要以下配置
 
-    找到git/usr/bin目录下的ssh-keygen.exe，之后配置到Path环境变量;
+找到git/usr/bin目录下的ssh-keygen.exe，之后配置到Path环境变量;
 
 ![image-20200412204637296](http://notecdn.heny.vip/images/git-01.png)
 
 3. 生成密钥之后就可以去官网绑定了
 
+
+
 ## 二、项目初始化
+
 1. 在git官网新建一个git仓库之后；
 
 如果没有使用readme初始化，执行以下四步
@@ -55,8 +58,11 @@ git push
 （2）创建文件之后没有commit
 
 
+
+
 ## 三、分支操作
-1. 分支常用命令
+### 分支常用命令
+
 `git branch` 查看本地分支
 
 `git branch -a` 查看远程分支
@@ -78,14 +84,18 @@ git push
 `git merge master` 合并master内容
 
 
-2. 清理本地分支
+
+### 清理本地分支
+
 ```sh
 git remote show origin
 git remote prune origin
 ```
-3. 删除分支
 
-删除不能删除远程的分支
+
+### 删除分支
+
+>  删除不能删除远程的分支
 
 （1）删除单个分支
 ```sh
@@ -97,9 +107,11 @@ git branch -D dev
 git checkout master
 git branch | grep -v 'master' | xargs git branch -D
 ```
-4. 常见分支问题
 
-4.1. 在非目的分支上做了修改，想切换回目的分支
+
+### 常见分支问题
+
+1. 在非目的分支上做了修改，想切换回目的分支
 
 （1）无论有没有添加到暂存区都行（暂存区就是有commit代码）
 
@@ -115,10 +127,10 @@ git stash pop // 将栈区内容取出放到当前分支
 ```sh
 git reset HEAD^ 撤销最近一次提交
 ```
-4.2.  ignoring broken ref refs问题
-* 找到.git目录下refs/remotes/origin目录（子模块的这个目录是在主模块的.git目录下，因为子模块没有.git目录）
-* 删除里面的HEAD文件或者所有文件
-* 然后运行git fetch –all
+2. ignoring broken ref refs问题
+   * 找到.git目录下refs/remotes/origin目录（子模块的这个目录是在主模块的.git目录下，因为子模块没有.git目录）
+   * 删除里面的HEAD文件或者所有文件
+   * 然后运行git fetch –all
 
 
 
@@ -135,38 +147,42 @@ git stash // 提交到暂存区
 git stash pop // 拉下来
 ```
 3. 常用的git stash命令
-* git stash save 'message' ：执行存储时，添加备注，方便查找，git stash不方便查找
-* git stash list ：查看stash了哪些存储
-* git stash show ：显示做了哪些改动，默认show第一个存储，
-* git stash show stash@{1} ： 显示第一个修改文件
-* git stash apply ： 应用某个存储，但不会把存储从存储列表中删除，默认使用第一个
-* git stash apply stash@{1} ：应用第一个
-* git stash pop ： 命令恢复之前的缓存工作目录，将缓存堆栈中的对应stash删除
-* git stash pop stash@{1}  ：应用指定的stash
-* git stash drop stash@{1} ：丢弃第几个存储，从列表中删除这个存储
-* git stash clear ： 删除所有缓存的stash；
+* `git stash save 'message'`：执行存储时，添加备注，方便查找，git stash不方便查找
+* `git stash list` ：查看stash了哪些存储
+* `git stash show` ：显示做了哪些改动，默认show第一个存储，
+* `git stash show stash@{1}` ： 显示第一个修改文件
+* `git stash apply` ： 应用某个存储，但不会把存储从存储列表中删除，默认使用第一个
+* `git stash apply stash@{1}` ：应用第一个
+* `git stash pop` ： 命令恢复之前的缓存工作目录，将缓存堆栈中的对应stash删除
+* `git stash pop stash@{1}`  ：应用指定的stash
+* `git stash drop stash@{1}` ：丢弃第几个存储，从列表中删除这个存储
+* `git stash clear` ： 删除所有缓存的stash；
 
 
 
-注意：新增的文件，直接执行stash是不会被存储的，如果有新增文件的时候，需要首先执行git add添加新文件到git库中，不需要提交和commit，然后再执行git stash即可；
+注意：新增的文件，直接执行`stash`是不会被存储的，如果有新增文件的时候，需要首先执行git add添加新文件到git库中，不需要提交和`commit`，然后再执行`git stash`即可；
 
 
 
 
 ## 四、用户管理
-git config --list   查看git配置
+`git config --list`   查看git配置
 
-git status  查看文件add的状态，以及远程是否有更新
+`git status`  查看文件add的状态，以及远程是否有更新
+
+
 
 
 ## 五、回退版本
-git log   // 获取版本id
+`git log`   // 获取版本id
 
-git reset --hard id    // 回退本地代码库
+`git reset --hard id`    // 回退本地代码库
 
-git push -f -u origin master  推送到远程服务器
+`git push -f -u origin master`  推送到远程服务器
 
-git pull   重新拉取代码；
+`git pull`   重新拉取代码；
+
+
 
 
 ## 六、git常见问题
@@ -186,15 +202,15 @@ git pull   重新拉取代码；
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since =2020-03-30 --until=2020-04-02 --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
 --since 限制显示输出的范围
-* --since, --after 仅显示指定时间之后的提交
-* --until, --before  仅显示指定时间之前的提交
-* --author 仅显示指定作者相关的提交
+* `--since`, `--after` 仅显示指定时间之后的提交
+* `--until`, `--before`  仅显示指定时间之前的提交
+* `--author` 仅显示指定作者相关的提交
 
 
 例子：
-* git log --until=1.minute.ago // 一分钟之前的所有log
-* git log --since=1.day.ago // 一天之内的log
-* git log --since=1.month.age --until=2.weeks.age // 一个月之前到半月之前的log
+* `git log --until=1.minute.ago` // 一分钟之前的所有log
+* `git log --since=1.day.ago` // 一天之内的log
+* `git log --since=1.month.age --until=2.weeks.age` // 一个月之前到半月之前的log
 
 
 

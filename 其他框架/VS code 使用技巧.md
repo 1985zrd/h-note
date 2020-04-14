@@ -252,14 +252,14 @@ Cmder添加右键： Cmder.exe /REGISTER ALL（需要管理员运行）
 ![image](http://notecdn.heny.vip/images/VScode使用技巧-02.png)
 
 ### launch.json会用到的预定变量：
-	* ${workspaceRoot}：VSCode中打开文件夹的路径
-	* ${workspaceRootFolderName}：VSCode中打开文件夹的路径, 但不包含"/"
-	* ${file} ：当前打开的文件
-	* ${relativeFile}：当前打开的文件,相对于workspaceRoot
-	* ${fileBasename} ：当前打开文件的文件名, 不含扩展名
-	* ${fileDirname} ：当前打开文件的目录名
-	* ${fileExtname}：当前打开文件的扩展名
-	* ${cwd} ：当前启动时的工作目录
+* ${workspaceRoot}：VSCode中打开文件夹的路径
+* ${workspaceRootFolderName}：VSCode中打开文件夹的路径, 但不包含"/"
+* ${file} ：当前打开的文件
+* ${relativeFile}：当前打开的文件,相对于workspaceRoot
+* ${fileBasename} ：当前打开文件的文件名, 不含扩展名
+* ${fileDirname} ：当前打开文件的目录名
+* ${fileExtname}：当前打开文件的扩展名
+* ${cwd} ：当前启动时的工作目录
 
 
 

@@ -29,7 +29,8 @@ fd.append('files', file)
 
 方法二：使用formdata.keys()返回一个iterator对象, 并使用for of循环遍历就可以了
 
-        使用formData里面的getAll或get方法获取, get获取的是一个，getAll获取全部
+使用formData里面的getAll或get方法获取, get获取的是一个，getAll获取全部
+
 ```js
 let arr = fd.keys()
 for(var props of arr){

@@ -1,12 +1,15 @@
 # js小方法
-1. if(value)    直接value表示判断是否有内容，默认为有；
+1. `if(value)`    直接value表示判断是否有内容，默认为有；
 
-2. 元素.checked=true；复选框被选中
+2. `元素.checked=true`；复选框被选中
 
 3. 在函数里面递归调用必须return  ，否则不走后面
 
-4. trim()；常用于value；干掉左右空格；
-判断value输入为空时，不让提交，如果value输入空格，也能提交，此时，需要input.value.trim()；使用trim方法可以清除value里面的空格并弹窗；，ie8不支持；
+4. `trim()`；常用于value；干掉左右空格；
+
+  判断value输入为空时，不让提交，如果value输入空格，也能提交，此时，需要
+
+  `input.value.trim()`；使用trim方法可以清除value里面的空格并弹窗；，ie8不支持；
 
 5. value写完后可以在按钮后面加一行代码：input.value = ''；清空内容方便用户下次输入；
 
