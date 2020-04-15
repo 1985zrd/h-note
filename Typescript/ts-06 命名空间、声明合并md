@@ -11,10 +11,10 @@ ts中的模块都是使用es6的模块语法的，在es6模块中的基础上，
 ```ts
 // a.ts
 const name = 'info'
-export = name
+export = name // 默认导出
 
 // b.ts
-import name = require('./b.ts')
+import name = require('./b.ts') // 引入
 ```
 
 ### 模块的三种引入方式

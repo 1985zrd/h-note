@@ -57,7 +57,16 @@ module.exports = {
 			['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
 			['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
 			['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
-			['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+			['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+			['script', {}, `
+				var _hmt = _hmt || [];
+				(function() {
+					var hm = document.createElement("script");
+					hm.src = "https://hm.baidu.com/hm.js?5817cf72ca4afb611a3f0b798b96b888";
+					var s = document.getElementsByTagName("script")[0]; 
+					s.parentNode.insertBefore(hm, s);
+				})();
+			`]
 		],
 		plugins:[
 			['@vuepress/pwa', {
