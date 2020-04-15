@@ -5,13 +5,17 @@
 元素节点（标签） 文本节点（换行或者文字）  注释节点（注释）
 
 
+
 ## 二、获取子节点：
+
 1. `父元素.children`；(常用)（非标准属性）获取只有元素节点；类数组
 2. `父元素.childNodes`；（标准属性）所有子节点，包括文本、空格、标签、注释；
 类数组：有长度，可以通过下标获取元素，但是不能使用数组的方法；
 
 
+
 ## 三、节点类型：`nodeType`   `nodeName`   `nodeValue`；
+
 1. `nodeType`：返回1-12的数字，分别表示不同的节点；
 
     1：标签节点；2：属性节点；3：文本节点；   8：注释节点； 9：文档节点；
@@ -27,7 +31,9 @@
       `nodeValue = "新内容"`；   可以设置新内容；
 
 
+
 ## 四、元素的父元素；
+
 1. `parentNode`；直接父元素，`parentNode.parentNode`；父元素的父元素；（常用）
 2. `offsetParent`；返回离元素最近的有定位的父级，如果没有定位的父级，则返回body；
 
@@ -112,18 +118,17 @@ box.title = "abc";
 
 2. 创建文本节点：`document.createTextNode("文本内容")`；不常用,使用innerHTML；
 
-获取节点内容：元素.textContent
+   获取节点内容：元素.textContent
 
-设置节点内容：元素.textContent = ''；
+   设置节点内容：元素.textContent = ''；
 
-
-3. 添加文本节点：appendChild(创建的标签)；在结束标签之前添加；只能放到一个标签里，不能重复放；
+3. 添加文本节点：`appendChild(创建的标签)`；在结束标签之前添加；只能放到一个标签里，不能重复放；
 
     可以直接放到body里面： 获取body标签：body = document.body；
 
-4. 添加到指定元素前面：父元素.insertBefore（new,old）；new新标签，old指定标签；
+4. 添加到指定元素前面：`父元素.insertBefore（new,old）`；new新标签，old指定标签；
 
-        在IE9及以上，如果第二个参数不存在，则以appendChild添加，在IE8及以下，则报错；
+    在IE9及以上，如果第二个参数不存在，则以appendChild添加，在IE8及以下，则报错；
 
 ```js
 // 解决兼容问题：

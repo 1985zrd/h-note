@@ -20,13 +20,24 @@ export default {
         // 创建copy组件
         const C = Vue.extend(CodeCopy);
         const copy = new C();
+
         // 下面这些是组件的props以及一些私有属性
         copy.copyText = copyText;
         copy.code = el.textContent;
         copy._parent = el;
         copy.$mount();
         el.className += ` v-copy`;
+        // 将copy添加进代码区域
         el.appendChild(copy.$el);
+
+        // 添加span标签，增加三个小点
+        const span = document.createElement('span')
+        span.style = 'display: block;background: url("http://notecdn.heny.vip/code-header.png") 10px 10px / 40px no-repeat rgb(40, 44, 52);height: 30px;width: 100%;margin-bottom: -7px;border-radius: 5px;';
+        [...el.children].forEach(curEl => {
+          if(curEl.nodeName === 'CODE') {
+            el.insertBefore(span, curEl)
+          }
+        })
       });
     }
   }
