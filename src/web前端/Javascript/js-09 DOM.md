@@ -14,7 +14,9 @@
 
 
 
-## 三、节点类型：`nodeType`   `nodeName`   `nodeValue`；
+## 三、节点类型：
+
+`nodeType`   `nodeName`   `nodeValue`；
 
 1. `nodeType`：返回1-12的数字，分别表示不同的节点；
 
@@ -45,14 +47,15 @@
 2. `firstElementChild`；父元素的第一个子元素节点；
 3. `lastChild`；父元素的最后一个子节点；
 4. `lastElementChild`；父元素的最后一个子元素节点；
-以上不常用，推荐做法：
+  以上不常用，推荐做法：
 
-第一个：`li[0]`，
+  第一个：`li[0]`，
 
-最后一个：`li[li.length-1]`;
+  最后一个：`li[li.length-1]`;
 
 
-兄弟元素节点；
+  兄弟元素节点；
+
 5. `previousSibling`；上一个兄弟子节点；（包括文本注释）
 6. `previousElementSibling`；上一个兄弟元素节点；
 7. `nextSibling`；下一个兄弟子节点；
@@ -208,7 +211,7 @@ list.insertAdjacentHTML('afterbegin', '<li id="first-item">First</li>');
 
 4. 获取行：`table.rows`；获取table下所有的tr；
 
-        `table.tBodies`；获取主体下的所有的tr；
+    `table.tBodies`；获取主体下的所有的tr；
 
 5. 获取单元格：`table.rows[0].cells`；需要通过行来获取td；
 

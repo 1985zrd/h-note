@@ -4,7 +4,7 @@
 
 ESLint 是一个ECMAScript/JavaScript 语法规则和代码风格的检查工具，它的目标是保证代码的一致性和避免错误
 
-官方规则表：http://eslint.cn/docs/rules/
+官方规则表：[http://eslint.cn/docs/rules/](http://eslint.cn/docs/rules/)
 
 一键修复：
 ```json

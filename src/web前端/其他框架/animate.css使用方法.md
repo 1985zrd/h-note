@@ -1,6 +1,6 @@
 # animate.css使用方法
 ## 一、引入
-1. 官网： https://daneden.github.io/animate.css/；
+1. 官网： [https://daneden.github.io/animate.css/](https://daneden.github.io/animate.css/)；
 
 2. 官方cdn
 

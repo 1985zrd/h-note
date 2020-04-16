@@ -2,30 +2,37 @@
 ## 一、响应式布局
 1. 响应式的图片
 
-需要给图片设置max-width:100%;height:auto;
+   需要给图片设置`max-width:100%;height:auto;`
 
 2. 响应式的字体
 
-html{font-size:100%;}
+   `html{font-size:100%;}`
 
-之后可以设置响应式的字体：
+   之后可以设置响应式的字体：
+
 ```css
 @media (min-width:640px){body{font-size:1rem;}}
 @media (min-width:960px){body{font-size:1.2rem;}}
 @media (min-width:1200px){body{font-size:1.5rem;}}
 ```
 
-响应式网站的优点：
+
+
+### 响应式网站的优点
+
 1. 减少工作量
 
-网站、设计、代码、内容都 只需要一份
+   网站、设计、代码、内容都 只需要一份
 
-多出来的工作量只是JS脚本、CSS样式做一些改变
+   多出来的工作量只是JS脚本、CSS样式做一些改变
 
 2. 节省时间
+
 3. 每个设备都能得到正确的设计
 
-响应式网站的缺点：
+
+
+### 响应式网站的缺点
 
 1. 会加载更多的样式和脚本资源
 2. 设计比较难精确定位和控制
@@ -43,9 +50,9 @@ html{font-size:100%;}
 <link rel="stylesheet" href="2.css" type="text/css" media="screen and (min-width:1000px)">  //在link后面还引入
 <link rel="stylesheet" href="2.css" type="text/css" media="screen and (orientation:landscape)">  //横屏显示
 ```
-orientation:portrait   //竖屏
+`orientation:portrait`   //竖屏
 
-	1. 在css文件后面直接写(css3)
+在css文件后面直接写(css3)
 
 
 ```css
@@ -66,20 +73,21 @@ orientation:portrait   //竖屏
 ```html
 <meta name="viewport" content="" />
 ```
-width=device-width
+* width=device-width
 
-height：设置的viewport高度（一般不设置）
+* height：设置的viewport高度（一般不设置）
 
-initial-scale=1.0：页面初始缩放比例，可以为小数
-
-minimum-scale：最小缩放比例，可以为小数
-
-maximum-scale:最大缩放比例，可以为小数
-
-user-scalable：是否允许用户缩放页面，“no”不允许，“yes”允许
+* initial-scale=1.0：页面初始缩放比例，可以为小数
+* minimum-scale：最小缩放比例，可以为小数
+* maximum-scale:最大缩放比例，可以为小数
+* user-scalable：是否允许用户缩放页面，“no”不允许，“yes”允许
 
 
-使用rem布局，100px=1rem；自适应；
+
+### 使用rem布局
+
+100px=1rem；自适应；
+
 ```html
 <script> 
     var deviceWidth = document.documentElement.clientWidth; // 获取浏览器的宽度 
@@ -90,7 +98,10 @@ user-scalable：是否允许用户缩放页面，“no”不允许，“yes”�
     document.documentElement.style.fontSize = fs + "px"; // 给html设置font-size 
 </script>
 ```
-自适应布局
+
+
+### 自适应布局
+
 ```js
 function Resize(){
     // 后面的40是font-size大小, 即1rem=40px
@@ -99,7 +110,9 @@ function Resize(){
 }
 ```
 
-禁止手机端缩放：
+
+
+### 禁止手机端缩放：
 
 ```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">

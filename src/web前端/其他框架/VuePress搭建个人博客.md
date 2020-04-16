@@ -153,7 +153,7 @@ layout: custom # 改用其他组件
 
 以上是普通配置，更多配置请查看官方文档；
 
-https://vuepress.vuejs.org/zh/default-theme-config/#%E9%A6%96%E9%A1%B5
+[https://vuepress.vuejs.org/zh/default-theme-config/#%E9%A6%96%E9%A1%B5](https://vuepress.vuejs.org/zh/default-theme-config/#%E9%A6%96%E9%A1%B5)
 
 
 

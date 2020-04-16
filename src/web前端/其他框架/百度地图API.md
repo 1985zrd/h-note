@@ -1,5 +1,5 @@
 # 百度地图API
-> 地址： http://lbsyun.baidu.com/;
+> 地址： [http://lbsyun.baidu.com/](http://lbsyun.baidu.com/);
 
 ## 基本使用
 1. 设置meta
@@ -82,7 +82,7 @@
 
    
 
-3. NavigationControl控件的控制： http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/widget
+3. NavigationControl控件的控制： [http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/widget](http://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/widget)
 
 
 
