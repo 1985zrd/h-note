@@ -17,7 +17,7 @@
 
 2. 之后复制文件名，添加前缀为你的域名地址就可以直接访问该图片了（需要对空间设置**公共空间**）
 
-   如：http://notecdn.heny.vip/images/logo.png
+   如：`http://notecdn.heny.vip/images/logo.png`
 
 ![image](http://notecdn.heny.vip/images/七牛云cdn加速图片_09.png)
 
@@ -35,7 +35,7 @@
 
 之后直接指定宽高即可，处理接口拼接在图片地址后面，就可以直接访问了，如下：
 
-http://notecdn.heny.vip/logo.png?imageView2/1/w/1920/h/1080/q/75
+`http://notecdn.heny.vip/logo.png?imageView2/1/w/1920/h/1080/q/75`
 
 ## 获取密钥
 

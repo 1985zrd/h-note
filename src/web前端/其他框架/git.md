@@ -32,15 +32,15 @@ ssh-keygen -t rsa -C 'heny@qq.com'   // 回车之后记得根据提示按下yes
 
 如果没有使用readme初始化，执行以下四步
 ```sh
-git init  //初始化
-git add .   //添加当前项目文件夹下的所有文件， 如果是./*则是当前文件夹下
-git commit -m '描述'   //给文件添加备注
-git remote add origin 地址    //添加远程仓库地址
-git push -u origin master   //把本地添加的文件上传到git;
+git init  # 初始化
+git add .   # 添加当前项目文件夹下的所有文件， 如果是./*则是当前文件夹下
+git commit -m '描述'   # 给文件添加备注
+git remote add origin 地址    # 添加远程仓库地址
+git push -u origin master   # 把本地添加的文件上传到git;
 ```
 2. 如果使用了readme初始化；
 ```sh
-git clone 地址  // 克隆只需要操作一次
+git clone 地址  # 克隆只需要操作一次
 ```
 3. 当修改了文件之后想要上传代码
 ```sh
@@ -117,16 +117,16 @@ git branch | grep -v 'master' | xargs git branch -D
 （1）无论有没有添加到暂存区都行（暂存区就是有commit代码）
 
 ```sh
-git checkout -b new_branch // 建立临时分支, 这样改动会被带到新分支
-git stash // 保存在栈区
+git checkout -b new_branch # 建立临时分支, 这样改动会被带到新分支
+git stash # 保存在栈区
 git checkout 目标分支
-git pull // 将代码拉下来, 避免解决冲突
-git stash pop // 将栈区内容取出放到当前分支
+git pull # 将代码拉下来, 避免解决冲突
+git stash pop # 将栈区内容取出放到当前分支
 ```
 （2）已提交到本地仓库
 
 ```sh
-git reset HEAD^ 撤销最近一次提交
+git reset HEAD^ # 撤销最近一次提交
 ```
 2. ignoring broken ref refs问题
    * 找到.git目录下refs/remotes/origin目录（子模块的这个目录是在主模块的.git目录下，因为子模块没有.git目录）
@@ -144,8 +144,8 @@ git reset HEAD^ 撤销最近一次提交
 
 2. 基础使用
 ```sh
-git stash // 提交到暂存区
-git stash pop // 拉下来
+git stash # 提交到暂存区
+git stash pop # 拉下来
 ```
 3. 常用的git stash命令
 * `git stash save 'message'`：执行存储时，添加备注，方便查找，git stash不方便查找
@@ -175,9 +175,9 @@ git stash pop // 拉下来
 
 
 ## 五、回退版本
-`git log`   // 获取版本id
+`git log`  #  获取版本id
 
-`git reset --hard id`    // 回退本地代码库
+`git reset --hard id`   # 回退本地代码库
 
 `git push -f -u origin master`  推送到远程服务器
 
@@ -189,13 +189,29 @@ git stash pop // 拉下来
 ## 六、git常见问题
 1. 描述出错，怎么修改描述
 
-（1）通过git log找到上一个提交的commit_id
-![image](http://notecdn.heny.vip/images/git-02.png)
-（2）通过：git reset --soft commit_id，执行一遍，之后就可以重新git commit了；
+   （1）通过git log找到上一个提交的commit_id
+   ![image](http://notecdn.heny.vip/images/git-02.png)
+   （2）通过：git reset --soft commit_id，执行一遍，之后就可以重新git commit了；
+
+2. 项目名字被修改，地址被更换
+
+   ```shell
+   # 第一种
+   git remote set-url origin url # 重新设置远程地址
+   
+   # 第二种
+   git remote rm origin # 删除跟踪远程
+   git remote add origin url # 重新配置远程地址
+   ```
+
+   
 
 
 
-### 七、git统计代码量
+
+
+## 七、git统计代码量
+
 修改since开始日期，和until到什么日期，如果不修改则是至今
 
 如果单独查询某个用户，修改$name为用户邮箱
