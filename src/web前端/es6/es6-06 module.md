@@ -5,6 +5,7 @@
 1. export：规定模块对外接口
 
 如果希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量
+
 * 默认导出：export default Person（导入时可指定模块任意名称，无需知晓内部真实名称）
 * 单独导出：export const name = 'bruce'
 * 按需导出：export {age, name, sex} （推荐）
@@ -29,6 +30,7 @@
 3. 赋值引入
 
 动态加载import，返回Promise，可以调用then方法；
+
 ```js
 component: () => import('./views/about.vue')
 ```
@@ -67,6 +69,7 @@ require.context('./test',false,/\.vue$/) //匹配test目录以.vue结尾的文�
 2. require.context模块导出返回一个require函数，这个函数可以接收一个参数，request；
 
 导出的方法有3个属性：
+
 * resolve：
 * keys：也是一个函数，返回一个数组，数组里面是所有的文件名
 * id
@@ -80,8 +83,10 @@ console.log(all) // 返回的是一个数组对象, 里面是导出的Module, �
 
 context(context.keys()[0]) // 传入之后会返回导出的该文件;就是requireAll的单个对象
 ```
-![image](http://notecdn.heny.vip/images/es6-06 module-01.png)
+![image](http://notecdn.heny.vip/images/es6-06%20module-01.png)
+
 3. Vue全局组件注册
+
 （1）创建：./components/global/index.js，并写入以下代码，之后在main.js引入：import './components/global'即可；
 ```js
 let requireAll = context => context.keys().map(context)

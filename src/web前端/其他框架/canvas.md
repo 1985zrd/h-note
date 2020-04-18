@@ -89,7 +89,9 @@ x,y：起始位置，w,h：要清除的内容宽高；
 4. 绘制半径根据Math.PI来计算，0的位置在右边，画圆：
 
         cas.arc(250,250,250,0,Math.PI*2);
+
 圆形的坐标系：
+
 ![image](http://notecdn.heny.vip/images/canvas-01.png)
 
 

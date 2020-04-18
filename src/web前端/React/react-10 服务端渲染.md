@@ -1,6 +1,7 @@
 # React-10 服务端渲染
 ## 一、CSR与SSR
-![image](http://notecdn.heny.vip/images/react-10 服务端渲染-01.png)
+![image](http://notecdn.heny.vip/images/react-10_服务端渲染-01.png)
+
 1. CSR：客户端渲染（Client Side Render）
 过程：
 * ①浏览器发送请求

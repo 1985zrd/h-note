@@ -461,10 +461,13 @@ grid-column: auto / span 2  // 向左跨越2列
 使用`display: table`；将内部元素使用table表格的特性；
 
 `display: table-cell`；给包裹元素设置；
+
 ![image](http://notecdn.heny.vip/images/html-14_flex、grid、table-01.png)
 
 一般用于这种布局；设置了table-cell之后，需要设置vertical:属性；
+
 ![image](http://notecdn.heny.vip/images/html-14_flex、grid、table-02.png)
+
 ```html
 <div class="container">
    <div class='left'>

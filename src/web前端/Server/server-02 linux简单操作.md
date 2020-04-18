@@ -168,7 +168,7 @@ umask [S]    -S以 rwx形式显示新建文件缺省权限
 
 
 ## 七、搜索
-1. find：文件搜索（/bin/find）
+1. `find`：文件搜索（/bin/find）
 
 find [搜索范围] [匹配条件]
 

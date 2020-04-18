@@ -459,12 +459,14 @@ ReactDOM.render(
     document.getElementById('root'));
 ```
 5. 接下来打开浏览器调试工具，就可以查看到浏览器缓存的数据
+\
 ![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-03.png)
 
 
 
 ## 九、面试相关题
 ### redux由以下组件组成：
+
 Action：这是一个用来描述发生了什么事情的对象；
 
 Reducer：这是一个确定状态将如何变化的地方

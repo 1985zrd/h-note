@@ -357,7 +357,9 @@ module.exports = override(
 打包
 
 1. 在package.json配置文件中添加一句 "homepage": ".",
+
 ![image](http://notecdn.heny.vip/images/react-08_React搭建项目-02.png)
+
 2. 之后运行npm run build；
 
 

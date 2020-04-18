@@ -84,6 +84,7 @@ cy 圆心的y轴坐标
 r 圆的半径
 
 如果不定义圆心坐标，默认为（0,0）
+
 ![image](http://notecdn.heny.vip/html-11_Svg简介-02.png)
  
 
@@ -100,6 +101,7 @@ cy：圆心y轴坐标
 rx：水平半径
 
 ry：垂直半径
+
 ![image](http://notecdn.heny.vip/html-11_Svg简介-03.png)
  
 
@@ -114,6 +116,7 @@ y1：起始y轴坐标
 x2：x轴的结束坐标
 
 y2：y轴的结束坐标
+
 ![image](http://notecdn.heny.vip/html-11_Svg简介-04.png)
  
 
@@ -125,6 +128,7 @@ points：直线坐标点（不少于两个点）；
 ```html
 <polyline points="10,0 110,0 110,100 10,100 10,0" fill="none" stroke="blue" />
  ```
+
 ![image](http://notecdn.heny.vip/html-11_Svg简介-05.png)
  
  
@@ -136,6 +140,7 @@ points：直线坐标点（不少于两个点）；
 ```html
 <polygon points="100,10 150,100 50,100" />
 ```
+
 ![image](http://notecdn.heny.vip/html-11_Svg简介-06.png)
 
  

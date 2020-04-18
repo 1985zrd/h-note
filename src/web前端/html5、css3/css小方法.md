@@ -38,10 +38,15 @@ document.querySelectorAll('pre').forEach(item=>item.classList.add('notranslate')
 
 ## 元素不可点击
 
+
 pointer-events: auto/none
+
 当设置为none时，元素不可被点击；
+
 可以设置button、a、input等等
+
 用途：在input框上，使用label标签替换掉placeholder内容（设置好定位），当点击时，想输入文字时会点击到label的文字上，可以加入该属性，不让点中；
+
 ![image](http://notecdn.heny.vip/images/css小方法-02.png)
 
 
@@ -49,10 +54,15 @@ pointer-events: auto/none
 
 ## vh和vw单位
 
+
 使用calc可以通过计算%、px、rem、vh、vw的高度；
+
 表达式（+、-、*、/、）中间必须有空格隔开
+
 比如：height: calc(100vh-100px)；
+
 复杂的计算：
+
 ```css
 width: calc((6.25%*4) + (2.08333333%*3));
 ```
@@ -91,8 +101,11 @@ alt+ctrl   改变屏幕的方向
 
 ## logo写法
 
+
 写页面logo的时候，需要写div>h1>a，
+
 之后给a标签设置，text-indent为负值，overflow:hidden隐藏文字,给a标签设置背景图片logo图；
+
 text-indent 隐藏链接里面的文字，overflow:hidden，最好写上，避免用户缩小网页也能看见
 
 
@@ -100,6 +113,7 @@ text-indent 隐藏链接里面的文字，overflow:hidden，最好写上，避�
 ## 相对定位
 
 1. 在未知大盒子和小盒子的宽高度的时候，让小盒子相对于大盒子垂直居中显示，
+
 答案：设置子元素相对于父元素定位，设置4个定位为0，获取到四个角落，设置margin:auto。
 ```css
 .box{
@@ -113,6 +127,7 @@ text-indent 隐藏链接里面的文字，overflow:hidden，最好写上，避�
 ```
 
 2. 在未知大盒子的宽高度，已知小盒子的宽高度，让小盒子相对于大盒子垂直居中显示。
+
 答案：设置子元素相对于父元素定位，设置left:50%;。right:50%，设置完之后位置会下来，设置margin-left为宽度的一半的负值，设置margin-top为高度的一半的负值，
 ```css
 .box{
@@ -127,10 +142,15 @@ text-indent 隐藏链接里面的文字，overflow:hidden，最好写上，避�
 
 ## 溢出文字隐藏
 
+
 white-space 用于强制一行显示内容，不换行。
+
 normal:默认换行；
+
 nowrap:强制在一行显示所有文本，直到文本结束或者遇到br。
+
 overflow:hidden; 超出隐藏 不能省略这句话；
+
 text-overflow:ellipsis; 溢出文字变为省略号。
 
 
@@ -142,6 +162,7 @@ text-overflow:ellipsis; 溢出文字变为省略号。
 2.给a标签一个左边的小圆角部分背景图，给span标签一个右边的小圆角部分背景图。
 3.给a标签转行内块，设置宽高文字颜色等，左边一个padding-left将文字挤到中间，如果转块是默认占一整行。
 4.给span一个右边的padding，把文字挤到中间去，输入文字会自动拉长图片。
+
 注意：鼠标滑动时改变第二张精灵图的样式，要设置backgrund-image，不要直接设置背景图，否则会平铺和左边对齐。
 
 
@@ -159,11 +180,16 @@ text-overflow:ellipsis; 溢出文字变为省略号。
 
 
 ## 文字滚动marquee
+
 direction=方向
+
 方向有四个值，不需要引号；
 
+
 滚动速度： scrollamount滚动速度
+
 scrolldelay滚动延时
+
 需要引号
 
 
@@ -174,16 +200,19 @@ scrolldelay滚动延时
     display: block;
 }
 ```
+
 让类名item的a标签，点击之后改变类名item下的box的样式；可以替代点击事件；
 
 
 
 ## 横向可以滚动
+
 ![image](http://notecdn.heny.vip/images/css小方法-03.png)
+
 ```html
-<div> //限制宽度
-    <div> //10000宽度
-        <div></div> //限制宽度
+<div> <!--限制宽度 -->
+    <div> <!--10000宽度-->
+        <div></div> <!--限制宽度-->
     </div>
 </div>
 ```
@@ -193,6 +222,7 @@ scrolldelay滚动延时
 ## currentColor
 
 是当前元素color属性的值
+
 ```css
 div{
     color: red;
@@ -217,6 +247,7 @@ div{
 ::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处
 
 ::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
+
 隐藏滚动条
 ```css
 .box::-webkit-scrollbar{
@@ -247,7 +278,9 @@ div{
 :root{box-sizing: border-box}
 *{box-sizing: inherit}
 ```
+
 或者：继承box-sizing方法;
+
 ```css
 html{box-sizing: border-box}
 *,::before,::after{box-sizing: inherit;}
@@ -258,6 +291,7 @@ html{box-sizing: border-box}
 ## indeterminate 不确定伪类
 
 1. 复选框使用，复选框必须配合js；
+
 ```js
 checkbox.checked = true // 设置为选中状态
 checkbox.indeterminate = true //设置半选状态
@@ -265,9 +299,13 @@ checkbox.indeterminate = true //设置半选状态
 :indeterminate 可以选中半选状态, 需要通过js来设置indeterminate为true,
 
 2. 单选框使用，
+
 （1）单选框的使用条件：必须多个单选框绑定了相同的类名；
+
 （2）达到条件1可以直接使用:indeterminate类来设置样式；
+
 （3）单选框的IE浏览器不支持
+
 ```html
 <input type="radio" name='radia'>
 <label for="">1</label>
@@ -290,9 +328,13 @@ p:after {
 ## 原生css设置变量
 
 变量设置到
+
     :root标签上面，所有的类名都可以使用该变量；
+
     设置到元素上面，只有该元素能够使用；
+
 使用--*; 来定义变量的名称；
+
 使用var()；来使用变量；
 ```css
 :root{ 

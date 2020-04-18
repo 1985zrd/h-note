@@ -108,13 +108,13 @@ module.exports = {
 		editLinks: true,
 		editLinkText: '在GitHub上编辑此页',
 		lastUpdated: '上次更新：', // 前缀使用
-		smoothScroll: true,
-		algolia: {
-			// apiKey: '5afb4b8f5b191b92841aed8afa044013',
-			// indexName: 'heny_h-note'
-			apiKey: '75033b31cce2d60aef3adfe4df1dbb4c',
-			indexName: 'heny_h-web'
-		},
+		// smoothScroll: true,
+		// algolia: {
+		// 	// apiKey: '5afb4b8f5b191b92841aed8afa044013',
+		// 	// indexName: 'heny_h-note'
+		// 	apiKey: '75033b31cce2d60aef3adfe4df1dbb4c',
+		// 	indexName: 'heny_h-web'
+		// },
 		nav:[
 			{ text: 'home', link:'/' },
 			{ text: 'web前端', items: webItems },

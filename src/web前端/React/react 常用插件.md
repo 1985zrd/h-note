@@ -1,7 +1,9 @@
 # React常用插件
 ## react配置eslint地址
-https://www.jianshu.com/p/f8d2ef372adf
+[https://www.jianshu.com/p/f8d2ef372adf](https://www.jianshu.com/p/f8d2ef372adf)
+
 补充：
+
 ```json
     "spaced-comment": 2, //注释风格要不要有空格什么的
     "space-before-blocks": 2,  // if function等的大括号之前需要有空格
@@ -18,7 +20,7 @@ https://www.jianshu.com/p/f8d2ef372adf
 2. 官网：https://github.com/fisshy/react-scroll
 2. 基础使用：
 （1）滚动方法
-```js
+```jsx
 import Scroll from 'react-scroll'
 var scroll = Scroll.animateScroll;
 
@@ -41,7 +43,7 @@ var scroller = Scroll.scroller;
 scroller.scrollTo('myScrollToElement', options)
 ```
 （2）Link的使用
-```js
+```jsx
 import {Link} from 'react-scroll'
 <Link
     activeclass=''
@@ -53,58 +55,78 @@ import {Link} from 'react-scroll'
 />
 ```
 
-## 组件懒加载
-1. 安装：react-lazyload
 
-可以为图片或者组件提供懒加载功能，当滚动条滚动到该图片上方时才会去加载图片，可以更合理去加载资源，也可以设置高度来在未加载时预留出位置；
 
-2. 基本使用
-```js
-import React from 'react'
-import LazyLoad from 'react-lazyload'
-import ProductList from '@/components/ProductList'
-function App(){
-    return (
-        <LazyLoad height={50}> // 50为底部的tabbar栏
-            <ProductList />
-        </LazyLoad>
-    )
-}
+## 组件或图片懒加载
 
-// 懒加载图片
-<LazyLoad>
-    <img />
-</LazyLoad>
-```
-3. 
+>  可以为图片或者组件提供懒加载功能，当滚动条滚动到该图片上方时才会去加载图片，可以更合理去加载资源，也可以设置高度来在未加载时预留出位置；
 
-4. 常用工具函数
+安装：`react-lazyload`
 
-（1）forceCheck   手动重新触发检查视口中的元素， 当LazyLoad组件进入视口而没有调整大小或滚动事件时很有用，例如，当组件的容器被隐藏然后可见时。
-```js
-import forceCheck from 'react-lazyload'
-forceCheck() // 在生命周期调用
-```
-教程地址： https://github.com/twobin/react-lazyload
+1. 基本使用
+
+   ```jsx
+   import React from 'react'
+   import LazyLoad from 'react-lazyload'
+   function App(){
+       return (
+           Array.from({length: 15}).map(() => {
+               <LazyLoad height={200}>
+                   <img /> // 也可以放组件
+               </LazyLoad>
+           })
+       )
+   }
+   ```
+
+   ![image-20200417110903782](http:notecdn.heny.vip/images/react_常用插件-01.png)
+
+   可以通过f12查看控制台是否懒加载成功
+
+2. props
+
+   * `height`：设置占位符的高度，也可以通过css设置；
+   * `once`：只加载一次，之后再不检测滚动事件，对于图像或简单组件很有用
+   * `offset`：组件位于视口下方的距离，如果
+
+3. 工具函数
+
+   * `forceChec`   手动重新触发检查视口中的元素， 当LazyLoad组件进入视口而没有调整大小或滚动事件时很有用，例如，当组件的容器被隐藏然后可见时。
+
+     ```js
+     import forceCheck from 'react-lazyload'
+     forceCheck() // 在生命周期调用
+     ```
+
+   * `forceVisible` 强制组件显示，无论该元素在视口中是否可见
+
+     ```js
+     import { forceVisible } from 'react-lazyload';
+     forceVisible();
+     ```
+
+教程地址：[https://github.com/twobin/react-lazyload]( https://github.com/twobin/react-lazyload)
+
 
 
 ## React动画
-1. 安装：npm i react-transition-group
+
+1. 安装：`npm i react-transition-group`
 2. 引入
 ```js
 import {CSSTransition} from 'react-transition-group'
 ```
 3. 属性
-* in 开头
-* timeout 动画的时间
-* appear  一加载就执行
-* classNames   起的变量名称
-* unmountOnExit用完了以后DOM消失
-* onEnter   进入时的钩子函数，就一个参数el
-* onEnter, onEntering, onEntered, onExit, onExiting, onExited 钩子函数
+* `in` 开头
+* `timeout` 动画的时间
+* `appear`  一加载就执行
+* `classNames`   起的变量名称
+* `unmountOnExit`用完了以后DOM消失
+* `onEnter`   进入时的钩子函数，就一个参数el
+* `onEnter`, `onEntering`, `onEntered`, `onExit`, `onExiting`, `onExited` 钩子函数
 
 
-```js
+```jsx
 <CSSTransition
     in={flag}
     timeout={2000}
@@ -120,17 +142,17 @@ import {CSSTransition} from 'react-transition-group'
 </CSSTransition>
 ```
 4. 类名
-* fade.enter    进入时的类名
-* fade.enter-active   进入时执行的类名
-* fade.exit    离开时的类名
-* fade.exit-active   离开时执行的类名
-* fade.appear-active   看情况opacity就不加，要是运动类的必须加上最后的位置；
-* enter-done 动画完成时
+* `fade.enter`    进入时的类名
+* `fade.enter-active`   进入时执行的类名
+* `fade.exit`    离开时的类名
+* `fade.exit-active`   离开时执行的类名
+* `fade.appear-active`   看情况opacity就不加，要是运动类的必须加上最后的位置；
+* `enter-done` 动画完成时
 
 
 
-5. TransitionGroup，如果多个动画特效，需要用该组件包裹
-```js
+5. `TransitionGroup`，如果多个动画特效，需要用该组件包裹
+```jsx
 <TransitionGroup key={index}>
     <CSSTransition>
     </CSSTransition>

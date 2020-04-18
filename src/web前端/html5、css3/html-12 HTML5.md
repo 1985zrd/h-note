@@ -106,11 +106,14 @@ mark用来标记文字。
 ```html
 <p><time>04月15号</time>今天<mark>学习</mark>HTML5</p>
 ```
+
 ![image](http://notecdn.heny.vip/images/html-12_HTML5-01.png)
 
 
 ## 五、语义化标签的IE兼容问题处理
+
 1. 创建元素，给元素转块
+
 ```html
 <script> document.createElement('header'); </script>
 ```

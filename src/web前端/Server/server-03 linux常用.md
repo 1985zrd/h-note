@@ -24,13 +24,13 @@ ssh root@39.107.82.176
 
 ```shell
 # 下载文件
-scp root@107.172.27.254:/home/test.txt . 
+scp build.gz root@107.172.27.254:/home/test.txt
 # 上传文件
 scp test.txt root@107.172.27.254:/home    
 # 下载目录
-scp -r root@107.172.27.254:/home/test .    
+scp -r dist root@107.172.27.254:/home/test   
 # 上传目录
-scp -r test root@107.172.27.254:/home    
+scp -r dist root@107.172.27.254:/home    
 # 上传当前目录所有文件和目录到远程
 scp -r * root@39.107.82.176:/home
 ```
