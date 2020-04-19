@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue-09 插件开发 | 前端学习圈</title>
+    <meta name="description" content="一位不知名的初级菜鸟">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+  <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?5817cf72ca4afb611a3f0b798b96b888";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    
+    <link rel="preload" href="/assets/css/0.styles.e2d0ea6e.css" as="style"><link rel="preload" href="/assets/js/app.da95d8b3.js" as="script"><link rel="preload" href="/assets/js/3.7181b290.js" as="script"><link rel="preload" href="/assets/js/69.3297260f.js" as="script"><link rel="prefetch" href="/assets/js/10.b73b2113.js"><link rel="prefetch" href="/assets/js/100.1a896ec2.js"><link rel="prefetch" href="/assets/js/101.8c78bd07.js"><link rel="prefetch" href="/assets/js/102.d01cacfc.js"><link rel="prefetch" href="/assets/js/103.926d3235.js"><link rel="prefetch" href="/assets/js/104.70629a3c.js"><link rel="prefetch" href="/assets/js/105.e8d803c9.js"><link rel="prefetch" href="/assets/js/106.8e875262.js"><link rel="prefetch" href="/assets/js/107.184c281c.js"><link rel="prefetch" href="/assets/js/108.c7d5c7c3.js"><link rel="prefetch" href="/assets/js/109.c4cc840c.js"><link rel="prefetch" href="/assets/js/11.f4b8ac83.js"><link rel="prefetch" href="/assets/js/110.08bd74fe.js"><link rel="prefetch" href="/assets/js/111.45cd978b.js"><link rel="prefetch" href="/assets/js/112.84896fca.js"><link rel="prefetch" href="/assets/js/113.0a61e4e8.js"><link rel="prefetch" href="/assets/js/114.ccddb957.js"><link rel="prefetch" href="/assets/js/115.e2bc0431.js"><link rel="prefetch" href="/assets/js/116.75971baa.js"><link rel="prefetch" href="/assets/js/117.d7c5bdd5.js"><link rel="prefetch" href="/assets/js/118.face7a96.js"><link rel="prefetch" href="/assets/js/119.5ca3336d.js"><link rel="prefetch" href="/assets/js/12.4d87e863.js"><link rel="prefetch" href="/assets/js/120.90fba605.js"><link rel="prefetch" href="/assets/js/121.dbc40cc1.js"><link rel="prefetch" href="/assets/js/122.e3edf160.js"><link rel="prefetch" href="/assets/js/123.bcfe518e.js"><link rel="prefetch" href="/assets/js/124.d3806bb3.js"><link rel="prefetch" href="/assets/js/125.15cf3b80.js"><link rel="prefetch" href="/assets/js/126.c3bae4fe.js"><link rel="prefetch" href="/assets/js/127.d02dc79b.js"><link rel="prefetch" href="/assets/js/128.53f972cf.js"><link rel="prefetch" href="/assets/js/129.37928ae7.js"><link rel="prefetch" href="/assets/js/13.cda1a7b9.js"><link rel="prefetch" href="/assets/js/130.9c63fe76.js"><link rel="prefetch" href="/assets/js/131.7e58a85b.js"><link rel="prefetch" href="/assets/js/132.a6273df3.js"><link rel="prefetch" href="/assets/js/133.d507722d.js"><link rel="prefetch" href="/assets/js/134.87e05591.js"><link rel="prefetch" href="/assets/js/135.ec45a26d.js"><link rel="prefetch" href="/assets/js/136.2b252f35.js"><link rel="prefetch" href="/assets/js/137.34ad6314.js"><link rel="prefetch" href="/assets/js/138.9b2d0a3d.js"><link rel="prefetch" href="/assets/js/139.49b5115f.js"><link rel="prefetch" href="/assets/js/14.313d9572.js"><link rel="prefetch" href="/assets/js/140.c68e3d9b.js"><link rel="prefetch" href="/assets/js/141.4fc6b486.js"><link rel="prefetch" href="/assets/js/142.e2939d59.js"><link rel="prefetch" href="/assets/js/143.9080c1e6.js"><link rel="prefetch" href="/assets/js/144.8fb68016.js"><link rel="prefetch" href="/assets/js/145.8fd9733f.js"><link rel="prefetch" href="/assets/js/146.a9a46b8c.js"><link rel="prefetch" href="/assets/js/147.7c64010f.js"><link rel="prefetch" href="/assets/js/148.81cca953.js"><link rel="prefetch" href="/assets/js/149.012b7793.js"><link rel="prefetch" href="/assets/js/15.cd84db72.js"><link rel="prefetch" href="/assets/js/150.96e923ae.js"><link rel="prefetch" href="/assets/js/151.d012fbd3.js"><link rel="prefetch" href="/assets/js/152.ac6a19ab.js"><link rel="prefetch" href="/assets/js/153.203f72f8.js"><link rel="prefetch" href="/assets/js/154.8f66c9c3.js"><link rel="prefetch" href="/assets/js/155.8823a770.js"><link rel="prefetch" href="/assets/js/156.9f40ae40.js"><link rel="prefetch" href="/assets/js/157.3c5bb94d.js"><link rel="prefetch" href="/assets/js/158.5cd9cc93.js"><link rel="prefetch" href="/assets/js/159.dc42f5d5.js"><link rel="prefetch" href="/assets/js/16.85711d31.js"><link rel="prefetch" href="/assets/js/17.603cbc23.js"><link rel="prefetch" href="/assets/js/18.1a545ab7.js"><link rel="prefetch" href="/assets/js/19.2d36b4a5.js"><link rel="prefetch" href="/assets/js/20.cdf35468.js"><link rel="prefetch" href="/assets/js/21.e66b9416.js"><link rel="prefetch" href="/assets/js/22.2b7de010.js"><link rel="prefetch" href="/assets/js/23.9dd0da91.js"><link rel="prefetch" href="/assets/js/24.95a6d272.js"><link rel="prefetch" href="/assets/js/25.02e2edd3.js"><link rel="prefetch" href="/assets/js/26.379701ae.js"><link rel="prefetch" href="/assets/js/27.d8274a53.js"><link rel="prefetch" href="/assets/js/28.93ca0a5f.js"><link rel="prefetch" href="/assets/js/29.7a627adc.js"><link rel="prefetch" href="/assets/js/30.0e3b843b.js"><link rel="prefetch" href="/assets/js/31.9bf95f96.js"><link rel="prefetch" href="/assets/js/32.762b6abf.js"><link rel="prefetch" href="/assets/js/33.63c9473a.js"><link rel="prefetch" href="/assets/js/34.24b2fb3a.js"><link rel="prefetch" href="/assets/js/35.c028d7fb.js"><link rel="prefetch" href="/assets/js/36.652ec438.js"><link rel="prefetch" href="/assets/js/37.5358aefe.js"><link rel="prefetch" href="/assets/js/38.7955b02d.js"><link rel="prefetch" href="/assets/js/39.a5bee726.js"><link rel="prefetch" href="/assets/js/4.134e8630.js"><link rel="prefetch" href="/assets/js/40.cf719c3f.js"><link rel="prefetch" href="/assets/js/41.f185a457.js"><link rel="prefetch" href="/assets/js/42.053b1d8a.js"><link rel="prefetch" href="/assets/js/43.5be9e932.js"><link rel="prefetch" href="/assets/js/44.39582dda.js"><link rel="prefetch" href="/assets/js/45.2b1be7c4.js"><link rel="prefetch" href="/assets/js/46.7a5c4864.js"><link rel="prefetch" href="/assets/js/47.f747077b.js"><link rel="prefetch" href="/assets/js/48.b44c00dd.js"><link rel="prefetch" href="/assets/js/49.84af6bfb.js"><link rel="prefetch" href="/assets/js/5.d5325543.js"><link rel="prefetch" href="/assets/js/50.92dcb447.js"><link rel="prefetch" href="/assets/js/51.ca604d07.js"><link rel="prefetch" href="/assets/js/52.1b05ca11.js"><link rel="prefetch" href="/assets/js/53.2d72d153.js"><link rel="prefetch" href="/assets/js/54.b6df9391.js"><link rel="prefetch" href="/assets/js/55.619dd316.js"><link rel="prefetch" href="/assets/js/56.7875357c.js"><link rel="prefetch" href="/assets/js/57.00c732e7.js"><link rel="prefetch" href="/assets/js/58.dcfd524f.js"><link rel="prefetch" href="/assets/js/59.0af6605b.js"><link rel="prefetch" href="/assets/js/6.4714b01b.js"><link rel="prefetch" href="/assets/js/60.da7baaab.js"><link rel="prefetch" href="/assets/js/61.9778162b.js"><link rel="prefetch" href="/assets/js/62.a6e45b04.js"><link rel="prefetch" href="/assets/js/63.e09445c3.js"><link rel="prefetch" href="/assets/js/64.5357e7cd.js"><link rel="prefetch" href="/assets/js/65.3781f84a.js"><link rel="prefetch" href="/assets/js/66.c1608f6a.js"><link rel="prefetch" href="/assets/js/67.fd77831d.js"><link rel="prefetch" href="/assets/js/68.148ec50d.js"><link rel="prefetch" href="/assets/js/7.5e62f1c1.js"><link rel="prefetch" href="/assets/js/70.8401ffa0.js"><link rel="prefetch" href="/assets/js/71.e41533db.js"><link rel="prefetch" href="/assets/js/72.648c155d.js"><link rel="prefetch" href="/assets/js/73.ed0e0de5.js"><link rel="prefetch" href="/assets/js/74.7eba1658.js"><link rel="prefetch" href="/assets/js/75.2f690d80.js"><link rel="prefetch" href="/assets/js/76.8a05ea9a.js"><link rel="prefetch" href="/assets/js/77.91e7f92a.js"><link rel="prefetch" href="/assets/js/78.e762658d.js"><link rel="prefetch" href="/assets/js/79.be92f809.js"><link rel="prefetch" href="/assets/js/8.0e267c14.js"><link rel="prefetch" href="/assets/js/80.ad38da8d.js"><link rel="prefetch" href="/assets/js/81.7aeedf40.js"><link rel="prefetch" href="/assets/js/82.545252e3.js"><link rel="prefetch" href="/assets/js/83.d504ac2d.js"><link rel="prefetch" href="/assets/js/84.cd88108a.js"><link rel="prefetch" href="/assets/js/85.bd419469.js"><link rel="prefetch" href="/assets/js/86.e526b420.js"><link rel="prefetch" href="/assets/js/87.c2b0393b.js"><link rel="prefetch" href="/assets/js/88.adf486f1.js"><link rel="prefetch" href="/assets/js/89.c3000d92.js"><link rel="prefetch" href="/assets/js/9.5accd7e5.js"><link rel="prefetch" href="/assets/js/90.cbfea173.js"><link rel="prefetch" href="/assets/js/91.e0145dac.js"><link rel="prefetch" href="/assets/js/92.b547ee60.js"><link rel="prefetch" href="/assets/js/93.b95868f5.js"><link rel="prefetch" href="/assets/js/94.f867d3ca.js"><link rel="prefetch" href="/assets/js/95.26d200ef.js"><link rel="prefetch" href="/assets/js/96.ba8fd0f5.js"><link rel="prefetch" href="/assets/js/97.90b2e819.js"><link rel="prefetch" href="/assets/js/98.796a92f3.js"><link rel="prefetch" href="/assets/js/99.82e6771a.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.4e1dd104.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2d0ea6e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端学习圈</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web前端" class="dropdown-title"><span class="title">web前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/src/web前端/es6/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/html5、css3/" class="nav-link">
+  html5、css3
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/jQuery/" class="nav-link">
+  jQuery
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/React/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/react-native/" class="nav-link">
+  react-native
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Server/" class="nav-link">
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/其他框架/" class="nav-link">
+  其他框架
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/小程序/" class="nav-link">
+  小程序
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="功能" class="dropdown-title"><span class="title">功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://chat.heny.vip" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  消息传输站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/heny/h-note" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web前端" class="dropdown-title"><span class="title">web前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/src/web前端/es6/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/html5、css3/" class="nav-link">
+  html5、css3
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/jQuery/" class="nav-link">
+  jQuery
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/React/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/react-native/" class="nav-link">
+  react-native
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Server/" class="nav-link">
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/其他框架/" class="nav-link">
+  其他框架
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/小程序/" class="nav-link">
+  小程序
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="功能" class="dropdown-title"><span class="title">功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://chat.heny.vip" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  消息传输站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/heny/h-note" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/src/web前端/Vue/vue-01 初识vue.html" class="sidebar-link">Vue-01 初识Vue</a></li><li><a href="/src/web前端/Vue/vue-02 修饰符 表单.html" class="sidebar-link">Vue-02 修饰符、表单</a></li><li><a href="/src/web前端/Vue/vue-03 组件 Prop.html" class="sidebar-link">Vue-03 组件、Props</a></li><li><a href="/src/web前端/Vue/vue-04 组件通讯 插槽.html" class="sidebar-link">Vue-04 组件通讯、插槽</a></li><li><a href="/src/web前端/Vue/vue-05 过渡 生命周期.html" class="sidebar-link">Vue-05 过渡效果、生命周期</a></li><li><a href="/src/web前端/Vue/vue-06 路由.html" class="sidebar-link">Vue-06 路由</a></li><li><a href="/src/web前端/Vue/vue-07 接口请求 跨域.html" class="sidebar-link">Vue-07 接口请求、跨域</a></li><li><a href="/src/web前端/Vue/vue-08 Vuex.html" class="sidebar-link">Vue-08 Vuex</a></li><li><a href="/src/web前端/Vue/vue-09 插件开发.html" class="active sidebar-link">Vue-09 插件开发</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#一、创建自己的插件" class="sidebar-link">一、创建自己的插件</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#二、发布到npm" class="sidebar-link">二、发布到npm</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#npm初始化" class="sidebar-link">npm初始化</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#忽略文件不上传" class="sidebar-link">忽略文件不上传</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#上传" class="sidebar-link">上传</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#自动修改版本号" class="sidebar-link">自动修改版本号</a></li></ul></li><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#三、vue-extend" class="sidebar-link">三、Vue.extend</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Vue/vue-09 插件开发.html#遇到的bug：" class="sidebar-link">遇到的bug：</a></li></ul></li><li><a href="/src/web前端/Vue/vue造轮子常用方法.html" class="sidebar-link">Vue造轮子常用方法</a></li><li><a href="/src/web前端/Vue/vue面试题.html" class="sidebar-link">Vue面试题</a></li><li><a href="/src/web前端/Vue/vue项目bug记录.html" class="sidebar-link">Vue项目Bug记录</a></li><li><a href="/src/web前端/Vue/vue项目技巧.html" class="sidebar-link">Vue项目技巧</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-09-插件开发"><a href="#vue-09-插件开发" class="header-anchor">#</a> Vue-09 插件开发</h1> <h2 id="一、创建自己的插件"><a href="#一、创建自己的插件" class="header-anchor">#</a> <strong>一、创建自己的插件</strong></h2> <ul><li>目录结构
+<ol><li>lib下面是我们所有的插件，创建一个新的插件名叫heny；</li> <li>heny下的目录是lib和index.js还有一个test.vue文件；</li></ol></li></ul> <p><img src="http://notecdn.heny.vip/images/vue-09_%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.png" alt="image-20200406215427082"></p> <ul><li><p>在heny/index.js文件写入</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./lib'</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>在heny/lib/index.js写入以下代码</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">'./test.vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Vue.use默认使用install方法</span>
+    <span class="token comment">// 第一个参数是Vue, 第二个参数是选项</span>
+    <span class="token function">install</span> <span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> test<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>在test.vue文件可以写我们的公共组件代码了</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">'test'</span><span class="token operator">&gt;</span>
+    哈哈<span class="token punctuation">,</span> 这是我的新插件
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'test'</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>style lang<span class="token operator">=</span><span class="token string">'scss'</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre></div></li> <li><p>在main.js主入口文件引入创建好的test插件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">'./lib/heny'</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>直接在App.vue将标签放入，就可以直接使用了</p></li></ul> <h2 id="二、发布到npm"><a href="#二、发布到npm" class="header-anchor">#</a> 二、发布到npm</h2> <h3 id="npm初始化"><a href="#npm初始化" class="header-anchor">#</a> npm初始化</h3> <p>进入lib/heny文件夹，并执行npm init命令</p> <ul><li><code>name</code>：包名，默认就是文件夹名字，但是这个名字是需要唯一的，如果你命的名字已经被使用过了，那就只能换个名字。查看是否被用，可以直接输入npm view 包名，如果报错即被使用</li> <li><code>version</code>：包的版本，默认是1.0.0， 你可以更换，例如0.1.0或2.0.1等。</li> <li><code>description</code>：包的描述。主要描述你的包是用来做什么的。</li> <li><code>entry point</code>：包入口文件，默认是Index.js，可以自定义。</li> <li><code>test command</code>：测试命令，这个直接回车就好了，因为目前还不需要这个。</li> <li><code>git repository</code>：包的git仓库地址，npm自动读取.git目录作为这一项的默认值。没使用则回车略过。</li> <li><code>keyword</code>：包的关键词。该项会影响到用户怎样才能搜到你的包，可以理解为搜索引擎悠哈的关键词。建议关键词要能准确描述你的包，例如：&quot;vpay vue-pay vue-password password&quot;</li> <li><code>author</code>：作者。例如你的npm账号或者github账号</li> <li><code>license</code>：开源协议，回车就好。</li></ul> <h3 id="忽略文件不上传"><a href="#忽略文件不上传" class="header-anchor">#</a> 忽略文件不上传</h3> <p>创建<code>.npmignore</code>文件，和<code>.gitignore</code>差不多，希望哪些不发到npm包上面；</p> <h3 id="上传"><a href="#上传" class="header-anchor">#</a> 上传</h3> <ol><li><p>测试插件是否可以上传到npm网上；</p> <p>因为main.js引入时，都是从node_modules引入的，因此将lib/heny直接放入node_modules中，再引入的时候直接写：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">'heny'</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span>
+</code></pre></div><p>测试通过之后就可以直接开始发布到npmjs网上了；</p></li> <li><p>注册npm账号</p> <p>注册地址：https://www.npmjs.com/signup</p></li> <li><p>登录npm账号</p> <p>如果有设置了淘宝镜像需要先设置回镜像</p> <div class="language-js extra-class"><pre class="language-js"><code>npm config <span class="token keyword">set</span> registry http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>registry<span class="token punctuation">.</span>npmjs<span class="token punctuation">.</span>org
+</code></pre></div><p>之后执行npm login命令登录npm；</p> <p><img src="http://notecdn.heny.vip/images/vue-09_%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91_02.png" alt="image-20200406220434803"></p></li> <li><p>进入到项目的根目录，直接输入npm publish就发布成功了，直接到npmjs官网搜索包的name名字就有了；当然也可以直接在项目npm i 名字；</p> <p><img src="http://notecdn.heny.vip/images/vue-09_%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91_03.png" alt="image-20200406220541606"></p> <p>注意：第二次发布时，必须修改version版本号才能发布，否则会报错；</p></li></ol> <h3 id="自动修改版本号"><a href="#自动修改版本号" class="header-anchor">#</a> 自动修改版本号</h3> <p>npm version &lt;update_type&gt;</p> <p>type值为：</p> <ul><li>patch  0.0.</li> <li>minor  1.*.0</li> <li>major  *.0.0</li></ul> <p>其他npm管理包命令</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 撤销整个包</span>
+npm unpublish <span class="token operator">--</span>force 包名
+
+<span class="token comment">// 撤销某个版本</span>
+npm publish 包名@版本号
+</code></pre></div><h2 id="三、vue-extend"><a href="#三、vue-extend" class="header-anchor">#</a> 三、Vue.extend</h2> <blockquote><p>Vue.extend属于Vue的全局API，在实际业务开发中很少使用，因为相比常用Vue.component写法使用extend更加麻烦，用于注册插件使用</p></blockquote> <p>使用<code>Vue.extend</code>创建插件，传入一个组件，或者一个对象，里面写对应的组件</p> <p>之后使用<code>$mount</code>挂载元素得到<code>$el</code>，将<code>$el</code>添加到<code>body</code>里面即可；</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 使用vue单组件</span>
+<span class="token keyword">import</span> CodeComponent <span class="token keyword">from</span> <span class="token string">'./CodeComponent.vue'</span>
+<span class="token keyword">const</span> <span class="token constant">C</span> <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span>CodeComponent<span class="token punctuation">)</span>
+
+<span class="token comment">// 使用对象</span>
+<span class="token keyword">const</span> <span class="token constant">C</span> <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>这是一个组件<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 挂载到body上</span>
+<span class="token keyword">let</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+vm<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$el<span class="token punctuation">)</span>
+</code></pre></div><h2 id="遇到的bug："><a href="#遇到的bug：" class="header-anchor">#</a> 遇到的bug：</h2> <ol><li>发布npm包报错： https://blog.csdn.net/weixin_38080573/article/details/88080556</li></ol></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/heny/h-note/edit/master/src/web前端/Vue/vue-09 插件开发.md" target="_blank" rel="noopener noreferrer">在GitHub上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新：:</span> <span class="time">4/15/2020, 11:35:27 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/src/web前端/Vue/vue-08 Vuex.html" class="prev">
+        Vue-08 Vuex
+      </a></span> <span class="next"><a href="/src/web前端/Vue/vue造轮子常用方法.html">
+        Vue造轮子常用方法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reading-progress top" data-v-59854228><div class="progress" data-v-59854228></div></div></div></div>
+    <script src="/assets/js/app.da95d8b3.js" defer></script><script src="/assets/js/3.7181b290.js" defer></script><script src="/assets/js/69.3297260f.js" defer></script>
+  </body>
+</html>

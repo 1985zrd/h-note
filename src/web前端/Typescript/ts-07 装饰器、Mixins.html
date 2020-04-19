@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TS-07 装饰器、Mixins | 前端学习圈</title>
+    <meta name="description" content="一位不知名的初级菜鸟">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+  <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?5817cf72ca4afb611a3f0b798b96b888";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+    
+    <link rel="preload" href="/assets/css/0.styles.e2d0ea6e.css" as="style"><link rel="preload" href="/assets/js/app.da95d8b3.js" as="script"><link rel="preload" href="/assets/js/3.7181b290.js" as="script"><link rel="preload" href="/assets/js/57.00c732e7.js" as="script"><link rel="prefetch" href="/assets/js/10.b73b2113.js"><link rel="prefetch" href="/assets/js/100.1a896ec2.js"><link rel="prefetch" href="/assets/js/101.8c78bd07.js"><link rel="prefetch" href="/assets/js/102.d01cacfc.js"><link rel="prefetch" href="/assets/js/103.926d3235.js"><link rel="prefetch" href="/assets/js/104.70629a3c.js"><link rel="prefetch" href="/assets/js/105.e8d803c9.js"><link rel="prefetch" href="/assets/js/106.8e875262.js"><link rel="prefetch" href="/assets/js/107.184c281c.js"><link rel="prefetch" href="/assets/js/108.c7d5c7c3.js"><link rel="prefetch" href="/assets/js/109.c4cc840c.js"><link rel="prefetch" href="/assets/js/11.f4b8ac83.js"><link rel="prefetch" href="/assets/js/110.08bd74fe.js"><link rel="prefetch" href="/assets/js/111.45cd978b.js"><link rel="prefetch" href="/assets/js/112.84896fca.js"><link rel="prefetch" href="/assets/js/113.0a61e4e8.js"><link rel="prefetch" href="/assets/js/114.ccddb957.js"><link rel="prefetch" href="/assets/js/115.e2bc0431.js"><link rel="prefetch" href="/assets/js/116.75971baa.js"><link rel="prefetch" href="/assets/js/117.d7c5bdd5.js"><link rel="prefetch" href="/assets/js/118.face7a96.js"><link rel="prefetch" href="/assets/js/119.5ca3336d.js"><link rel="prefetch" href="/assets/js/12.4d87e863.js"><link rel="prefetch" href="/assets/js/120.90fba605.js"><link rel="prefetch" href="/assets/js/121.dbc40cc1.js"><link rel="prefetch" href="/assets/js/122.e3edf160.js"><link rel="prefetch" href="/assets/js/123.bcfe518e.js"><link rel="prefetch" href="/assets/js/124.d3806bb3.js"><link rel="prefetch" href="/assets/js/125.15cf3b80.js"><link rel="prefetch" href="/assets/js/126.c3bae4fe.js"><link rel="prefetch" href="/assets/js/127.d02dc79b.js"><link rel="prefetch" href="/assets/js/128.53f972cf.js"><link rel="prefetch" href="/assets/js/129.37928ae7.js"><link rel="prefetch" href="/assets/js/13.cda1a7b9.js"><link rel="prefetch" href="/assets/js/130.9c63fe76.js"><link rel="prefetch" href="/assets/js/131.7e58a85b.js"><link rel="prefetch" href="/assets/js/132.a6273df3.js"><link rel="prefetch" href="/assets/js/133.d507722d.js"><link rel="prefetch" href="/assets/js/134.87e05591.js"><link rel="prefetch" href="/assets/js/135.ec45a26d.js"><link rel="prefetch" href="/assets/js/136.2b252f35.js"><link rel="prefetch" href="/assets/js/137.34ad6314.js"><link rel="prefetch" href="/assets/js/138.9b2d0a3d.js"><link rel="prefetch" href="/assets/js/139.49b5115f.js"><link rel="prefetch" href="/assets/js/14.313d9572.js"><link rel="prefetch" href="/assets/js/140.c68e3d9b.js"><link rel="prefetch" href="/assets/js/141.4fc6b486.js"><link rel="prefetch" href="/assets/js/142.e2939d59.js"><link rel="prefetch" href="/assets/js/143.9080c1e6.js"><link rel="prefetch" href="/assets/js/144.8fb68016.js"><link rel="prefetch" href="/assets/js/145.8fd9733f.js"><link rel="prefetch" href="/assets/js/146.a9a46b8c.js"><link rel="prefetch" href="/assets/js/147.7c64010f.js"><link rel="prefetch" href="/assets/js/148.81cca953.js"><link rel="prefetch" href="/assets/js/149.012b7793.js"><link rel="prefetch" href="/assets/js/15.cd84db72.js"><link rel="prefetch" href="/assets/js/150.96e923ae.js"><link rel="prefetch" href="/assets/js/151.d012fbd3.js"><link rel="prefetch" href="/assets/js/152.ac6a19ab.js"><link rel="prefetch" href="/assets/js/153.203f72f8.js"><link rel="prefetch" href="/assets/js/154.8f66c9c3.js"><link rel="prefetch" href="/assets/js/155.8823a770.js"><link rel="prefetch" href="/assets/js/156.9f40ae40.js"><link rel="prefetch" href="/assets/js/157.3c5bb94d.js"><link rel="prefetch" href="/assets/js/158.5cd9cc93.js"><link rel="prefetch" href="/assets/js/159.dc42f5d5.js"><link rel="prefetch" href="/assets/js/16.85711d31.js"><link rel="prefetch" href="/assets/js/17.603cbc23.js"><link rel="prefetch" href="/assets/js/18.1a545ab7.js"><link rel="prefetch" href="/assets/js/19.2d36b4a5.js"><link rel="prefetch" href="/assets/js/20.cdf35468.js"><link rel="prefetch" href="/assets/js/21.e66b9416.js"><link rel="prefetch" href="/assets/js/22.2b7de010.js"><link rel="prefetch" href="/assets/js/23.9dd0da91.js"><link rel="prefetch" href="/assets/js/24.95a6d272.js"><link rel="prefetch" href="/assets/js/25.02e2edd3.js"><link rel="prefetch" href="/assets/js/26.379701ae.js"><link rel="prefetch" href="/assets/js/27.d8274a53.js"><link rel="prefetch" href="/assets/js/28.93ca0a5f.js"><link rel="prefetch" href="/assets/js/29.7a627adc.js"><link rel="prefetch" href="/assets/js/30.0e3b843b.js"><link rel="prefetch" href="/assets/js/31.9bf95f96.js"><link rel="prefetch" href="/assets/js/32.762b6abf.js"><link rel="prefetch" href="/assets/js/33.63c9473a.js"><link rel="prefetch" href="/assets/js/34.24b2fb3a.js"><link rel="prefetch" href="/assets/js/35.c028d7fb.js"><link rel="prefetch" href="/assets/js/36.652ec438.js"><link rel="prefetch" href="/assets/js/37.5358aefe.js"><link rel="prefetch" href="/assets/js/38.7955b02d.js"><link rel="prefetch" href="/assets/js/39.a5bee726.js"><link rel="prefetch" href="/assets/js/4.134e8630.js"><link rel="prefetch" href="/assets/js/40.cf719c3f.js"><link rel="prefetch" href="/assets/js/41.f185a457.js"><link rel="prefetch" href="/assets/js/42.053b1d8a.js"><link rel="prefetch" href="/assets/js/43.5be9e932.js"><link rel="prefetch" href="/assets/js/44.39582dda.js"><link rel="prefetch" href="/assets/js/45.2b1be7c4.js"><link rel="prefetch" href="/assets/js/46.7a5c4864.js"><link rel="prefetch" href="/assets/js/47.f747077b.js"><link rel="prefetch" href="/assets/js/48.b44c00dd.js"><link rel="prefetch" href="/assets/js/49.84af6bfb.js"><link rel="prefetch" href="/assets/js/5.d5325543.js"><link rel="prefetch" href="/assets/js/50.92dcb447.js"><link rel="prefetch" href="/assets/js/51.ca604d07.js"><link rel="prefetch" href="/assets/js/52.1b05ca11.js"><link rel="prefetch" href="/assets/js/53.2d72d153.js"><link rel="prefetch" href="/assets/js/54.b6df9391.js"><link rel="prefetch" href="/assets/js/55.619dd316.js"><link rel="prefetch" href="/assets/js/56.7875357c.js"><link rel="prefetch" href="/assets/js/58.dcfd524f.js"><link rel="prefetch" href="/assets/js/59.0af6605b.js"><link rel="prefetch" href="/assets/js/6.4714b01b.js"><link rel="prefetch" href="/assets/js/60.da7baaab.js"><link rel="prefetch" href="/assets/js/61.9778162b.js"><link rel="prefetch" href="/assets/js/62.a6e45b04.js"><link rel="prefetch" href="/assets/js/63.e09445c3.js"><link rel="prefetch" href="/assets/js/64.5357e7cd.js"><link rel="prefetch" href="/assets/js/65.3781f84a.js"><link rel="prefetch" href="/assets/js/66.c1608f6a.js"><link rel="prefetch" href="/assets/js/67.fd77831d.js"><link rel="prefetch" href="/assets/js/68.148ec50d.js"><link rel="prefetch" href="/assets/js/69.3297260f.js"><link rel="prefetch" href="/assets/js/7.5e62f1c1.js"><link rel="prefetch" href="/assets/js/70.8401ffa0.js"><link rel="prefetch" href="/assets/js/71.e41533db.js"><link rel="prefetch" href="/assets/js/72.648c155d.js"><link rel="prefetch" href="/assets/js/73.ed0e0de5.js"><link rel="prefetch" href="/assets/js/74.7eba1658.js"><link rel="prefetch" href="/assets/js/75.2f690d80.js"><link rel="prefetch" href="/assets/js/76.8a05ea9a.js"><link rel="prefetch" href="/assets/js/77.91e7f92a.js"><link rel="prefetch" href="/assets/js/78.e762658d.js"><link rel="prefetch" href="/assets/js/79.be92f809.js"><link rel="prefetch" href="/assets/js/8.0e267c14.js"><link rel="prefetch" href="/assets/js/80.ad38da8d.js"><link rel="prefetch" href="/assets/js/81.7aeedf40.js"><link rel="prefetch" href="/assets/js/82.545252e3.js"><link rel="prefetch" href="/assets/js/83.d504ac2d.js"><link rel="prefetch" href="/assets/js/84.cd88108a.js"><link rel="prefetch" href="/assets/js/85.bd419469.js"><link rel="prefetch" href="/assets/js/86.e526b420.js"><link rel="prefetch" href="/assets/js/87.c2b0393b.js"><link rel="prefetch" href="/assets/js/88.adf486f1.js"><link rel="prefetch" href="/assets/js/89.c3000d92.js"><link rel="prefetch" href="/assets/js/9.5accd7e5.js"><link rel="prefetch" href="/assets/js/90.cbfea173.js"><link rel="prefetch" href="/assets/js/91.e0145dac.js"><link rel="prefetch" href="/assets/js/92.b547ee60.js"><link rel="prefetch" href="/assets/js/93.b95868f5.js"><link rel="prefetch" href="/assets/js/94.f867d3ca.js"><link rel="prefetch" href="/assets/js/95.26d200ef.js"><link rel="prefetch" href="/assets/js/96.ba8fd0f5.js"><link rel="prefetch" href="/assets/js/97.90b2e819.js"><link rel="prefetch" href="/assets/js/98.796a92f3.js"><link rel="prefetch" href="/assets/js/99.82e6771a.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.4e1dd104.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2d0ea6e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端学习圈</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web前端" class="dropdown-title"><span class="title">web前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/src/web前端/es6/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/html5、css3/" class="nav-link">
+  html5、css3
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/jQuery/" class="nav-link">
+  jQuery
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/React/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/react-native/" class="nav-link">
+  react-native
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Server/" class="nav-link">
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/其他框架/" class="nav-link">
+  其他框架
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/小程序/" class="nav-link">
+  小程序
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="功能" class="dropdown-title"><span class="title">功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://chat.heny.vip" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  消息传输站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/heny/h-note" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="web前端" class="dropdown-title"><span class="title">web前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/src/web前端/es6/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/html5、css3/" class="nav-link">
+  html5、css3
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/jQuery/" class="nav-link">
+  jQuery
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/React/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/react-native/" class="nav-link">
+  react-native
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Server/" class="nav-link">
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/Webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/其他框架/" class="nav-link">
+  其他框架
+</a></li><li class="dropdown-item"><!----> <a href="/src/web前端/小程序/" class="nav-link">
+  小程序
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="功能" class="dropdown-title"><span class="title">功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://chat.heny.vip" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  消息传输站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/heny/h-note" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Typescript</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/src/web前端/Typescript/ts-01 搭建环境、基础类型.html" class="sidebar-link">TS-01 搭建环境、定义基本类型</a></li><li><a href="/src/web前端/Typescript/ts-02 接口、函数.html" class="sidebar-link">TS-02 接口定义、函数定义</a></li><li><a href="/src/web前端/Typescript/ts-03 泛型、类.html" class="sidebar-link">TS-03 泛型、类</a></li><li><a href="/src/web前端/Typescript/ts-04 枚举、类型推论.html" class="sidebar-link">TS-04 枚举、类型推论</a></li><li><a href="/src/web前端/Typescript/ts-05 高级类型.html" class="sidebar-link">TS-05 高级类型</a></li><li><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html" class="active sidebar-link">TS-07 装饰器、Mixins</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#装饰器" class="sidebar-link">装饰器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#类装饰器" class="sidebar-link">类装饰器</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#方法装饰器" class="sidebar-link">方法装饰器</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#访问器装饰器" class="sidebar-link">访问器装饰器</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#属性装饰器" class="sidebar-link">属性装饰器</a></li><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#参数装饰器" class="sidebar-link">参数装饰器</a></li></ul></li><li class="sidebar-sub-header"><a href="/src/web前端/Typescript/ts-07 装饰器、Mixins.html#mixin" class="sidebar-link">Mixin</a></li></ul></li><li><a href="/src/web前端/Typescript/ts-08 声明文件.html" class="sidebar-link">TS-08 声明文件</a></li><li><a href="/src/web前端/Typescript/ts-09 实战例子.html" class="sidebar-link">实践例子</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="ts-07-装饰器、mixins"><a href="#ts-07-装饰器、mixins" class="header-anchor">#</a> TS-07 装饰器、Mixins</h1> <h2 id="装饰器"><a href="#装饰器" class="header-anchor">#</a> 装饰器</h2> <p>如果需要使用装饰器，需要在<code>tsconfig.json</code>文件打开<code>experimentalDecorators</code>为<code>true</code>；</p> <p>装饰器使用<code>@</code>符加一个名字定义，这个名字必须是一个函数或者求值后是一个函数，这个函数会在执行时被调用，被装饰的声明作为参数自动传入，必须紧挨着要修饰的内容的前面，而且所有的装饰不能用在声明文件和<code>.d.ts</code>文件中，比如<code>declare</code>修饰；</p> <ul><li>装饰器工厂</li></ul> <p>装饰器工厂为一个函数里面返回一个函数，在使用装饰器时，则需要调用一下，得到求值之后的装饰器；</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token function">setProps</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+@<span class="token function">setProps</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 括号里面可以填写参数，传入到第一个函数;</span>
+</code></pre></div><ul><li>多个装饰器同时使用</li></ul> <p>当使用多个装饰器时，需要注意顺序，如果包含装饰器工厂，则是先从上往下求值，得到装饰器，之后再从下往上执行执行器，挨个调用；</p> <div class="language-ts extra-class"><pre class="language-ts"><code>@<span class="token function">setProps</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@setName
+target
+</code></pre></div><h3 id="类装饰器"><a href="#类装饰器" class="header-anchor">#</a> 类装饰器</h3> <p>使用类装饰器可以修改一个类里面的原有属性；</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> classDecorator<span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">new</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 如果不继承target, 则最后结果将只有该类的所有属性</span>
+  <span class="token keyword">return</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token keyword">extends</span> <span class="token class-name">target</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> name <span class="token operator">=</span> <span class="token string">'hello'</span>
+    <span class="token keyword">public</span> age <span class="token operator">=</span> <span class="token number">18</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+@classDecorator
+<span class="token keyword">class</span> <span class="token class-name">ClassD</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> size <span class="token operator">=</span> <span class="token number">20</span>
+  <span class="token keyword">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token operator">:</span> <span class="token builtin">string</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ClassD</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 结果将是Person类</span>
+</code></pre></div><h3 id="方法装饰器"><a href="#方法装饰器" class="header-anchor">#</a> 方法装饰器</h3> <p>方法装饰器用来处理类中的方法，方法装饰器包含三个参数：</p> <ul><li>第一个参数分为两种情况：
+<ul><li>如果装饰的是静态成员，这个参数代表的是类的构造函数</li> <li>如果装饰的是实例成员，是类的原型对象</li></ul></li> <li>第二个参数是成员的名字</li> <li>第三个参数是成员的属性描述符（configruable、writeable、enumerable）</li></ul> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token function">enumrable</span><span class="token punctuation">(</span><span class="token parameter">bool<span class="token operator">:</span> <span class="token builtin">boolean</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> descriptor<span class="token operator">:</span> PropertyDescriptor</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        descriptor<span class="token punctuation">.</span>enumrable <span class="token operator">=</span> bool
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">ClassD</span> <span class="token punctuation">{</span>
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    @<span class="token function">enumrable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> clas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassD</span><span class="token punctuation">(</span><span class="token string">'heny'</span><span class="token punctuation">)</span> 
+<span class="token comment">// 当遍历该实例对象时，是无法遍历到getName的;</span>
+</code></pre></div><p>使用方法装饰器不仅可以修改属性描述符的值，还可以替换它的实现，返回一个值，就相当于是方法的属性描述符，直接修改value函数即可：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token function">enumrable</span><span class="token punctuation">(</span><span class="token parameter">bool<span class="token operator">:</span> <span class="token builtin">boolean</span></span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> descriptor<span class="token operator">:</span> PropertyDescriptor</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">'not value'</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            enumerable<span class="token operator">:</span> bool
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> clas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassD</span><span class="token punctuation">(</span><span class="token string">'heny'</span><span class="token punctuation">)</span>
+clas<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'not value'</span>
+</code></pre></div><p>注意：如果<code>es</code>小于<code>es5</code>的话，<code>es3</code>是没有<code>Object.defineProperty</code>属性的；</p> <h3 id="访问器装饰器"><a href="#访问器装饰器" class="header-anchor">#</a> 访问器装饰器</h3> <p>用来装饰<code>set</code>和<code>get</code>方法，访问装饰器不能同时使用，只需要在<code>set</code>和<code>get</code>前面使用一个装饰器即可；</p> <p>访问器装饰器和方法装饰器的参数是一样的；</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token function">enumrable</span><span class="token punctuation">(</span><span class="token parameter">bool<span class="token operator">:</span> <span class="token builtin">boolean</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> descriptor<span class="token operator">:</span> PropertyDescriptor<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        descriptor<span class="token punctuation">.</span>enumrable <span class="token operator">=</span> bool
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">ClassD</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> _name<span class="token operator">:</span> <span class="token builtin">string</span>
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token operator">:</span> <span class="token builtin">string</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_name <span class="token operator">=</span> name
+    <span class="token punctuation">}</span>
+    @<span class="token function">enumrable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token comment">// 只能使用一个，不能在set函数也添加一次</span>
+    <span class="token keyword">get</span> <span class="token function">name</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_name
+    <span class="token punctuation">}</span>
+    <span class="token keyword">set</span> <span class="token function">name</span> <span class="token punctuation">(</span><span class="token parameter">name<span class="token operator">:</span> <span class="token builtin">string</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_name <span class="token operator">=</span> name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="属性装饰器"><a href="#属性装饰器" class="header-anchor">#</a> 属性装饰器</h3> <p>声明在属性的声明之前，它有两个参数，和方法装饰器的前两个参数是一样的，属性装饰器没法修改属性描述符，只能用来判断某个类中是否声明了某个名字的属性；</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> propertyName<span class="token operator">:</span> <span class="token builtin">string</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>propertyName<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">ClassD</span> <span class="token punctuation">{</span>
+    @print
+    <span class="token keyword">private</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="参数装饰器"><a href="#参数装饰器" class="header-anchor">#</a> 参数装饰器</h3> <p>参数装饰器有三个参数，前两个和方法装饰器是一样的，第三个参数是函数在参数列表中的索引；参数装饰器的返回值会被忽略；</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token function">required</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span>propertyName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> index<span class="token operator">:</span> <span class="token builtin">number</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">修饰的是第</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">个参数</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">ClassD</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'hhh'</span>
+    <span class="token comment">// 直接在参数前面使用参数装饰器即可;</span>
+    <span class="token function">getInfo</span><span class="token punctuation">(</span>prefix<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>@required infoType<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">{</span>
+        
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="mixin"><a href="#mixin" class="header-anchor">#</a> Mixin</h2> <p><code>js</code>中实现<code>Mixin</code>的方法</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span>
+    <span class="token function">getA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token punctuation">{</span>
+    <span class="token function">getB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mixin</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> <span class="token keyword">from</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">from</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">mixin</span><span class="token punctuation">(</span><span class="token class-name">A</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token class-name">B</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</code></pre></div><p><code>ts</code>中的<code>Mixin</code>，需要使用A和B的类型，使用<code>implement</code>而不是使用<code>extends</code>，这意味着需要在类里面实现A和B；</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> isA<span class="token operator">:</span> <span class="token builtin">boolean</span>
+    <span class="token keyword">public</span> <span class="token function">getA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> isB<span class="token operator">:</span> <span class="token builtin">boolean</span>
+    <span class="token keyword">public</span> <span class="token function">getB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 实现两个类使用逗号隔开</span>
+<span class="token keyword">class</span> <span class="token class-name">ClassAB</span> <span class="token keyword">implements</span> <span class="token class-name">A</span><span class="token punctuation">,</span> <span class="token constant">B</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 需要手动实现里面的方法</span>
+    <span class="token keyword">public</span> isA<span class="token operator">:</span><span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+    <span class="token keyword">public</span> isB<span class="token operator">:</span><span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+    <span class="token keyword">public</span> <span class="token function-variable function">getA</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
+    <span class="token keyword">public</span> <span class="token function-variable function">getB</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">mixins</span><span class="token punctuation">(</span><span class="token parameter">base<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">from</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            base<span class="token punctuation">.</span>prototype<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">.</span>prototype<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">mixins</span><span class="token punctuation">(</span>ClassAB<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token constant">A</span><span class="token punctuation">,</span> <span class="token constant">B</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> ab <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassAB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/heny/h-note/edit/master/src/web前端/Typescript/ts-07 装饰器、Mixins.md" target="_blank" rel="noopener noreferrer">在GitHub上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新：:</span> <span class="time">4/15/2020, 11:35:27 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/src/web前端/Typescript/ts-05 高级类型.html" class="prev">
+        TS-05 高级类型
+      </a></span> <span class="next"><a href="/src/web前端/Typescript/ts-08 声明文件.html">
+        TS-08 声明文件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reading-progress top" data-v-59854228><div class="progress" data-v-59854228></div></div></div></div>
+    <script src="/assets/js/app.da95d8b3.js" defer></script><script src="/assets/js/3.7181b290.js" defer></script><script src="/assets/js/57.00c732e7.js" defer></script>
+  </body>
+</html>
