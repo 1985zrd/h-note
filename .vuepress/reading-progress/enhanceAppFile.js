@@ -5,7 +5,6 @@ export default ({ Vue }) => {
   Vue.mixin({
     computed: {
       $readingShow() {
-        console.log(this.$page.frontmatter.readingShow, 'this.$page.frontmatter.readingShow')
         return this.$page.frontmatter.readingShow
       }
     }
