@@ -99,7 +99,8 @@ module.exports = {
 			clientSecret: '76a940144230049a7533df93f56940a20d400b22',
 			}
 		],
-		require('./copy')
+		require('./copy'),
+		require('./reading-progress')
 	],
 	themeConfig:{
 		repo: 'heny/h-note',
