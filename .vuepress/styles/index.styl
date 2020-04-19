@@ -6,6 +6,10 @@
     border none
     padding 2px 4px
 
+// 解决代码块导致横向滚动
+.theme-default-content li>code, .theme-default-content p>code
+  word-break break-word
+
 div[class*="language-"]
   border-radius: 6px!important;
   margin: 0!important;
@@ -49,4 +53,6 @@ blockquote
   border-left-color $accentColor
   background-color: #2a5bb81f
   color: #4e5356;
+
+
 

@@ -343,7 +343,7 @@ const instance = Reflect.construct(Greeting, ['张三']);
 如果第一个参数不是函数，则报错
 
 
-（4）apply(func,thisArg,args)
+（4）`apply(func,thisArg,args)`
 
 方法等同于Function.prototype.apply.call(func,thisArg,args),用于绑定this对象后执行给定函数，
 
