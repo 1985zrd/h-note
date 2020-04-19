@@ -5,12 +5,13 @@
 高阶组件：一个组件返回另一个组件
 
 高阶组件的三个重点：
+
 * 必须是一个函数
 * 参数是一个组件
 * 返回值也是一个组件
 
 
-```js
+```jsx
 // 定义高阶组件, 作用是在使用组件之前做其他操作, 高阶组件是可以return多层的
 const withComponent = (HighComponent) => {
     return class extends React.Component {
@@ -40,7 +41,7 @@ export default class Parent extends React.Component {
 3. 请求接口的高阶组件demo
 
 （1）定义高阶组件
-```js
+```jsx
 const withFetch = url => View => {
     return class extends React.Component {
         state = {
@@ -61,7 +62,7 @@ const withFetch = url => View => {
 }
 ```
 （2）使用定义好的高阶组件
-```js
+```jsx
 class Banner extends React.Component {
     componentDidMount(){
         console.log(this.props.data) // 可以直接拿到数据了

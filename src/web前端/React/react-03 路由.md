@@ -6,6 +6,7 @@
 ## 二、路由标签
 ### 路由器
 Router： 路由器，需要单独引入以下组件
+
 * BrowserRouter     使用html5的pushState和replaceState和popState事件匹配路由
 * HashRouter       使用hash匹配路由
 * MemoryRouter    将url保存在内存中，不读写地址栏，在React native中非常有用
@@ -16,13 +17,14 @@ Router： 路由器，需要单独引入以下组件
 
 ### 路由标签
 Switch   
+
 （1）当Route标签不添加path只存在component时，所有的路由都会匹配上该Route，因此添加Switch可以解决这个问题
 
 （2）Switch是唯一的，只呈现一条路由，确保该标签下面的路由标签始终渲染一个路由
 
 （3）Switch的所有子元素只能是`<Route>`或`<Redirect>`
 
-```js
+```jsx
 <Switch>
     <Route component={Home} path='/home'/>
     <Route component={NotFound} />
@@ -36,14 +38,14 @@ Switch
 * component：渲染的组件
 
 
-```js
+```jsx
 const Comp = props => <div>{props.match.params.name}</div>
 <Route path='path' component={Comp} />
 ```
 * render：用于渲染组件，可以将props直接传递给组件，方便写内联组件，render也接受路由对象作为参数
 
 
-```js
+```jsx
 <Route render={() => <div>这是一个内联组件写法</div>} />
 // 当Component是传下来的时候使用回调方式方便
 <Route render={routeProps => <Component {...routeProps} />} />
@@ -59,7 +61,7 @@ const Comp = props => <div>{props.match.params.name}</div>
 * children：一个函数，当Route有children时，不管当前的路径是否与route匹配，该函数都会执行，也接受所有的route传入的参数
 
 
-```js
+```jsx
 <Route children={props => {
     <div className={props.match ? 'active' : ''}>
         <Link to='path' />
@@ -69,7 +71,7 @@ const Comp = props => <div>{props.match.params.name}</div>
 * element   v6版本新增属性，省去添加animate属性；
 
 
-```js
+```jsx
 import Profile from './Profile';
 
 // v5
@@ -93,13 +95,13 @@ import Profile from './Profile';
 优先级：component > render > children
 
 当然，Route也可以直接包裹组件
-```js
+```jsx
 <Route path='/home'>
     <Home/>
 </Route>
 ```
 建议项目中使用时，创建一个PrivateRoute组件，用来判断权限，一个RedirectBridge，用来跳转
-```js
+```jsx
 // RedirectBridge
 import React from 'react'
 function RedirectBridge(props){
@@ -129,13 +131,14 @@ class PrivateRoute extends React.Component {
 > 重定向到路由
 
 属性：
+
 * push：将推入到历史中，不是替换
 * to：跳转到地址，可以使用字符串，也可以使用对象形式
 * from：从哪个地址访问时，才to到指定的地址，没有则是所有地址都可以重定向
 * exact：完全匹配没有路由的地址，即可将Redirect放到Route之上都没事
 
 
-```js
+```jsx
 <Redirect to={{
         pathname: '/login',
         search: '?num=1',
@@ -149,11 +152,12 @@ class PrivateRoute extends React.Component {
 > 访问路由
 
 属性：
+
 * replace：布尔值，是否替换链接
 * to：可以是字符串，也可以是对象，也可以是函数
 
 
-```js
+```jsx
 // 当为对象时
 <Link
   to={{
@@ -178,7 +182,7 @@ class PrivateRoute extends React.Component {
 * isActive：一个函数，判断是否是激活状态
 
 
-```js
+```jsx
 <NavLink isActive={(match, location)=>{
         if(!match) return false
         return true
@@ -188,7 +192,7 @@ class PrivateRoute extends React.Component {
 #### Outlet  
 > v6新增标签
 
-```js
+```jsx
 function App() {
   return (
     <BrowserRouter>
@@ -219,7 +223,7 @@ function Profile() {
 ```
 ## 三、hooks API
 1. useHistory   用于访问路由
-```js
+```jsx
 import {useHistory} from 'react-router-dom'
 function HomeButton(){
     let history = useHistory()
@@ -232,7 +236,7 @@ function HomeButton(){
 }
 ```
 （2）v6版本使用useNavigate代替了useHistory
-```js
+```jsx
 // v5
 import { useHistory } from 'react-router-dom';
 function MyButton() {
@@ -264,7 +268,7 @@ navigate('/home', {replace: true});
 ```
 
 2. useLocation：访问location对象，每当路由改变都会返回一个新的location对象
-```js
+```jsx
 import {useLocation} from 'react-router-dom'
 function usePageViews(){
     let location = useLocation()
@@ -275,7 +279,7 @@ function usePageViews(){
 ```
 3. useParams   返回URL参数的键值对象
 4. useRouteMatch   当匹配到地址再渲染组件，不需要再写一个Route路由了了
-```js
+```jsx
 function About(){
     const match = useRouteMatch('/about')
     return match && <div>About组件</div>
@@ -284,7 +288,7 @@ function About(){
 
 ## 四、路由显示
 1. 页面显示，直接放到入口文件
-```js
+```jsx
 <BrowserRouter>
     <Switch>
         <Route />
@@ -293,7 +297,7 @@ function About(){
 </BrowserRouter>
 ```
 2. 组件中显示，在需要展示路由的位置放Route，记得在Home组件里面放props.children
-```js
+```jsx
 <Home>
     <Switch>
         <Route to={} />
@@ -326,7 +330,7 @@ function Home (props){
 可以使用函数，也可以使用类的方式，因为不需要使用生命周期，则使用函数即可；
 
 Switch用于确保平级下面的Route对象只能查找一个路由
-```js
+```jsx
 import React from 'react'
 import {Switch,Route,Redirect} from 'react-router-dom'  //按需引入路由文件;
 import Home from '../component/Home/Home'
@@ -344,18 +348,18 @@ export default Router
 2. 在index.js入口文件中引入浏览器路由插件
 
 路由必须包裹在BrowserRouter下面
-```js
+```jsx
 import {BrowserRouter} from 'react-router-dom'
 ReactDOM.render(<BrowserRouter><App /></BrowserRouter>)
 ```
 3. 在App中引入显示的路由
-```js
+```jsx
 import Router from './router/index'
 在div显示内容中放入：<Router />;
 ```
 
 Route的用法
-```js
+```jsx
 <Route component={Home} />
 <Route render={routeProps=>(<div {...routeProps}></div>)}
 // routeProps是路由对象, 放入后就不需要再withRouter包裹了
@@ -365,7 +369,7 @@ Route的用法
 第一种方式：
 
 1. 填写一个公共文件
-```js
+```jsx
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
@@ -387,7 +391,7 @@ const Router = (props)=>{
 export default Router
 ```
 2. 建立一个一级路由文件，使用传参方式传入到router里面去；
-```js
+```jsx
 // one.js
 import Index from '../components/index/index'
 const route = [
@@ -397,7 +401,7 @@ const route = [
 export default route
 ```
 3. 在需要设置路由的文件夹下引入
-```js
+```jsx
 import Router from './router'
 import One from './router/one'
 <Router route={One} />   // 给router组件传入参数
@@ -406,7 +410,7 @@ import One from './router/one'
 第二种方式：
 
 1. 创建router/router.js
-```js
+```jsx
 import Home from '@/pages/Home'
 import Mine from '@/pages/Mine'
 const routers = [
@@ -428,7 +432,7 @@ const routers = [
 export default routers
 ```
 2. 创建router/index.js
-```js
+```jsx
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import routes from "./router";
@@ -450,7 +454,7 @@ export default () => {
 };
 ```
 3. 修改入口文件index.js
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -459,7 +463,7 @@ ReactDOM.render(<Router><Root/></Router>, window.root)
 ```
 ## 七、路由嵌套
 1. 例子
-```js
+```jsx
 import {BrowserRouter, Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 function App(){
     return (
@@ -492,7 +496,7 @@ function Profile() {
 }
 ```
 2. v6路由嵌套
-```js
+```jsx
 // v6
 import {
   BrowserRouter,
@@ -540,7 +544,7 @@ function Profile() {
 当组件不是路由的直接子元素，而是孙子辈的，是没有路由对象的，因此可以使用withRouter解决这个问题。
 
 withRouter是一个高阶组件，作用将一个组件包裹进Route里面，然后router对象的history,location,match就会被放进这个组件的props属性中
-```js
+```jsx
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 function App(){}
@@ -552,7 +556,7 @@ export default withRouter(App)
 1. 动态路由
 
 （1）传值：需要配置对应的路由；
-```js
+```jsx
 path: '/detail/:id'   // 
 <NavLink to={'/detail'+item.id}>
 ```
@@ -561,19 +565,19 @@ path: '/detail/:id'   //
 当没有传入时会访问到404页面，可以在id后面加个?，如：/detail/:id?，就代表可有可无了，多个也可以，:id?/:name?
 2. query
 （1）传值：传入一个对象；
-```js
+```jsx
 <NavLink to={{pathname:'/detail',query:{id:1}}} >
 ```
 （2）取值：props.location.query.id；
 
 （3）当以问号传值方式时
-```js
+```jsx
 <NavLink to='/home?name=hny&age=18' />
 ```
 取值方式：props.location.search
 
 当读取不到时的解决方法
-```js
+```jsx
 // 第一种方式
 const params = new URLSearchParams(props.location.search)
 console.log(params.get('name'))
@@ -592,7 +596,7 @@ console.log(params.name)
 4. 编程式导航：
 
 写法和以上一致，因为要传参，需要用函数包裹一下；
-```js
+```jsx
 <button onClick={()=>this.props.history.push('/detail'+item.id)}
 ```
 
@@ -601,7 +605,7 @@ console.log(params.name)
 
 ### Prompt
 1. 当用户修改未保存离开时，提示用户保存
-```js
+```jsx
 import {Prompt} from 'react-router-dom'
 render(){
     return <Prompt message='Are you sure leave?' />
@@ -631,7 +635,7 @@ CacheSwitch：使用CacheRoute时不能使用Switch中，必须使用CacheSwitch
 
 3. 额外的生命周期：
 使用CacheRoute的组件将会得到一个名为cacheLifecycles的属性，里面包含两个额外的生命周期的注入函数didCache和didRecover，分别用在组件被缓存和被恢复时；
-```js
+```jsx
 class List extends Component {
     constructor(props, ...args){
         super(props, ...args)

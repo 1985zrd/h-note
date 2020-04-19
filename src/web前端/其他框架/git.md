@@ -305,6 +305,7 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 ### vscode插件：gitlens 
 
 使用gitlens使开发更方便，代码管理更容易
+
 1. 搜索：gitlens  并安装，之后在每一行代码后面可以清晰的看见
 
 ![image](http://notecdn.heny.vip/images/git-08.png)

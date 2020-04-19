@@ -53,11 +53,12 @@ modelObj.create({uname:'hny',age:18,sex:'男'},(err)=>{
 
 
 ## 二、Model.find()方法
-1. Model.find(conditions[,projection][,options][,callback]);  返回一个数组；
+1. `Model.find(conditions[,projection][,options][,callback])`;  返回一个数组；
 
 （1）conditions：find条件，查询的条件值可以为正则；
 
 （2）projection：要展示的字段，0为不显示，1为显示，如果不需要设置，可以写null；
+
 也可以使用字符串，用空格分开，不显示的用-减号；
 
 示例：model.find({name:/li/i},'name -_id',()=>{})；
@@ -80,6 +81,7 @@ modelObj.create({uname:'hny',age:18,sex:'男'},(err)=>{
 （1）修改多条需要加{multi:true}；
 
 （2）不建议使用update(),建议使用以下两种方法
+
 2. model.updateOne()；
 3. model.updateMany()；
 

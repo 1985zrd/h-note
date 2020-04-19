@@ -2,8 +2,11 @@
 ## 一、linux的注意事项
 1. linux严格区分大小写
 2. linux中所有内容都以文件形式保存，包括硬件；
+    
      硬盘文件是：/dev/sd[a-p]
+    
      光盘文件是：/dev/sr0等
+
 3. linux支持类型：
 
 压缩包：.gz、.bz2. .tar.bz2. .tgz等
@@ -15,6 +18,7 @@
 脚本文件：.sh
 
 配置文件：.conf
+
 4. linux所有存储设备都必须挂载之后用户才能使用，包括硬盘、u盘和光盘
 5. windows的应用程序不能直接在linux下运行；
 
@@ -144,8 +148,11 @@ tail 显示文件后面几行（-n，指定行数）
 1. chmod：改变文件或目录权限（/bin/chmod）
 
 chmod [{ugoa}{+-=}{rwx}] [文件或目录]
+
     [mode=421] [文件或目录]
+
     -R 递归修改；
+
 2. 权限的数字表示：r=4  w=2 x=1； 示例：rwxrw-r--   764
 
 示例：chmod g+w testfile    赋予testfile文件所属组添加写权限
@@ -229,9 +236,11 @@ grep -iv [指定字串] [文件]     -i不区别大小写 -v排队指定字串
 
 ## 十、压缩解压
 1. gzip [文件]                                     压缩文件，压缩后格式.gz；
+
      gunzip [压缩文件]                           解压压缩.gz的文件；
 
 2. tar [-zcf] [压缩后文件名] [目录]       打包目录，格式.tar.gz
+
  * c  创建tar包
 * v  显示详细信息
 * f  指定文件名
@@ -281,15 +290,22 @@ make
 4. mail [用户名]         查看发送电子邮件
 5. last                        列出目前与过去登入系统的用户信息；
 6. lastlog                   检查某特定用户上次登录的时间
+
 lastlog -u 500；      通过uid查看指定用户的登录信息；
+
 7. traceroute 地址          显示数据包到主机间的路径；
 8. netstat [选项]             显示网络相关信息；
+ 
     -t TCP协议；-u UDP协议；-l 监听；-r 路由 -n 显示ip地址和端口号
+ 
     示例：netstat -tlun 查看本地监听的端口
+ 
       netstat -an   查看本机所有的网络连接；
+ 
       netstat -rn   查看本机路由表；
 9. setup        配置网络；
 10. mount [-t文件系统] 设备文件名 挂载点
+
 mount -t iso9660 /dev/sr0 /mnt/cdrom；
 
 
@@ -301,6 +317,7 @@ mount -t iso9660 /dev/sr0 /mnt/cdrom；
 
 ## 十三、vim
 vi为黑色，vim为红色
+
 1. 三种状态：
 
 * `Command`：任何输入都会作为编辑命令，而不会出现在屏幕上，任何输入都引起立即反映
@@ -436,6 +453,7 @@ vi为黑色，vim为红色
 
 ## 十四、linux修改中文系统
 1. locale -a查看是否有zh_CN.UTF-8，如果有则进行下一步，没有自行百度安装
+
 2. 使用vim打开locale.conf文件
 
 vim /etc/locale.conf

@@ -13,6 +13,7 @@ assets、common、components、router
 ## 在react中使用stylus
 
 1. 打开git bash，依次运行以下代码
+
 ```bash
 git init
 git add .
@@ -29,7 +30,7 @@ yarn add stylus stylus-loader
 3. 到项目文件夹下，找到config --> webpack.config.js
 
 （1）在320行左右，添加以下代码
-```js
+```jsx
 oneOf: [
     {
         test: /\.styl$/,
@@ -39,7 +40,7 @@ oneOf: [
 ]
 ```
 （2）如果需要配置别名@符
-```js
+```jsx
 // 在274行左右修改
 'react-native': 'react-native-web'
 '@': path.resolve(__dirname,'../src')
@@ -51,14 +52,14 @@ oneOf: [
 `npm i redux react-redux redux-persist redux-devtools-extension redux-thunk`
 
 2. 创建store/reducers/index.js
-```js
+```jsx
 import { combineReducers } from 'redux'
 export default combineReducers({
     /*...*/
 })
 ```
 3. 创建store/index.js
-```js
+```jsx
 import { applyMiddleware, createStore } from 'redux'
 import rootReducer from './reducers' //自动获取index.js
 
@@ -89,7 +90,7 @@ export const persistor = persistStore(store)
 在actions文件夹里面，导出触发的方法，在action-types.js里面管理变量名；
 
 5. 在src/index.js文件配置
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -112,11 +113,12 @@ ReactDOM.render(
 ## 引入图片的两种方式
 
 1. 使用import引入
-```js
+
+```jsx
 import IMG from '../...'
 ```
 2. 在状态机引入
-```js
+```jsx
 state = {
     img: require('....')
 }
@@ -147,14 +149,14 @@ state = {
 && 为继发执行，前一个成功才执行后一个
 
 3. 直接在config.overrides.js修改
-```js
+```jsx
 process.env.PORT = 3006
 ```
 
 
 ## 给React挂载内容，方便组件不引入直接调用
 1. index.js，修改入口文件
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
@@ -162,7 +164,7 @@ React.message = 'hhhh' // 直接使用React添加
 ReactDOM.render(<App/>,document.getElementById('root'))
 ```
 2. 在组件中使用
-```js
+```jsx
 import React, {message} from 'react'
 export default ()=>{
     return (<div>{message}</div>)
@@ -177,7 +179,7 @@ export default ()=>{
 
 由于customize-cra依赖react-app-rewired，所以需要安装两个插件
 
-官网： https://github.com/arackaf/customize-cra
+官网： [https://github.com/arackaf/customize-cra](https://github.com/arackaf/customize-cra)
 
 2. 修改package.json
 ```json
@@ -189,12 +191,12 @@ export default ()=>{
 },
 ```
 3. 在项目根目录新建：config-overrides.js
-```js
+```jsx
 const { override } = require('customize-cra'); 
 module.exports = {};
 ```
 4. 添加配置，跨域设置、增加less支持、px转rem、ant-design-mobile按需加载、打包压缩js和css、关闭console
-```js
+```jsx
 // 安装less less-loader
 yarn add less less-loader -D
 // 安装compression-webpack-plugin 压缩js为gzip
@@ -286,7 +288,7 @@ module.exports = {
 ```
 
 5. 添加webpack其他插件
-```js
+```jsx
 const { override, addWebpackPlugin } = require('customize-cra'); 
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
@@ -295,7 +297,7 @@ module.exports = override(
 );
 ```
 6. 自定义override的函数
-```js
+```jsx
 const curtomFn = () => config => {
     ...
     // 填写需要做的事情
@@ -327,7 +329,7 @@ module.exports = override(
 由于是实验性功能，官方不建议使用，因此需要手动开启
 
 npm i @babel/plugin-proposal-decorators
-```js
+```jsx
 const { override, fixBabelImports, addLessLoader, addDecoratorsLegacy } = require('customize-cra'); 
 module.exports = override( 
     addDecoratorsLegacy()
@@ -340,7 +342,7 @@ module.exports = override(
 `yarn add react-app-rewired customize-cra`
 2. 在项目根目录创建一个config-overrides.js，用于修改默认配置；
 3. 代理文件路径
-```js
+```jsx
 const { override, addWebpackAlias } = require('customize-cra')
 const path = require('path')
 module.exports = override(
@@ -368,7 +370,7 @@ module.exports = override(
 ## antd使用技巧
 
 防止message弹窗点击一直增加
-```js
+```jsx
 state = {timer: null}
 message2 = (msg,delay) => {
     if(this.state.timer) return
@@ -379,7 +381,7 @@ message2 = (msg,delay) => {
 }
 ```
 写入内容为ReactNode的节点，可以自定义样式；
-```js
+```jsx
 footer={[
     <div></div>,
     <div></div>
@@ -388,7 +390,7 @@ footer={[
 
 ## react百度埋点技巧
 1. 创建utils/tracking.js
-```js
+```jsx
 import { getPreHost } from '@/basic/utils';
 // 判断环境, 生产环境才统计
 if (getPreHost() === 'prod') {
@@ -405,11 +407,11 @@ if (getPreHost() === 'prod') {
 ```
 
 2. 创建完成在index.js手动引入
-```js
+```jsx
 require('src/utils/tracking')
 ```
 3. 创建utils/index ，添加节流函数和百度统计方法
-```js
+```jsx
 /**
 * 节流函数
 * @param {func} fn 待执行的函数体
@@ -440,7 +442,7 @@ export function trackData() {
 ```
 
 4. 创建Tracking.js组件
-```js
+```jsx
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 import {trackData} from 'src/utils'
@@ -457,7 +459,7 @@ class Tracking extends React.Component {
 export default withRouter(Tracking);
 ```
 5. 在index创建App.js时，使用Tracking.js组件进行包裹，所有代码写在该组件下面
-```js
+```jsx
 import Tracking from './Tracking'
 class App extends React.Component {
     render () {
@@ -470,7 +472,7 @@ class App extends React.Component {
 }
 ```
 6. 埋点示例
-```js
+```jsx
 import {trackData} from 'utils'
 export default function (){
     function tracking(){

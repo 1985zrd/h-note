@@ -831,7 +831,7 @@ export default {
 
 1. 在项目根目录创建postcss.config.js，postcss-pxtorem是自动转换rem；
 
-   配置样式官网教程： https://cli.vuejs.org/zh/guide/css.html
+   配置样式官网教程： [https://cli.vuejs.org/zh/guide/css.html](https://cli.vuejs.org/zh/guide/css.html)
 
    ```js
    module.exports = {

@@ -5,7 +5,7 @@ putty | xshell：连接远程linux服务器
 
 winscp | FileZilla： 连接ftp的；
 
-安装宝塔面板：https://www.bt.cn/bbs/thread-19376-1-1.html
+安装宝塔面板：[https://www.bt.cn/bbs/thread-19376-1-1.html](https://www.bt.cn/bbs/thread-19376-1-1.html)
 
 宝塔面板功能：直接在linux系统里面输入bt，会打开菜单，选择对应的指令即可；
 
@@ -126,9 +126,9 @@ server {
 }
 ```
 
-nginx：try_file常用配置：https://www.hi-linux.com/posts/53878.html
+nginx：try_file常用配置：[https://www.hi-linux.com/posts/53878.html](https://www.hi-linux.com/posts/53878.html)
 
-总结笔记：http://jsanntq.cn/2020/04/07/Nginx/
+总结笔记：[http://jsanntq.cn/2020/04/07/Nginx/](http://jsanntq.cn/2020/04/07/Nginx/)
 
 
 

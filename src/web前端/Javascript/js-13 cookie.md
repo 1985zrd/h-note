@@ -16,6 +16,7 @@ cookie机制：
 
 
 1. 存储：document.cookie = "key=value";   设置临时存储，键值对；
+
 ```js
 document.cooki e = "key=12;expires=" + 字符串格式时间；有过期时间；
  ```
@@ -33,6 +34,7 @@ date.toString(); //10天以后的字符串格式时间
 ## 二、js-cookie操作方式
 1. 安装：npm i js-cookie
 2. 用法：
+
 在项目中引入：import Cookie from 'js-cookie'
 
 （1）Cookie.set('name','value', {expires: 7， path:''})，name和value不可少
@@ -79,6 +81,7 @@ sessionStorage用于临时保存同一窗口(或标签页)的数据，在关闭�
 兼容：ie8+
 
 localStorage和sessionStorage使用方法一致；
+
 1. 储存：setItem(key, value)
 2. 获取：getItem(key)
 3. 删除：removeItem(key)

@@ -19,7 +19,7 @@ libs：后端使用
 uploads：接收上传的图片文件夹
 
 ## 二、下载模板
-http://www.cssmoban.com/cssthemes/8138.shtml
+[http://www.cssmoban.com/cssthemes/8138.shtml](http://www.cssmoban.com/cssthemes/8138.shtml)
 
 
 ## 三、下载第三方包

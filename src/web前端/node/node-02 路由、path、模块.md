@@ -61,7 +61,7 @@ http : //localhost :400/index.html?id=40;
 
 1. 模块分为三种：内置模块，自定义模块，第三方模块；
 
-    第三方社区的模块: https://www.npmjs.com/
+    第三方社区的模块: [https://www.npmjs.com/](https://www.npmjs.com/)
 
 
 ## 四、内置path与url模块：
@@ -80,7 +80,7 @@ path.extname();     获取path的扩展名；
 
 path.extname('1.txt')  获取txt
 
-path.basename(p,[ext])  第二个参数为要去除的后缀
+path.basename(p,`[ext]`)  第二个参数为要去除的后缀
 
 url.path(urls,true)；    加上true后使用query返回一个对象
 

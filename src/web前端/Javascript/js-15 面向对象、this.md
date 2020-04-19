@@ -292,6 +292,7 @@ function Student(name) {
 ## 十三、扩展原型上面的方法
 
 扩展String:  如果string里面没有trim这个方法，则创建一个trim方法
+
 ```js
 if(!String.prototype.trim){
     String.prototype.trim = function(){
@@ -468,6 +469,7 @@ obj2.name   // 'haha'
 ### 寄生式继承
 
 在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式，通过一个函数，传入一个对象，之后创建一个新对象继承该对象，在给该对象新增属性和方法，最后返回该对象，称为寄生式继承；
+
 ```js
 function copyObj(obj){
     var clone = Object.create(obj)  //通过create继承

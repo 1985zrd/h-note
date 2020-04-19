@@ -1,7 +1,9 @@
 # js-18 其他API
 ## 一、IntersectionObserver    实验性功能，IE11和ios不兼容
 判断元素是否在可视区域
+
 1. 用法
+
 ```js
 let io = new IntersectionObserver(callback[,option])
 // 开始观察
@@ -64,7 +66,7 @@ intersectionRatio和isIntersecting用来判断元素是否在可视区域
 
 5. 兼容性
 
-官方polyfill： https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+官方polyfill： [https://github.com/w3c/IntersectionObserver/tree/master/polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
 
 ## 二、MutationObserver 监视DOM变动
 1. 作用：

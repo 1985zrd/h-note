@@ -2,17 +2,17 @@
 ## 一、组件通讯
 ### 父传子
 传值：在子组件标签上，定义一个变量，去赋值传值的内容
-```js
+```jsx
 <Home msg={this.state.msg} />
 ```
 （1）函数创建接收方式：第一个形参接收；
-```js
+```jsx
 function Home(props){
     return ....
 }
 ```
 （2）类创建接收方式
-```js
+```jsx
 class Home extends React.Component{
     constructor(props){
         super(props)  //props是react定义的属性,不建议使用其他名,会有bug
@@ -20,7 +20,7 @@ class Home extends React.Component{
 }
 ```
 除了传参数以外，还可以传事件函数；
-```js
+```jsx
 // 父组件中
 <Header myClick={this.changeA} />  //changeA是父组件中定义的事件
 
@@ -29,7 +29,7 @@ class Home extends React.Component{
 ```
 
 #### props默认值，如果没有传入Props，则默认是null
-```js
+```jsx
 class Example extends React.Component {
  // ...
 }
@@ -47,7 +47,7 @@ class Example extends React.Component {
 
 #### props类型验证
 使用：react将prop-types分离出来一个组件了，想使用时可以直接引入，不需要再安装
-```js
+```jsx
 import React from 'react'
 import PropTypes from 'prop-types'
 class MyComponent extends React.Component {
@@ -73,7 +73,7 @@ MyComponent.propTypes = {
 父组件通过定义childContextTypes和getChildContext来定义要传入的方法或属性，
 
 子组件通过定义contextTypes验证类型，之后通过context获取
-```js
+```jsx
 import PropTypes from 'prop-types'
 // 父组件
 class Parent extends React.Component {
@@ -137,7 +137,7 @@ getSend = (n)=>{
 
 ③在父组件中声明一个变量并保存该函数，之后直接该定义的该变量即可；
 
-```js
+```jsx
 // 父组件中
 const ref = React.useRef()
 const handle = val => {
@@ -181,7 +181,7 @@ return (
 ### react中的事件
 
 1. 在react中，定义方法建议使用箭头函数形式，防止this改变
-```js
+```jsx
 change = ()=>{ console.log(111) }
 ```
 2. 在react中，点击事件需要使用onClick驼峰命名法，赋值一个变量；
@@ -189,17 +189,17 @@ change = ()=>{ console.log(111) }
 （1）第一种方法：直接调用方法名，比如
 
 this可能指向undefined
-```js
+```jsx
 <button onClick={this.change}>
 ```
 （2）第二种传参方式：使用bind传参；
-```js
+```jsx
 <button onClick={this.change.bind(this,'参数')} //在事件中使用形参接收;
 ```
 影响性能，建议在constructor中定义 this.change=this.change.bind(this)
 
 （3）第三种传参方式，封装一个函数，使用函数调用事件；
-```js
+```jsx
 <button onClick={()=>this.change('传参')}
 ```
 第三种方式因为里面包了一个函数，导致里面的this指向可能有问题，因此在定义方法里面需要修改为箭头函数形式，如果不需要传参，则不需要修改箭头函数形式；
@@ -217,6 +217,7 @@ this可能指向undefined
 生命周期从出生到死亡的一个过程，从创建到销毁，在React中，从挂载开始；
 
 1. 初始化渲染阶段
+
 `constructor`  初始化
 
 `componentWillMount(){}`  将要挂载，不推荐在这个生命周期获取数据的操作；
@@ -227,6 +228,7 @@ this可能指向undefined
 
 
 2. 更新阶段
+
 `componentWillReceiveProps(nextProps){}`   在接收新的props之前被调用；通过调用this.props和nextProps来替换；（只有在props更新才会被调用，初始不会调用）
 
 `shouldcomponentUpdate(props,state){}` 是否要更新；
@@ -253,6 +255,7 @@ react页面一进入触发的生命周期函数：初始化-->将要挂载-->渲
 `shouldcomponentUpdate(){}`：该函数有两个形参，更新的props对象和更新的state对象，在该函数里面填写大量逻辑，决定是否渲染页面；达到自己想要的结果；
 
 3. 错误阶段
+
 `componentDidCatch(err,info){}`   捕获错误
 
 `static getDerivedStateFromError(err){}`   直接返回一个对象, 用来修改state值；
@@ -277,16 +280,18 @@ react页面一进入触发的生命周期函数：初始化-->将要挂载-->渲
 
 1. 在react中，想要改变state的值，必须调用this.setState这个方法，否则普通方式不生效，方法是一个对象，对象里面填写和state相同的属性名，值是修改之后的值；
 2. 如果是数组，可以声明一个变量，并用state中的数组赋值，再修改回去；
-```js
+```jsx
 change(){
     let arr = this.state.list
     this.setState({ list: arr })
 }
 ```
-3. （1）setState接收两个参数，第一个是修改state的updater函数，第二个是回调函数，setState是异步的，如果需要同步    可以将事件写在第二个回调函数里
+3. 
+
+（1）setState接收两个参数，第一个是修改state的updater函数，第二个是回调函数，setState是异步的，如果需要同步    可以将事件写在第二个回调函数里
 
 （2）当然也可以直接输入一个对象用来修改state的值，不过这种方式是异步的，如果后续更改的state状态取决于当前状态，建议使用函数式的修改方式，因为函数式是同步的
-```js
+```jsx
 this.setState(state=>{
     return {count: state.count + 1}
 })
@@ -298,7 +303,7 @@ this.setState(state=>{
 ## 模拟双向数据绑定
 
 在react中，是单向数据流，可以使用模拟双向数据绑定
-```js
+```jsx
 <input type='text' defaultValue={this.state.msg} onChange={this.changmsg}>
 add = e => {
     this.setState({ msg: e.target.value }
@@ -315,7 +320,7 @@ add = e => {
 受控组件是由状态State控制的；
 
 受控组件当中的value值是直接绑定到state中的；
-```js
+```jsx
 onSubmit=e=>{
     e.preventDefault(); // 阻止表单提交事件刷新
 }
@@ -336,7 +341,7 @@ onSubmit=e=>{
 非受控组件是通过ref来控制的；
 
 非受控组件是通过dom元素访问的，非受控组件是不能通过state状态操作的；
-```js
+```jsx
 class Forms extends React.Component {
     constructor(){
         super()
@@ -361,19 +366,19 @@ class Forms extends React.Component {
 ## 调用接口
 
 1. axios（在app入口文件填写），需要绑定在axios上
-```js
+```jsx
 import axios from 'axios'
 Component.prototype.$http = axios
 ```
 2. jquery
-```js
+```jsx
 import jquery from 'jquery'
 Component.prototype.$jq = jquery
 ```
 3. jsonp代理跨域
 
 在package.json文件，在最后面，添加以下代码，之后重启
-```js
+```jsx
 "proxy":"http:baidu.com"
 ```
 在请求ajax时，直接填写/号后面的path路径即可；
@@ -387,13 +392,13 @@ Component.prototype.$jq = jquery
 在react中使用动态style样式时，必须使用驼峰命名法，
 
 react会自动添加’px‘后缀，其他后缀需要添加字符串组成；
-```js
+```jsx
 let btnwidth = 70
 <div style={{marginRigth: btnwidth}} />   // 需要包一个对象
 <div style={{display: (index===this.state.currentIndex) ? "block" : "none"}}>此标签是否隐藏</div>
 ```
 动态class
-```js
+```jsx
 <div className={`icon-font ${this.state.flag ? 'iconfont' : ''}`}
 ```
 当input框为checkbox或radio时，使用defaultChecked来设置首次挂载是否被选中；
@@ -401,8 +406,9 @@ let btnwidth = 70
 className 指定css的class；
 
 `dangerouslySetInnerHTML`
+
 为了防止跨站脚本（XSS）的攻击，替换innerHTML，使用变量，可以解析html标签内容
-```js
+```jsx
 <div dangerouslySetInnerHTML={{__html:this.state.detailList.free_content}}></div>
 ```
 dom中使用htmlFor来代替for保留字；
@@ -410,7 +416,7 @@ dom中使用htmlFor来代替for保留字；
 使用onChange来处理用户实时输入
 
 在react中的标签部分不能直接使用if语句，但是可以使用三目运算符
-```js
+```jsx
 {this.state.addarflag ? <Skeleton active /> : ''}  // 三目判断放标签
 style={{display: this.state.flag ? 'block' : 'none'}}  // 三目显示隐藏标签
 ```
@@ -419,7 +425,7 @@ style={{display: this.state.flag ? 'block' : 'none'}}  // 三目显示隐藏标�
 ## react处理css
 1. 安装插件：npm i emotion
 2. 使用
-```js
+```jsx
 import {css} from 'emotion'
 const styles = {
     root: css`
@@ -439,7 +445,7 @@ function App(){
 4. 用法
 
 （1）使用变量使用${}包裹
-```js
+```jsx
 const color = 'red'
 const styles = {
     root: css`
@@ -452,7 +458,7 @@ const styles = {
 1. 组件内使用ref获取dom元素
 
 字符串形式的ref API（this.refs.元素形式）有些许缺点，不建议使用，建议使用回调方式获取ref；
-```js
+```jsx
 function App(){
     const myRef = React.createRef()
     React.useEffect(()=>{
@@ -462,7 +468,7 @@ function App(){
 }
 ```
 2. ref也可以直接是函数
-```js
+```jsx
 function App(){
     const [height, setHeight] = useState(0)
     const measureRef = useCallback(node => {
@@ -475,7 +481,7 @@ function App(){
 ```
 
 3. ref作为子组件的属性，获取的是该子组件，函数组件使用forwardRef，函数组件不能直接使用ref是因为函数组件没有实例
-```js
+```jsx
 // 函数  使用forwardRef
 const Child = React.forwardRef((props,ref)=><div ref={ref}>子组件</div>)
 
@@ -494,7 +500,7 @@ function App(){
 }
 ```
 4. 高阶组件使用ref
-```js
+```jsx
 // 使用logProps包裹
 function logProps(Component){
     class LogProps extends React.Component {
@@ -527,7 +533,7 @@ class Parent extends Component {
 5. 使用redux包裹的connect组件获取ref
 
 子组件添加withRef:true；
-```js
+```jsx
 connect(mapStateToProps, mapDispatchToProps, null, {withRef: true})(Son)
 父组件调用：
 

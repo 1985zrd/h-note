@@ -1,10 +1,11 @@
 # React-06 hooks
 ## 一、useState代替state状态机
 不使用类的方式，仅使用函数的方式，也可以定义state状态机以及生命周期
+
 1. 使用数组解构的方式，取count和setCount，一个是值，一个是设置值
 2. 在useState后面，括号里面填写默认值，可以是任意类型；
 3. 如果useState设置初始值需要经过复杂计算获得，可以使用一个函数；
-```js
+```jsx
 import React, {useState} from 'react'
 export default () => {
     const [count, setCount] = useState(0)
@@ -18,7 +19,7 @@ export default () => {
 }
 ```
 4. 当定义的hooks是引用数据类型时的修改方法
-```js
+```jsx
 const [item, setItem] = useState([
     {id: 1, name: 'zs'},
     ...
@@ -41,7 +42,7 @@ setItem(items=>[
 
 （3）当useState的值是调用函数得到的话，需要使用函数式
 
-```js
+```jsx
 const [rows, setRows] = useState(() => createRows(props.count))
 ```
 
@@ -49,7 +50,7 @@ const [rows, setRows] = useState(() => createRows(props.count))
 1. useEffect函数代替了两个生命周期：componentDidMount、componentDidupdate、componentWillUnmount
 
 当在函数返回一个值时，会在组件注销时调用，比如可以在组件注销时清楚定时器
-```js
+```jsx
 import React, {useEffect} from 'react'
 export default ()=>{
     useEffect(()=>{
@@ -68,13 +69,13 @@ useEffect(()=>{
 （1）第二个为依赖值，当传入是空数组时，告诉useEffect只在挂载时渲染一次，之后不在执行（因为空数组不存在依赖值）；
 
 （2）当传入的是具体的值时，则在依赖的值发生改变时才会执行useEffect；
-```js
+```jsx
 useEffect(()=>{},[])  // 只调用一次,里面的state或props改变不会再次执行;
 useEffect(()=>{},[count]) // 当count值发生改变时会执行useEffect里面的代码;
 ```
 
 3. useEffect可以返回一个函数，相当于componentWillUnmount
-```js
+```jsx
 function counter(){
     const [list, setList] = React.useState([])
     React.useEffect(()=>{
@@ -95,7 +96,7 @@ function counter(){
 4. useEffect和componentDidUpdate的区别
 
 在componentDidUpdate中，当状态改变时，每次获取的都是最新的值，并没有过程
-```js
+```jsx
 useEffect(()=>{
     setTimeout(()=>{
         console.log(count)  // 1,2,3,4,5
@@ -110,7 +111,7 @@ componentDidUpdate(){
 }
 ```
 解决问题：useRef可以用来存储任何会改变的值，解决了在函数组件上不能通过实例去存储数据的问题，另外你还可以通过useRef来访问到改变之前的数据；
-```js
+```jsx
 function Counter(){
     const [count, setCount] = React.useState(0)
     const ref = React.useRef(count) // 赋值0,之后一直是0
@@ -126,7 +127,7 @@ function Counter(){
 
 
 5. useEffect函数分离，如果fetch不使用useCallback包裹的话,useEffect会无限执行,因为每次函数创建都会执行,useEffect会认为是在更新
-```js
+```jsx
 const fetch = useCallback(async ()=>{
     /*.....*/
 },[])  
@@ -141,7 +142,7 @@ React.useEffect(()=>{
 useLayoutEffect会在render，DOM更新之后同步触发函数，会优于useEffect异步触发函数，对DOM的操作建议使用useLayoutEffect，
 
 官方建议在useEffect不能实现功能的情况使用useLayoutEffect
-```js
+```jsx
 function App() {
   const [width, setWidth] = useState(0);
   useLayoutEffect(() => {
@@ -164,8 +165,10 @@ function App() {
 ```
 
 ## 四、useCallback
+
 当传入的依赖项发生改变时，才触发里面的函数，返回的是一个函数；
-```js
+
+```jsx
 const memoizedCallback = useCallback(()=>{console.log(a,b)},[a,b])
 
 // 建议填写函数时都使用useCallback包裹一下
@@ -177,7 +180,7 @@ const handleClick = useCallback(()=>{
 
 ## 五、useMemo性能优化
 可以处理复杂逻辑，避免每次渲染时都进行高开销的计算，相当于computed，可以在第二个参数中传入数组，只在依赖项发生变化时才改变，返回的是一个值
-```js
+```jsx
 const memoValue = useMemo(()=>computeCangeValue(a,b),[a,b])
 ```
 如果没有提供依赖项数组，则每次渲染都会计算新的值
@@ -185,7 +188,7 @@ const memoValue = useMemo(()=>computeCangeValue(a,b),[a,b])
 
 ## 六、useRef
 1. 在函数式声明组件当中，是不能给标签绑定ref来获取元素的，可以通过定义useRef来给标签绑定ref，通过访问定义的.current可以访问到值
-```js
+```jsx
 import React,{useRef} from 'react'
 export default function(){
     const inputEl = useRef(null)
@@ -203,7 +206,7 @@ export default function(){
 }
 ```
 2. 也可以useRef也可以保存任何可变值，
-```js
+```jsx
 const cur = useRef(count) //count是定义的数值;
 cur.current //取值是count的值;
 ```
@@ -212,7 +215,7 @@ cur.current //取值是count的值;
 绑定定时器setTimeout、setInterval时，建议使用useRef，而不是useState；
 
 4. 如果需要逻辑复杂的运算：
-```js
+```jsx
 // 每次渲染都会被执行一次
 const ref = useRef(new IntersectionObserver(onIntersect))
 
@@ -228,11 +231,12 @@ function getObserver(){
 
 ## 七、useImperativeHandle
 1. useImperativeHandle应该与forwardRef一起使用，使用方法如下，在createHandler函数里面返回一个对象，父组件就可以使用该对象了
-```js
+
+```jsx
 useImperativeHandle(ref, createHandler, [deps])
 ```
 2. demo例子
-```js
+```jsx
 // 子组件需要接收ref
 function Child(props,ref){
     // useImperativeHandle函数返回一个对象, 对象里面填写需要发送给父组件的方法或属性
@@ -255,7 +259,7 @@ function Parent(){
 ```
 
 ## 八、useReducer
-```js
+```jsx
 const initialState = {count: 0};
 
 function reducer(state, action) {
@@ -288,7 +292,7 @@ dispatch建议在context中，向下传递更方便
 
 在父组件中创建createContext()，之后使用.Provider嵌套组件，通过value进行传值；
 
-```js
+```jsx
 import React from 'react'
 const AppContext = React.createContext()
 class Paren extends React.Component{
@@ -345,7 +349,7 @@ useCallback：如果你需要一个不会随着组件更新而重新创建的cal
 自定义hook返回的不再是组件了，而是值，值可以是所有类型的值；
 
 官方例子：
-```js
+```jsx
 import React, { useState, useEffect } from 'react';
 
 function useFriendStatus(friendID) {
@@ -379,7 +383,7 @@ function FriendListItem(props) {
 ```
 
 自定义获取元素的位置信息hook
-```js
+```jsx
 function useClientRect() {
   const [rect, setRect] = useState(null);
   const ref = useCallback(node => {
@@ -404,7 +408,7 @@ function App(){
 
 
 自定义定时器hook例子：
-```js
+```jsx
 import { useRef, useEffect } from 'react';
 
 export default function useInterval(callback, delay) {
@@ -442,7 +446,7 @@ const test = props => {
 };
 ```
 当自定义hooks导出对象的情况，由于都是多次使用的，解构出来会重名，可以使用解构重命名来解决这个问题
-```js
+```jsx
 // 受控组件使用
 function useInputValue(initialValue){
     const [value, setValue] = React.useState(initialValue)
@@ -469,13 +473,13 @@ function Forms(){
 
 ## 十一、redux-react-hook
 react-redux 7.1以下的版本使用，7.1之后的版本，自己暴露了useSelector和useDispatch方法；
-1. 地址：https://www.jianshu.com/p/a9809958133d
+1. 地址：[https://www.jianshu.com/p/a9809958133d](https://www.jianshu.com/p/a9809958133d)
 2. 安装
-```js
+```jsx
 npm i redux-react-hook
 ```
 3. 修改入口文件，绑定store
-```js
+```jsx
 import {StoreContext} from 'redux-react-hook'
 ReactDOM.render(
     <StoreContext.Provider value={store}>
@@ -485,7 +489,7 @@ ReactDOM.render(
 )
 ```
 也可以直接使用StoreContext来直接访问存储
-```js
+```jsx
 import {useContext} from 'react'
 import {StoreContext} from 'redux-react-hook'
 function App(){
@@ -496,7 +500,7 @@ function App(){
 4. useMappedState函数
 
 必须使用useCallback函数包裹，因为每次传入一个新的mapState函数，将无限递归，useMappedState接收第二个参数，进行对比是否重新渲染
-```js
+```jsx
 import {useMappedState} from 'redux-react-hook'
 import shallowEqual from 'shallowequal' // 对比插件, 浅比较,两个对象可以相等
 function App(){
@@ -505,7 +509,7 @@ function App(){
 }
 ```
 5. useDispatch函数
-```js
+```jsx
 import {useDispatch} from 'redux-react-hook'
 function App(){
     const dispatch = useDispatch()
@@ -515,7 +519,7 @@ function App(){
 
 ## hooks常见问题
 1. 声明hooks函数时，声明的函数组件名必须首字母大写
-```js
+```jsx
 function Person(){}
 export default Person
 ```
@@ -528,7 +532,7 @@ export default Person
 3. 使用 eslint-plugin-react-hooks插件来控制Eslint可以方便的为我们检测数组依赖
 
 4. 当添加依赖被频繁调用时，在useEffect中设置值时，可以使用函数形式来设置，当然，在useEffect中还是访问不到值；
-```js
+```jsx
 useEffect(()=>{
     setCount(preCount => preCount + 1)
 },[])
@@ -536,7 +540,7 @@ useEffect(()=>{
 一个页面可以写多个useEffect，可以放多个useEffect；
 
 5. 在依赖列表中不能省略函数
-```js
+```jsx
 function Example({someProp}){
     function doSomething(){
         console.log(someProp)
@@ -570,7 +574,7 @@ function Example({someProp}){
 * 尝试用useReducer Hook把state更新逻辑移到effect之外，useReducer的dispatch的身份永远是稳定的，即使reducer函数是定义在组件内部并且依赖props；
 
 
-```js
+```jsx
 function reducer(state, [type,payload]){
     switch(type){
         case '' : return {}
@@ -584,11 +588,11 @@ function App(){
     },[])
 }
 ```
-参考： https://adamrackis.dev/state-and-use-reducer/
+参考： [https://adamrackis.dev/state-and-use-reducer/](https://adamrackis.dev/state-and-use-reducer/)
 * 万不得已的情况下，可以使用ref保存一个可变的变量；仅当你实在找不到更好的办法的时候才这么做，因为依赖于变更会使得组件更难以预测；
 
 
-```js
+```jsx
 function Example(props){
     // 把最新的props保存在一个ref中
     const latestProps = useRef(props)

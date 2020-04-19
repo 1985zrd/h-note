@@ -6,11 +6,11 @@ actionText: 开始学习 →
 actionLink: /Vue/
 features:
 - title: 作者简介
-  details: 懒惰成性，贪玩，爱看动漫，爱玩游戏；学了忘，忘了学，学了还得忘；笔记的进度决定作者学习的进度，知识的进度
+  details: 懒惰成性，贪玩，爱看动漫，爱玩游戏; 学了忘，忘了学，学了还得忘;
 - title: 同步方式
   details: 坚果云同步手机电脑，github同步，Typora编写，七牛云图片cdn加速，Vuepress插件自动编译打包
 - title: 内容介绍
-  details: 从零学前端，内容简洁，没有废话，笔记有很多做得不够详细的地方，主要是方便抄，方便复习面试题
+  details: 从零学前端，内容简洁，不废话，支持文档关键字搜索，笔记有很多做得不够详细的地方，具体内容请百度，方便复习面试题，以此记录学习路程
 footer: MIT Licensed | Copyright © 2018-备案号：蜀ICP备19025245号
 ---
 

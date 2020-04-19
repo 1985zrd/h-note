@@ -1,49 +1,79 @@
 # React-01 初识
 react概念
+[中文官网](https://react.docschina.org/)
 
-https://react.docschina.org/(中文官网)
-https://reactjs.org/（英文官网）
+[英文官网](https://reactjs.org/)
+
 
 react是什么：是用于构建用户界面的javascript库
 
+
 在react中提出了一个新的语法 叫做JSX （语法糖）
+
 这个语法不能直接被浏览器所解析 必须借助于babel文件去解析 把js和html混合使用
-当它遇见<>的时候 就自动解析为html标签 如果它遇见{}会解析成js语法
+
+当它遇见`<>`的时候 就自动解析为html标签 如果它遇见{}会解析成js语法
 
 什么是虚拟DOM结构（diff算法）
+
 相当于是一个对象 当视图有更新的时候 会生成一个新的对象，并与旧的进行比较 把有区别的地方进行更新 其他的不变 这样提高了高速渲染
 
+
 Diff算法
-当使用React的时候，在某个时间点 render() 函数创建了一棵React元素树，在下一个state或者props更新的时候，render() 函数将创建一棵新的React元素树，React将对比这两棵树的不同之处，计算出如何高效的更新UI（只更新变化的地方）
+
+当使用React的时候，在某个时间点 render() 函数创建了一棵React元素树，在下一个state或者props更新的时候，render() 函数将创建一棵新的React元素树，
+React将对比这两棵树的不同之处，计算出如何高效的更新UI（只更新变化的地方）
 
 介绍
 
 1. 什么是react?
+
 React 是Facebook内部的一个JavaScript类库（2013年的5月进行开源）。
+
 React 可用于创建Web用户交互界面。
+
 React不是一个完整的MVC框架,最多可以认为是MVC中的V（View）,甚至React并不非常认可MVC开发模式。
+
 React 使用Facebook专门为其开发的一套语法糖--JSX。
 
+
+
 语法糖又叫做糖衣语法。
+
 语法糖是指计算机语言中添加的某种语法,这种语法对语言的功能并没有影响,但是更方便程序员使用。
+
 它主要的目的是增加程序的可读性,从而减少程序代码错处的机会。
 
+
 两大框架 一个库
+
 vue  尤雨溪（中国人） MVVM 双向数据绑定
+
 angular（2.0版本） （谷歌） 双向数据绑定 (不能叫angualr.js 因为angular.js是属于1.X版本 它是一个mvc的框架) MVVM
+
 react （Facebook） 库 单向数据流 应用于移动端相对多一点
 
 
 1.4优缺点（要背）
+
 优点：
+
 （1）组件化开发
+
 （2）引入虚拟DOM,性能好,响应速度快
+
 （3）JSX语法糖 
+
 （4）单向数据绑定 Data Flow
+
 （5）跨浏览器兼容
+
 （6）完善的生态圈和活跃的社区
+
 生态圈：很多开发者的意思；
+
 缺点：
+
 不是完整MVC框架,不适用于复杂的大型应用
 
 
@@ -181,7 +211,7 @@ package-lock.json  锁定版本文件
 1. 脚手架的基本结构
 
 （1）创建一个入口文件index.js
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
@@ -189,7 +219,7 @@ import App from './App'
 ReactDOM.render(<App/>,document.getElementById('root'))
 ```
 （2）创建App入口文件
-```js
+```jsx
 import React from 'react'
 function App(){
     return (<div></div>)
@@ -200,7 +230,7 @@ export default App;
 ## 组件的创建方式
 
 1. 函数的创建方式
-```js
+```jsx
 import React from 'react'
 frunction App(){
     // 在return之前声明变量数据；
@@ -214,7 +244,7 @@ export default App
 ```
 2. 使用类创建组件
 
-```js
+```jsx
 //需要按需引入component；
 import React,{Component} from 'react'
 class App extends component{

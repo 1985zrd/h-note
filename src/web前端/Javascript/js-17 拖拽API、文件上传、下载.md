@@ -202,12 +202,14 @@ e.dataTransfer.files 获取被drop的外部文件
 
 2. 后端下载链接如果提示非法下载，需要修改content-type
 
-https://blog.csdn.net/topc2000/article/details/79793057
+[https://blog.csdn.net/topc2000/article/details/79793057](https://blog.csdn.net/topc2000/article/details/79793057)
 
 
 ## 七、复制
-官网： https://github.com/zenorocha/clipboard.js
+官网： [https://github.com/zenorocha/clipboard.js](https://github.com/zenorocha/clipboard.js)
+
 1. 安装：
+
 npm i clipboard
 
 2. 使用方法
@@ -358,15 +360,15 @@ export default compressionImg;
 ```
 2. 二种方案
 
-github地址： https://github.com/WangYuLue/image-conversion（支持按照指定kb来压缩，也支持按照质量压缩）
+github地址： [https://github.com/WangYuLue/image-conversion](https://github.com/WangYuLue/image-conversion)（支持按照指定kb来压缩，也支持按照质量压缩）
 
 
 
 ## 九、图片预览插件
-教程： https://www.cnblogs.com/Jimc/p/10132177.html
+教程： [https://www.cnblogs.com/Jimc/p/10132177.html](https://www.cnblogs.com/Jimc/p/10132177.html)
 
-官网： https://github.com/fengyuanchen/viewerjs
+官网： [https://github.com/fengyuanchen/viewerjs](https://github.com/fengyuanchen/viewerjs)
 
 
 ## 十、切片上传、断点续传
-地址： https://juejin.im/post/5dff8a26e51d4558105420ed
+地址： [https://juejin.im/post/5dff8a26e51d4558105420ed](https://juejin.im/post/5dff8a26e51d4558105420ed)

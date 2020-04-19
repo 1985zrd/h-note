@@ -28,6 +28,7 @@ bootstrap是移动设备优先；
 
 ## 三、栅格系统
 1. 原理
+
 行(row)：必须放在容器container中，才能设置排列（aligment）和内补padding；
 
 行的直接子元素只能放列（column）；

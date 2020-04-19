@@ -29,16 +29,16 @@ SEO (搜索引擎优化)，搜索关键词的时候排名，对大多数搜索�
 ## 二、ReactDOMServer类库
 react-dom/server包提供了组件的服端渲染功能，返回值是一个html
 1. 渲染为html：renderToString
-```js
+```jsx
 ReactDOMServer.renderToString(element);
 ```
 2. 渲染为静态HTML：renderToStaticMarkup
 该方法与renderToString方法类似，但这个方法不会生成额外的DOM特性，如：data-react-id等 React内部所使用的特性。当你想使用一个简单的静态页面生成器时这个方法非常有用，它会剥离额外的特性且会节省大量字节。
-```js
+```jsx
 ReactDOMServer.renderToStaticMarkup(element)
 ```
 简单用法：在页面没有展示时，渲染的是该html，给页面添加骨架屏
-```js
+```jsx
 var html = ReactDOMServer.renderToStaticMarkup(
     <skeleton/>
 )

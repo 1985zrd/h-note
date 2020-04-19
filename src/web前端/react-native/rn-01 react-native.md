@@ -81,6 +81,7 @@ return (<Header />)   //内容不要包裹view标签,否则header标签里面即
 ## 六、react-native中的css样式
 
 在react-native中使用行间样式；
+
 1. padding
 
 paddingHorizontal：同时设置paddingleft/right

@@ -56,6 +56,7 @@
 
 
 减少重绘与回流
+
 1. 使用translate替代top，在移动元素绝对定位时，使用translate而不是top、left；
 2. 使用visibility替换display:none，因为前者只引起重绘，而后者直接回流；
 3. 把dom离线后修改，比如：先把DOM给display:none，有一次回流，然后修改100次，然后再把它显示出来；
@@ -214,6 +215,7 @@ Function.prototype.myApply = function(context,args){
 ## 实现一个bind
 
 bind返回的绑定函数也能使用new操作符创建对象，这种行为就像把原函数当成构造器，bind与call/apply最大的不同就是前者返回一个绑定上下文的函数，而后两者是直接执行了函数
+
 bind可以指定this，返回一个函数，可以传入参数，并且可以柯里化
 
 定时器可以直接改变this指向：

@@ -58,6 +58,7 @@ border-方向-要素。
 margin：边框以外的距离，使用方法和padding值一样。
 
 margin的两个问题：
+
 1. 当margin-top和margin-bottom相遇的时候，会出现重叠，谁大取谁，相同取其一。
 
     解决办法：给其中的一个标签设置margin值
