@@ -12,6 +12,7 @@ window对象：在全局中定义的变量是window的属性，定义的函数�
 1. open(http,name,attr,boolean);
 
     http地址，name名字，attr属性设置，boolean，false新历史，true替换历史；
+
 2. close()；直接调用方法，关闭当前窗口；
 
 
@@ -296,6 +297,7 @@ window.addEventListener("orientationchange", () => {
 屏幕可视区域： document.documentElement.clientWidth/Height 
 
 2. offset  元素的实际距离
+
 元素的实际宽高：offsetWidth/Height；    width/height+padding+border;   包含边框
 
 元素离body的宽高：offsetLeft/Top        如果父元素有定位属性，那么就是离父元素边缘的宽高；
@@ -305,6 +307,7 @@ window.innerWidth  浏览器含滚动条的宽度
 或者outerWidth
 
 3. scroll  卷动的距离
+
 元素实际内容的宽高：`scrollWidth/height`
 
 元素被卷起的宽高：`scrollLeft/Top`；
@@ -314,17 +317,20 @@ window.innerWidth  浏览器含滚动条的宽度
 
 
 4. 浏览器滚动事件
+
 （1）window.onscroll=function(){}   滚动浏览器；
 
 （2）window.scrollTo(x,y)  或者 scrollTo(options) 滚动窗口到指定位置；
 
 options支持的属性：
+
 * top：元素要移动的位置横坐标
 * left：元素要移动的位置纵坐标
 * behavior：元素的运动模式，smooth平滑滚动；
 
 
 （3）el.scrollIntoView() 滚动到可视区；
+
 * scrollIntoView(true)，如果是true则顶端对齐，如果是false，则底端对齐；
 * scrollIntoView(options)，包含以下属性对象：
 
@@ -343,6 +349,7 @@ document.documentElement || document.body.parentNode;   //两种方式；兼容
 ```
 
 5. 总结
+
 clientWidth ------ padding+content 可视宽
 
 offsetWidth ------ content + padding + border 占位宽
@@ -420,11 +427,13 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 ## 十五、css可用的属性；
 1. scroll-behavior: smooth，平滑滚动，给html和body加，或者给滚动的父元素加；
 2. scroll-snap属性：
+
 滚动窗口使用的：scroll-snap-type、scroll-padding；
 
 滚动子元素使用的：scroll-snap-align、scroll-snap-stop、scroll-margin；
 
 （1）scroll-snap-type
+
 属性指定能不能去捕捉当前滚动的窗口并让它对齐，以及所执行的方向跟严格程度；
 
 对齐方向属性：
@@ -436,6 +445,7 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 
 
 严格值：
+
 * none ：默认值，Mmmm，啥也不干
 * proximity ：一个感性的值，如果元素进入到了容器的捕捉位置范围内，则进行捕捉并滚动，否则就不管，至于这个范围是多少，约莫着 45%的位置吧（手动测的，W3C 没给出具体算法，瞎猜吧，哈哈哈）。
 * mandatory ：经常使用的值，强制性的，滚动结束后，一定会强制停在我们指定的地方。

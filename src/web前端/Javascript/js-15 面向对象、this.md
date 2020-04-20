@@ -81,6 +81,7 @@ function f(){
 ## 八、工厂模式
 
 1. 工厂模式创建对象其实就是一个封装函数；
+
 ```js
 function fn(name){
     var obj={};   //1. 准备原料
@@ -125,6 +126,7 @@ new Person('康哥',3);
 3. 构造函数也能够批量生产，而且通过构造函数创建的对象，能区分开当前的实例是由哪个对象创建的，可以利用instanceof验证；
 
 4. 构造函数的问题：
+
 同一个方法，因为对象不同，所存储的位置也不同，如果有多个对象，则要分别存储多次，占用不必要的内存。
 
 两个对象和两个数组和两个函数是不相同的，都是引用类型，引用类型的比较，比较的是地址，地址是不一样的，所以是不等；地址不同，如果大量的存储，则会导致内存空间爆满；
@@ -206,7 +208,9 @@ var p1 = new Student();   //实例之后p1就可以访问到原型对象的属�
 //p1实例化Student之后是一个空对象，空对象里面没有，就找构造函数constructor，构造函数找不到就找原型对象prototype，如果原型对象也没有，就undefined；
 ```
 理论：相当于儿子(p1)没有钱，就找爸(Student.prototype)要;
+
 ![image](http://notecdn.heny.vip/images/js-15_面向对象、this-01.png)
+
 ![image](http://notecdn.heny.vip/images/js-15_面向对象、this-02.png)
 
 
@@ -218,7 +222,9 @@ var p1 = new Student();   //实例之后p1就可以访问到原型对象的属�
 
 
 原型链：
+
 ![image](http://notecdn.heny.vip/images/js-15_面向对象、this-03.png)
+
 原型链：自己的实例化---自己的构造函数---自己的原型---父类的构造函数----父类的原型---Object的原型---null；
 
 
@@ -226,6 +232,7 @@ var p1 = new Student();   //实例之后p1就可以访问到原型对象的属�
 ## 十一、混合模式创建
 
 1. 构造函数 + 原型；需要变动的通过构造函数（属性），不变动的通过原型来（方法）；
+
 ```js
 // 混合模式 构造函数 + 原型
 // 构造函数写可变的属性和变量
@@ -262,6 +269,7 @@ String.prototype.substr = function(){}
 1. 一般创建对象用混合模式就够了，但是严格来说这种方式破坏了封装性，所以还可以使用动态混合模式创建，将原型方法也写到构造函数当中。
 
 2. 动态混合创建每创建一个对象就会执行一次原型，所以动态原型模式需要做判断，判断是还存在这个原型，如果存在则不添加；
+
 ```js
 function Student(name) {
     this.name = name;
@@ -284,6 +292,7 @@ function Student(name) {
 ## 十三、扩展原型上面的方法
 
 扩展String:  如果string里面没有trim这个方法，则创建一个trim方法
+
 ```js
 if(!String.prototype.trim){
     String.prototype.trim = function(){
@@ -435,6 +444,7 @@ B.prototype.constructor = B
 缺点：创建的实例和原型上，存在两份相同的属性；因为在apply时复制了构造函数的属性和方法，在new 时又实例化了属性和方法，主要是为了复制原型的方法；
 
 如果单独调用apply进行复制构造函数的，是不会存在两种方法和属性的；
+
 ![image](http://notecdn.heny.vip/images/js-15_面向对象、this-04.png)
 
 
@@ -459,6 +469,7 @@ obj2.name   // 'haha'
 ### 寄生式继承
 
 在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式，通过一个函数，传入一个对象，之后创建一个新对象继承该对象，在给该对象新增属性和方法，最后返回该对象，称为寄生式继承；
+
 ```js
 function copyObj(obj){
     var clone = Object.create(obj)  //通过create继承

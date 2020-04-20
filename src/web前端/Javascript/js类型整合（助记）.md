@@ -82,6 +82,7 @@ v-once、v-text、v-html、v-bind、v-on、v-if、v-else-if、v-else、v-show、
   $refs、$event
 
 * 八种组件通讯
+
 1. props / $emit
 2. $children / $parent
 3. provide / inject

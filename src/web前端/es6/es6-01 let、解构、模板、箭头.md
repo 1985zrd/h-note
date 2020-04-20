@@ -2,94 +2,81 @@
 回顾ES5
 ## 一、严格模式：
 
-（1）开启严格模式：'use strict'
+1. 开启严格模式：'use strict'
 
-（2）开启严格模式的作用：
+2. 开启严格模式的作用：
+   * 变量必须先声明才能使用
+   * 禁止自定义的函数中的this指向window
+   * 创建eval作用域
 
-    ① 变量必须先声明才能使用
-
-    ② 禁止自定义的函数中的this指向window
-
-    ③ 创建eval作用域
-
-eval：将字符串的表达式进行运算；
+`eval`：将字符串的表达式进行运算；
 
 严格模式下的eval声明的变量，只能在该字符串里面使用，外面不能使用；
 
+`xml`：可扩展标记语言，标记的标签自定义，必须成对，最外层必须根标签；
 
-xml：可扩展标记语言，标记的标签自定义，必须成对，最外层必须根标签；
+​	需要设置xml头部：`<? xml version='1.0' encoding='utf-8' ?>`
 
-        需要设置xml头部：<? xml version='1.0' encoding='utf-8' ?>；
+`html`：标记的标签是预定义的；
 
-html：标记的标签是预定义的；
 
 
 ## 二、json对象
 
-1. 什么是json?
+>  JSON(JavaScript Object Notation, JS 对象节点)，主要用来在不同语言之间交换数据
 
-JSON(JavaScript Object Notation, JS 对象节点)，主要用来在不同语言之间交换数据
-
-
-
-2. json基本语法：
+### json基本语法
 
 json只有两种数据格式：json对象 、json对象数组
 
-（1）属性名必须用双引号，属性值如果不是数字，则必须用引号；
-
-（2）属性值可以是字符串、数字、布尔型、数组、对象，但不能是函数或dom对象
-
-（3）属性名与属性值用冒号:分隔，不同的属性名与属性值之间用逗号分隔
+* 属性名必须用双引号，属性值如果不是数字，则必须用引号；
+* 属性值可以是字符串、数字、布尔型、数组、对象，但不能是函数或dom对象
+* 属性名与属性值用冒号:分隔，不同的属性名与属性值之间用逗号分隔
 
 
 
-3. JSON对象方法:
+### JSON对象方法
 
-（1）JSON.parse():将普通的json字符串转换成json对象
+* `JSON.parse():`将普通的json字符串转换成json对象
+* `JSON.stringify():`将json对象转换成json字符串
+* 
 
-（2）JSON.stringify():将json对象转换成json字符串
+### JSON.stringify的特性
 
+1. 对于 undefined、任意的函数以及 symbol 三个特殊的值分别作为对象属性的值、数组元素、单独的值时的不同返回结果。
 
+   * undefined、任意的函数以及 symbol 作为对象属性值时 JSON.stringify() 跳过（忽略）对它们进行序列化
 
-4. JSON.stringify的特性
+   * undefined、任意的函数以及 symbol 作为数组元素值时，JSON.stringify() 将会将它们序列化为 null
+   * undefined、任意的函数以及 symbol 被 JSON.stringify() 作为单独的值进行序列化时都会返回 undefined
 
-（1）对于 undefined、任意的函数以及 symbol 三个特殊的值分别作为对象属性的值、数组元素、单独的值时的不同返回结果。
+2. 非数组对象的属性不能保证以特定的顺序出现在序列化后的字符串中。
 
-* undefined、任意的函数以及 symbol 作为对象属性值时 JSON.stringify() 跳过（忽略）对它们进行序列化
-* undefined、任意的函数以及 symbol 作为数组元素值时，JSON.stringify() 将会将它们序列化为 null
-* undefined、任意的函数以及 symbol 被 JSON.stringify() 作为单独的值进行序列化时都会返回 undefined
+3. 转换值如果有 toJSON() 函数，该函数返回什么值，序列化结果就是什么值，并且忽略其他属性的值。
 
+4. JSON.stringify() 将会正常序列化 Date 的值。
 
+5. NaN 和 Infinity 格式的数值及 null 都会被当做 null。
 
+6. 布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值。
 
-（2）非数组对象的属性不能保证以特定的顺序出现在序列化后的字符串中。
+7. 其他类型的对象，包括 Map/Set/WeakMap/WeakSet，仅会序列化可枚举的属性。
 
-（3）转换值如果有 toJSON() 函数，该函数返回什么值，序列化结果就是什么值，并且忽略其他属性的值。
+8. 对包含循环引用的对象（对象之间相互引用，形成无限循环）执行此方法，会抛出错误。
 
-（4）JSON.stringify() 将会正常序列化 Date 的值。
-
-（5）NaN 和 Infinity 格式的数值及 null 都会被当做 null。
-
-（6）布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值。
-
-（7）其他类型的对象，包括 Map/Set/WeakMap/WeakSet，仅会序列化可枚举的属性。
-
-（8）对包含循环引用的对象（对象之间相互引用，形成无限循环）执行此方法，会抛出错误。
-
-（9）所有以 symbol 为属性键的属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们。
-
-5. JSON.stringify的第二个参数、第三个参数
-
-（1）第二个参数
-* 作为函数时，它有两个参数，键（key）和值（value），函数类似就是数组方法 map、filter 等方法的回调函数，对每一个属性值都会执行一次该函数（期间我们还简单实现过一个 map 函数）。
-* 如果 replacer 是一个数组，数组的值代表将被序列化成 JSON 字符串的属性名。
+9. 所有以 symbol 为属性键的属性都会被完全忽略掉，即便 replacer 参数中强制指定包含了它们。
 
 
-（2）第三个参数
 
-* 如果是一个数字, 则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多10个空格）；
-* 如果是一个字符串，则每一级别会比上一级别多缩进该字符串（或该字符串的前10个字符）。
+### JSON.stringify的参数
+
+1. 第二个参数
+   * 作为函数时，它有两个参数，键（key）和值（value），函数类似就是数组方法 map、filter 等方法的回调函数，对每一个属性值都会执行一次该函数（期间我们还简单实现过一个 map 函数）。
+   * 如果 replacer 是一个数组，数组的值代表将被序列化成 JSON 字符串的属性名。
+
+2. 第三个参数
+   * 如果是一个数字, 则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多10个空格）；
+   * 如果是一个字符串，则每一级别会比上一级别多缩进该字符串（或该字符串的前10个字符）。
 
 
 利用第二个参数排序对象属性
@@ -103,35 +90,26 @@ JSON.stringify(obj, Object.keys(obj).sort())
 
 ## 三、Object扩展
 
-1. Object.defineProperty(obj,attr,descriptor)；
+### defineProperty
 
-修改或添加一个属性；并返回这个对象，如果不指定参数，则默认为false，
+> 修改或添加一个属性；并返回这个对象，如果不指定参数，则默认为false，
 
-obj: 需要被操作的目标对象
+`Object.defineProperty(obj,attr,descriptor)；`
 
-attr: 需要被操作或设置的属性名，有则修改，没有则添加；
+* `obj`: 需要被操作的目标对象
 
-descriptor: 将被定义或修改的属性的描述，是一个对象；
+* `attr`: 需要被操作或设置的属性名，有则修改，没有则添加；
 
+* `descriptor`: 将被定义或修改的属性的描述，是一个对象；
 
+  descriptor可设定的选项：（可以设定的属性默认都为true;）
 
-descriptor可设定的选项：
-
-可以设定的属性默认都为false;
-
-value：值；
-
-writable：属性值是否可以修改；
-
-configurable：属性值是否可以被删除；
-
-enumerable：是否可以枚举，通过for-in等方法遍历；
-
-
-
-get ：函数必须返回，返回设定的值；
-
-set ：当修改当前值时，触发set函数；set的第一个参数是设置的值；
+  * `value`：值；
+  * `writable`：属性值是否可以修改；
+  * `configurable`：属性值是否可以被删除；
+  * `enumerable`：是否可以枚举，通过for-in等方法遍历；
+  * `get` ：函数必须返回，返回设定的值；
+  * `set` ：当修改当前值时，触发set函数；set的第一个参数是设置的值；
 
 数据劫持：调用set之后，get的值不会修改，而是将设置的值放到set的第一个参数里面；
 
@@ -147,20 +125,27 @@ Object.defineProperty(obj1,'age',{
 ```
 
 
-2. Object.defineProperties(obj, props)；
 
-添加或修改多个新属性，并返回该对象；
+### defineProperties
 
- obj：需要添加或修改属性的对象；
+> 添加或修改多个新属性，并返回该对象；
 
-props：一个对象，添加或修改的配置，如果写原有的属性名就是修改；
+`Object.defineProperties(obj, props)；`
+
+* `obj`：需要添加或修改属性的对象；
+
+* `props`：一个对象，添加或修改的配置，如果写原有的属性名就是修改；
 
 如果需要修改现有的，就不能使用get和set属性；
 
 
-3. Object.create(prototype, [descriptors])
 
-作用: 使用一个新对象继承现有的对象的原型并添加自己的属性，可以使用现有对象的属性；
+### create
+
+> 使用一个新对象继承现有的对象的原型并添加自己的属性，可以使用现有对象的属性
+
+`Object.create(prototype, [descriptors])`
+
 ```js
 let obj = {age:18}
 let obj2 = Object.create(obj)  //obj2返回一个空对象,但可以使用obj的属性;
@@ -188,57 +173,54 @@ obj2 = Object.create(obj,{
 
 
 
-4. Object.getOwnPropertyDescriptor（一个）
+### getOwnPropertyDescriptor
 
-返回指定对象上一个自有属性对应的属性值描述符；
+> 返回指定对象上一个自有属性对应的属性值描述符
 
-语法: Object.getOwnPropertyDescriptor(obj, prop)
+`Object.getOwnPropertyDescriptor(obj, prop)`（一个）
 
-obj是一个对象，prop属性名称；
+* obj是一个对象，
 
-5. Object.getOwnPropertyDescriptors(obj)（所有）
+* prop属性名称；
+
+
+
+### getOwnPropertyDescriptors
+
+ `Object.getOwnPropertyDescriptors(obj)`（所有）
 
 返回指定对象所有的属性描述符；返回一个对象：{name: {…}, age: {…}, funll: {…}}
-
-语法: Object.getOwnPropertyDescriptors(obj)
 
 
 
 ## 四、es6简述
 1. ECMAscript 与 Javascript的关系：
 
-ECMAscript是规范，而Javascript是规范的具体实现，两者不能相提并论。
+   ECMAscript是规范，而Javascript是规范的具体实现，两者不能相提并论。
 
 2. ECMA的几个重要版本：
-  
+
     ECMA这个组织在2015年之前，使用的都是ECMAscript 5这个版本；
-  
+
     ECMA在2015年6月份正式颁布ES6，而之后的版本变化不大，以后每年6月份颁布新
-  
+
     版本(这个组织提的一些新规定)；
-  
+
     ECMA在2016年颁布的版本称之ES7
 
+
+
 ## 五、let和const
-1. ES6之前定义变量的方式：
+>  使用var声明，也可以不使用var直接声明，var声明的能够变量提升
 
-使用var声明，也可以不使用var直接声明，var声明的能够变量提升；
+### let声明变量，区别
 
+1. 没有变量提升,报错referenceError；
+2. 必须先声明后使用
+3. 只能声明一次，重复声明会报错；
+4. 块级作用域。let没有函数作用域 
 
-
-2. ES6定义变量的方式：      
-
-let声明变量，区别：
-
-（1）没有变量提升,报错referenceError；
-
-（2）必须先声明后使用
-
-（3）只能声明一次，重复声明会报错；
-
-（4）块级作用域。let没有函数作用域 
-
-在{}里面声明的let，在外面拿不到值，会报错；
+在`{}`里面声明的`let`，在外面拿不到值，会报错；
 
 常用于for循环，i只在for循环里面能拿到，不会泄漏；
 
@@ -247,15 +229,16 @@ let声明变量，区别：
 不考虑IE的情况下，或者在我们的Node或者使用前端框架去写东西，就不要用var了
 
 
-const 声明常量
 
-（1）const声明必须赋初始值，let不需要；
+### const 声明常量
 
-（2）声明之后不能修改值，其它和let特性是一样的
+1. const声明必须赋初始值，let不需要；
 
-（3）常量名一般都使用大写
+2. 声明之后不能修改值，其它和let特性是一样的
 
-（4）同一个常量只能声明一次，多次报错；
+3. 常量名一般都使用大写
+
+4. 同一个常量只能声明一次，多次报错；
 
 ```js
 var tmp = 123;
@@ -264,18 +247,19 @@ if (true) {
   let tmp;
 }
 ```
-如果函数形参再使用let声明，则会报错；has already been declared；
+如果函数形参再使用let声明，则会报错；`has already been declared`；
 
 
 
 ## 六、解构赋值
-（1）数组解构：
+### 数组解构
 
-let [a,b,c] = [1,2,3]   完全解构；
+```js
+let [a,b,c] = [1,2,3]   // 完全解构
+let [a,b,c,d] = [1,2,3]  // 不完全解构
+```
 
-let [a,b,c,d] = [1,2,3]    不完全解构；
-
-当少了变量或者少了值，就是不完全解构，没有的是undefined；
+当少了变量或者少了值，就是不完全解构，没有的是`undefined`；
 ```js
 // 变量交换
 var a = 1, b = 2;
@@ -284,156 +268,91 @@ var a = 1, b = 2;
 // b 1
 ```
 
-2)、对象解构赋值：
+
+
+### 对象解构赋值
+
 ```js
 let obj = {name: 'zs', age: 18}
 // 完全解构
 let {name, age} = obj
 // 实际上是：{name: name, age: age}
+
 // 默认赋值
 let {name = '未定义'} = obj
+
+// 解构并重命名 下面例子将component重命名了
+let {component: Component} = obj
 ```
 
-解构对象时，键名必须一 一对应，当变量名不一样时，为undefined;
+**注意：** 解构对象时，键名必须一 一对应，当变量名不一样时，为undefined;
 
 如果填写的键名没有，可以赋默认值，以等号赋值，如果对象有的话赋的默认值不起作用；
 
 
 
-3. 函数传参时，如果是一个对象可以function fn({name,age})；
+### 函数的使用
 
-解构函数时，可以直接将形参写成对象解构来接收；
+1. 函数传参时，如果是一个对象可以`function fn({name,age})`；
 
-4. 传参解构方式  
-（1）重新命名法
-```js
-function fn({component:Component})    // 因为component是保留字,所以需要重新改名
-```
-（2）默认赋值
-```js
-// 默认赋值
-function fn(user={name:'hhh'}){
-    console.log(name) // name is not defined
-    console.log(user) // {name: 'hhh'}
-}
+   解构函数时，可以直接将形参写成对象解构来接收；
 
-// 默认赋值并解构
-function fn({name='未定义'}={}){
-    console.log(name) // 未定义
-}
-```
+2. 传参解构方式  
 
-5. 对象的扩展运算符
-（1）解构赋值
-```js
-let {x,a,...z} = {x:1,y:2,a:3,b:4}
-x // 1
-a // 3
-z // {y:2,b:4}
+   * 重新命名法
 
+     ```js
+     function fn({component:Component})   // 因为component是保留字,所以需要重新改名
+     ```
+     
+   * 默认赋值
 
-// 解构赋值要求等号右边是一个对象，如果是undefined或null会报错，因为它们无法转为对象;
-let {...z} = null // 出错
-let {...z} = undefined //出错
-
-
-// 解构赋值是浅拷贝, 不能复制对象的原型属性
-let o = Object.create({x:1,y:2})
-let o.z = 3
-let {x, ...newObj} = o
-let {y, z} = newObj
-x // 1
-y // undefined
-z // 3
-```
-
-（2）扩展运算符
-```js
-// 拷贝对象
-let z = {a:3,b:4}
-let n = { ...z }
-n //{a:3,b:4}
-
-
-// 如果是空对象, 没有任何效果
-{...{}, a:1}
-// {a:1}
-
-
-// 解构赋值会自动转为对象
-{...1} //{}    等同于: { ...Object(1) }
-{...true} // {}
-{...undefined} // {}
-{...null} // {}
-
-
-//对象的扩展运算符等同于使用Object.assign()方法
-let aClone = {...a}
-// 等同于
-let aClone = Object.assign({},a)
-
-
-// 扩展运算符只是复制了对象的实例属性，没有原型属性，如果需要原型属性可以使用下面的方法
-// 写法一
-const clone1 = {
-    __proto__: Object.getPrototypeOf(obj),
-    ...obj
-}
-// 写法二
-const clone2 = Object.assign(
-    Object.create(Object.getPrototypeOf(obj)),
-    obj
-)
-// 写法三
-const clone3 = Object.create(
-    Object.getPrototypeOf(obj),
-    Object.getOwnPropertyDescriptors(obj)
-)
-// __proto__属性在非浏览器的环境不一定部署，推荐使用二和三
+     ```js
+      // 默认赋值
+      function fn(user={name:'hhh'}){
+          console.log(name) // name is not defined
+          console.log(user) // {name: 'hhh'}
+      }
+     
+      // 默认赋值并解构
+      function fn({name='未定义'}={}){
+          console.log(name) // 未定义
+      }
+     ```
 
 
 
-// 如果自定义属性, 放在扩展运算符后面, 则扩展运算符内部的同名属性会被覆盖
-let ao = {...a, x:1,y:2}
-// 如果放在前面, 就相当于是默认赋值了
-let ao = {x:1,y:2,...a}
-
-
-
-// 扩展运算符后面跟表达式
-const obj = {
-    ...(x > 1 ? {a: 1} : {}),
-    b:2
-}
-// 数组放表达式
-const arr = [
-    ...(x > 1 ? ['a'] : []),
-    'b'
-]
-[...[],1] // [1]
-
-
-
-// 合并两个对象,后面的会覆盖前面的值
-let ab = {...a, ...b}
-// 等同于
-let ab = Object.assign({}, a, b)
-```
 
 ## 七、模板字符串
-如果只是单纯的声明字符串和单引号、双引号一样的。并且模板字符串里面可以解析变量和运行一些表达式。 模板字符串思想来源于后端；
+
+>  如果只是单纯的声明字符串和单引号、双引号一样的。并且模板字符串里面可以解析变量和运行一些表达式。 模板字符串思想来源于后端
 
 1. 模板字符串使用``；
-2. 变化的部分使用${xxx}定义，可以写函数以及运算表达式；
+2. 变化的部分使用`${xxx}`定义，可以写函数以及运算表达式；
 3. 模板字符串可以换行不报错；
 
 
+
 ## 八、对象的简写
-1. 对象的简写形式：如果属性值是变量的，对象里面直接写变量名就可以了；
 
-var obj = {name,age,city}；属性名是变量；
+### 对象的简写形式
 
-2. 对象函数的简写，直接写函数名(){}，去掉冒号和function，一般用在表单里面需要给后台传数据时使用；
+如果属性值是变量的，对象里面直接写变量名就可以了；
+
+```js
+var name = 'hny'
+var age = 18
+
+var obj = {name, age}
+// 等于
+var obj = {name: name, age: age}
+```
+
+
+
+### 对象函数的简写
+
+直接写`函数名(){}`，去掉冒号和function，一般用在表单里面需要给后台传数据时使用；
 
 ```js
 let obj = {
@@ -442,7 +361,12 @@ let obj = {
 }
 ```
 
-3. 对象里面可以直接访问super原型，super后面必须跟属性，super关键字为原型对象，只能用在对象的方法之中，只有对象的简写方法才能使用，才能让JavaScript引擎确认
+
+
+### 对象访问super
+
+对象里面可以直接访问super原型，super后面必须跟属性，super关键字为原型对象，只能用在对象的方法之中，**只有对象的简写方法才能使用**，才能让JavaScript引擎确认
+
 ```js
 let obj = {name: 'hhh'}
 let fired = {
@@ -454,12 +378,20 @@ let fired = {
     }
 }
 Object.setPrototypeOf(fired, obj)
+
 console.log(fired.getName()) // 'hhh'
-super.name等同于：Object.getPrototypeOf(this).foo或
+
+super.name
+等同于：
+Object.getPrototypeOf(this).foo
+// or
 Object.getPrototypeOf(this).foo.call(this)
 ```
 
-4. 对象也可以直接使用get和set
+
+
+### 对象使用get和set
+
 ```js
 let obj = {
     _wheels: 4,
@@ -475,47 +407,50 @@ let obj = {
 }
 ```
 
-5. 属性的遍历
-（1）for...in
-for..in循环遍历对象自身的和继承的可枚举属性（不含Symbol属性），如果不需要遍历继承的属性，可以加入判断
-```js
-for(let prop in obj){
-    if(obj.hasOwnProperty(prop)){
-        // 在里面写的内容不包含继承的
-    }
-}
-```
-使用es6的数组解构，可以使用for...of进行遍历
-```js
-for(let [key,value] of Object.entries(obj)){
-    console.log(key,value)
-}
-```
 
 
-（2）Object.keys(obj)
+### 对象属性的遍历
+1. `for...in`
+   for..in循环遍历对象自身的和继承的可枚举属性（不含Symbol属性），如果不需要遍历继承的属性，可以加入判断
 
-Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol属性的键名）
+   ```js
+   for(let prop in obj){
+       if(obj.hasOwnProperty(prop)){
+           // 在里面写的内容不包含继承的
+       }
+   }
+   ```
+
+2. `for...of`
+
+   使用es6的数组解构，可以使用进行遍历
+
+   ```js
+   for(let [key,value] of Object.entries(obj)){
+       console.log(key,value)
+   }
+   ```
+
+3. `Object.keys(obj)`
+
+   Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol属性的键名）
+
+4. `Object.getOwnPropertyNames(obj)`
+
+   返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）的键名
+
+5. `Object.getOwnPropertySymbols(obj)`
+
+   返回一个数组，包含对象自身的所有Symbol属性的键名
+
+6. `Reflect.ownKeys(obj)`
+
+   返回一个数组，包含对象自身的所有键名，不管键名是Symbol或字符串，也不管是否可枚举
 
 
 
-（3）Object.getOwnPropertyNames(obj)
+以上遍历对象键名，都遵守同样的属性遍历的次序规则：
 
-返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）的键名
-
-
-
-（4）Object.getOwnPropertySymbols(obj)
-
-返回一个数组，包含对象自身的所有Symbol属性的键名
-
-
-
-（5）Reflect.ownKeys(obj)
-
-返回一个数组，包含对象自身的所有键名，不管键名是Symbol或字符串，也不管是否可枚举
-
-以上5种遍历对象键名，都遵守同样的属性遍历的次序规则：
 * 首先遍历所有的数值键，按照数值升序排列
 * 其次遍历所有的字符串键，按照加入时间升序排列
 * 最后遍历所有Symbol键，按照加入时间升序排列
@@ -526,41 +461,43 @@ Reflect.ownKeys({[Symbol()]:0,b:0,10:0,2:0,a:0})
 // ['2','10','b','a',Symbol()]
 ```
 
+
+
 ## 九、箭头函数
 
 匿名函数使用的；
 
 1. 箭头函数要先定义后调用，调用时不能放到箭头函数的前面；
 
-    fn = () =>{console.log(1)}
+    `fn = () =>{console.log(1)}`
 
 2. 箭头函数不能new实例化，会报错：fn is not constractor;
 
 3. 箭头函数中的形参只有一个时，不需要小括号；
 
-    fn=x=>{console.log(x)}；
+    `fn=x=>{console.log(x)}；`
 
 4. 箭头函数体只有一句代码时，可以不写{}，但要注意这一句代码的结果会作为返回值返回出去,
 
-    fn = x => x;    默认被使用return返回；需要console.log打印；
+    `fn = x => x`;    默认被使用return返回；需要console.log打印；
 
-5. 如果箭头函数体有多条语句，则要写{}，若有返回值时，则要使用return 明确返回出去
+5. 如果箭头函数体有多条语句，则要写`{}`，若有返回值时，则要使用return 明确返回出去
 
 6. 箭头函数的this指向外层函数；
 
 
 
-函数默认值：
+### 函数默认值
 
 es6提供了函数默认值的设置语法；
 
 设置参数默认值，可以直接在传参时，后面写上等于；
 
-function fn(x,y,c=10){};
+`function fn(x,y,c=10){}`
 
 
 
-箭头函数和普通函数的区别：
+### 箭头函数和普通函数的区别
 
 箭头函数没有arguments、this指向的问题
 
@@ -581,6 +518,7 @@ function fn(x,y,c=10){};
 对象中的this：
 
 对象内部方法的this指向调用这些方法的对象；
+
 1. 函数的定义位置不影响其this指向，this指向只和调用函数的对象有关；
 2. 多层嵌套的对象，内部方法的this指向离被调用函数最近的对象（window也是对象，其内部对象调用方法的this指向内部对象，而非window）；
 ```js

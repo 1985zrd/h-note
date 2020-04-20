@@ -2,11 +2,15 @@
 ## 一、js发展历史：
 
 ECMAScript（Europe Computer Manufacture Association)；语法，定义变量
+
 DOM（Document Object model） ; 文档对象模型；
+
 BOM（Brower Object model）; 浏览器对象模型；
 
 `javascript`是一个单线程、非阻塞、异步、解释性脚本语言；
+
 V8是chrome里的javascript运行环境；
+
 1. javascript 是解释性脚本语言；
 
 * javascript原名不是JavaScript，而是Livescript；
@@ -73,6 +77,7 @@ V8是chrome里的javascript运行环境；
 3. 关键字，浏览器当中标签名字也就是关键字，比如script，var；
 
 5. 进制
+
 以0开头的值为进制，16进制以0x开头，默认是十进制
 
 八进制：遇八进1，十六进制，遇十六进1；
@@ -84,6 +89,7 @@ V8是chrome里的javascript运行环境；
 
 
 6. 变量
+
 变量声明，有var，有变量名字，没有值；
 
 变量初始化，有var，有变量名字有值；
@@ -97,6 +103,7 @@ V8是chrome里的javascript运行环境；
 
 
 6. 声明变量的方式
+
 先声明，后赋值    `var a;     a=12;`
 
 声明并赋值：`var a=12`;
@@ -138,13 +145,17 @@ a=a-b;
 ## 四、简单交互
 
 1. 找到谁
+
 通过id名获取元素：`document.getElementById("box")`;
 
 2. 干什么：
+
 `document.getElementById("box").onclick = function(){}`
+
 通过(by)id获取(get)元素(Element)并声明变量。
 
 3. 结果是什么：
+
 `document.getElementById("box").onclick = function(){alert(1);}`
 
 
@@ -152,6 +163,7 @@ a=a-b;
 
 ## 四、获取元素
 1. 通过标签名获取元素；
+
 `document.getElementsByTagName("")`;
 
 获取到的都是类数组；当只有一个类名时，可以直接在括号后加中括号下标；
@@ -159,6 +171,7 @@ a=a-b;
 获取到数组中的某个具体标签需要加下标，从0开始；
 
 2. 通过类名获取元素（IE9+）
+
 `document.getElementsByClassName("")`;
 
 获取之后也是类数组，
@@ -168,11 +181,13 @@ a=a-b;
 
 
 3. 从父元素通过标签名获取元素：
+
 `父元素.getElementsByTagName("类名")`;
 
 `父元素.getElementsByClassName("")`;
 
 4. 通过css选择器来获取元素；
+
 `document.querySelector("css选择器选择")`;    返回的是一个
 
 `document.querySelectorAll("css选择器选择")`； 返回的是一组；
@@ -250,6 +265,7 @@ btn1.onclick = function(){
 表单有三种，`input`,`textarea`,`select`。
 
 1. 获取
+
 `input.value`;  获取的是value值；
 
 `textarea.value`;  获取的是value值；
@@ -261,6 +277,7 @@ btn1.onclick = function(){
 
 
 2. 设置
+
 `input.value = ""`; 改变其中的内容
 
 `select.value = ""`; 改变默认选中项；
@@ -272,21 +289,30 @@ btn1.onclick = function(){
 ## 八、操作元素属性
 
 1. 获取
+
     变量名.属性名。例如:`a.href`；
+
     获取类名时：`变量名.className`;  需要大写；
+
 2. 设置
-    `box.id = "obox"`;
-    `a.href = "http://baidu.com"`;
-    `img.src = "1.jpg"`；js外部文件时路劲要以html文件来找；
+
+   
+   `box.id = "obox"`;
+   
+   `a.href = "http://baidu.com"`;
+   
+   `img.src = "1.jpg"`；js外部文件时路劲要以html文件来找；
 
 
 
 ## 九、操作元素样式
 
 1. 获取
+
     `元素.style.属性值`；只能获取行内样式；
 
 2. 设置
+
 (1)`元素.style.属性值 = "";`（设置的样式也都是在行内样式）
 
 属性值是font-size有中划线的时候，需要fontSize；去掉中划线，第二个单词首字母大写；
@@ -319,7 +345,6 @@ btn1.onclick = function(){
 
 ## 十、常用方法
 1. `document.write()`; 在页面添加内容。
-
 2. `prompt()`；打开浏览器弹窗输入；
 3. `alert` 弹窗
 4. `console.log(内容)` 输出到控制台

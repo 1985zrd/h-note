@@ -240,6 +240,7 @@ String.fromCharCode(97+Math.ceil(Math.random()*25))  //返回一个小写字母
 ```
 
 31. 将url转换成对象形式取值
+
 （1）使用while循环+正则
 ```js
 function formatSearch(search, o={}){

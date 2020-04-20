@@ -2,6 +2,7 @@
 ## 一、CSS3多列布局
 
 可以创建多个列用来布局，就像报纸那样。
+
 1. `columns` ：宽度，列数
 2. `column-count` 分割列数，后面写数字，默认为auto；
 3. `column-width` 分割每列的宽度；
@@ -123,6 +124,7 @@ display: inline-flex; /* 设置弹性盒子（内联块） */
 
 ### 项目与起点交叉对齐
 `align-items ` 
+
 当主轴为水平方向时，调整的对齐方式在垂直方向对齐；
 
 当主轴为垂直方向时，调整的对齐方式在水平方向对齐；
@@ -401,7 +403,9 @@ grid-auto-columns:50px  规定新增的高度为50px；
 
 
 grid；
+
 grid属性：grid-template-columns/rows/areas   grid-auto-rows/columns/flow 六个属性的简写；
+
 不建议使用这个属性；
 
 
@@ -461,10 +465,13 @@ grid-column: auto / span 2  // 向左跨越2列
 使用`display: table`；将内部元素使用table表格的特性；
 
 `display: table-cell`；给包裹元素设置；
+
 ![image](http://notecdn.heny.vip/images/html-14_flex、grid、table-01.png)
 
 一般用于这种布局；设置了table-cell之后，需要设置vertical:属性；
+
 ![image](http://notecdn.heny.vip/images/html-14_flex、grid、table-02.png)
+
 ```html
 <div class="container">
    <div class='left'>

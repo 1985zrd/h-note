@@ -162,9 +162,13 @@ map.setMapStyleV2({
 ## 自定义标注点
 
 1. 标注点自定义图标：new BMap.Icon(url,size,[,option])：地址，大小创建图标对象；
+
 options：anchor : size；左上角偏移值；
+
 imageOffset : size；可视区域的偏移值；等同于background-position；
+
 imageSize : size；图片的大小，等同于background-size；
+
 ```js
 var marker = new BMap.Marker(point, {
     icon: new BMap.Icon('./2.png', new BMap.Size(86, 72), {

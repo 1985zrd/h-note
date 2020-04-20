@@ -2,44 +2,52 @@
 ## 一、Module 模块
 模块功能主要由两个命令构成：export和import，export命令用于规定模块的对外接口，Import命令用于输入其他模块提供的功能；
 
-1. export：规定模块对外接口
+### export
+
+> 规定模块对外接口
 
 如果希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量
-* 默认导出：export default Person（导入时可指定模块任意名称，无需知晓内部真实名称）
-* 单独导出：export const name = 'bruce'
-* 按需导出：export {age, name, sex} （推荐）
-* 改名导出：export {name as newName}
-* 从文件导出：export {} from './user'（常用于index.js导入其他的文件并导出）
+
+* 默认导出：`export default Person`（导入时可指定模块任意名称，无需知晓内部真实名称）
+* 单独导出：`export const name = 'bruce'`
+* 按需导出：`export {age, name, sex}`
+* 改名导出：`export {name as newName}`
+* 从文件导出：`export {} from './user'`（常用于index.js导入其他的文件并导出）
 
 
 
-2. import：导入模块内部功能
+### import
+
+> 导入模块内部功能
 
 使用export命令定义了模块的对外接口后，其他js文件就可以通过import命令加载这个模块，import命令具有提升效果，会提升到整个模块的头部，首先执行。是因为import命令是编译阶段执行的，在代码运行之前，如果多次重复执行同一句import语句，那么只会执行一次，而不会执行多次；
 
-* 默认导入：import Person from './Person'
-* 整体导入：import * as Person from './Person'
-* 按需导入：import {age, name, sex} from './Person'
-* 改名导入：import {name as newName} from './Person'
-* 自执导入：import 'reset.css'
-* 复合导入：import Person, {name} from './Person'
+* 默认导入：`import Person from './Person'`
+* 整体导入：`import * as Person from './Person'`
+* 按需导入：`import {age, name, sex} from './Person'`
+* 改名导入：`import {name as newName} from './Person'`
+* 自执导入：`import 'reset.css'`
+* 复合导入：`import Person, {name} from './Person'`
 
 
 
-3. 赋值引入
+### 动态引入
 
 动态加载import，返回Promise，可以调用then方法；
+
 ```js
 component: () => import('./views/about.vue')
 ```
-4. import与require的区别
 
 
-require是commjs的规范，import是es6的规范；
+### import与require的区别
 
-require是同步加载，import是异步加载；
+* require是commjs的规范，import是es6的规范；
+
+* require是同步加载，import是异步加载；
 
 require加载方式：
+
 ```js
 // 导出
 // 单个暴露
@@ -50,6 +58,8 @@ moudle.exports = {}
 //导入
 require('')
 ```
+
+
 ## 二、require.context
 
 如果require参数含有表达式，比如：require('./template/'+name+'.ejs')，就可以使用require.context；
@@ -67,7 +77,8 @@ require.context('./test',false,/\.vue$/) //匹配test目录以.vue结尾的文�
 2. require.context模块导出返回一个require函数，这个函数可以接收一个参数，request；
 
 导出的方法有3个属性：
-* resolve：
+
+* `resolve`：
 * keys：也是一个函数，返回一个数组，数组里面是所有的文件名
 * id
 
@@ -80,8 +91,10 @@ console.log(all) // 返回的是一个数组对象, 里面是导出的Module, �
 
 context(context.keys()[0]) // 传入之后会返回导出的该文件;就是requireAll的单个对象
 ```
-![image](http://notecdn.heny.vip/images/es6-06 module-01.png)
+![image](http://notecdn.heny.vip/images/es6-06%20module-01.png)
+
 3. Vue全局组件注册
+
 （1）创建：./components/global/index.js，并写入以下代码，之后在main.js引入：import './components/global'即可；
 ```js
 let requireAll = context => context.keys().map(context)

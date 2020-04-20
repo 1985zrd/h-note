@@ -106,11 +106,14 @@ mark用来标记文字。
 ```html
 <p><time>04月15号</time>今天<mark>学习</mark>HTML5</p>
 ```
+
 ![image](http://notecdn.heny.vip/images/html-12_HTML5-01.png)
 
 
 ## 五、语义化标签的IE兼容问题处理
+
 1. 创建元素，给元素转块
+
 ```html
 <script> document.createElement('header'); </script>
 ```
@@ -178,9 +181,11 @@ placeholder 输入框里提示内容文字 //重点
 autofocus 输入框自动获取鼠标焦点（一个页面只能给一个form表单元素添加）///重点
 
 autocomplete 属性值自动返回之前输入的值，有两个值：on、off（默认值为on）；
+
                 设置off可以去掉下拉框提示，也可以给form设置
 
 form不在form表单里面的输入域也能被提交数据；
+
 	1. 给form表单添加id名字，给外面的
 	2. form表单元素添加form="form表单id"
 

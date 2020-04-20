@@ -97,6 +97,7 @@ $(‘#f00’) 和 jQuery(‘#foo’) 是等价的，$.ajax 和 jQuery.ajax 是�
 ②jquery：只把页面的结构加载完，读取到标签就可以了，可以写多个；
 
 3. $(document).ready() 同 window.onload 的区别：
+
         1. 执行时机不同，window.onload 必须等待网页中所有的内容加载完毕后（包括图片）才能执行，而 $(document).ready() 是网页中所有 DOM 结构绘制完毕就执行，可能 DOM 元素关联的东西并没有加载完。
         2. window.onload 只能写一个 , 多个时后面的会覆盖掉前面的，而 $(document).ready() 可以写多个，不会覆盖。
         3. window.onload没有简写形式，而$(document).ready()可以简写成$(function (){})。
@@ -113,6 +114,7 @@ $(‘#f00’) 和 jQuery(‘#foo’) 是等价的，$.ajax 和 jQuery.ajax 是�
 ## 十、转换元素
 
 使用jquery元素不能使用原生的方法，不能混着用，可以转换元素使用；
+
 1. $(li)，将使用dom获取li变量的元素转换为jquery的元素；
 2. jquery转dom：①$("li").get(下标)，②$("li")[下标]
 转dom加下标，转jquery加$；

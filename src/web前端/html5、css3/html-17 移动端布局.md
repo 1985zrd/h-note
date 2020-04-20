@@ -43,6 +43,7 @@
 ## 二、媒体查询
 
 通过媒体查询我们可以对不同的设备指定特定的样式
+
 	1. 在link标签后面输入(css2)
 
 
@@ -133,6 +134,7 @@ function Resize(){
 	2. 流式布局：
 
 		1. 宽度使用百分比，高度设置px，页面会出现拉伸，不兼容。
+
 	3. 响应式布局：
 
 		1. 利用媒体查询，判断不同的设备，使用不同的css文件，比较麻烦。
@@ -146,9 +148,11 @@ function Resize(){
 		2. 需要注意浏览器会有最小字体大小，会出现小尺寸手机文字下掉，设置单行/多行文本超出显示点状
 		3. 图片是根据基线对齐，设置了默认页面font-size大小之后，字体变大，图片会下掉，转块可以解决。
 		4. 图片需要设置宽高才能等比例缩放，放置背景图需要设置背景尺寸100%，否则图片大小无法根据rem等比例缩放，无法显示完整的图片。
+
 2. rem单位：
 
 	1. 当html{font-size:100px;}时，页面使用则1rem=100px;
+	
 3. em单位：
 
 	1. 针对局部使用：当em的div{font-size:100px; }，div里面width:1em=100px;
@@ -167,10 +171,13 @@ function Resize(){
 <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
 <script>new VConsole();</script>
 ```
+
 ![image](http://notecdn.heny.vip/images/html-17_移动端布局-01.png)
+
 2.  eruda调试工具
 ```html
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda"></script>
 <script>eruda.init();</script>
 ```
+
 ![image](http://notecdn.heny.vip/images/html-17_移动端布局-02.png)

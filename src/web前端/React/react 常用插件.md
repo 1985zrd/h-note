@@ -17,7 +17,7 @@
 
 ## 滚动插件
 1. 安装：npm i react-scroll
-2. 官网：https://github.com/fisshy/react-scroll
+2. 官网：[https://github.com/fisshy/react-scroll](https://github.com/fisshy/react-scroll)
 2. 基础使用：
 （1）滚动方法
 ```jsx
@@ -93,19 +93,19 @@ import {Link} from 'react-scroll'
 
    * `forceChec`   手动重新触发检查视口中的元素， 当LazyLoad组件进入视口而没有调整大小或滚动事件时很有用，例如，当组件的容器被隐藏然后可见时。
 
-     ```js
+     ```jsx
      import forceCheck from 'react-lazyload'
      forceCheck() // 在生命周期调用
      ```
 
    * `forceVisible` 强制组件显示，无论该元素在视口中是否可见
 
-     ```js
+     ```jsx
      import { forceVisible } from 'react-lazyload';
      forceVisible();
      ```
 
-教程地址：[https://github.com/twobin/react-lazyload]( https://github.com/twobin/react-lazyload)
+教程地址：[https://github.com/twobin/react-lazyload](https://github.com/twobin/react-lazyload)
 
 
 
@@ -113,7 +113,7 @@ import {Link} from 'react-scroll'
 
 1. 安装：`npm i react-transition-group`
 2. 引入
-```js
+```jsx
 import {CSSTransition} from 'react-transition-group'
 ```
 3. 属性
@@ -158,7 +158,7 @@ import {CSSTransition} from 'react-transition-group'
     </CSSTransition>
 </TransitionGroup>
 ```
-可以使用react-motion代替： https://www.jianshu.com/p/82552ce3803a
+可以使用react-motion代替： [https://www.jianshu.com/p/82552ce3803a](https://www.jianshu.com/p/82552ce3803a)
 
 
 

@@ -198,6 +198,7 @@ $borderColor: #E1E0DF;
 ## ios端出现下图问题
 
 给input框设置：background-color: transparent;
+
 ![image](http://notecdn.heny.vip/images/css小方法-10.png)
 
 
@@ -205,6 +206,7 @@ $borderColor: #E1E0DF;
 ## 解决移动端报红
 
 ![image](http://notecdn.heny.vip/images/css小方法-11.png)
+
 由于没有e.preventDefalt引起的
 
 

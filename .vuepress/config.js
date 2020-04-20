@@ -81,25 +81,26 @@ module.exports = {
 			})();
 		`]
 	],
-	plugins:[
+	plugins: [
 		['@vuepress/pwa', {
-			serviceWorker: true,
-			updatePopup: true
+				serviceWorker: true,
+				updatePopup: true
 			}
 		],
 		['@vssue/vuepress-plugin-vssue', {
-			// 设置 `platform` 而不是 `api`
-			platform: 'github',
-			locale: 'zh-CN',
+				// 设置 `platform` 而不是 `api`
+				platform: 'github',
+				locale: 'zh-CN',
 
-			// 其他的 Vssue 配置
-			owner: 'heny',
-			repo: 'h-note',
-			clientId: 'c46829deab38f2de6c89',
-			clientSecret: '76a940144230049a7533df93f56940a20d400b22',
+				// 其他的 Vssue 配置
+				owner: 'heny',
+				repo: 'h-note',
+				clientId: 'c46829deab38f2de6c89',
+				clientSecret: '76a940144230049a7533df93f56940a20d400b22',
 			}
 		],
-		require('./copy')
+		require('./copy'),
+		// require('./reading-progress')
 	],
 	themeConfig:{
 		repo: 'heny/h-note',
@@ -108,13 +109,13 @@ module.exports = {
 		editLinks: true,
 		editLinkText: '在GitHub上编辑此页',
 		lastUpdated: '上次更新：', // 前缀使用
-		smoothScroll: true,
-		// algolia: {
-		// 	// apiKey: '5afb4b8f5b191b92841aed8afa044013',
-		// 	// indexName: 'heny_h-note'
-		// 	apiKey: '75033b31cce2d60aef3adfe4df1dbb4c',
-		// 	indexName: 'heny_h-web'
-		// },
+		// smoothScroll: true,
+		algolia: {
+			// apiKey: '5afb4b8f5b191b92841aed8afa044013',
+			// indexName: 'heny_h-note',
+			apiKey: '75033b31cce2d60aef3adfe4df1dbb4c',
+			indexName: 'heny_h-web'
+		},
 		nav:[
 			{ text: 'home', link:'/' },
 			{ text: 'web前端', items: webItems },

@@ -146,6 +146,7 @@ _.isEqualWith(array, other, customizer);
 
 ## 工具函数
 1. flow
+
 传入一个数组，数组里面放其他函数，会依次以前一个函数结果传入到下一个去执行，this会绑定到创建函数，每个连续调用，传入的参数都是前一个函数的结果
 ```js
 const square = n => {

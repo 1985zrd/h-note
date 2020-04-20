@@ -1,4 +1,5 @@
 import CodeCopy from "./copy.vue";
+import myProgress from './ReadingProgress'
 import Vue from "vue";
 
 export default {
@@ -7,6 +8,14 @@ export default {
     this.$nextTick(() => {
       this.update();
     });
+  },
+  mounted(){
+    // 插入进度条 !临时操作
+    const globalUIEl = document.querySelector('.global-ui')
+    const p = Vue.extend(myProgress)
+    const progress = new p()
+    progress.$mount()
+    globalUIEl.appendChild(progress.$el)
   },
   methods: {
     update() {
@@ -33,7 +42,7 @@ export default {
         // 添加span标签，增加三个小点
         const span = document.createElement('span')
         span.style = 'display: block;background: url("http://notecdn.heny.vip/code-header.png") 10px 10px / 40px no-repeat rgb(40, 44, 52);height: 30px;width: 100%;margin-bottom: -7px;border-radius: 5px;';
-        [...el.children].forEach(curEl => {
+        Array.from(el.children).forEach(curEl => {
           if(curEl.nodeName === 'CODE') {
             el.insertBefore(span, curEl)
           }

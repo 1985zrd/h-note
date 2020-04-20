@@ -9,7 +9,7 @@
 
 ## 二、创建store
 1. 添加store/index.js
-```js
+```jsx
 import {createStore} from 'redux'
 const initialState = {
     count: 0
@@ -29,7 +29,7 @@ const store = createStore(reducer)
 export default store
 ```
 2. 创建好之后的store，输出之后一共有四个参数，
-```js
+```jsx
 const store = createStore(reducer)
 console.log(store)
 {
@@ -43,7 +43,7 @@ console.log(store)
 3. 监听store的数据变化
 
 store.subscribe可以监听store的数据变化，该方法返回一个函数，调用该函数又可以解除监听
-```js
+```jsx
 const unsubscribe = store.subscribe(() => {
     console.log('当前state值：', store.getState())
 })
@@ -52,7 +52,7 @@ unsubscribe()
 
 ## 三、组件获得store中的数据
 1. 第一种方法，直接调用store
-```js
+```jsx
 import React from 'react'
 import store from './store'
 function Son(){
@@ -65,7 +65,7 @@ export default Son
 使用connect是借助Provider实现的，需要修改index.js入口文件;
 
 （1）修改src/index.js入口文件
-```js
+```jsx
 import { Provider } from 'react-redux'
 import store from './store'
 
@@ -77,7 +77,7 @@ ReactDOM.render(
 )
 ```
 （2）connect使用方法,connect第一个小括号接收参数，第二个小括号接收组件
-```js
+```jsx
 // 方法
 connect([mapStateToProps],[mapDispatchToProps],[mergeProps],[options])
 // 常用方法
@@ -88,7 +88,7 @@ connect([mapStateToProps],[mapDispatchToProps])(presentationalComponent)
 * 第一种方式
 
 
-```js
+```jsx
 import {connect} from 'react-redux'
 
 // 使用mapDispatchToProps调用该方法并传入dispatch用来触发reducer改变state值
@@ -110,7 +110,7 @@ export default connect(
 * 第二种方式，直接引入action的方法
 
 
-```js
+```jsx
 import {connect} from 'react-redux'
 import {handleChange} from './action.js'
 function App(){}
@@ -137,7 +137,7 @@ function handleChange(count){
 
 
 注意：每次store有数据更新时，我们需要对相关得到的数据正确进行渲染，需要两次调用ReactDOM.render方法，可以写一个render函数，每次store发生改变即调用
-```js
+```jsx
 const render = () => {
     ReactDOM.render(
         <Provider store={store}>
@@ -154,19 +154,19 @@ render() // 第一次挂载执行
 
 ## 四、store拆分处理
 1. 创建store/index.js
-```js
+```jsx
 import { createStore } from 'redux'
 import rootReducer from './reducer.js'
 const store = createStore(rootReducer)
 export default store
 ```
 2. 创建store/type.js
-```js
+```jsx
 // 统一管理type名字
 export const ADD = 'ADD'
 ```
 3. 创建store/reducer.js
-```js
+```jsx
 import * as types from './type.js'
 const initialState = {
     count: 0
@@ -193,7 +193,7 @@ export default reducer
 
 
 4. 创建store/action.js
-```js
+```jsx
 import * as types from './type.js'
 export const increment = (count) => {
     return {
@@ -205,7 +205,7 @@ export const increment = (count) => {
 
 ## 五、拆分reducer
 1. 使用redux提供的函数，combineReducers可以将每个reducer写成独立的一个文件,每一块独立负责管理state的一部分
-```js
+```jsx
 // reducers/index.js
 import { combineReducers } from 'redux'  //引入拆分
 
@@ -228,12 +228,12 @@ thunk可以看做store的dispatch()方法的封装器，使用thunk可以帮助�
 
 2. 安装redux-thunk
 
-npm i -S redux-thunk
+`npm i -S redux-thunk`
 
 3. 注册redux-thunk中间件
 
 applyMiddleware可以让我们为redux注册中间件
-```js
+```jsx
 // store.js
 
 import { createStore, applyMiddleware } from 'redux';
@@ -245,7 +245,7 @@ const store = () => createStore(rootReducer, applyMiddleware(thunk));
 export default store;
 ```
 4. 使用异步处理dispatch
-```js
+```jsx
 // action.js
 
 import * as types from './type.js'
@@ -273,7 +273,7 @@ export const increment = count => (dispatch, getState) => {
 使用hook API必须在react-redux @7.1版本之后；
 
 1. useSelector()
-```js
+```jsx
 import { shallowEqual, useSelector} from 'react-redux'
 
 // later
@@ -335,7 +335,7 @@ export const TodoCounterForIsDoneValue = ({isDone}) => {
 }
 ```
 2. useDispatch
-```js
+```jsx
 import {useDispatch} from 'react-redux'
 
 // later
@@ -348,7 +348,7 @@ const handlerIncrement = useCallback(
 ,[dispatch])
 ```
 3. useStore()
-```js
+```jsx
 import { useStore } from 'react-redux'
 
 // later
@@ -357,12 +357,12 @@ store.getState();
 ```
 ## 七、配置redux dev tools，谷歌工具
 1. 修改store下的index.js文件，将以下代码传递给store
-```js
+```jsx
 window.__REDUX_DEVTOOLS_EXTENSION__ &&
 window.__REDUX_DEVTOOLS_EXTENSION__())
 ```
 意思是查看window有没有该方法，有则执行；
-```js
+```jsx
 import { createStore } from 'redux'
 import reducer from './reducer'
 const store = createStore(reducer,
@@ -371,7 +371,7 @@ window.__REDUX_DEVTOOLS_EXTENSION__())
 export default store
 ```
 2. 使用谷歌插件同时使用thunk
-```js
+```jsx
 npm i redux-thunk redux-devtools-extension
 
 import {applyMiddleware, createStore} from 'redux'
@@ -393,7 +393,7 @@ yarn add redux-persist
 redux-persist，它结合redux，将store中的数据缓存到浏览器的sessionStorage或者localStorage中
 
 2. 在store.js里面，
-```js
+```jsx
 import { createStore } from 'redux';
 import reducer from '../reducer';//引入deducer文件
 import {persistStore, persistReducer} from 'redux-persist';
@@ -416,7 +416,7 @@ export const persistor = persistStore(store)
 export default store
 ```
 3. 如果是单文件的reducer处理方式
-```js
+```jsx
 // reducers/index.js
 import { combineReducers } from 'redux'  //引入拆分
 
@@ -441,7 +441,7 @@ export default rootReducer
 ```
 
 4. 在入口文件index.js里面将PersistGate标签作为父标签
-```js
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './router';
@@ -459,12 +459,14 @@ ReactDOM.render(
     document.getElementById('root'));
 ```
 5. 接下来打开浏览器调试工具，就可以查看到浏览器缓存的数据
+
 ![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-03.png)
 
 
 
 ## 九、面试相关题
 ### redux由以下组件组成：
+
 Action：这是一个用来描述发生了什么事情的对象；
 
 Reducer：这是一个确定状态将如何变化的地方
