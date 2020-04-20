@@ -56,6 +56,8 @@ getSidebar(webItems)
 // 生成首页README.md的目录
 createREADME('web前端')
 
+console.log(JSON.stringify(sidebar, null, 2), 'sidebar')
+
 module.exports = {
 	title: '前端学习圈',
 	description: '一位不知名的初级菜鸟',
