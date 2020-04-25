@@ -2,36 +2,21 @@
 ## 一、线程和进程
 进程：相当于一个工厂，启动一个应用程序就对应一个进程；
 
-      PHP java他们是多线程的 而Nodejs是单线程
+PHP java他们是多线程的 而Nodejs是单线程
 
 线程：相当于工人，线程是真正来工作的；
- 
-    Nodejs 单线程 异步非阻塞 事件驱动，node.js如果有一条线挂了，后面也就无法执行了；
+
+Nodejs 单线程 异步非阻塞 事件驱动，node.js如果有一条线挂了，后面也就无法执行了；
+
 
 
 ## 二、路由
+
 http : //localhost :400/index.html?id=40;
 
 协议    域名    端口    目录   内容；
-```
-┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                              href                                              │
-├──────────┬──┬─────────────────────┬────────────────────────┬───────────────────────────┬───────┤
-│ protocol │  │        auth         │          host          │           path            │ hash  │
-│          │  │                     ├─────────────────┬──────┼──────────┬────────────────┤       │
-│          │  │                     │    hostname     │ port │ pathname │     search     │       │
-│          │  │                     │                 │      │          ├─┬──────────────┤       │
-│          │  │                     │                 │      │          │ │    query     │       │
-"  https:   //    user   :   pass   @ sub.example.com : 8080   /p/a/t/h  ?  query=string   #hash "
-│          │  │          │          │    hostname     │ port │          │                │       │
-│          │  │          │          ├─────────────────┴──────┤          │                │       │
-│ protocol │  │ username │ password │          host          │          │                │       │
-├──────────┴──┼──────────┴──────────┼────────────────────────┤          │                │       │
-│   origin    │                     │         origin         │ pathname │     search     │ hash  │
-├─────────────┴─────────────────────┴────────────────────────┴──────────┴────────────────┴───────┤
-│                                              href                                              │
-└────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+
+![image-20200422130341728](https://notecdn.heny.vip/images/node-02_路由、path、模块-01.png)
 
 1. 路由：node.js中的路由实际上是url中的path部分；
 
@@ -43,7 +28,7 @@ http : //localhost :400/index.html?id=40;
 
 3. http模块中：req是请求，res是响应；
 
-            req.url:获取访问目录；    
+        req.url:获取访问目录；    
 
 4. 设计路由：实际上就是根据不同的path路径返回不同的响应；
 
@@ -52,7 +37,7 @@ http : //localhost :400/index.html?id=40;
 在node.js中的全局不是window，而是global;
 
 
-    
+​    
 ## 三、模块化
 了解：在前端之前是没有模块化的概念，ES5以前是没有模块化的概念的。到ES6才提出模块化。
 
@@ -64,7 +49,9 @@ http : //localhost :400/index.html?id=40;
     第三方社区的模块: [https://www.npmjs.com/](https://www.npmjs.com/)
 
 
+
 ## 四、内置path与url模块：
+
 一般path与url搭配使用；
 
 path和url常用方法：
@@ -92,7 +79,9 @@ url.path(urls,true)；    加上true后使用query返回一个对象
 注意：使用path.resolve必须使用相当路径，第二个路径需要加./；
 
 
+
 ## 五、自定义模块
+
 1. 在node当中，一个js文件就是一个模块。每一个js文件都是封闭的空间，模块与模块之间是互不影响的，因为模块是有一个隐藏的匿名函数包起来的；
 
 arguments.callee属性包含当前正在执行的函数 ，调用arguments.callee.toString()返回这个匿名函数；
@@ -121,9 +110,9 @@ arguments.callee属性包含当前正在执行的函数 ，调用arguments.calle
 
     单个和多个不能混着写；
 
+注意：exports是module.exports的变量，模块最终返回的是module.exports；
 
 
-    注意：exports是module.exports的变量，模块最终返回的是module.exports；
 
 
 ## 六、第三方模块 [官网](https://www.npmjs.com)

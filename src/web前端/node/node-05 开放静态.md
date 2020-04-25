@@ -3,24 +3,28 @@
 1. res.statusCode = 200，    设置状态码
 2. res.statusMessage = 'ok'；  设置状态描述
 3. res.setHeader('content-type','text/html')； 
- 
+
     告诉浏览器接收的内容是什么类型的；
- 
+
     还可以设置响应里面的内容；
- 
+
     text/plain  纯文本；
 
 上面三种都是res.writeHead的分开写法；
 
 
+
 ## 二、扩展express的路由
+
 1. res.json()；输出json对象；
 2. res.send(JSON.stringify())；输入json字符串；
 3. res.set()；设置浏览器文件类型；
 4. res.status()；设置状态码；可以直接链式调用send；
 
 
+
 ## 三、静态资源托管
+
 1. app.use([path],express.static(path))；
 
 第二个写要开放的目录，建议写绝对路径，可以自动查询index.html；
@@ -57,17 +61,17 @@
   1)、传统设计路由的形式:
     形容词+名词
 
-  
-    get  /addbook
-  
-    get  /book
-  
-    get  /doaddbook
-  
-    get  /dodelbook
-  
-    get  /doupdatebook
 
+    get  /addbook
+      
+    get  /book
+      
+    get  /doaddbook
+      
+    get  /dodelbook
+      
+    get  /doupdatebook
+    
     RESTful: 这个东西就是去描述 路由应该如何设计
 
   2)、RESTful这个标准 把一些路由当中的形容词给去了。用 method请求方法表示
@@ -91,13 +95,14 @@
   DELETE：删除（Delete）
 
       delete /book
-
+    
              /book?id=1
-
+    
              /book/1  
 
+## 六、中间件
 
-## 六、中间件：每一个中间都有自己的一些含义
+>  每一个中间都有自己的一些含义
 
 在express所有的回调函数，都可以称为中间件，中间件可以理解为工厂当中的车间。
 
@@ -146,25 +151,25 @@
 
    3)、规划项目目录结构：
 
-  
+
     项目名称：books
-  
+      
                 |---静态资源: static
-  
+      
                 |-----------------css
-  
+      
                 |-----------------js
-  
+      
                 |-----------------images
-  
+      
                 |---路由模块：routers
-  
+      
                 |---模板文件(html)：views
-  
+      
                 |---数据目录(.json文件)： data
-  
+      
                 |---入口文件：app.js
-  
+
   4)、设计路由：
 
 

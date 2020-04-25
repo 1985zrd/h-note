@@ -78,7 +78,7 @@ export default {
 <style lang="stylus" scoped>
 $readingBgColor ?= transparent
 $readingZIndex ?= 1000
-$readingSize ?= 3px
+$readingSize ?= 2px
 $readingProgressColor ?= $accentColor
 $readingProgressImage ?= none
 .reading-progress

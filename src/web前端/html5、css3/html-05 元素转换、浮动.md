@@ -15,7 +15,7 @@
 
 
 ## 二、图片下面空白距离清除方法
-    图片默认最下边有空白，因为默认图片是基线对齐的；
+> 图片默认最下边有空白，因为默认图片是基线对齐的
 
 1. 给图片转块：display:block;
 2. 给图片设置垂直对齐方式：
@@ -82,7 +82,7 @@ text-align: center;
 
 1. 给浮动元素的父元素加高度，
 
-        很多的html页面都是内容撑开的高度，不便于后期维护，不推荐使用。
+    很多的html页面都是内容撑开的高度，不便于后期维护，不推荐使用。
 
 2. 给浮动元素的父元素加overflow：hidden、scroll、auto 都可以。
 
@@ -99,15 +99,15 @@ text-align: center;
 4. 给浮动元素的父元素加class名，给class加上以下属性；
 
 ```css
-.clearfix:after{ 伪类元素，在以clearfix的为名的class标签结尾添加内容
-                     clearfix是自己取得，可以随便取。 
-    content: '';      引号中间不要写内容 
-    display:block;    为了使添加的内容需要时块，转块 
-    clear: both;    清除浮动的属性。 
-    height: 0;     低版本浏览器默认生成的高度和行高需要清除，也可以不加 
-    line-height: 0;     如果内容添加文字，高度会被撑起来，需要设置行高为0 
-    visibility: hidden;    隐藏元素用户，肉眼看不见，可以不写。 
-}     高度行高和隐藏可以不写，就怕浏览器有默认样式，最好写上。 
+/* clearfix是自己取得，可以随便取。 */
+.clearfix:after{ /* 伪类元素，在以clearfix的为名的class标签结尾添加内容*/
+    content: '';      /* 引号中间不要写内容 */
+    display:block;    /* 为了使添加的内容需要时块，转块 */
+    clear: both;    /* 清除浮动的属性。 */
+    height: 0;     /* 低版本浏览器默认生成的高度和行高需要清除，也可以不加 */
+    line-height: 0;     /* 如果内容添加文字，高度会被撑起来，需要设置行高为0 */
+    visibility: hidden;    /* 隐藏元素用户，肉眼看不见，可以不写。 */
+}     /* 高度行高和隐藏可以不写，就怕浏览器有默认样式，最好写上。 */
 
 .clearfix{
  *zoom:1;     /* 写了伪元素之后再ie7及以下不兼容了，添加上 */ 
@@ -133,7 +133,7 @@ text-align: center;
 
 ## 六、 以下内容作为了解
 
-    1.list-style-type: 标记类型
+1.list-style-type: 标记类型
 
 可能的值：
 

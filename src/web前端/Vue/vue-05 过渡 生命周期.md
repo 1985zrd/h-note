@@ -23,7 +23,7 @@
 </transition>
 ```
 
-![image](http://notecdn.heny.vip/images/vue-05_过渡_生命周期-01.png)
+![image](https://notecdn.heny.vip/images/vue-05_过渡_生命周期-01.png)
 
 图中可见：
 
@@ -218,7 +218,7 @@ afterEnter (el) {
 
 捕获错误：<font color=red>`errorHandler`</font>
 
-![image](http://notecdn.heny.vip/images/vue-05_过渡_生命周期-02.png)
+![image](https://notecdn.heny.vip/images/vue-05_过渡_生命周期-02.png)
 
 生命周期图解：
 

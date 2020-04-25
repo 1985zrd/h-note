@@ -107,7 +107,7 @@ mark用来标记文字。
 <p><time>04月15号</time>今天<mark>学习</mark>HTML5</p>
 ```
 
-![image](http://notecdn.heny.vip/images/html-12_HTML5-01.png)
+![image](https://notecdn.heny.vip/images/html-12_HTML5-01.png)
 
 
 ## 五、语义化标签的IE兼容问题处理

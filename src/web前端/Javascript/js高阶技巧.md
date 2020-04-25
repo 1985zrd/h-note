@@ -45,11 +45,11 @@
 
 由于每次重排都会造成额外的计算消耗，因此大多数浏览器都会通过队列化修改并批量执行来优化重排过程；浏览器会将修改操作放入队列里，直到过了一段时间或者操作达到了一个阈值，才清空队列；但是，当获取布局信息的操作的时候，会强制队列刷新，比如当你访问以下属性或者方法时：
 
-* offsetTop/left/width/height
-* scrollTop/left/width/height
-* clientTop/left/width/height
-* getComputedStyle
-* getBoundingClientRect
+* `offsetTop/left/width/height`
+* `scrollTop/left/width/height`
+* `clientTop/left/width/height`
+* `getComputedStyle`
+* `getBoundingClientRect`
 
 
 上面的属性和方法都需要返回最新的布局信息，因此浏览器必须清空队列，触发回流重绘来计算正确的值，因此在修改样式时最好避免使用上面的属性，他们都会刷新渲染队列；

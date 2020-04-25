@@ -624,17 +624,17 @@ message: String   提示是否离开
 
 
 ## 路由缓存插件
-1. 安装：yarn add react-router-cache-route
+1. 安装：`yarn add react-router-cache-route`
 2. 可用的组件
 CacheRoute：支持Route的所有属性
-* when 决定何时使用缓存功能，可选值为[forward,back, always]，默认为forward；
-* className   给包裹组件添加自定义样式；
+* `when` 决定何时使用缓存功能，可选值为[forward,back, always]，默认为forward；
+* `className`   给包裹组件添加自定义样式；
 
 
 CacheSwitch：使用CacheRoute时不能使用Switch中，必须使用CacheSwitch；
 
 3. 额外的生命周期：
-使用CacheRoute的组件将会得到一个名为cacheLifecycles的属性，里面包含两个额外的生命周期的注入函数didCache和didRecover，分别用在组件被缓存和被恢复时；
+使用CacheRoute的组件将会得到一个名为`cacheLifecycles`的属性，里面包含两个额外的生命周期的注入函数`didCache`和`didRecover`，分别用在组件被缓存和被恢复时；
 ```jsx
 class List extends Component {
     constructor(props, ...args){

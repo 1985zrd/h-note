@@ -51,7 +51,11 @@ vuex的数据修改后在页面刷新之后就没有了，如果是请求数据�
 
    在template标签里面访问，不需要加this；
 
-   
+**store的对象所拥有的属性**
+
+* 
+
+
 
 ## 三、Vuex成员介绍
 
@@ -238,7 +242,49 @@ action函数接受一个与store实例具有相同方法和属性的context对�
 
 
 
-### 添加vuex操作日志
+## 四、插件开发
+
+> Vuex.Store对象中，接收一个plugins属性，值是一个数组，里面放置的都是函数
+
+简单的开发插件例子：
+
+```js
+// 插件接收一个store作为形参
+const myPlugin = store => {
+    // 当store初始化时调用
+    store.subscribe((mutation, state) => {
+        // 每次mutation之后调用
+        // mutation的格式为：{type, payload}
+    })
+}
+```
+
+使用：
+
+```js
+const store = new Vuex.store({
+    // ...
+    plugins: [myPlugin]
+})
+```
+
+简单的本地储存开发例子：
+
+```js
+export default store => {
+    // 在初始化时（页面刷新），如果store有数据则替换原有的store;
+    if(localStore._vuex) state.replaceState(JSON.parse(localStore._vuex))
+    store.subscribe((mutation, state) => {
+        localStore._vuex = JSON.stringify(state)
+    })
+}
+```
+
+
+
+
+
+## 添加vuex操作日志
 
 store/index.js常用
 
@@ -247,22 +293,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'  //用于操作之后可以返回一个日志，记录了信息;
 Vue.use(Vuex)
-const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   actions: {},
   getters: {},
   state: {},
   mutations: {},
-  strict: debug,
+  strict: process.env.NODE_ENV !== 'production', // 开启严格模式，保证状态变更是由mutation发起的，注意生产环境不能用
   plugins: debug ? [createLogger()] : []
 })
 ```
 
 
 
-
-
-### v-model使用vuex中的state值
+## v-model使用vuex中的state值
 
 ```js
 <input v-model='message'>

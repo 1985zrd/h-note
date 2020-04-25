@@ -61,7 +61,7 @@ module.exports = {
 	description: '一位不知名的初级菜鸟',
 	// theme: require.resolve('./theme/'),
 	head: [
-		['link', { rel: 'icon', type: "image/x-icon", href: '/favicon.ico' }],
+		['link', { rel: 'icon', type: "image/x-icon", href: 'https://notecdn.heny.vip/favicon.ico' }],
 		['link', { rel: 'manifest', href: '/manifest.json' }],
 		['meta', { name: 'theme-color', content: '#3eaf7c' }],
 		['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -71,6 +71,7 @@ module.exports = {
 		['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
 		['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
 		['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+		['script', {src: 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js'}],
 		['script', {}, `
 			var _hmt = _hmt || [];
 			(function() {
@@ -82,11 +83,11 @@ module.exports = {
 		`]
 	],
 	plugins: [
-		['@vuepress/pwa', {
-				serviceWorker: true,
-				updatePopup: true
-			}
-		],
+		// ['@vuepress/pwa', {
+		// 		serviceWorker: true,
+		// 		updatePopup: true
+		// 	}
+		// ],
 		['@vssue/vuepress-plugin-vssue', {
 				// 设置 `platform` 而不是 `api`
 				platform: 'github',
@@ -126,6 +127,7 @@ module.exports = {
 					{text: '消息传输站', link: 'https://chat.heny.vip'}
 				]
 			}
+			// { text: '编辑器', link: '/src/editor/' }
 		],
 		sidebarDepth: 2,  //仅支持h2和h3标题
 		sidebar

@@ -215,3 +215,17 @@ module.exports = smart(base, {
 })
 ```
 当开发时需要指定config文件： npm run build -- --config webpack.dev.js
+
+
+
+## 八、指定运行时的环境变量
+
+1. 安装插件：`npm install cross-env`
+
+2. 在`package.json`文件配置
+
+   ```json
+   "start": "cross-env NODE_ENV=development webpack"
+   ```
+
+3. 之后在文件中取：`process.env.NODE_ENV`

@@ -20,7 +20,7 @@ ssh-keygen -t rsa -C 'heny@qq.com'   // 回车之后记得根据提示按下yes
 
 找到git/usr/bin目录下的ssh-keygen.exe，之后配置到Path环境变量;
 
-![image-20200412204637296](http://notecdn.heny.vip/images/git-01.png)
+![image-20200412204637296](https://notecdn.heny.vip/images/git-01.png)
 
 3. 生成密钥之后就可以去官网绑定了
 
@@ -189,7 +189,7 @@ git stash pop # 拉下来
 
    （1）通过git log找到上一个提交的commit_id
 
-   ![image](http://notecdn.heny.vip/images/git-02.png)
+   ![image](https://notecdn.heny.vip/images/git-02.png)
    
    （2）通过：git reset --soft commit_id，执行一遍，之后就可以重新git commit了；
 
@@ -233,7 +233,7 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 
 指定时间
 ```sh
-git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since =='2020-04-02 00:00:00' --until='2020-04-02 23:59:59' --numstat | awk '{ add += $1; subs += $2;  loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ='2020-04-02 00:00:00' --until='2020-04-02 23:59:59' --numstat | awk '{ add += $1; subs += $2;  loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
 
 
@@ -282,23 +282,23 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 ### vscode上传代码
 1. 点击分支
 
-![image](http://notecdn.heny.vip/images/git-03.png)
+![image](https://notecdn.heny.vip/images/git-03.png)
 
 2. 点击对勾，之后弹出提示框，提示输入commit
 
-![image](http://notecdn.heny.vip/images/git-04.png)
+![image](https://notecdn.heny.vip/images/git-04.png)
 
 3. 点击推送，或者推送到（会提示选择分支）；
 
-![image](http://notecdn.heny.vip/images/git-05.png)
+![image](https://notecdn.heny.vip/images/git-05.png)
 
 4. 之后去git里面查看是否已经提交了代码；
 
-![image](http://notecdn.heny.vip/images/git-06.png)
+![image](https://notecdn.heny.vip/images/git-06.png)
 
 
 ### vscode切换分支
-![image](http://notecdn.heny.vip/images/git-07.png)
+![image](https://notecdn.heny.vip/images/git-07.png)
 
 
 
@@ -308,16 +308,16 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 1. 搜索：gitlens  并安装，之后在每一行代码后面可以清晰的看见
 
-![image](http://notecdn.heny.vip/images/git-08.png)
+![image](https://notecdn.heny.vip/images/git-08.png)
 
 2. 侧边栏工具使用
 
-![image](http://notecdn.heny.vip/images/git-09.png)
+![image](https://notecdn.heny.vip/images/git-09.png)
 
-![image](http://notecdn.heny.vip/images/git-10.png)
+![image](https://notecdn.heny.vip/images/git-10.png)
 
 3. 右上角实时对比分支修改内容
 
-![image](http://notecdn.heny.vip/images/git-11.png)
+![image](https://notecdn.heny.vip/images/git-11.png)
 
 

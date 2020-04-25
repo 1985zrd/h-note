@@ -1,6 +1,4 @@
-
-
-# node-03 fs文件
+# node-03 fs文件、shelljs
 
 ## fs系统
 
@@ -443,3 +441,56 @@ console.log(global.b) // 10
 `path.extname` 获取文件后缀
 
 
+
+## 九、shelljs
+
+> Shelljs是Node.js下的脚本语言解析器，具有丰富且强大的底层操作(Windows/Linux/OS X)权限。Shelljs本质就是基于node的一层命令封装插件，让前端开发者可以不依赖linux也不依赖类似于cmder的转换工具，而是直接在我们最熟悉不过的javascript代码中编写shell命令实现功能。
+
+1. 安装：`npm install shelljs`
+2. 官网：[https://documentup.com/shelljs/shelljs](https://documentup.com/shelljs/shelljs)
+
+* 基本语法
+
+```js
+//引入shelljs
+var shell = require('shelljs')
+
+//检查控制台是否以运行`git `开头的命令
+if (!shell.which('git')) {
+  //在控制台输出内容
+  shell.echo('Sorry, this script requires git');
+  shell.exit(1);
+}
+
+shell.rm('-rf','out/Release');//强制递归删除`out/Release目录`
+shell.cp('-R','stuff/','out/Release');//将`stuff/`中所有内容拷贝至`out/Release`目录
+
+shell.cd('lib');//进入`lib`目录
+//找出所有的扩展名为js的文件，并遍历进行操作
+shell.ls('*.js').forEach(function (file) {
+  /* 这是第一个难点：sed流编辑器,建议专题学习，-i表示直接作用源文件 */
+  //将build_version字段替换为'v0.1.2'
+  shell.sed('-i', 'BUILD_VERSION', 'v0.1.2', file);
+  //将包含`REMOVE_THIS_LINE`字符串的行删除
+  shell.sed('-i', /^.*REMOVE_THIS_LINE.*$/, '', file);
+  //将包含`REPLACE_LINE_WITH_MACRO`字符串的行替换为`macro.js`中的内容
+  shell.sed('-i', /.*REPLACE_LINE_WITH_MACRO.*\n/, shell.cat('macro.js'), file);
+});
+
+//返回上一级目录
+shell.cd('..');
+
+//run external tool synchronously
+//即同步运行外部工具
+if (shell.exec('git commit -am "Auto-commit"').code !== 0){
+    shell.echo('Error: Git commit failed');
+    shell.exit(1);
+}
+```
+
+* `which`：
+* `exec`：执行一串命令，返回一个code，如果code不等于0，则执行失败了
+
+## 参考链接
+
+* [https://juejin.im/post/5cdb76166fb9a032196ef1ff](https://juejin.im/post/5cdb76166fb9a032196ef1ff)

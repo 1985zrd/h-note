@@ -70,11 +70,11 @@ Block Formatting Context：指页面中的一个渲染区域，并且拥有一�
 
 既然BFC是一块渲染区域，那这块渲染区域到底在哪，它又是有多大，这些由生成BFC的标签决定，CSS2.1中规定满足下列CSS声明之一的标签便会生成BFC。
 
-	1. 根标签 html
-	2. float的值不为none(为left/right)。
-	3. overflow的值不为visible（为hidden/scroll/auto都行）
-	4. display的值为inline-block
-	5. position的值为absolute或fixed
+1. 根标签 html
+2. float的值不为none(为left/right)。
+3. overflow的值不为visible（为hidden/scroll/auto都行）
+4. display的值为inline-block
+5. position的值为absolute或fixed
 
 
 

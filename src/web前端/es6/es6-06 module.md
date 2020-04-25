@@ -91,7 +91,7 @@ console.log(all) // 返回的是一个数组对象, 里面是导出的Module, �
 
 context(context.keys()[0]) // 传入之后会返回导出的该文件;就是requireAll的单个对象
 ```
-![image](http://notecdn.heny.vip/images/es6-06%20module-01.png)
+![image](https://notecdn.heny.vip/images/es6-06%20module-01.png)
 
 3. Vue全局组件注册
 

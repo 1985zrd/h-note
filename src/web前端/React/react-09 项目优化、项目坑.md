@@ -91,7 +91,7 @@ function App(){
 
 ### 路由按需加载
 
-1. 安装：react-loadable
+1. 安装：`react-loadable`
 2. 使用
 ```jsx
 import Loadable from 'react-loadable' // 引入按需加载
@@ -121,7 +121,7 @@ if(!arr.length) return true //true必须填写 否则报错;
 
 原因：是因为第一次没有拿到数据就去渲染了，所以数据不是最新的，延时一下就解决了；
 
-![image](http://notecdn.heny.vip/images/react-09_项目优化、项目坑-01.png)
+![image](https://notecdn.heny.vip/images/react-09_项目优化、项目坑-01.png)
 
 
 5. 解决ios输入框导致页面上移
@@ -152,8 +152,8 @@ const inputFocus = e => {
 class Test extends React.Component {
     _isMounted = false
     componentDidMount(){
-        this.isMounted = true
-        this.isMounted && this.setState({...})
+        this._isMounted = true
+        this._isMounted && this.setState({...})
     }
     componentWillUnmount(){
         this._isMounted = false

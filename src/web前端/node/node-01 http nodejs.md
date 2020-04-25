@@ -24,9 +24,9 @@ DNS[域名解析服务器]服务器：www.baidu.com[域名]与服务器ip对应�
 
 了解：
 
-    HTTP1.0用的是非持久连接，客户端必须为每一个待请求的对象建立并维护一个新的连接。因为同一个页面可能存在多个对象，所以非持久连接可能使一个页面的下载变得十分缓慢，而且这种短连接增加了网络传输的负担。
+HTTP1.0用的是非持久连接，客户端必须为每一个待请求的对象建立并维护一个新的连接。因为同一个页面可能存在多个对象，所以非持久连接可能使一个页面的下载变得十分缓慢，而且这种短连接增加了网络传输的负担。
 
-    HTTP1.1引入了持久连接，允许在同一个连接中存在多次数据请求和响应，即在持久连接情况下，服务器在发送完响应后并不关闭TCP连接，而客户端可以通过这个连接继续请求其他对象。
+HTTP1.1引入了持久连接，允许在同一个连接中存在多次数据请求和响应，即在持久连接情况下，服务器在发送完响应后并不关闭TCP连接，而客户端可以通过这个连接继续请求其他对象。
 
 
 ## 二、HTTP请求
@@ -34,11 +34,11 @@ DNS[域名解析服务器]服务器：www.baidu.com[域名]与服务器ip对应�
 
     请求行以请求方法开头，以空格分开，后面跟着请求的URL和协议的版本；
 
-                格式：Method Request-URI HTTP-Version CRLF（回车或换行）
+    格式：Method Request-URI HTTP-Version CRLF（回车或换行）
 
-                          GET /demo.html HTTP/1.1
+    GET /demo.html HTTP/1.1
 
-    消息报头格式：host:www.baidu.com
+消息报头格式：host:www.baidu.com
 
 
 
@@ -46,19 +46,19 @@ DNS[域名解析服务器]服务器：www.baidu.com[域名]与服务器ip对应�
 
 1. HTTP响应也是由三个部分组成，分别是：状态行、消息报头、响应正文
 
-        状态行格式为：HTTP-Version Status-Code Reason-Phrase CRLF
+    状态行格式为：HTTP-Version Status-Code Reason-Phrase CRLF
 
-                               HTTP/1.1 200 OK
+    ​                   HTTP/1.1 200 OK
 
-           HTTP-Version      服务器HTTP协议的版本；
+       HTTP-Version      服务器HTTP协议的版本；
 
-           Status-Code        服务器发回的响应状态代码；
+       Status-Code        服务器发回的响应状态代码；
 
-           Reason-Phrase    状态代码的文本描述。
+       Reason-Phrase    状态代码的文本描述。
 
 常见的消息报头有：content-type：text/html
 
-                              content-length: 传输字符的长度；
+​                          content-length: 传输字符的长度；
 
 
 
@@ -109,11 +109,11 @@ Telnet模拟HTTP的GET请求：（了解）
 
 （4）输入GET请求：
 
-        请求行：get /test.php HTTP/1.1
+请求行：get /test.php HTTP/1.1
 
-        请求头：host:localhost   访问本地；
+请求头：host:localhost   访问本地；
 
-        请求头信息与请求正文之间必须空格；
+请求头信息与请求正文之间必须空格；
 
 
 
@@ -140,7 +140,7 @@ cls 清屏，dir 目录，cd 进入指定目录，tab 快速实例，md 创建�
 
 D:冒号切换盘符；一个点表示当前目录，两个点表示上一级目录；
 
-    
+​    
 
 ## 五、环境变量(了解)
 
@@ -174,7 +174,7 @@ D:冒号切换盘符；一个点表示当前目录，两个点表示上一级目
 
 （7）node.js操作的是服务器上的文件，不是本地的文件；
 
-![image](http://notecdn.heny.vip/images/node-01_http_nodejs-01.png)
+![image](https://notecdn.heny.vip/images/node-01_http_nodejs-01.png)
 
 
 2. 重点：
@@ -185,7 +185,7 @@ D:冒号切换盘符；一个点表示当前目录，两个点表示上一级目
 
 （3）Node中可以使用ECMAscript提供的所有的内置对象
 
-         String Number Boolean Math Date RexExp Function Object Array  
+​     String Number Boolean Math Date RexExp Function Object Array  
 
 （4）封装出了其它的api方法（函数）
 

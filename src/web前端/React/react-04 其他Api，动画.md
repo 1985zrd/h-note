@@ -94,13 +94,13 @@ const About = React.lazy(()=>slowImport(import('./pages/About'), 1000))
 
 下图2.chunk.js是通过lazy懒加载的组件展示的，可以修改名称
 
-![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-01.png)
+![image](https://notecdn.heny.vip/images/react-04_其他Api，动画-01.png)
 
 ```jsx
 const About = lazy(()=>import(/*webpackChunkName:"about"*/))
 ```
 
-![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-02.png)
+![image](https://notecdn.heny.vip/images/react-04_其他Api，动画-02.png)
 
 5. Suspense无法捕获组件加载错误，可以使用componentDidCatch捕获，也可以使用静态方法getDerivedStateFromError捕获错误
 ```jsx

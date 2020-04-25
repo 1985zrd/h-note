@@ -3,7 +3,7 @@
 
 下载官网： [http://www.expressjs.com.cn](http://www.expressjs.com.cn)
 
-安装：npm i express；
+安装：`npm i express`；
 
 安装之后：npm init -y   建立package.json；
 
@@ -25,6 +25,9 @@ const app = require('express')()
 app.listen(8080,()=>{console.log('监听成功...');
 app.get('/',(req,res)=>{res.send('哈哈')});
 ```
+
+
+
 ## 二、url参数
 
 1. 传参：
@@ -43,7 +46,7 @@ app.get('/',(req,res)=>{res.send('哈哈')});
 
 path路径是伪静态，对网络蜘蛛有优化，写地址需要带动态的，需要冒号写:name；
 
-    :nid/:page，接收之后是{nid:123,page:11}；
+:nid/:page，接收之后是{nid:123,page:11}；
 
 
 
@@ -73,6 +76,8 @@ Object.fromEntries(new URLSearchParams('foo=bar&baz=qux'))
 // { foo: "bar", baz: "qux" }
 ```
 
+
+
 ## 三、路由
 
 1. 设计路由
@@ -96,7 +101,9 @@ res.sendFile(`${__dirname}/index.html`)
 6. app.method(path,callback)；获取响应方式；
 
 
+
 ## 四、路由模块化
+
 作用：将路由地址的部分单独拧出来；
 
 1. 创建：
@@ -124,7 +131,10 @@ app.use('/api/users', routes)
 ```
 之后users.js文件夹下面的所有api访问都需要添加/api/users的前缀了；
 
+
+
 ## 五、express跨域问题
+
 1. 将以下内容加到路由下面的头信息，设置之后不需要跨域了；cors解决的；
 ```js
 res.header('Access-Control-Allow-Origin', '*');
@@ -151,7 +161,10 @@ error: (XMLHttpRequest, textStatus, errorThrown) => {
 }
 ```
 
+
+
 ## 六、接收前端传入的数据post
+
 1. 下载第三方npm包(body-parser)；
 
 2. 引入模块
@@ -171,9 +184,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 使用postman测试接口：点击params---body----x-www-form-urlencoded；
 
 
+
 ## 七、node修改自动重启  热更新
-1. 全局安装：npm i -g nodemon
-2. 在项目根目录（和服务入口文件同级）创建一个文件，nodemon.json并写入，之后启动项目需要nodemon index.js启动
+
+1. 全局安装：`npm i -g nodemon`
+2. 在项目根目录（和服务入口文件同级）创建一个文件`nodemon.json`并写入（为了配置，如果不需要则不用配置），之后启动项目需要`nodemon index.js`启动
 ```json
 {
     "restartable": "rs",
@@ -210,7 +225,29 @@ app.listen(80, ()=>{
 ```
 之后就可以直接npm start启动服务了
 
-## 八、javascript运行机制
+
+
+## 八、使用脚手架快速生成express框架
+
+> 官网：[https://github.com/expressjs/generator](https://github.com/expressjs/generator)
+
+1. 安装：`npm install express-generator -g`
+
+2. 生成jade项目：`express projectName` 
+
+   默认是`jade`模板
+
+   生成项目之后需要进入运行`npm i`安装依赖;
+
+   启动项目默认端口是3000；
+
+3. 使用ejs模板项目：`express projectName -e`  
+
+   -e表示使用ejs模板;
+
+
+
+## 九、javascript运行机制
 
 javascript是单线程的
 

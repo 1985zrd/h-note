@@ -195,13 +195,13 @@ Event Loop即事件循环，是浏览器或Node的一种解决javaScript单线�
 
 下图运行printSquare时，则会一个一个的放入stack中，当放入完成时，则会后进先出的开始执行；（如果是每一行都是普通的console.log，则stack里面始终只会推进一行代码，当全部栈清空时，main也会被推出栈）
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-01.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-01.png)
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-02.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-02.png)
 
 以下以栈树的形式打印出来了；
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-03.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-03.png)
 
 ### 阻塞
 在栈里的表现很慢的东西都叫阻塞，比如：网络请求很慢；
@@ -211,9 +211,9 @@ Event Loop即事件循环，是浏览器或Node的一种解决javaScript单线�
 
 DOM、ajax、setTimeout并不在v8源码里，而在webAPI，意味着，这几个不是浏览器处理的，是webAPI处理的，当webapi处理完成时，则会将它们推入task queue中，当调用栈没有内容时，则会输入task queue的内容；
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-04.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-04.png)
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-05.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-05.png)
 
 ### javascript是单线程的
 

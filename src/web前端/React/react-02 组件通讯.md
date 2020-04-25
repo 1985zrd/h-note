@@ -532,7 +532,7 @@ class Parent extends Component {
 ```
 5. 使用redux包裹的connect组件获取ref
 
-子组件添加withRef:true；
+子组件添加`withRef:true`；
 ```jsx
 connect(mapStateToProps, mapDispatchToProps, null, {withRef: true})(Son)
 父组件调用：
