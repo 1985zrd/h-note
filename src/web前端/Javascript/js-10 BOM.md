@@ -4,16 +4,16 @@ bom（browser object model）
 
 包括：window、location、navigator、screen、history；
 
-window对象：在全局中定义的变量是window的属性，定义的函数是window的方法；window.a，在全局写的变量或函数都是使用window调用的，只是被省略了；
+`window`对象：在全局中定义的变量是window的属性，定义的函数是window的方法；window.a，在全局写的变量或函数都是使用window调用的，只是被省略了；
 
 
 
 ## 二、打开关闭页面；
-1. open(http,name,attr,boolean);
+1. `open`(http,name,attr,boolean);
 
     http地址，name名字，attr属性设置，boolean，false新历史，true替换历史；
 
-2. close()；直接调用方法，关闭当前窗口；
+2. `close`()；直接调用方法，关闭当前窗口；
 
 
 
@@ -313,6 +313,8 @@ window.innerWidth  浏览器含滚动条的宽度
 元素被卷起的宽高：`scrollLeft/Top`；
 
 `元素.scrollIntoView()`  可以滚动到该元素；往括号里面填写对象：{behavior: 'smooth'}可以平滑滚动；
+
+4. window.screen.width  屏幕的宽度
 
 
 

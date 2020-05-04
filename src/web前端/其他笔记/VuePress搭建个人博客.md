@@ -102,13 +102,13 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 module.exports = {
     title: '前端学习圈',
     description: '描述内容',
-    head:[['link',{rel:'shortcut icon',type:"image/x-icon",href:`./favicon.ico`}]]
+    head:[['link',{rel:'shortcut icon',type:"image/x-icon",href:`./favicon.ico`}]],
     themeConfig:{
         repo: '项目仓库地址',
         repoLabel: '仓库地址标题',
         nav:[
             {text:'home',link:'/'},
-            {text:'',link:'/blog/js'}
+            {text:'',link:'/blog/js'} // 注意如果是根路径需要写两个斜杠'/blog/'
         ],
         sidebarDepth: 2,  //仅支持h2和h3标题,h1作为显示的标题;
         sidebar:{

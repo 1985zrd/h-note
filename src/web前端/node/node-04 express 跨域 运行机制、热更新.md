@@ -108,11 +108,11 @@ res.sendFile(`${__dirname}/index.html`)
 
 1. 创建：
 
-（1）使用express.Router()创建模块化；
+（1）使用`express.Router()`创建模块化；
 
-（2）使用routers.get()设置路由；
+（2）使用`routers.get()`设置路由；
 
-（3）使用module.exports = router；将设置的路由暴露出来；
+（3）使用`module.exports = router`；将设置的路由暴露出来；
 ```js
 //* /router/users.js
 const express = require('express') 

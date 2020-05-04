@@ -1,4 +1,4 @@
-# Server-03 Vim编辑器
+# linux-04 Vim编辑器
 
 ## 一、vim编辑器
 

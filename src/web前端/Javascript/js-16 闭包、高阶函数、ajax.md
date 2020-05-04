@@ -672,7 +672,7 @@ xhr.onloadstart = function(){
     console.log('开始请求')
 }
 xhr.onload = function(progressEvent){
-    console.log(JSON.stringify(xhr.response))
+    console.log(JSON.parse(xhr.response))
 }
 xhr.onerror = function(){
     console.log('请求出错了')

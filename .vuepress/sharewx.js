@@ -1,22 +1,12 @@
-/**
- * Created by sufen on 2020/1/27.
- */
-
-// interface params {
-//   title?: string,
-//   desc?: string,
-//   imgUrl?: string,
-//   linkUrl?: string
-// }
-
 function shareWeixin (params) {
-  var url = encodeURIComponent(window.location.href)
+  var url = encodeURIComponent(window.location.href.split('#')[0])
+  // alert(window.location.href.split('#')[0])
   getWXSignature(url, params)
 }
 
 function shareContent (params) {
   var title = document.title || '前端学习圈'
-  var desc = '前端学习圈'
+  var desc = 'heny前端学习圈'
   var imgUrl = 'https://notecdn.heny.vip/weblearns.png'
   var linkUrl = window.location.href
 
@@ -53,39 +43,43 @@ function shareContent (params) {
       }
     })
   })
-  // window.wx.error(function(){
-  //   // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-  //   initJSSDk();
-  // });
+  window.wx.error(function(){
+    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+    // alert('签名失败')
+  });
 }
 
 function getWXSignature (url, params) {
-  $.ajax({
-    url: global.apiHost + '/wx/getSignature?url=' + url,
-    type: 'get',
-    success: function (res) {
-      initJSSDk(params, res)
+  var xhr = new XMLHttpRequest()
+  xhr.open('get', 'https://mpwx.heny.vip/getSignature?url=' + url, true)
+  xhr.send()
+  xhr.onload = function(){
+    var res = JSON.parse(xhr.response)
+    if(res.code === 1 && res.result){
+      console.log('请求成功：' + xhr.response)
+      initJSSDk(params, res.result)
     }
-  })
-}
-
-function initJSSDk (params, res) {
-  if (res && res.appResultList && res.appResultList.results) {
-    var data = res.appResultList.results[0]
-    window.wx.config({
-      debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-      appId: 'wxe3550d862292b3ad', // 必填，公众号的唯一标识（uat和生产环境不同）
-      timestamp: data.timestamp, // 必填，生成签名的时间戳
-      nonceStr: data.nonceStr, // 必填，生成签名的随机串
-      signature: data.signature, // 必填，签名
-      jsApiList: [
-        'updateAppMessageShareData',
-        'updateTimelineShareData',
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage'
-      ] // 必填，需要使用的JS接口列表
-    })
-    shareContent(params)
+  }
+  xhr.onerror = function(){
+    // alert('请求出错了')
   }
 }
 
+function initJSSDk (params, data) {
+  console.log(JSON.stringify(data, null, 2))
+  window.wx.config({
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wxe3550d862292b3ad', // 必填，公众号的唯一标识（uat和生产环境不同）
+    // appId: 'wxe3550d862292b3ad', // 必填，公众号的唯一标识（uat和生产环境不同）
+    timestamp: data.timestamp, // 必填，生成签名的时间戳
+    nonceStr: data.noncestr, // 必填，生成签名的随机串
+    signature: data.signature, // 必填，签名
+    jsApiList: [
+      'updateAppMessageShareData',
+      'updateTimelineShareData',
+      'onMenuShareTimeline',
+      'onMenuShareAppMessage'
+    ] // 必填，需要使用的JS接口列表
+  })
+  shareContent(params)
+}

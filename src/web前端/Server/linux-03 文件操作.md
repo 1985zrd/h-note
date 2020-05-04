@@ -1,8 +1,8 @@
-# Server-02 linux文件操作
+# linux-03 文件操作
 
 ## 一、 文件操作命令
 
-> 命令格式：命令 [-选项] [参数]
+> 命令格式：`命令 [-选项] [参数]`
 
 ### 创建
 
@@ -58,7 +58,7 @@
 * `more` 分页显示（f或空格翻页，enter换行，q或Q退出）
 * `less` 分页显示，可以向上翻页；
 * `head` 显示文件前面几行；（在文件前面添加-n，指定行数）
-* `tail` 显示文件后面几行（-n，指定行数），支持动态查看
+* `tail` 显示文件后面几行（-n，指定行数），支持动态查看，文件刷新即持续更新
 
 
 
@@ -81,15 +81,15 @@
 
 3. `chown`：改变文件或目录的所有者（/bin/chown）
 
-   chown [用户] [文件或目录]
+   `chown [用户] [文件或目录]`
 
 4. `chgrp`：改变文件或目录的所属组（/bin/chgrp）
 
-   chgrp [用户组] [文件或目录]
+   `chgrp [用户组] [文件或目录]`
 
 5. `umask`：显示、设置文件的缺省权限（shell内置）
 
-   umask [S]    -S以 rwx形式显示新建文件缺省权限
+   `umask [S]`    -S以 rwx形式显示新建文件缺省权限
 
 
 
@@ -107,11 +107,12 @@
 
 `tar [-zcf] [压缩后文件名] [目录]`    打包目录，格式.tar.gz
 
- * c  创建tar包
-* v  显示详细信息
-* f  指定文件名
-* z  通过gzip压缩或解压
-* t  不解压查看包内容
+ * `-c`  创建tar包，
+ * `-x` 解包
+* `-v`  显示详细信息
+* `-f`  指定文件名
+* `-z`  通过gzip压缩或解压
+* `-t`  不解压查看包内容
 
 ```sh
 #解压：x 解包，z解压缩，-f，-v；
@@ -127,7 +128,29 @@ tar -cvf build.tar *
 tar -tvf build.tar
 ```
 
-注意：添加了z，手动打开压缩包看到的只是一个文件，该文件需要再次解压，如果是直接输入zxvf命令解压则不用在意；
+**注意**：添加了z，手动打开压缩包看到的只是一个文件，该文件需要再次解压，如果是直接输入zxvf命令解压则不用在意；
+
+```bash
+# 下载包rar, 并安装
+wget http://www.rarlab.com/rar/rarlinux-x64-5.3.0.tar.gz
+tar -xf rarlinux-x64-5.3.0.tar.gz
+cd rar
+# 制作
+make
+```
+
+**排除某个文件夹**
+
+* `--exclude=dir`
+
+```shell
+# 不使用排除压缩
+tar -zcvf build.gz *
+# 使用排除压缩
+tar -zcvf build.gz --exclude=node_modules *
+```
+
+
 
 
 
@@ -135,9 +158,9 @@ tar -tvf build.tar
 
 `zip [-r] [压缩后的文件名] [文件或目录]`        压缩文件或目录，格式zip；
 
--r 压缩目录；
+* `-r` 压缩目录；
 
-  解压：unzip [压缩文件]
+  解压：`unzip [压缩文件]`
 
 
 
@@ -145,7 +168,7 @@ tar -tvf build.tar
 
 `bzip2 [-k] [文件]`                          压缩后格式.bz2；-k产生压缩文件后保留原文件；
 
-解压：bunzip2 [-k] [压缩文件]     -k解压缩后保留原文件；
+解压：`bunzip2 [-k] [压缩文件]`     `-k` 解压缩后保留原文件；
 
 `tar -xjf Japan.tar.bz2`    j可以解压bzip2的文件；
 
@@ -155,15 +178,12 @@ tar -tvf build.tar
 
 解压rar文件
 
-```sh
-wget http://www.rarlab.com/rar/rarlinux-x64-5.3.0.tar.gz
-tar -xf rarlinux-x64-5.3.0.tar.gz
-cd rar
-make
-```
+压缩: `rar a 压缩文件`
 
-解压: rar x 压缩文件
-解压: rar a 生成的压缩文件的名字 待压缩的文件或目录
+解压: 
+
+* `rar x etc.rar`
+* `unrar -e etc.tar`
 
 
 
@@ -204,9 +224,11 @@ make
 
 9. `locate`：在文件资源库中查找（/usr/bin/locate）
 
-   `locate` 文件名
+   `locate 文件名`
 
 10. `grep`：在文件中搜寻字串匹配的行并输出
 
-`grep -iv [指定字串] [文件]`     -i不区别大小写 -v排队指定字串
+    `grep -iv [指定字串] [文件]`     -i不区别大小写 -v排队指定字串
+
+    `grep Vue app.js` 在app.js中查找Vue字符串;
 

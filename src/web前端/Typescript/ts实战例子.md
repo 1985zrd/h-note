@@ -1,4 +1,4 @@
-# 实践例子
+# ts实践例子
 
 ## 封装自己的map函数
 
@@ -172,3 +172,4 @@ const arrayMap = <T, U>(arr: T[], callback: (item: T, index?: number, array?: Re
     之后使用watch-dev启动项目即可；
 
 15. 编译之后可以将dist文件夹放置到服务器上面即可；
+

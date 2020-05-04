@@ -52,7 +52,30 @@
 <form v-on:submit.prevent></form>
 ```
 
-**注意：** 使用修饰符时，**顺序**很重要，相应的代码会以同样的顺序产生；@click.prevent.self 会阻止所有点击，@click.self.prevent只会阻止对元素自身的点击
+**注意：** 
+
+* 使用修饰符时，**顺序**很重要，相应的代码会以同样的顺序产生；`@click.prevent.self` 会阻止所有点击，`@click.self.prevent`只会阻止对元素自身的点击
+
+* 在组件上面使用修饰符时，需要使用`.native`，原生dom元素可以不用写`.native`，
+
+  ```html
+  <!-- 组件 -->
+  <van-checkbox @click.stop.native />
+  <!-- 原生dom -->
+  <div @click.stop ></div>
+  ```
+
+* 针对对组件添加事件最好都添加上`.native`；
+
+**jsx阻止事件冒泡写法**
+
+```jsx
+// 不带参数, 直接接收事件对象
+handler(event) {}
+// 带参数, 再最后接收事件对象
+handler(index, event){}
+<div onClick={() => this.handler(index)}></div>
+```
 
 
 

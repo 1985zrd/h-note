@@ -132,6 +132,12 @@ git reset HEAD^ # 撤销最近一次提交
    * 找到.git目录下refs/remotes/origin目录（子模块的这个目录是在主模块的.git目录下，因为子模块没有.git目录）
    * 删除里面的HEAD文件或者所有文件
    * 然后运行git fetch –all
+   
+3. 分支介绍
+
+   所有分支针对`master`做比较，下图中，左边为落后`master`分支数量，右边为超前`master`分支数量；
+
+   ![image-20200426124513175](https://notecdn.heny.vip/images/git-12.png)
 
 
 
@@ -185,26 +191,36 @@ git stash pop # 拉下来
 
 
 ## 七、git常见问题
-1. 描述出错，怎么修改描述
+### 描述出错怎么修改描述
 
-   （1）通过git log找到上一个提交的commit_id
+（1）通过git log找到上一个提交的commit_id
 
-   ![image](https://notecdn.heny.vip/images/git-02.png)
-   
-   （2）通过：git reset --soft commit_id，执行一遍，之后就可以重新git commit了；
+![image](https://notecdn.heny.vip/images/git-02.png)
 
-2. 项目名字被修改，地址被更换
+（2）通过：git reset --soft commit_id，执行一遍，之后就可以重新git commit了；
 
-   ```shell
-   # 第一种
-   git remote set-url origin url # 重新设置远程地址
-   
-   # 第二种
-   git remote rm origin # 删除跟踪远程
-   git remote add origin url # 重新配置远程地址
-   ```
+### 项目名字被修改，地址被更换
 
-   
+```shell
+# 第一种
+git remote set-url origin url # 重新设置远程地址
+
+# 第二种
+git remote rm origin # 删除跟踪远程
+git remote add origin url # 重新配置远程地址
+```
+
+### 放弃本地修改
+
+没有`git add .`的情况
+
+* 放弃单个文件修改：`git checkout -- readme.md`
+* 放弃所有修改：`git checkout .`
+
+有`git add .`的情况
+
+* 放弃单个文件：`git reset HEAD readme.md`
+* 放弃所有：`git reset HEAD .`
 
 
 

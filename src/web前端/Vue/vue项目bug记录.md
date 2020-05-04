@@ -15,11 +15,11 @@
 
 ### 输入框@keyup失效
 
-* 加上.native转为原生的就可以解决了；@keyup.enter.native=''；
+* 加上.native转为原生的就可以解决了；`@keyup.enter.native=''`；
 
 ### **遮罩层档住内容层**
 
-* 在el-dialog标签里添加 :modal-append-to-body='false'
+* 在el-dialog标签里添加 `:modal-append-to-body='false'`
 
 
 

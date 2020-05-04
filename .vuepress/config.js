@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const shell = require('shelljs')
 const createREADME = require('../scripts/createREADME')
 
 const resolve = (...args) => {
@@ -49,14 +50,10 @@ function byDirNameGetMenu(dirname){
 
 // 通过文件夹获取菜单
 const webItems = byDirNameGetMenu('web前端')
-
 // 获取web前端的左侧的sidebar
 getSidebar(webItems)
-
 // 生成首页README.md的目录
 createREADME('web前端')
-
-console.log(JSON.stringify(sidebar, null, 2), 'sidebar')
 
 module.exports = {
 	title: '前端学习圈',
@@ -73,16 +70,10 @@ module.exports = {
 		['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
 		['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
 		['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-		['script', {src: 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js'}],
-		['script', {}, `
-			var _hmt = _hmt || [];
-			(function() {
-				var hm = document.createElement("script");
-				hm.src = "https://hm.baidu.com/hm.js?5817cf72ca4afb611a3f0b798b96b888";
-				var s = document.getElementsByTagName("script")[0]; 
-				s.parentNode.insertBefore(hm, s);
-			})();
-		`]
+		// ['script', {src: 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js'}],
+		// ['script', {}, shell.cat(resolve('sharewx.js'))],
+		// ['script', {}, 'shareWeixin()'],
+		['script', {}, shell.cat(resolve('hm.js'))],
 	],
 	plugins: [
 		// ['@vuepress/pwa', {
@@ -102,7 +93,7 @@ module.exports = {
 				clientSecret: '76a940144230049a7533df93f56940a20d400b22',
 			}
 		],
-		require('./copy'),
+		require('./copy')
 		// require('./reading-progress')
 	],
 	themeConfig:{

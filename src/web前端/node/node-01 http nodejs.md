@@ -275,7 +275,7 @@ req.method  获取提交方式，需要大写
 
 
 ## 十、fs读取文件内容
-fs.readFile(path[, options], callback)
+`fs.readFile(path[, options], callback)`
 
 __dirname:获取当前文件所在绝对路径
 
@@ -293,8 +293,10 @@ new Error('错误信息')      直接抛出错误；
 ```
 
 
+
 ## 十一、事件订阅与发布  模块：events
-     参考地址：[https://www.jianshu.com/p/0aacfec05046](https://www.jianshu.com/p/0aacfec05046)
+
+参考地址：[https://www.jianshu.com/p/0aacfec05046](https://www.jianshu.com/p/0aacfec05046)
 
 
 事件机制：发布和订阅功能

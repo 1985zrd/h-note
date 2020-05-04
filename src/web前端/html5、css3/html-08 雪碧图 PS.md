@@ -86,7 +86,9 @@ opacity 设置元素的不透明度。（元素文字都透明）
 
 取值：从0到1，数值越大，越不透明
 
-opacity: 0.5; filter:alpha(opacity=50);
+opacity: 0.5; 
+
+filter:alpha(opacity=50);
 
 
 

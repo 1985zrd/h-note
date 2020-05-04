@@ -28,13 +28,20 @@ http : //localhost :400/index.html?id=40;
 
 3. http模块中：req是请求，res是响应；
 
-        req.url:获取访问目录；    
+    req.url:获取访问目录；    
 
 4. 设计路由：实际上就是根据不同的path路径返回不同的响应；
 
 
-## 三、全局
+## 三、全局global
 在node.js中的全局不是window，而是global;
+
+
+
+## 四、process
+
+* `process.chdir`  相当于cd命令
+* `process.exit(0)`  退出当前命令
 
 
 ​    
@@ -50,7 +57,7 @@ http : //localhost :400/index.html?id=40;
 
 
 
-## 四、内置path与url模块：
+## 四、内置path与url模块
 
 一般path与url搭配使用；
 

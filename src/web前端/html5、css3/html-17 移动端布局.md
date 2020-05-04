@@ -113,11 +113,73 @@ function Resize(){
 
 
 
-### 禁止手机端缩放：
+### 禁止手机端缩放
 
 ```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 ```
+
+
+
+### iphoneX兼容处理方案
+
+1. 首页必须给`meta`标签添加`name`字段为`viewport`的, `content`值增加`viewport-fit=cover`;
+
+   ```html
+   <meta name='viewport' content='viewport-fit=cover'>
+   ```
+
+2. 单独给body增加iphonex的安全距离不起作用, 是由于`position: fixed`属性, `bottom: 0`造成吸底了, 需要给所有的`bottom: 0`增加对应的安全距离, 不再写`bottom: 0`, 而是写`bottom: env(safe-area-inset-bottom)`；
+
+3. 两个函数介绍
+
+    - `constant` ：针对iOS < 11.2以下系统
+
+    - `env` ：针对于iOS >= 11.2的系统
+
+    *因此两个函数都得增加上*
+
+4. 支持的变量：
+
+    - `safe-area-inset-left`：左边的安全距离
+
+    - `safe-area-inset-right`：右边的安全距离
+
+    - `safe-area-inset-top`：上边的安全距离
+
+    - `safe-area-inset-bottom`：下边的安全距离
+
+5. 两种情况处理方式
+
+    - bottom不是0
+
+     - 使用calc函数进行计算, 原有的bottom距离加上, 比如：`bottom: calc(50px + env(safe-area-inset-bottom))`
+
+    - bottom是0
+
+     - 增加一个空的块, 写入如下样式
+
+   ```css
+   body::after {
+      position: fixed;
+      bottom: 0;
+      height: 0;
+      width: 100%;
+      height: constant(safe-area-inset-bottom);
+      height: env(safe-area-inset-bottom);
+      background-color: #fff; /* 需要与bottom颜色一致 */
+   }
+   ```
+
+6. 使用`@supports`隔离兼容模式
+
+   ```css
+   @supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+       body::after {
+           ....
+       }
+   }
+   ```
 
 
 
@@ -181,3 +243,7 @@ function Resize(){
 ```
 
 ![image](https://notecdn.heny.vip/images/html-17_移动端布局-02.png)
+
+## 参考文章
+
+1. [Html5 页面适配iPhoneX(就是那么简单)](https://m.jb51.net/html5/691860.html)
