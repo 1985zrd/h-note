@@ -92,40 +92,98 @@ margin:左右管用，上下不管用，
 
 
 ## 四、背景
-1. background-color:red; 背景颜色
+1. `background-color:red`;  背景颜色
 
-2. background-image: url(pic.gif); 背景图片：用url来引入路径
+2. `background-image: url(pic.gif)`; 背景图片：用url来引入路径
 
-3. background-repeat：背景是否平铺。
+3. `background-repeat`：背景是否平铺。
 
-`no-repeat`：不平铺。
-
-`repeat-x`：沿x轴平铺。
-
-`repeat-y`：沿y轴平铺。
+   * `no-repeat`：不平铺。
+   * `repeat-x`：沿x轴平铺。
+   * `repeat-y`：沿y轴平铺。
 
 4. `background-position`：背景定位
 
-一个值：这个值代表x轴的位置，y轴位置默认为center；
+   一个值：这个值代表x轴的位置，y轴位置默认为center；
 
-两个值：第一个值x轴的位置，第二个值y轴的位置。
+   两个值：第一个值x轴的位置，第二个值y轴的位置。
 
-两个值单位可以写：px或者方向left,top,right,bottom,center,%
+   两个值单位可以写：px或者方向left,top,right,bottom,center,%
 
-写 %的话，(0% 0%,左上角；100% 100% 右下角)。
+   写 %的话，(0% 0%,左上角；100% 100% 右下角)。
 
-复合写法：
+5. 复合写法：
 
-`background`:背景颜色 背景图片 背景平铺 背景定位。
+   `background`:背景颜色 背景图片 背景平铺 背景定位。
 
-`background`:red url(pic.gif) no-repeat right bottom ;
+   `background:red url(pic.gif) no-repeat right bottom` ;
+
+### 其他
+
+可以设置多个背景图，中间以逗号隔开，
+
+多个定位用空格隔开，第一个写的在上面，第二个在下面。
+
+1. `background-attachment`：背景图片是否跟随页面其他部分滚动而滚动。
+
+   `fixed`：固定在页面的顶部，滚轮滑到哪，图片在哪
+
+   `scroll`：(默认值)滚动，，这个属性设置到body里。
+
+2. `backgrud-size`，背景大小
+   * 一个值：默认是宽度，
+
+   * 两个值：宽度，高度。
+     `cover`:等比例缩放，直到图片最后一条边重合边框大小，裁剪多余的部分；
+
+     `contain`:等比例缩放，直到图片完全进入方框，多余的填充背景颜色；
+
+3. `background-origin`，规定背景图片的定位区域
+
+   `border-box`  从border开始
+
+   `padding-box` 从padding开始
+
+   `content-box` 从content开始
+
+4. `background-clip`，规定背景的绘制区域
+
+   绘制区域，默认是从边框开始的，设置绘制区域代表从部分开始显
+
+   `content-box`：内容区域（如果需要仅绘制边框可以使用box-shadow，设置内阴影）
+
+   `border-box`: 边框区域（默认值）
+
+   `padding-box`: 内边距区域
+
+给img设置：
+`object-fit: cover/contain/none;`
 
 
-6. background-attachment：背景图片是否跟随页面其他部分滚动而滚动。
 
-fixed：固定在页面的顶部，滚轮滑到哪，图片在哪
+5. 背景渐变
 
-scroll：(默认值)滚动，，这个属性设置到body里。
+6. 线型渐变：渐变色可以多重叠加变成其他的颜色，可以写多个中间用逗号隔开。
+
+   linear-gradient(单位，颜色值，颜色值)，（也可以只写两个颜色值）
+
+   1. 单位可以写一个或两个方向，可以写度数。
+   2. 颜色值后面写占比，或者百分比。
+   3. 四个值的时候，前面两个值包含颜色一样的情况下，两个值不渐变；后两个值接第二个值开始写不渐变，不接着写渐变。
+
+`repeating-linear-gradient()`; 重复线性渐变。
+
+
+
+2. 径向渐变
+
+   1. radial-gradient()，
+      1. at改变圆心的位置，x轴，y轴；
+      2. repeating-radial-gradient()，重复的径向渐变；
+      3. circle，写在at前面，表示圆形；中间用逗号隔开。
+      4. 可以写多个径向渐变，中间用逗号隔开。
+
+
 
 
 

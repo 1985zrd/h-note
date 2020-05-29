@@ -10,9 +10,9 @@
 
 
 
-单个暴露：exports.fn = function(){}
+单个暴露：`exports.fn = function(){}`
 
-一起暴露：moudle.exports = {}
+一起暴露：`module.exports = {}`
 
 3. 所有代码都运行在模块作用域中，避免全局变量污染，模块加载一次就在缓存里面了，多次加载都是读取缓存的，模块是按顺序同步加载的；
 

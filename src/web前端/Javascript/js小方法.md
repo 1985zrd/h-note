@@ -1,9 +1,12 @@
 # js小方法
+
+## 小技巧
+
 1. `if(value)`    直接value表示判断是否有内容，默认为有；
 
 2. `元素.checked=true`；复选框被选中
 
-3. 在函数里面递归调用必须return  ，否则不走后面
+3. 在函数里面递归调用必须`return`  ，否则不走后面
 
 4. `trim()`；常用于value；干掉左右空格；
 
@@ -13,9 +16,54 @@
 
 5. value写完后可以在按钮后面加一行代码：input.value = ''；清空内容方便用户下次输入；
 
-6. 数组去重可以创建一个空的数组，indexOf查询没有的往里面放；
+6. 数组去重可以创建一个空的数组，`indexOf`查询没有的往里面放；
 
-7. 省略写法：
+7. 调用一个方法，如果这个方法没有前缀，则`this`指向`window`；有前缀指向调用的，所以谁调用的函数，这个this就指向谁
+
+8. `document.onkeydown`；document页面直接执行按键输入；
+
+9. 函数需要传参时加个判断：`n = typeof(n) == 'undefined' ? 2000 : n`，如果有参数，就返回创建的函数，如果没有参数，返回默认的参数
+
+10. 点的形式都可以使用中括号的形式
+
+    ```js
+    let obj = {name: 'hny'}
+    console.log(obj.name)
+    // or
+    console.log(obj['name'])
+    
+    // 一般中括号都是用来放变量的, 如下
+    var s = 'name'
+    console.log(obj[s])
+    ```
+
+11. JSON.stringify可以将[object object]直接转换成该有的内容；
+
+12. 当在不使用模板字符换行时，可以使用折行转义字符 `\`
+
+    ```js
+    var htmlSTring = "<div>\ 
+        This is a string.\ 
+    </div>";
+    ```
+
+19. 一个页面不能有两个window.onscroll，可以使用绑定事件来做两个
+
+    ```js
+    window.addEventListener('scroll',()=>{});
+    // 如果使用两个window.onscroll, 后一个则会覆盖前一个
+    ```
+
+20. 给代码添加debugger可以测试bug；
+
+    `debugger`可以查看我写的浏览器技巧   断点内容；
+
+21. 
+
+
+
+## 判断语句省略写法
+
 ```js
 //判断；真就真
 if(count === otherche.length){   //判断是否等于长度
@@ -56,15 +104,17 @@ if(fn){
 fn && fn();    前面为真，才看后面的；
 ```
 
-8. js基础技巧
 
-（1）计数器
+
+## js基础技巧
+
+**计数器**
 
 js最基础的使用技巧
 
 实例：多个复选框全选可以创建一个计数器，选中一个计数器+1，判断计数器是否和复选框的个数一样，如果一样，则让全选按钮被选中；
 
-（2）保存this指向
+**保存this指向**
 
 函数里面再创建一个函数时，这时的this指向就变了，可以创建一个变量，保存this指向，里面就可以随便使用该变量，也不用担心this的指向问题， 也可以使用箭头函数避免这个问题
 ```js
@@ -86,27 +136,22 @@ methods: {
 }
 ```
 
-9. 取名字：
-
-设置的都用：set开头
-
-获取的都用：get开头
-
-卸载都用: un
-
-创建块：demo(演示),wrap(包装),box(盒子),panel（面版）
 
 
-10. 调用一个方法，如果这个方法没有前缀，则this指向window；有前缀指向调用的，所以谁调用的函数，这个this就指向谁
+## 取名字技巧
 
-12. document.onkeydown；document页面直接执行按键输入；
+设置的都用：`set`开头
 
-13. 缩写
-```js
-var str = 'aabcssssjdkssssjeiwjfssss'
-str.split('').sort().join('');    //直接分割、排序、组成字符串 
-```
-14. 定时器使用函数需要传参时    
+获取的都用：`get`开头
+
+卸载都用: `un`
+
+创建块：`demo`(演示),`wrap`(包装),`box`(盒子),`panel`（面版）
+
+
+
+## 定时器使用函数需要传参时    
+
 ```js
 // 禁止写法
 setInterval(timer(1), 1000) // 因为这种写法的函数直接执行了
@@ -127,70 +172,52 @@ div.onclick = function(){
 }
 ```
 
-15. 函数需要传参时加个判断：n = typeof(n) == 'undefined' ? 2000 : n 
+## arguments.callee
 
-如果有参数，就返回创建的函数，如果没有参数，返回默认的参数
-
-16. 点的形式都可以使用中括号的形式；
-```js
-let obj = {name: 'hny'}
-console.log(obj.name)
-// or
-console.log(obj['name'])
-
-// 一般中括号都是用来放变量的, 如下
-var s = 'name'
-console.log(obj[s])
-```
-17. JSON.stringify可以将[object object]直接转换成该有的内容；
-
-18. 当在不使用模板字符换行时，可以使用折行转义字符 '\'
-```js
-var htmlSTring = "<div>\ 
-    This is a string.\ 
-</div>";
-```
-19. 一个页面不能有两个window.onscroll，可以使用绑定事件来做两个
-```js
-window.addEventListener('scroll',()=>{});
-// 如果使用两个window.onscroll, 后一个则会覆盖前一个
-```
-
-20. 给代码添加debugger可以测试bug；
-
-debugger可以查看我写的浏览器技巧   断点内容；
-
-21. arguments.callee属性包含当前正在执行的函数
+属性包含当前正在执行的函数
 
 主要用途是由于函数内部需要调用自己，可以直接使用arguments.callee调用，如果直接写当前函数名，该函数就会紧紧耦合在一起，由于函数名只是一个包含指针的变量，因此将另一个函数名也指向同一个函数，则不可用了，因为调用自己的名字不一样了
 
+调用`arguments.callee.toString()`返回这个匿名函数；
 
-调用arguments.callee.toString()返回这个匿名函数；
+`arguments.callee`可以直接调用当前函数；
 
-arguments.callee可以直接调用当前函数；
+`arguments.callee.caller` 这个属性中保存着调用当前函数的函数的引用(可以查看红宝书的详细介绍115页)
 
-arguments.callee.caller 这个属性中保存着调用当前函数的函数的引用(可以查看红宝书的详细介绍115页)
+
 
 22. `obj.hasOwnProperty(i)`相当于以下
 
-`Object.prototype.hasOwnProperty.call(obj,i）`
+```js
+Object.prototype.hasOwnProperty.call(obj,i)
+```
 
-23. 随机id
+
+
+## 随机id
+
 ```js
 Math.random().toString(36).substr(3,6)   //得到6位随机id
 ```
 
-24. 查看随机6位数；
+查看随机6位数；
+
 ```js
 Array.from({length:20}, i => Math.ceil(Math.random() * 6))
 ```
 
-25. 随机16进制颜色
+
+
+## 随机16进制颜色
+
 ```js
 const RandomColor = ()=> '#' + Math.floor(Math.random()*0xffffff).toString(16).padEnd(6,'0'); // 由于会出现5位数, 因此加上padEnd保险
 ```
 
-26. 模板标签替换
+
+
+## 模板标签替换
+
 ```js
 let text = '大家好,我的{{name}},今年{{age}}岁'
 let obj = {name:'zs',age:18}
@@ -199,14 +226,21 @@ let result = text.replace(/{{(.*?)}}/g,e=>{
 })  // 大花括号也可以没有转义符;
 ```
 
-27. 交换数组指定位置；[1,2,3,4,5] ===> [5,2,3,4,1]
+
+
+## 交换数组指定位置
+
+`[1,2,3,4,5] ===> [5,2,3,4,1]`
+
 ```js
 function arrIndexExchange(array,x,y){
     return array.splice(x-1,1,...array.splice(y-1,1,array[x-1]))
 }
 ```
 
-28. 生成uuid
+
+
+## 生成uuid
 
 uuid的格式为：8-4-4-4-12
 ```js
@@ -218,7 +252,10 @@ function uuid(){
 }
 ```
 
-29. 复制功能
+
+
+## 复制功能
+
 ```js
 const copyFun = cont => {
     const textArea = document.createElement('textarea')
@@ -230,7 +267,11 @@ const copyFun = cont => {
 }
 ```
 
-30. String.fromCharCode()   //括号填写数字，将Unicode码转回英文；
+
+
+## 将Unicode码转回英文
+
+`String.fromCharCode()`   //括号填写数字，
 
 例子：取随机26个小写英文字母，
 
@@ -239,9 +280,12 @@ const copyFun = cont => {
 String.fromCharCode(97+Math.ceil(Math.random()*25))  //返回一个小写字母
 ```
 
-31. 将url转换成对象形式取值
 
-（1）使用while循环+正则
+
+## 将url转换成对象形式取值
+
+* 使用while循环+正则
+
 ```js
 function formatSearch(search, o={}){
     let reg = /(\w+)=(\w+)/ig
@@ -252,12 +296,14 @@ function formatSearch(search, o={}){
 }
 // 将match传入即可;
 ```
-（2）使用api
+* 使用api
+
 ```js
 let str = '?name=hny&age=18&sex=1'
 Object.fromEntries(new URLSearchParams(str)) // {name:'hny',age:18,sex:1}
 ```
-（3）使用正则
+* 使用正则
+
 ```js
 function formatUrl(search, o={}){
     search.replace(/([^?&=]+)=([^&]+)/g,(_,k,v)=>o[k]=v)
@@ -266,9 +312,11 @@ function formatUrl(search, o={}){
 // 传入match即可
 ```
 
-32. 实现图片的异步加载
 
-img文档： https://www.w3school.com.cn/jsref/dom_obj_image.asp
+
+## 实现图片的异步加载
+
+img文档： [https://www.w3school.com.cn/jsref/dom_obj_image.asp](https://www.w3school.com.cn/jsref/dom_obj_image.asp)
 ```js
 // data-*  是html5的新特性
 <img data-src='' src='' alt='' />  // 通过img.dataset.src可以获取到data-src的数据;
@@ -286,27 +334,45 @@ function loadImg(obj, url){
 }
 ```
 
-33. 数据不更新，本地有缓存，可以在网址后面加个时间戳
+
+
+## 清除缓存技巧
+
+数据不更新，本地有缓存，可以在网址后面加个时间戳
+
 ```js
 var t = Date.now()
 var url = `?t=${t}`
 ```
 
-34. 当一个函数里面需要获取多个节点时，可以使用下面方法
+
+
+## 临时使用$获取元素
+
+当一个函数里面需要获取多个节点时，可以使用下面方法
+
 ```js
 ;(function($){
     $('div').scrollTop = $('.center').clientHeight
 })(document.querySelector.bind(document))
 ```
 
-35. 检测移动端
+
+
+## 检测移动端
+
 ```js
 isMobile () {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 }
 ```
 
-36. 解决谷歌翻译代码块的问题
+
+
+## 解决谷歌翻译代码块的问题
+
+> 将以下代码添加到一个新的书签，网址写以下代码
+
 ```js
 javascript:(function(){
     // 不需要翻译的单词
@@ -320,8 +386,11 @@ javascript:(function(){
 })()
 ```
 
-37. 总数格式化
+
+
+## 总数格式化
 例如：1000，转换为1k
+
 ```js
 function formatStatistics (num) {
   if (!num) {
@@ -338,16 +407,23 @@ function formatStatistics (num) {
 }
 ```
 
-38. 对接url传输加密
-
-（1）encodeURIComponent对链接加密，将url上面的符号添加%转码
-
-（2）decodeURIComponent对加密的url进行解密
 
 
+## 对接url传输加密
 
-## 对象的方法
-1. 判断对象的数据类型
+`encodeURIComponent`对链接加密，将url上面的符号添加%转码
+
+`decodeURIComponent`对加密的url进行解密
+
+`escape`：加密汉字
+
+`unescape`：解密
+
+
+
+## 常用对象的方法
+### 判断对象的数据类型
+
 ```js
 const isType = type => target => `[object ${type}]` === Object.prototype.toString.call(target)
 const isArray = isType('Array')
@@ -361,51 +437,18 @@ function isType(type){
 }
 ```
 
-精准判断类型：（类型需要大写）
+**精准判断类型**：（类型需要大写）
+
 ```js
 '[object 类型]' === Object.prototype.toString.call(形参)
 ```
 
-4. isPrototypeOf：检测对象是否是另一个对象的原型；
-```js
-var obj = {name:'haha'}
-var obj2 = Object.create(obj)
-obj.isPrototypeOf(obj)
 
-// 构造函数使用原型去对比;
-Child.prototype.isPrototypeOf(obj)
-```
 
-5. hasOwnProperty：判断某个属性是否存在于某个对象当中，也可以使用in；
+### 动态属性名
 
-hasOwnProperty不会判断到原型去；in会判断到原型去；
-```js
-let eh = {say:'haha'}
-console.log('say' in eh) // true
-eh.hasOwnProperty('say') // true
-```
+ 声明一个变量；使用中括号代替，也可以是对象变量属性；
 
-6. Object.keys();  //传入对象，以数组方式返回对象的所有key名；
-
-Object.values()； // 传入对象，以数组方式返回对象的所有value值；
-
-Object.entries()；  // 传入对象，以二维数组的形式返回键名键值，相当于将对象快速转换为map对象；
-
-判断对象不为空可以：Object.keys(obj).length；
-
-案例：以Object.values来循环遍历对象
-```js
-let meals = {a:'break',b:'lunch',c:'dinner'}
-for(let i of Object.values(meals)){
-    console.log(i)  // i是每个键名;
-}
-```
-
-7. Object.setPrototypeOf(obj1,obj2)
-
-将obj2作为原型，放到obj1里；
-
-8. 动态属性名  声明一个变量；使用中括号代替，也可以是对象变量属性；
 ```js
 // 动态属性名
 let dys = 'email'
@@ -415,7 +458,8 @@ let flag = true
 let user = {name: 'join',[flag?'c':'d']:2}
 ```
 
-9. 动态属性名
+例子2
+
 ```js
 let obj = [{name:'lis',flag:'no'},{name:'zs',flag:'yes'}]
 Array.from(obj,({name,flag})=>{
@@ -425,7 +469,12 @@ Array.from(obj,({name,flag})=>{
 // [{lis:no},{zs:yes}]
 ```
 
-10. 有条件的象征对象  在对象里面使用...去使用布尔值；
+
+
+### 有条件的象征对象 
+
+在对象里面使用...去使用布尔值；
+
 ```js
 function obj(flag){
     return {
@@ -445,14 +494,20 @@ let arr = [
 ]
 ```
 
-11. 解构原始对象   // 提取两部分，分为两个对象；
+### 解构原始对象   
+
+提取两部分，分为两个对象；
+
 ```js
 let obj = {name:'lishi',age:18,city:'北京'}
 let user = {},userOther={};
 ({name: user.name,...userOther} = obj)
 ```
 
+
+
 ## 设置REM
+
 ```js
 export const setRem = () => {
   const minWidth = 320
@@ -469,7 +524,44 @@ export const setRem = () => {
 }
 ```
 
+
+
+## 判断touch事件滑动的方向
+
+**根据移动的值正负来判断**
+
+```js
+//滑动处理
+   var startX, startY, moveEndX, moveEndY, X, Y;   
+   mybody.addEventListener('touchstart', function(e) {
+       e.preventDefault();
+       startX = e.touches[0].pageX;
+       startY = e.touches[0].pageY;
+   }, false);
+   mybody.addEventListener('touchmove', function(e) {
+       e.preventDefault();
+       moveEndX = e.changedTouches[0].pageX;
+       moveEndY = e.changedTouches[0].pageY;
+       X = moveEndX - startX;
+       Y = moveEndY - startY;
+       if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {
+           alert("向右");
+       } else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) {
+           alert("向左");
+      } else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+           alert("向下");
+      }else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+           alert("向上");
+      } else{
+           alert("没滑动");
+      }
+    });
+```
+
+
+
 ## 判断两个对象是否相等
+
 ```js
 function isEqual(x, y) {
   // 处理没有传入参数的情况

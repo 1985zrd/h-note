@@ -1,21 +1,104 @@
 # React常用插件
 ## react配置eslint地址
+
+rules中的值0、1、2分别表示不开启检查、警告、错误。
+
 [https://www.jianshu.com/p/f8d2ef372adf](https://www.jianshu.com/p/f8d2ef372adf)
 
-补充：
+常用的eslint配置：
 
 ```json
-    "spaced-comment": 2, //注释风格要不要有空格什么的
-    "space-before-blocks": 2,  // if function等的大括号之前需要有空格
-    "space-infix-ops": 2,
-    "space-before-blocks": 0, //不以新行开始的块{前面要不要有空格
-    "no-irregular-whitespace": 2, //不规则的空白不允许
-    "no-trailing-spaces": 2, //一行结束后面有空格就发出警告
-    "array-bracket-spacing": ["error","always"], // 数组前后需要有空格
-    "object-curly-spacing": ["error","always"], // 对象前后需要有空格
+"quotes": [2, "single"], //单引号
+"semi": 0, //不强制使用分号
+"no-var": 0, //对var警告
+"spaced-comment": 2, //注释风格要不要有空格什么的
+"space-before-blocks": 2,  // if function等的大括号之前需要有空格
+"space-infix-ops": 2,
+"no-irregular-whitespace": 2, //不规则的空白不允许
+"no-trailing-spaces": 2, //一行结束后面有空格就发出警告
+"array-bracket-spacing": ["error","always"], // 数组前后需要有空格
+"object-curly-spacing": ["error","always"], // 对象前后需要有空格
 ```
 
+react配置
+
+```js
+{
+    "rules": {
+    "comma-dangle": 0,
+    "no-console": 0,
+
+    "react/default-props-match-prop-types": 2, // 有默认值的属性必须在propTypes中指定
+    "react/no-array-index-key": 2, // 禁止index作为key值
+    "react/no-children-prop": 2, // 禁止使用children作为prop
+    "react/no-direct-mutation-state": 2, // 禁止直接this.state = 方式修改state 必须使用setState
+    "react/no-multi-comp": 2, // 一个文件只能存在一个组件
+    "react/no-set-state": 2, // 不必要的组件改写成无状态组件
+    "react/no-string-refs": 2, // 禁止字符串的ref
+    "react/no-unescaped-entities": 2, // 禁止'<', '>'等单标签
+    "react/no-unknown-property": 2, // 禁止未知的DOM属性
+    "react/no-unused-prop-types": 2, // 禁止未使用的prop参数
+    "react/prefer-es6-class": 2, // 强制使用es6 extend方法创建组件
+    "react/require-default-props": 2, // 非require的propTypes必须制定默认值
+    "react/self-closing-comp": 2, // 没有children的组件和html必须使用自闭和标签
+    "react/sort-comp": 2, // 对组件的方法排序
+    "react/sort-prop-types": 2, // 对prop排序
+    "react/style-prop-object": 2, // 组件参数如果是style，value必须是object
+
+    "react/jsx-boolean-value": 2, // 属性值为true的时候，省略值只写属性名
+    "react/jsx-closing-bracket-location": 2, // 强制闭合标签的位置
+    "react/jsx-closing-tag-location": 2, // 强制开始标签闭合标签位置
+    "react/jsx-equals-spacing": 2, // 属性赋值不允许有空格
+    "react/jsx-first-prop-new-line": 2, // 只有一个属性情况下单行
+    "react/jsx-key": 2, // 强制遍历出来的jsx加key
+    "react/jsx-max-props-per-line": [2, { "maximum": 2 }], // 每行最多几个属性
+    "react/jsx-no-comment-textnodes": 2, // 检查jsx注释
+    "react/jsx-no-duplicate-props": 2, // 检查属性名重名
+    "react/jsx-no-target-blank": 2, // 检查jsx是否被引入和使用
+    "react/jsx-no-undef": 2, // 检查jsx引用规范
+    "react/jsx-pascal-case": 2, // 检查jsx标签名规范
+  }
+}
+```
+
+
+
+其他的eslint项配置：https://www.cnblogs.com/nklong/p/7233631.html
+
+### Parsing error: Unexpected token =
+
+原因：开发环境与ESLint当前的解析功能不兼容
+
+解决方案：使用`babel-eslint`解析（如没有可以使用npm安装）
+
+```js
+module.exports = {
+    "parser": "babel-eslint",
+    "rules": {}
+}
+```
+
+### 禁止检查eslint
+
+```js
+// 单行注释
+// eslint-disable-line
+
+//多行注释
+componentDidMount: {
+    /* eslint-disable */
+    ....
+    /* eslint-disable */
+}
+
+// 文件注释
+/* eslint-disable */
+```
+
+
+
 ## 滚动插件
+
 1. 安装：npm i react-scroll
 2. 官网：[https://github.com/fisshy/react-scroll](https://github.com/fisshy/react-scroll)
 2. 基础使用：

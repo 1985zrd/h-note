@@ -4,16 +4,16 @@ bom（browser object model）
 
 包括：window、location、navigator、screen、history；
 
-window对象：在全局中定义的变量是window的属性，定义的函数是window的方法；window.a，在全局写的变量或函数都是使用window调用的，只是被省略了；
+`window`对象：在全局中定义的变量是window的属性，定义的函数是window的方法；window.a，在全局写的变量或函数都是使用window调用的，只是被省略了；
 
 
 
 ## 二、打开关闭页面；
-1. open(http,name,attr,boolean);
+1. `open`(http,name,attr,boolean);
 
     http地址，name名字，attr属性设置，boolean，false新历史，true替换历史；
 
-2. close()；直接调用方法，关闭当前窗口；
+2. `close`()；直接调用方法，关闭当前窗口；
 
 
 
@@ -91,7 +91,7 @@ PC端测试：点击NetWork，之后点击offline，可以测试；
 
 `history.go(num)`；0:当前，-1上一个，1下一个；也可以2或-2；
 
-`history.pushState({p: '/b'},null,'/b')`，在网址后面添加b；  不会刷新
+`history.pushState({p: '/b'},null,'/b')`，在网址后面添加b；  不会刷新页面
 
 `window.popstate = function(e){}`    当点击后退会触发该事件；
 
@@ -180,7 +180,7 @@ document.visibilityState的状态值：
 ## 十、页面方向陀螺仪
 deviceOrientation（如果IOS失效，可以将域名协议改为https）
 
-![image](http://notecdn.heny.vip/images/js-10_BOM-01.png)
+![image](https://notecdn.heny.vip/images/js-10_BOM-01.png)
 
 从左到右分别为alpha、beta、gamma
 ```js
@@ -212,7 +212,7 @@ notice.onclick = () => {
     window.open(notice.data.url); // 当用户点击通知时，在浏览器打开百度网站
 }
 ```
-![image](http://notecdn.heny.vip/images/js-10_BOM-02.png)
+![image](https://notecdn.heny.vip/images/js-10_BOM-02.png)
 
 注意：想要成功的调起通知，首先要用户的授权✅
 ```js
@@ -280,33 +280,35 @@ window.addEventListener("orientationchange", () => {
 
 
 ## 十四、弹窗
-1. alert（"内容"）； 警告框；
-2. confirm("")；确认框，返回值布尔型，确认为true，取消为false；
-3. prompt("")；可以输入信息，返回值输入的信息，第二个参数默认value值；
+1. `alert("")`； 警告框；
+2. `confirm("")`；确认框，返回值布尔型，确认为true，取消为false；
+3. `prompt("")`；可以输入信息，返回值输入的信息，第二个参数默认value值；
 
 
 
 ## 十五、浏览器位置信息
 
-1. clientWidth  可视距离
+### 可视距离client
 
-元素可视区域：clientWidth/Height；     width/height+padding    不包含边框
+* 元素可视区域：`clientWidth/Height`；     width/height+padding    不包含边框
 
-元素的边框值：clientLeft/Top；
+* 元素的边框值：`clientLeft/Top`；
 
-屏幕可视区域： document.documentElement.clientWidth/Height 
+屏幕可视区域： `document.documentElement.clientWidth/Height` 
 
-2. offset  元素的实际距离
 
-元素的实际宽高：offsetWidth/Height；    width/height+padding+border;   包含边框
 
-元素离body的宽高：offsetLeft/Top        如果父元素有定位属性，那么就是离父元素边缘的宽高；
+### 元素的实际距离offset
 
-window.innerWidth  浏览器含滚动条的宽度
+* 元素的实际宽高：`offsetWidth/Height`；    width/height+padding+border;   包含边框
 
-或者outerWidth
+* 元素距离body的宽高：`offsetLeft/Top`        如果父元素有定位属性，那么就是离父元素边缘的宽高；
 
-3. scroll  卷动的距离
+浏览器含滚动条的宽度：`window.innerWidth`  或者  `outerWidth`
+
+
+
+### 卷起的距离scroll
 
 元素实际内容的宽高：`scrollWidth/height`
 
@@ -314,29 +316,22 @@ window.innerWidth  浏览器含滚动条的宽度
 
 `元素.scrollIntoView()`  可以滚动到该元素；往括号里面填写对象：{behavior: 'smooth'}可以平滑滚动；
 
+### 屏幕的宽度
+
+`window.screen.width`  
 
 
-4. 浏览器滚动事件
 
-（1）window.onscroll=function(){}   滚动浏览器；
+### 总结
 
-（2）window.scrollTo(x,y)  或者 scrollTo(options) 滚动窗口到指定位置；
-
-options支持的属性：
-
-* top：元素要移动的位置横坐标
-* left：元素要移动的位置纵坐标
-* behavior：元素的运动模式，smooth平滑滚动；
-
-
-（3）el.scrollIntoView() 滚动到可视区；
-
-* scrollIntoView(true)，如果是true则顶端对齐，如果是false，则底端对齐；
-* scrollIntoView(options)，包含以下属性对象：
-
-	* behavior：运动模式，smooth，平滑滚动
-	* block：垂直对齐方式，值可以是：start、center、end或nearest
-	* inline：水平方向对齐方式，值可以是：start、center、end或nearest
+* clientWidth ------ padding+content 可视宽
+* offsetWidth ------ content + padding + border 占位宽
+* scrollWidth ------ 页面内容的实际宽度
+* clientTop ------ border
+* offsetTop ------ 相对父元素的之间的距离
+* scrollTop ------ 被卷起的高度
+* document.body.scrollTop || document.documentElement.scrollTop （body）
+* document.documentElement.clientWidth -----  屏幕宽
 
 
 ```js
@@ -348,46 +343,57 @@ document.documentElement || document.body.parentNode;   //两种方式；兼容
 //用来获取页面中被卷起的高度、宽度;
 ```
 
-5. 总结
 
-clientWidth ------ padding+content 可视宽
 
-offsetWidth ------ content + padding + border 占位宽
+![image](https://notecdn.heny.vip/images/js-10_BOM-03.png)
 
-scrollWidth ------ 页面内容的实际宽度
 
-clientTop ------ border
 
-offsetTop ------ 相对父元素的之间的距离
-
-scrollTop ------ 被卷起的高度
-
-document.body.scrollTop || document.documentElement.scrollTop （body）
-
-document.documentElement.clientWidth 屏幕宽
-
-![image](http://notecdn.heny.vip/images/js-10_BOM-03.png)
+**getBoundingClientRect**
 
 
 ```js
 元素.getBoundingClientRect()
 
 {
- x: 604.875,
- y: 1312,
- width: 701.625,
- height: 31,
- top: 1312,
- right: 1306.5,
- bottom: 1343,  // 元素bottom到顶部document的值
- left: 604.875
+    x: 604.875,
+    y: 1312,
+    width: 701.625,
+    height: 31,
+    top: 1312,
+    right: 1306.5,
+    bottom: 1343,  // 元素bottom到顶部document的值
+    left: 604.875
 }
 ```
 注意：top是距离文档顶部的距离，y则是距离可视窗口（浏览器屏幕）的顶部距离，如果浏览器滚动，top值不变，y值会变 ✅
 
-![image](http://notecdn.heny.vip/images/js-10_BOM-04.png)
+![image](https://notecdn.heny.vip/images/js-10_BOM-04.png)
 
-即插即用的滚动代码
+
+
+### 浏览器滚动事件
+
+* `window.onscroll=function(){}`   滚动浏览器；
+
+* `window.scrollTo(x,y || options)` 可以传入值也可以传入对象 滚动窗口到指定位置；
+
+  options支持的属性：
+
+  * top：元素要移动的位置横坐标
+  * left：元素要移动的位置纵坐标
+  * behavior：元素的运动模式，smooth平滑滚动；
+
+* `el.scrollIntoView()` 滚动到可视区；
+  * `scrollIntoView(true)`，如果是true则顶端对齐，如果是false，则底端对齐；
+  * `scrollIntoView(options)`，包含以下属性对象：
+    * behavior：运动模式，smooth，平滑滚动
+    * block：垂直对齐方式，值可以是：start、center、end或nearest
+    * inline：水平方向对齐方式，值可以是：start、center、end或nearest
+
+
+
+**即插即用的滚动代码**
 
 使用的是缓冲运动，算法是：A = A + (B - A) / 2
 ```js
@@ -424,7 +430,10 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 })
 ```
 
-## 十五、css可用的属性；
+
+
+## 十五、平滑滚动
+
 1. scroll-behavior: smooth，平滑滚动，给html和body加，或者给滚动的父元素加；
 2. scroll-snap属性：
 
@@ -468,7 +477,9 @@ Math.easeout(doc.scrollTop,0,4,function(value){
 （5）scroll-padding   跟scroll-margin类似；
 
 
+
 ## 十六、onresize自适应布局
+
 ```js
 window.onresize=function(){}  // 当页面窗口发生变化时触发；
 ```

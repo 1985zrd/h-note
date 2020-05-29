@@ -170,8 +170,6 @@ display: inline-flex; /* 设置弹性盒子（内联块） */
 
 
 ### 项目属性
-`flex`: 项目分配的份数，可以是百分比，比如给项目设置：flex:20%；则会每排分5个；
-
 `order`： 定义项目的排列顺序
 
 `flex-basis`  设置子元素的宽度，跟width、height一样设置：250px；
@@ -180,9 +178,9 @@ display: inline-flex; /* 设置弹性盒子（内联块） */
 
 `flex-shrink` 定义项目的缩小比例，默认为1，
 
-​	0的话，就是项目的width是多少就是多少。
-
-​	shrink定义项目缩小比例算法：
+* 0的话，就是项目的width是多少就是多少。
+* 超出容器宽度时的收缩比例，自己的flex-shrink与flex-basis乘积除以每一项的flex-shrink*flex-basis乘积之和，最后再拿得到的比例系数与乘以超出的宽度，从而得到该项目要收缩的空间数量；
+* shrink定义项目缩小比例算法：
 
 ```
 一共8个项目，每个项目宽度100,8个项目一共宽度是800
@@ -201,6 +199,10 @@ display: inline-flex; /* 设置弹性盒子（内联块） */
         100-22.2222=77.77778
 ```
 * `flex-shrink` 默认值：1。当项目占满盒子之后，选择的项目等比例缩小，其他则放大。
+* `flex`
+  * 设置为1，占满剩余空间，设置`flex: 1`之后建议添加`overflow:hidden`属性，避免被挤出父元素的盒子
+  * 为flex-grow、flex-shrink、flex-basis的简写
+  * 项目分配的份数，可以是百分比，比如给项目设置：flex:20%；则会每排分5个；
 
 
 
@@ -234,9 +236,9 @@ text-align: right;
 
 ### flex布局最后一个元素需要向右对齐的解决方法：
 
-（1）给倒数第二个元素设置flex:1;
+（1）给倒数第二个元素设置`flex:1`;
 
-（2）给最后一个元素设置margin-left: auto;
+（2）给最后一个元素设置`margin-left: auto`;
 
 
 
@@ -314,9 +316,9 @@ text-align: right;
 
   使用方括号指定每一根网络线的名字，方便以后的引用；
 
-  grid-template-columns: [c1] 100px [c2] 100px [c3] 100px [c4]；3行+1为4根网络线；
+  `grid-template-columns: [c1] 100px [c2] 100px [c3] 100px [c4]`；3行+1为4根网络线；
 
-  同一根线多个名字：[fifth-line row-5]；
+  同一根线多个名字：`[fifth-line row-5]`；
 
 
 
@@ -329,14 +331,14 @@ text-align: right;
 复合写法：grid-gap: 行 列   如果省略第二个值，则两个值相等；
 
 
-grid-row-gap: 20px;
+`grid-row-gap: 20px`;
 
-grid-gap: 20px 20px;
+`grid-gap: 20px 20px`;
 
 前缀已经删除，可以直接去掉前缀：row-gap、column-gap、gap；
 
 
-规定区域：grid-template-areas：
+规定区域：`grid-template-areas`：
 
 
 
@@ -466,11 +468,11 @@ grid-column: auto / span 2  // 向左跨越2列
 
 `display: table-cell`；给包裹元素设置；
 
-![image](http://notecdn.heny.vip/images/html-14_flex、grid、table-01.png)
+![image](https://notecdn.heny.vip/images/html-14_flex、grid、table-01.png)
 
 一般用于这种布局；设置了table-cell之后，需要设置vertical:属性；
 
-![image](http://notecdn.heny.vip/images/html-14_flex、grid、table-02.png)
+![image](https://notecdn.heny.vip/images/html-14_flex、grid、table-02.png)
 
 ```html
 <div class="container">

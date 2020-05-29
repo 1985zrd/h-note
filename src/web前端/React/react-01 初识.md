@@ -176,25 +176,25 @@ node_modules  npm管理包
 public  公共文件（服务相关的）
 
     favicon.ico  收藏夹图标
-
+    
     index.html 主文件
-
+    
     mainifest.json 服务配置文件
 
 src     项目文件目录
 
     index.js 项目主入口文件
-
+    
     index.css 主入口样式文件
-
+    
     App.js 根组件
-
+    
     App.css 根组件的样式
-
+    
     App.test.js 测试文件
-
+    
     serviceWorker.js 离线服务
-
+    
     logo.svg 图片
 
 .gitignore 上传时候要忽略的文件
@@ -250,6 +250,7 @@ import React,{Component} from 'react'
 class App extends component{
     constructor(){
         super()
+        this.pageNo = 0
         this.state = {msg: '哈哈'}
     }
     render(){return (<div>{this.state.msg}</div>)}
@@ -260,7 +261,7 @@ export default App
 
 定义变量时必须使用this，this指的是当前组件；
 
-使用this.state定义变量值；state是JSX定制的变量；
+使用this.state定义变量值；state是JSX定制的变量，当state里面的变量改变时，会自动重新render；
 
 在使用变量时，必须使用this.state调用变量；
 

@@ -529,7 +529,7 @@ export default Person
 
 （2）useState需要设置依赖项
 
-3. 使用 eslint-plugin-react-hooks插件来控制Eslint可以方便的为我们检测数组依赖
+3. 使用 [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation)插件来控制Eslint可以方便的为我们检测数组依赖
 
 4. 当添加依赖被频繁调用时，在useEffect中设置值时，可以使用函数形式来设置，当然，在useEffect中还是访问不到值；
 ```jsx

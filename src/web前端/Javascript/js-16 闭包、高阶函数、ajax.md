@@ -195,13 +195,13 @@ Event Loop即事件循环，是浏览器或Node的一种解决javaScript单线�
 
 下图运行printSquare时，则会一个一个的放入stack中，当放入完成时，则会后进先出的开始执行；（如果是每一行都是普通的console.log，则stack里面始终只会推进一行代码，当全部栈清空时，main也会被推出栈）
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-01.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-01.png)
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-02.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-02.png)
 
 以下以栈树的形式打印出来了；
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-03.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-03.png)
 
 ### 阻塞
 在栈里的表现很慢的东西都叫阻塞，比如：网络请求很慢；
@@ -211,9 +211,9 @@ Event Loop即事件循环，是浏览器或Node的一种解决javaScript单线�
 
 DOM、ajax、setTimeout并不在v8源码里，而在webAPI，意味着，这几个不是浏览器处理的，是webAPI处理的，当webapi处理完成时，则会将它们推入task queue中，当调用栈没有内容时，则会输入task queue的内容；
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-04.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-04.png)
 
-![image](http://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-05.png)
+![image](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax-05.png)
 
 ### javascript是单线程的
 
@@ -672,7 +672,7 @@ xhr.onloadstart = function(){
     console.log('开始请求')
 }
 xhr.onload = function(progressEvent){
-    console.log(JSON.stringify(xhr.response))
+    console.log(JSON.parse(xhr.response))
 }
 xhr.onerror = function(){
     console.log('请求出错了')
@@ -688,6 +688,24 @@ xhr.onerror = function(){
 * 属性 lengthComputable 长度是否可计算
 
 通过判断长度是否可计算之后再进行loaded/total即可；
+
+```js
+let xhr = new XMLHttpRequest();
+const downloadUrl = 'installer.dmg';
+xhr.open('GET', downloadUrl, true);
+xhr.addEventListener('progress', function (event) {
+// 响应头要有Content-Length
+if (event.lengthComputable) {
+  let percentComplete = event.loaded / event.total;
+  console.log(percentComplete); // 最后输出1
+}
+}, false);
+xhr.send();
+```
+
+前提是响应头里面有Content-Length这个字段告知当前文件的总字节数，如下图所示：
+
+![image-20200514201221347](https://notecdn.heny.vip/images/js-16_闭包、高阶函数、ajax.png)
 
 
 
@@ -710,9 +728,7 @@ function request({
     );
     xhr.send(data);
     xhr.onload = e => {
-      resolve({
-        data: e.target.response
-      });
+      resolve(JSON.parse(e.target.response));
     };
   });
 }
@@ -740,12 +756,12 @@ json创建对象是严格模式的，必须使用双引号，单引号也是不�
 ```js
 User = function(){}
 User.prototype = {
-Id:””,
-Name:””,
-getId:function(){return this.id},
-setId:function(){this.id = id},
-getName:function(){return this.name},
-setName:function(){this.name=name}
+    Id:””,
+    Name:””,
+    getId:function(){return this.id},
+    setId:function(){this.id = id},
+    getName:function(){return this.name},
+    setName:function(){this.name=name}
 }
 ```
 ● 写一个 mul 函数，使用方法如下

@@ -9,7 +9,10 @@ HTTP无状态的，服务器不能发送请求给客户端，需要客户端发�
 1. websocket：双向通讯，客户端可以给服务端，服务端可以给客户端发送消息；
 2. 下载第三方包：npm i socket.io到项目目录；
 
+
+
 websocket使用场景
+
 1. 社交订阅
 2. 多玩家游戏
 3. 协同合作
@@ -20,7 +23,10 @@ websocket使用场景
 8. 在线教育
 9. 多媒体聊天
 
+
+
 ## 三、搭建websocket服务器；
+
 ```js
 const express = require('express');
 let app = express();
@@ -44,10 +50,12 @@ server.listen(3000);
 建立的客户端，服务端能记住每个连接成功的客户端，哪个浏览器发送的消息，哪个浏览器接收；
 
 
+
 ## 四、互发消息
-1. socket.emit()；只让自己收到消息；
-2. socket.broadcast.emit()；除了自己其他人都会收到消息，当用户退出最有用，因为不需要给退出的用户得知
-3. io.emit()；都会收到消息；
+
+1. `socket.emit()`；只让自己收到消息；
+2. `socket.broadcast.emit()`；除了自己其他人都会收到消息，当用户退出最有用，因为不需要给退出的用户得知
+3. `io.emit()`；都会收到消息；
 
 第一个参数是方法名，第二个参数是接收到的消息
 
@@ -115,7 +123,37 @@ io.sockets.on('connection', function (socket) {
 soket.leave(room[,callback])
 ```
 
+
+
+### 官方服务器Socket的demo
+
+```js
+import express from 'express';
+import socket from 'socket.io';
+const server = require('http').createServer(app);
+const io = socket(server);
+
+server.listen(port);
+
+io.on('connection', socket => {
+  // 处理接收的新消息
+  socket.on('new message', data => {
+    // 通知其他客户端
+    socket.broadcast.emit('new message', {
+      id: v4(),
+      username: socket.username,
+      userId: socket.userId,
+      message: data.message,
+      type: data.type,
+    });
+  });
+});
+```
+
+
+
 ## 五、聊天室
+
 ```js
 //前端发送
 socket.emit('fasong','您好呀server');
@@ -141,16 +179,21 @@ socket.on('huida',msg=>{
 ```
 
 
+
 ## 六、react连接socket.io
+
 ```js
 import IO from 'socket.io-client'
 const socket = IO('ws://localhost:3006', {
     path: '/router' // 如果需要可以添加地址
 })
+socket.close() // 页面关闭时记得断开连接
 ```
 
 
+
 ## 七、添加在线人数
+
 ```js
 // 在线用户存储对象
 let onlineUsers = {}

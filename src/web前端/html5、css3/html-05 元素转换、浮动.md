@@ -1,10 +1,10 @@
 # html-05 元素转换、浮动
 ## 一、元素的互相转换
-1. 转成块元素：display:block;
+1. 转成块元素：`display:block`;
 
-2. 转成内联元素：display:inline;
+2. 转成内联元素：`display:inline`;
 
-3. 转成内联块元素：display:inline-block;
+3. 转成内联块元素：`display:inline-block`;
 
 
 拓展知识：
@@ -15,7 +15,7 @@
 
 
 ## 二、图片下面空白距离清除方法
-    图片默认最下边有空白，因为默认图片是基线对齐的；
+> 图片默认最下边有空白，因为默认图片是基线对齐的
 
 1. 给图片转块：display:block;
 2. 给图片设置垂直对齐方式：
@@ -78,53 +78,55 @@ text-align: center;
 
 
 
-清除浮动的办法：
+### 清除浮动的办法
 
 1. 给浮动元素的父元素加高度，
 
-        很多的html页面都是内容撑开的高度，不便于后期维护，不推荐使用。
+    很多的html页面都是内容撑开的高度，不便于后期维护，不推荐使用。
 
 2. 给浮动元素的父元素加overflow：hidden、scroll、auto 都可以。
 
-缺点：会不兼容ie6，解决办法：后面添加_zoom:1;（了解）
+    缺点：会不兼容ie6，解决办法：后面添加_zoom:1;（了解）
 
-当添加了overflow在父元素没有高度的时候，会计算子元素的高度，知道子元素的高度之后，就会自动，撑起父元素。
+    当添加了overflow在父元素没有高度的时候，会计算子元素的高度，知道子元素的高度之后，就会自动，撑起父元素。
 
-一般用auto，auto自动添加滚动条，scroll会默认有滚动条，影响直观。
+    一般用auto，auto自动添加滚动条，scroll会默认有滚动条，影响直观。
 
 3. 在浮动元素的后面，加一个空的块元素，一定要加块元素，给块元素起class名，并给这个块元素设置样式clear:both(会导致代码冗长)
 
-缺点：如果有100个地方写了浮动，就需要加一百个div。
+    缺点：如果有100个地方写了浮动，就需要加一百个div。
 
 4. 给浮动元素的父元素加class名，给class加上以下属性；
 
 ```css
-.clearfix:after{ 伪类元素，在以clearfix的为名的class标签结尾添加内容
-                     clearfix是自己取得，可以随便取。 
-    content: '';      引号中间不要写内容 
-    display:block;    为了使添加的内容需要时块，转块 
-    clear: both;    清除浮动的属性。 
-    height: 0;     低版本浏览器默认生成的高度和行高需要清除，也可以不加 
-    line-height: 0;     如果内容添加文字，高度会被撑起来，需要设置行高为0 
-    visibility: hidden;    隐藏元素用户，肉眼看不见，可以不写。 
-}     高度行高和隐藏可以不写，就怕浏览器有默认样式，最好写上。 
+/* clearfix是自己取得，可以随便取。 */
+.clearfix:after{ /* 伪类元素，在以clearfix的为名的class标签结尾添加内容*/
+    content: '';      /* 引号中间不要写内容 */
+    display:block;    /* 为了使添加的内容需要时块，转块 */
+    clear: both;    /* 清除浮动的属性。 */
+    height: 0;     /* 低版本浏览器默认生成的高度和行高需要清除，也可以不加 */
+    line-height: 0;     /* 如果内容添加文字，高度会被撑起来，需要设置行高为0 */
+    visibility: hidden;    /* 隐藏元素用户，肉眼看不见，可以不写。 */
+}     /* 高度行高和隐藏可以不写，就怕浏览器有默认样式，最好写上。 */
 
 .clearfix{
  *zoom:1;     /* 写了伪元素之后再ie7及以下不兼容了，添加上 */ 
 }
 ```
 
-5.给父元素加浮动，缺点：脱离了文档流，导致其他内容显示不对位置了。
+5. 给父元素加浮动，缺点：脱离了文档流，导致其他内容显示不对位置了。
 
-清楚浮动：1.加高度，2.overflow，3.加块设clear:both，4.clearfix，5.父元素浮动。
+清楚浮动：
+
+1.加高度，2.overflow，3.加块设clear:both，4.clearfix，5.父元素浮动。
 
 
 
 
 ## 五、overflow：
-1. overflow:hidden  溢出隐藏
-2. overflow:scroll  加滚动条
-3. overflow：auto  溢出加滚动条，不溢出不加滚动条
+1. `overflow:hidden`  溢出隐藏
+2. `overflow:scroll`  加滚动条
+3. `overflow：auto`  溢出加滚动条，不溢出不加滚动条
 
 
 
@@ -133,7 +135,7 @@ text-align: center;
 
 ## 六、 以下内容作为了解
 
-    1.list-style-type: 标记类型
+1.list-style-type: 标记类型
 
 可能的值：
 

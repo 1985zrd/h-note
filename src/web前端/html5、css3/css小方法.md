@@ -2,7 +2,7 @@
 
 ## 小方法
 1. 鼠标变手型：cursor:pointer;
-![image](http://notecdn.heny.vip/images/css小方法-01.png)
+![image](https://notecdn.heny.vip/images/css小方法-01.png)
 2. 鼠标手型变禁用的：not-allowed
 3. 文本框蓝色边框取消掉：outline:none; 或 outline:0;
 4. 修改边框的颜色：caret-color: red;
@@ -47,7 +47,7 @@ pointer-events: auto/none
 
 用途：在input框上，使用label标签替换掉placeholder内容（设置好定位），当点击时，想输入文字时会点击到label的文字上，可以加入该属性，不让点中；
 
-![image](http://notecdn.heny.vip/images/css小方法-02.png)
+![image](https://notecdn.heny.vip/images/css小方法-02.png)
 
 
 
@@ -107,6 +107,26 @@ alt+ctrl   改变屏幕的方向
 之后给a标签设置，text-indent为负值，overflow:hidden隐藏文字,给a标签设置背景图片logo图；
 
 text-indent 隐藏链接里面的文字，overflow:hidden，最好写上，避免用户缩小网页也能看见
+
+
+
+
+
+
+
+## 掘金头像旋转
+
+```css
+#pic:hover {
+      transform: rotate(666turn);
+      transition-delay: 1s;
+      transition-property: all;
+      transition-duration: 59s;
+      transition-timing-function: cubic-bezier(.34,0,.84,1);
+}
+```
+
+1turn表示360°旋转；
 
 
 
@@ -207,15 +227,25 @@ scrolldelay滚动延时
 
 ## 横向可以滚动
 
-![image](http://notecdn.heny.vip/images/css小方法-03.png)
+![image](https://notecdn.heny.vip/images/css小方法-03.png)
 
 ```html
-<div> <!--限制宽度 -->
-    <div> <!--10000宽度-->
-        <div></div> <!--限制宽度-->
-    </div>
+<div class='parent'>
+    <div class='item'></div>
 </div>
 ```
+
+```css
+.parent {
+   	white-space: nowrap; /* 不换行 */
+    overflow-x: scroll; /* 横向滚动 */
+}
+.item {
+    display: inline-block;
+}
+```
+
+
 
 
 
@@ -330,7 +360,7 @@ p:after {
 变量设置到
 
     :root标签上面，所有的类名都可以使用该变量；
-
+    
     设置到元素上面，只有该元素能够使用；
 
 使用--*; 来定义变量的名称；
@@ -364,9 +394,9 @@ div {
 
 可以通过给元素添加阴影，实现边框，在浏览器f12可以调试，添加内阴影；
 
-![image](http://notecdn.heny.vip/images/css小方法-04.png)
+![image](https://notecdn.heny.vip/images/css小方法-04.png)
 
-![image](http://notecdn.heny.vip/images/css小方法-05.png)
+![image](https://notecdn.heny.vip/images/css小方法-05.png)
 
 
 
@@ -441,7 +471,7 @@ input:checked + label{
 }
 ```
 
-![image](http://notecdn.heny.vip/images/css小方法-06.png)
+![image](https://notecdn.heny.vip/images/css小方法-06.png)
 
 
 
@@ -480,7 +510,7 @@ input:checked + .switch::after{
 }
 ```
 
-![image](http://notecdn.heny.vip/images/css小方法-07.png)
+![image](https://notecdn.heny.vip/images/css小方法-07.png)
 
 
 
@@ -587,7 +617,7 @@ animation: linearGradientMove .5s infinite linear;
 }
 ```
 
-![image](http://notecdn.heny.vip/images/css小方法-08.png)
+![image](https://notecdn.heny.vip/images/css小方法-08.png)
 
 
 
@@ -654,7 +684,7 @@ background: linear-gradient(0, $red 2px, $red 2px) no-repeat left top/0 2px,
 }
 ```
 
-![image](http://notecdn.heny.vip/images/css小方法-09.png)
+![image](https://notecdn.heny.vip/images/css小方法-09.png)
 
 
 
@@ -693,7 +723,7 @@ text-overflow:ellipsis; /*不换行，超出部分隐藏且以省略号形式出
 
 ## 快速查看html元素位置信息
 
-![image](http://notecdn.heny.vip/images/css小方法-12.png)
+![image](https://notecdn.heny.vip/images/css小方法-12.png)
 
 ```css
 html * {
@@ -765,9 +795,9 @@ span{
 
 ## 动态变三角形
 
-![image](http://notecdn.heny.vip/images/css小方法-13.png)
+![image](https://notecdn.heny.vip/images/css小方法-13.png)
 
-![image](http://notecdn.heny.vip/images/css小方法-14.png)
+![image](https://notecdn.heny.vip/images/css小方法-14.png)
 
 ```html
 <div class='demo'>
@@ -888,7 +918,7 @@ methods: {
 }
 ```
 
-![image](http://notecdn.heny.vip/images/css小方法-15.png)
+![image](https://notecdn.heny.vip/images/css小方法-15.png)
 
 
 

@@ -8,40 +8,47 @@
 
 
 
-cookie机制：
+### cookie机制
 
 如果不在浏览器中设置过期时间，cookie被保存在内存中，生命周期随浏览器的关闭而结束，这种cookie简称会话cookie。
 
 如果设置cookie的过期时间，cookie被 保存在硬盘中，关闭浏览器后，cookie数据仍然存在，直到过期时间结束才消失。
 
 
-1. 存储：document.cookie = "key=value";   设置临时存储，键值对；
+
+### 操作方式
+
+* 存储：`document.cookie = "key=value";`   设置临时存储，键值对；
 
 ```js
-document.cooki e = "key=12;expires=" + 字符串格式时间；有过期时间；
- ```
+document.cookie = "key=12;expires=" + 字符串格式时间；有过期时间；
+```
 date.setSeconds()；设置秒，可以设置所有时间；
 
-2. 读取：document.cookie；获取的是字符串，中间用分号和空格分开的；
+* 读取：`document.cookie`；获取的是字符串，中间用分号和空格分开的；
 
-3. 删除：将过期时间设置成负数；
+* 删除：将过期时间设置成负数；
+
 ```js
 var date = new Date();
 date.setDate(date.getDate() + 10);  //设置10天以后过期；
 date.toString(); //10天以后的字符串格式时间
 ```
 
+
+
 ## 二、js-cookie操作方式
+
 1. 安装：npm i js-cookie
 2. 用法：
 
 在项目中引入：import Cookie from 'js-cookie'
 
-（1）Cookie.set('name','value', {expires: 7， path:''})，name和value不可少
+（1）`Cookie.set('name','value', {expires: 7， path:''})`，name和value不可少
 
-（2）Cookie.get('name', {domain: 'sub.example.com'})，name不可少
+（2）`Cookie.get('name', {domain: 'sub.example.com'})`，name不可少
 
-（3）Cookie.remove('name', {path: '',domain: ''})，name不可少
+（3）`Cookie.remove('name', {path: '',domain: ''})`，name不可少
 
 3. 解决命名空间冲突问题
 ```js
@@ -73,36 +80,22 @@ var cookie = Cookies.withConverter({
 // 之后使用cookie对象来进行读写操作
 ```
 
-## 三、web Storage（HTML5）
-localStorage的储存没有时间限制，永久保存，除非主动删除；
 
-sessionStorage用于临时保存同一窗口(或标签页)的数据，在关闭窗口之后将会删除这些数据；
+
+## 三、web Storage（HTML5）
+
+### 区别
+
+`localStorage`的储存没有时间限制，永久保存，除非主动删除；
+
+`sessionStorage`用于临时保存同一窗口(或标签页)的数据，在关闭窗口之后将会删除这些数据；
 
 兼容：ie8+
 
-localStorage和sessionStorage使用方法一致；
-
-1. 储存：setItem(key, value)
-2. 获取：getItem(key)
-3. 删除：removeItem(key)
-4. 清空：clear()；
-5. 索引：key(index) 可以通过索引获取；
-
-除了以上方式，还支持点的方式或中括号方式：
-
-设置：localStorage.age = 18
-
-获取：localStorage.age
 
 
-当储存的值是对象或者数组时：
+### 特点
 
-储存：localStorage.setItem('test',JSON.stringify({id:1,age:18})；
-
-取值：JSON.parse(localStorage.getItem('test')；
-
-
-特点：
 （1）生命周期：
 
 * localStorage：永久的，关闭浏览器都不会消失，除非主动删除数据；
@@ -118,8 +111,34 @@ localStorage和sessionStorage使用方法一致；
 （5）应用场景：
 
 * localStorage：常用于长期登录，适合长期保存在本地的数据；
-
 * sessionStorage：敏感账号一次性登录；
+
+
+
+### 用法
+
+localStorage和sessionStorage使用方法一致；
+
+1. 储存：`setItem(key, value)`
+2. 获取：`getItem(key)`
+3. 删除：`removeItem(key)`
+4. 清空：`clear()`；
+5. 索引：`key(index)` 可以通过索引获取；
+
+除了以上方式，还支持点的方式或中括号方式：
+
+设置：localStorage.age = 18
+
+获取：localStorage.age
+
+
+
+
+当储存的值是对象或者数组时：
+
+储存：`localStorage.setItem('test',JSON.stringify({id:1,age:18})`；
+
+取值：`JSON.parse(localStorage.getItem('test')`；
 
 
 

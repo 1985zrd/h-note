@@ -104,9 +104,9 @@ GET相对不安全，有长度限制，POST相对安全，长度不受限制。
 
 2. label标签：label标签为input元素定义标注。
 
-作用：点击文字也能选中对应的表单。
+   作用：点击文字也能选中对应的表单。
 
-绑定方法：for属性对应表单id。
+   绑定方法：for属性对应表单id。
 
 ```html
 <label for="male">Male</label>
@@ -124,31 +124,31 @@ GET相对不安全，有长度限制，POST相对安全，长度不受限制。
 
 4. placeholder，属性 输入框提示内容（h5新增属性）；用在input属性里面。
 
-需要修改placeholder的颜色，可以用::双冒号选中placeholder；
+   需要修改placeholder的颜色，可以用::双冒号选中placeholder；
 
 5. checked，属性，用在单选框和复选框里，默认选中值，
 
-checked="checked" 成对直接写一个单词
+   checked="checked" 成对直接写一个单词
 
 6. readonly，属性，只读，用户不可以编辑，用于文本框，可以提交数据
 
-disabled ，属性，禁用，用户不可以编辑，用于文本框，也不可以提交数据，默认背景灰色。
+   disabled ，属性，禁用，用户不可以编辑，用于文本框，也不可以提交数据，默认背景灰色。
 
 7. select标签和option标签配合使用。select是父元素，option是子元素。
 
-下拉框默认选中，selected，，，size="" 下拉框默认显示几项
+   下拉框默认选中，selected，，，size="" 下拉框默认显示几项
 
-增加：hidden 隐藏表单，在提交到后台时，也能够提交，
+   增加：hidden 隐藏表单，在提交到后台时，也能够提交，
 
 8. textarea标签(不加在input里,是单独的标签)，文本域。是内联块标签(行内标签)，可以输入多行文字。
 
-想要给文本域设置宽高，在css中设置，
+   想要给文本域设置宽高，在css中设置，
 
-默认用户可以自行缩放，禁止缩放在css中设置resize:none;
+   默认用户可以自行缩放，禁止缩放在css中设置resize:none;
 
-`<textarea name="" id=""></textarea>`
+   `<textarea name="" id=""></textarea>`
 
-textarea痛点：不能自适应高度，如果需要自适应高度可以创建一个div标签，并设置contenteditable属性；
+   textarea痛点：不能自适应高度，如果需要自适应高度可以创建一个div标签，并设置contenteditable属性；
 
 
 注意事项：

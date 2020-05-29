@@ -154,10 +154,11 @@ toLocaleTimeString();  //上午9:00:00;
    计算倒计时剩下的时间：
 
    ```js
-   var t = parseInt(time /60/60/24); 
-   var h = parseInt(time%86400/3600);    //取天的剩下的小时；
-   var m = parseInt(time%3600/60); //取不够一个小时的时间
-   var s = time%60;    //取不够一分的时间；
+   var leftTime = (new Date(enddate)) - new Date(); //计算剩余的毫秒数
+   var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
+   var hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10); //计算剩余的小时
+   var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
+   var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
    
    s = 1242626
    m = s / 60
@@ -230,63 +231,157 @@ function format(value){
 
 >  推荐使用dayjs，和moment用法一致，但是打包更小，moment打包之后200k，dayjs打包之后2k
 
+官方网站：[dayjs中文教程](https://day.js.org/docs/zh-CN/parse/parse)
+
 支持链式调用
 
-1. 安装：`npm i dayjs`
+安装：`npm i dayjs`
 
 
-2. 获取：
 
-   `dayjs().year()`   年；
+### 获取&设置
 
-   月：`month`
+年`y`：`year`
 
-   日：`date`
+月`M`：`month`（一月0，十二月11）
 
-   星期：`day`
+日`D`：`date`
 
-   时：`hour`
+星期`d`：`day` (星期天0，星期六6)
 
-   分：`minute`
+时`h`：`hour`
 
-   秒：`second`
+分`m`：`minute`
 
-   毫秒：`millisecond`
+秒`s`：`second`
 
-3. 操作
+毫秒`ms`：`millisecond`
 
-   ```js
-   // 格式化, 里面会检测字母, 大写H是24小时制 小写是12
-   dayjs().format('YYYY-MM-DD hh:mm:ss A') // 2021-01-10 04:39:28 PM
-   
-   // 获取一月初
-   dayjs().startOf('months')
-   
-   // 获取一年年末
-   dayjs().endOf('year')
-   
-   // 增加7天
-   dayjs().add(7, 'days') 
-   
-   // 减少7天
-   dayjs().subtract(7, 'days')
-   
-   // 上个月, months可用: day
-   dayjs().subtract(1, 'months')
-   ```
+示例：
 
-4. 设置
+* 获取年：`dayjs().year()`  也可以：`dayjs().get('year')`，缩写：`dayjs().get('y')`
+* 设置年：`dayjs().year(2000)` 也可以：`dayjs().set('year', 2000)`
 
-   ```js
-   dayjs().set('month', 3).month() // 获取
-   ```
 
-5. 查询
 
-   * 早于：`dayjs('2010-10-20').isBefore('2010-10-21')`
-   * 晚于：`isAfter`
-   * 闰年：`dayjs().isLeapYear()`
-   * 返回月份的天数：`dayjs().dayslnMonth()`
+### 操作
+
+都可以使用缩写
+
+```js
+// 格式化, 里面会检测字母, 大写H是24小时制 小写是12
+dayjs().format('YYYY-MM-DD hh:mm:ss A') // 2021-01-10 04:39:28 PM
+
+// 获取一月初
+dayjs().startOf('month')
+
+// 获取一年年末
+dayjs().endOf('year')
+
+// 增加7天
+dayjs().add(7, 'days') 
+
+// 减少7天
+dayjs().subtract(7, 'days')
+
+// 上个月, months可用: day
+dayjs().subtract(1, 'months')
+```
+
+* startOf和endOf支持的单位（支持缩写）：
+
+| 单位      | 缩写 | 详情                                                         |
+| --------- | ---- | ------------------------------------------------------------ |
+| `year`    | `y`  | 今年一月1日上午 12:00                                        |
+| `quarter` | `Q`  | 本季度第一个月1日上午 12:00 ( 依赖 [`QuarterOfYear` ](https://day.js.org/docs/zh-CN/plugin/quarter-of-year)插件 ) |
+| `month`   | `M`  | 本月1日上午 12:00                                            |
+| `week`    | `w`  | 本周的第一天上午 12:00                                       |
+| `isoWeek` |      | 本周的第一天上午 12:00 (根据 ISO 8601) ( 依赖 [`IsoWeek` ](https://day.js.org/docs/zh-CN/plugin/iso-week)插件 ) |
+| `date`    | `D`  | 今天上午 12:00                                               |
+| `day`     | `d`  | 今天上午 12:00                                               |
+| `hour`    | `h`  | now, but with 0 mins, 0 secs, and 0 ms                       |
+| `minute`  | `m`  | now, but with 0 seconds and 0 milliseconds                   |
+| `second`  | `s`  | now, but with 0 milliseconds                                 |
+
+
+
+### 查询
+
+* 早于：`dayjs('2010-10-20').isBefore('2010-10-21')` 返回true
+
+* 晚于：`isAfter`
+
+* 闰年：
+
+  ```js
+  var isLeapYear = require("dayjs/plugin/isLeapYear")
+  dayjs.extend(isLeapYear) // 必须使用插件
+  dayjs().isLeapYear()
+  ```
+
+* 返回月份的天数：`dayjs().dayslnMonth()`
+
+
+
+### 显示
+
+* `format`
+
+```js
+dayjs().format('YYYY-MM-DD hh:mm:ss') // 2020-05-02 10:30:00
+```
+
+| 占位符 | 输出             | 详情                     |
+| ------ | ---------------- | ------------------------ |
+| `YY`   | 18               | 两位数的年份             |
+| `YYYY` | 2018             | 四位数的年份             |
+| `M`    | 1-12             | 月份，从 1 开始          |
+| `MM`   | 01-12            | 月份，两位数             |
+| `MMM`  | Jan-Dec          | 缩写的月份名称           |
+| `MMMM` | January-December | 完整的月份名称           |
+| `D`    | 1-31             | 月份里的一天             |
+| `DD`   | 01-31            | 月份里的一天，两位数     |
+| `d`    | 0-6              | 一周中的一天，星期天是 0 |
+| `dd`   | Su-Sa            | 最简写的星期几           |
+| `ddd`  | Sun-Sat          | 简写的星期几             |
+| `dddd` | Sunday-Saturday  | 星期几                   |
+| `H`    | 0-23             | 小时                     |
+| `HH`   | 00-23            | 小时，两位数             |
+| `h`    | 1-12             | 小时, 12 小时制          |
+| `hh`   | 01-12            | 小时, 12 小时制, 两位数  |
+| `m`    | 0-59             | 分钟                     |
+| `mm`   | 00-59            | 分钟，两位数             |
+| `s`    | 0-59             | 秒                       |
+| `ss`   | 00-59            | 秒 两位数                |
+| `SSS`  | 000-999          | 毫秒 三位数              |
+| `Z`    | +05:00           | UTC 的偏移量             |
+| `ZZ`   | +0500            | UTC 的偏移量，两位数     |
+| `A`    | AM PM            |                          |
+| `a`    | am pm            |                          |
+
+### 时长duration
+
+使用时长需要引入插件
+
+```js
+import duration from 'dayjs/plugin/duration'
+dayjs.extend(duration)
+```
+
+获取：
+
+* 秒：`seconds`
+* 分：`minutes`
+* 时：`hours`
+* 天：`days`
+* 周：`weeks`
+* 月：`months`
+* 年：`years`
+
+```js
+// 获取秒，传入时间戳
+dayjs.duration(1500).seconds() // 1
+```
 
 
 
@@ -308,13 +403,13 @@ function format(value){
 
      取n-m的随机数：`Math.random()*(m-n+1)+n；`
 
-     比如3-10的随机数：Math.random()*8+3；
+     比如3-10的随机数：`Math.random()*8+3`；
 
-     取整：Math.floor(Math.random()*(m-n)+n；
+     取整：`Math.floor(Math.random()*(m-n)+n`；
 
      如果是0-10，最后需要+1，否则取不到10，如果不需要10，则不用加1；
 
-     理解随机数：Math.ceil(Math.random()*6)   取1-6；向上取整不会包括0；因为不会到6，所以是6；
+     理解随机数：`Math.ceil(Math.random()*6)`   取1-6；向上取整不会包括0；因为不会到6，所以是6；
 
 10. `Math.PI`   圆周率，没有小括号;
 11. `Math.sin()/Math.cos()`;    正弦/余弦
@@ -330,7 +425,3 @@ Math.max(...arr.map(s=>s.length))
 ```
 
 
-
-## 参考地址
-
-1. 时间dayjs使用：https://www.cnblogs.com/cjrfan/p/9154539.html

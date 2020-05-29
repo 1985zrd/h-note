@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const shell = require('shelljs')
 const createREADME = require('../scripts/createREADME')
 
 const resolve = (...args) => {
@@ -49,21 +50,17 @@ function byDirNameGetMenu(dirname){
 
 // 通过文件夹获取菜单
 const webItems = byDirNameGetMenu('web前端')
-
 // 获取web前端的左侧的sidebar
 getSidebar(webItems)
-
 // 生成首页README.md的目录
 createREADME('web前端')
-
-console.log(JSON.stringify(sidebar, null, 2), 'sidebar')
 
 module.exports = {
 	title: '前端学习圈',
 	description: '一位不知名的初级菜鸟',
 	// theme: require.resolve('./theme/'),
 	head: [
-		['link', { rel: 'icon', type: "image/x-icon", href: '/favicon.ico' }],
+		['link', { rel: 'icon', type: "image/x-icon", href: 'https://notecdn.heny.vip/favicon.ico' }],
 		['link', { rel: 'manifest', href: '/manifest.json' }],
 		['meta', { name: 'theme-color', content: '#3eaf7c' }],
 		['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -73,22 +70,18 @@ module.exports = {
 		['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
 		['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
 		['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-		['script', {}, `
-			var _hmt = _hmt || [];
-			(function() {
-				var hm = document.createElement("script");
-				hm.src = "https://hm.baidu.com/hm.js?5817cf72ca4afb611a3f0b798b96b888";
-				var s = document.getElementsByTagName("script")[0]; 
-				s.parentNode.insertBefore(hm, s);
-			})();
-		`]
+		// ['meta', {'http-equiv': "Content-Security-Policy", content: "default-src 'self' *.heny.vip; style-src *; img-src *"}],
+		// ['script', {src: 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js'}],
+		// ['script', {}, shell.cat(resolve('sharewx.js'))],
+		// ['script', {}, 'shareWeixin()'],
+		['script', {}, shell.cat(resolve('./share/hm.js'))],
 	],
 	plugins: [
-		['@vuepress/pwa', {
-				serviceWorker: true,
-				updatePopup: true
-			}
-		],
+		// ['@vuepress/pwa', {
+		// 		serviceWorker: true,
+		// 		updatePopup: true
+		// 	}
+		// ],
 		['@vssue/vuepress-plugin-vssue', {
 				// 设置 `platform` 而不是 `api`
 				platform: 'github',
@@ -101,7 +94,19 @@ module.exports = {
 				clientSecret: '76a940144230049a7533df93f56940a20d400b22',
 			}
 		],
-		require('./copy'),
+		require('./plugin/copy'),
+		// [
+    //   'vuepress-plugin-comment',
+    //   {
+    //     choosen: 'valine', 
+    //     // options选项中的所有参数，会传给Valine的配置
+    //     options: {
+    //       el: '#valine-vuepress-comment',
+    //       appId: 'Your own appId',
+    //       appKey: 'Your own appKey'
+    //     }
+    //   }
+    // ]
 		// require('./reading-progress')
 	],
 	themeConfig:{
@@ -128,6 +133,7 @@ module.exports = {
 					{text: '消息传输站', link: 'https://chat.heny.vip'}
 				]
 			}
+			// { text: '编辑器', link: '/src/editor/' }
 		],
 		sidebarDepth: 2,  //仅支持h2和h3标题
 		sidebar

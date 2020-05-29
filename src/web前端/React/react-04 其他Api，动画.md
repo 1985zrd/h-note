@@ -94,13 +94,13 @@ const About = React.lazy(()=>slowImport(import('./pages/About'), 1000))
 
 下图2.chunk.js是通过lazy懒加载的组件展示的，可以修改名称
 
-![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-01.png)
+![image](https://notecdn.heny.vip/images/react-04_其他Api，动画-01.png)
 
 ```jsx
 const About = lazy(()=>import(/*webpackChunkName:"about"*/))
 ```
 
-![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-02.png)
+![image](https://notecdn.heny.vip/images/react-04_其他Api，动画-02.png)
 
 5. Suspense无法捕获组件加载错误，可以使用componentDidCatch捕获，也可以使用静态方法getDerivedStateFromError捕获错误
 ```jsx
@@ -124,6 +124,8 @@ class App extends Component {
 ```
 
 ## 四、React.createPortal
+**将元素添加到root之外**
+
 一般使用 React 的组件都是挂到父组件的 this.props.children 上面，总是被最近的父组件所捕获，最终到 React 根组件上。
 
 而 Protals 则提供了一种将组件直接挂载到直接父组件 DOM 层次之外的一类方式。
@@ -132,14 +134,23 @@ react-dom 提供的具体方法是 ReactDOM.createPortals(child, container)，�
 
 常用方法：
 ```jsx
+import {createPortal} from ''
 class App extends React.Component(){
     constructor(){
             this.el = document.createElement('div');
             this.el.setAttribute('class', 'tjb-mask');
     }
+    componentDidMount(){
+        document.body.appendChild(this.el)
+    }
+    componentWillUnmount(){
+        document.body.removeChild(this.el)
+    }
     render(){
-        return React.createPortal(<>{this.props.children}</>, this.el)
+        return createPortal(<>{this.props.children}</>, this.el)
     }
 }
 ```
+建议可以在html模板文件中，添加一个多余的div块，用来单独添加其余的模块；
+
 教程地址： [http://www.ptbird.cn/react-portal-createPortal.html](http://www.ptbird.cn/react-portal-createPortal.html)

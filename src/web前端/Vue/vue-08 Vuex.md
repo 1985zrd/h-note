@@ -51,7 +51,11 @@ vuex的数据修改后在页面刷新之后就没有了，如果是请求数据�
 
    在template标签里面访问，不需要加this；
 
-   
+**store的对象所拥有的属性**
+
+* 
+
+
 
 ## 三、Vuex成员介绍
 
@@ -168,8 +172,8 @@ action可以包含任意异步操作，一般使用与含有回调函数的事�
 
 ```js
 actions: {
-    // 接收一个context，里面有commit，用来触发mutation事件
-    async setIncrement(context){
+    // 接收一个context，里面有commit，用来触发mutation事件, 第二个参数为传入的值
+    async setIncrement(context, val){
         let res = await fetch('')
         context.commit('increment', res)
     }
@@ -178,7 +182,7 @@ actions: {
 }
 ```
 
-action函数接受一个与store实例具有相同方法和属性的context对象，因此可以调用commit方法，提交一个mutation，也可以通过context.state和context.getters来获取当前状态
+action函数接受一个与store实例具有相同方法和属性的`context`对象，因此可以调用`commit`方法，提交一个mutation，当然也可以调用`dispatch`，也可以通过`context.state`和`context.getters`来获取当前状态
 
 
 
@@ -238,7 +242,49 @@ action函数接受一个与store实例具有相同方法和属性的context对�
 
 
 
-### 添加vuex操作日志
+## 四、插件开发
+
+> Vuex.Store对象中，接收一个plugins属性，值是一个数组，里面放置的都是函数
+
+简单的开发插件例子：
+
+```js
+// 插件接收一个store作为形参
+const myPlugin = store => {
+    // 当store初始化时调用
+    store.subscribe((mutation, state) => {
+        // 每次mutation之后调用
+        // mutation的格式为：{type, payload}
+    })
+}
+```
+
+使用：
+
+```js
+const store = new Vuex.store({
+    // ...
+    plugins: [myPlugin]
+})
+```
+
+简单的本地储存开发例子：
+
+```js
+export default store => {
+    // 在初始化时（页面刷新），如果store有数据则替换原有的store;
+    if(localStore._vuex) state.replaceState(JSON.parse(localStore._vuex))
+    store.subscribe((mutation, state) => {
+        localStore._vuex = JSON.stringify(state)
+    })
+}
+```
+
+
+
+
+
+## 添加vuex操作日志
 
 store/index.js常用
 
@@ -247,22 +293,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'  //用于操作之后可以返回一个日志，记录了信息;
 Vue.use(Vuex)
-const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   actions: {},
   getters: {},
   state: {},
   mutations: {},
-  strict: debug,
+  strict: process.env.NODE_ENV !== 'production', // 开启严格模式，保证状态变更是由mutation发起的，注意生产环境不能用
   plugins: debug ? [createLogger()] : []
 })
 ```
 
 
 
-
-
-### v-model使用vuex中的state值
+## v-model使用vuex中的state值
 
 ```js
 <input v-model='message'>
@@ -279,4 +322,61 @@ computed: {
 ```
 
 
+
+
+
+## 五、vuex数据持久化
+
+1. 安装：`npm i vuex-persistedstate`
+
+2. 修改`store`的入口文件
+
+   ```js
+   import createPersistedState from 'vuex-persistedstate'
+   const persistedStateOpt = {
+       storage: window.localStorage // 默认为localStorage, 可以配置sesstionStorage
+   }
+   const store = new Vuex.Store({
+       // ...
+       plugins: [createPersistedState(persistedStateOpt)]
+   })
+   ```
+
+3. 不需要持久化的数据
+
+   该插件只能是包含某个持久化的数据，没有不包含的某个持久化数据
+
+   ```js
+   const persistedStateOpt = {
+       paths: ['theme', 'menu', 'demo.title'], // 如果想持久化一个模块，如：theme、menu里的所有数据或'demo.title'。它跟reducer是不能共用的，配置了reducer，paths失效。
+       reducer: function (val) { // 如果要选择持久化部分数据，请把reducer放开。这个方法用于部分数据持久化。
+           return { // 需要持久化的对象，对象为空为所有数据都不持久化
+               menu,  // 如果放置一个模块，这个模块里的getters、actions和mutations都会在storage里（是一个空对象），paths则不会有getters、actions和mutations
+               demo: {
+                   title: val.demo.title
+               }
+           }
+       }
+   }
+   ```
+
+   手写不需要持久化的数据
+
+   ```js
+   // 不需要持久化的数据
+   const notPersistedState = []
+   // 部分数据需要持久化
+   // 当写部分数据时，需要在不需要持久化的数组填写模块名
+   const partData = [] 
+   const persistedStateOpt = {
+     storage: window.localStorage,
+     paths: [
+       ...Object.keys(modules) // 取所有的模块名字并过滤掉
+         .filter(i => !notPersisted.includes(i)),
+       ...partData
+     ]
+   }
+   ```
+
+   
 

@@ -87,9 +87,9 @@ import Profile from './Profile';
 <Route path=":userId" element={<Profile />} />
 <Route path=":userId" element={<Profile animate={true} />} />
 ```
-	* sensitive：是否区分大小写
-	* exact：严格匹配，路由相同时才会匹配，路由有斜杠也会被匹配，如果在父路由中加了exact，是不能匹配子路由的，建议在子路由添加exact，如果没有子路由，建议添加上exact
-	* strict：严格匹配（一般使用exact就足够了），如果路由url中有斜杠，而url中没有，则是不匹配的，如：/about/，当输入 /about 是不能匹配上的，strict一定是跟exact一起使用的，strict不能单独使用
+* sensitive：是否区分大小写
+* exact：严格匹配，路由相同时才会匹配，路由有斜杠也会被匹配，如果在父路由中加了exact，是不能匹配子路由的，建议在子路由添加exact，如果没有子路由，建议添加上exact
+* strict：严格匹配（一般使用exact就足够了），如果路由url中有斜杠，而url中没有，则是不匹配的，如：/about/，当输入 /about 是不能匹配上的，strict一定是跟exact一起使用的，strict不能单独使用
 
 
 优先级：component > render > children
@@ -534,16 +534,17 @@ function Profile() {
 ```
 ## 七、编程式导航
 1. 跳转方法
-`props.history.push() ` 跳转链接
+  `props.history.push() ` 跳转链接
 
-`props.history.replace()`  替换当前链接，不能返回
+  `props.history.replace()`  替换当前链接，不能返回
 
-`props.history.go(-1) `  返回
+  `props.history.go(-1) `  返回
 
-2. withRouter
-当组件不是路由的直接子元素，而是孙子辈的，是没有路由对象的，因此可以使用withRouter解决这个问题。
+2. `withRouter`
+  当组件不是路由的直接子元素，而是孙子辈的，是没有路由对象的，因此可以使用withRouter解决这个问题。
 
-withRouter是一个高阶组件，作用将一个组件包裹进Route里面，然后router对象的history,location,match就会被放进这个组件的props属性中
+`withRouter`是一个高阶组件，作用将一个组件包裹进Route里面，然后router对象的history,location,match就会被放进这个组件的props属性中
+
 ```jsx
 import React from 'react'
 import {withRouter} from 'react-router-dom'
@@ -552,7 +553,9 @@ export default withRouter(App)
 ```
 
 
+
 ## 八、路由传参
+
 1. 动态路由
 
 （1）传值：需要配置对应的路由；
@@ -624,17 +627,17 @@ message: String   提示是否离开
 
 
 ## 路由缓存插件
-1. 安装：yarn add react-router-cache-route
+1. 安装：`yarn add react-router-cache-route`
 2. 可用的组件
 CacheRoute：支持Route的所有属性
-* when 决定何时使用缓存功能，可选值为[forward,back, always]，默认为forward；
-* className   给包裹组件添加自定义样式；
+* `when` 决定何时使用缓存功能，可选值为[forward,back, always]，默认为forward；
+* `className`   给包裹组件添加自定义样式；
 
 
 CacheSwitch：使用CacheRoute时不能使用Switch中，必须使用CacheSwitch；
 
 3. 额外的生命周期：
-使用CacheRoute的组件将会得到一个名为cacheLifecycles的属性，里面包含两个额外的生命周期的注入函数didCache和didRecover，分别用在组件被缓存和被恢复时；
+使用CacheRoute的组件将会得到一个名为`cacheLifecycles`的属性，里面包含两个额外的生命周期的注入函数`didCache`和`didRecover`，分别用在组件被缓存和被恢复时；
 ```jsx
 class List extends Component {
     constructor(props, ...args){

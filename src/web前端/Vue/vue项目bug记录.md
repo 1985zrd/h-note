@@ -15,11 +15,11 @@
 
 ### 输入框@keyup失效
 
-* 加上.native转为原生的就可以解决了；@keyup.enter.native=''；
+* 加上.native转为原生的就可以解决了；`@keyup.enter.native=''`；
 
 ### **遮罩层档住内容层**
 
-* 在el-dialog标签里添加 :modal-append-to-body='false'
+* 在el-dialog标签里添加 `:modal-append-to-body='false'`
 
 
 
@@ -40,4 +40,4 @@
 
 * 宝塔面板配置路径
 
-  ![image-20200406221655304](http://notecdn.heny.vip/images/vue%E9%A1%B9%E7%9B%AEbug%E8%AE%B0%E5%BD%95_01.png)
+  ![image-20200406221655304](https://notecdn.heny.vip/images/vue%E9%A1%B9%E7%9B%AEbug%E8%AE%B0%E5%BD%95_01.png)

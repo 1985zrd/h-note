@@ -88,6 +88,30 @@ path:'/movie'
 
 ### 使用props代替$route.params接收参数
 
+* 单个时
+
+```js
+{
+    component: User,
+    props: true
+}
+// or 
+{
+    component: User,
+    props: route => ({
+        id: route.query.id
+    })
+}
+```
+
+```js
+export default {
+    props: ['id'],
+}
+```
+
+
+
 * 多个时
 
 ```js
@@ -95,12 +119,7 @@ path:'/movie'
 props:{a:true,b:false}};  //true为支持props，false为不支持;
 ```
 
-* 单个时
-
-```js
-{component:a,props:true}
-```
-
+在组件内像接收父组件传值一样传入
 
 
 

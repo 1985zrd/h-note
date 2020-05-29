@@ -1,5 +1,3 @@
-
-
 # js-15 面向对象、this
 
 ECMAScript有两种开发模式；
@@ -209,9 +207,9 @@ var p1 = new Student();   //实例之后p1就可以访问到原型对象的属�
 ```
 理论：相当于儿子(p1)没有钱，就找爸(Student.prototype)要;
 
-![image](http://notecdn.heny.vip/images/js-15_面向对象、this-01.png)
+![image](https://notecdn.heny.vip/images/js-15_面向对象、this-01.png)
 
-![image](http://notecdn.heny.vip/images/js-15_面向对象、this-02.png)
+![image](https://notecdn.heny.vip/images/js-15_面向对象、this-02.png)
 
 
 
@@ -223,7 +221,7 @@ var p1 = new Student();   //实例之后p1就可以访问到原型对象的属�
 
 原型链：
 
-![image](http://notecdn.heny.vip/images/js-15_面向对象、this-03.png)
+![image](https://notecdn.heny.vip/images/js-15_面向对象、this-03.png)
 
 原型链：自己的实例化---自己的构造函数---自己的原型---父类的构造函数----父类的原型---Object的原型---null；
 
@@ -445,7 +443,7 @@ B.prototype.constructor = B
 
 如果单独调用apply进行复制构造函数的，是不会存在两种方法和属性的；
 
-![image](http://notecdn.heny.vip/images/js-15_面向对象、this-04.png)
+![image](https://notecdn.heny.vip/images/js-15_面向对象、this-04.png)
 
 
 
@@ -495,7 +493,7 @@ function F(){}
 F.prototype = obj
 b = new F()
 ```
-![image](http://notecdn.heny.vip/images/js-15_面向对象、this-05.png)
+![image](https://notecdn.heny.vip/images/js-15_面向对象、this-05.png)
 
 寄生式组合式继承没有两份父类构造函数的方法；
 

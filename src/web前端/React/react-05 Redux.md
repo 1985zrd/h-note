@@ -59,7 +59,7 @@ function Son(){
     console.log(store.getState().count)
 }
 export default Son
- ```
+```
 2. 使用connect方法连接redux
 
 使用connect是借助Provider实现的，需要修改index.js入口文件;
@@ -355,7 +355,10 @@ import { useStore } from 'react-redux'
 const store = useStore()
 store.getState();
 ```
+
+
 ## 七、配置redux dev tools，谷歌工具
+
 1. 修改store下的index.js文件，将以下代码传递给store
 ```jsx
 window.__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -460,7 +463,7 @@ ReactDOM.render(
 ```
 5. 接下来打开浏览器调试工具，就可以查看到浏览器缓存的数据
 
-![image](http://notecdn.heny.vip/images/react-04_其他Api，动画-03.png)
+![image](https://notecdn.heny.vip/images/react-04_其他Api，动画-03.png)
 
 
 

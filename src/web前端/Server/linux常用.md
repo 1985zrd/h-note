@@ -1,9 +1,13 @@
-# Server-03 linux常用
+# linux常用
 
 ## 基本操作
 
 * 清空当前屏幕：`clear`
 * 直到多少秒：`sleep 60`
+* 查看历史命令：`history`，
+  * 使用`!n`执行第n条命令，
+  * `!!`执行上一条命令
+  * `!字串` 执行上一条该字串开头的命令
 
 
 
@@ -72,7 +76,7 @@ cd /root/.ssh
 ```shell
 ssh-keygen -t rsa
 ```
-之后到C:\Users\Administrator\.ssh，输入以下命令
+之后到`C:\Users\Administrator\.ssh`，输入以下命令
 ```shell
 scp id_rsa.pub root@39.107.82.176
 ```
@@ -140,15 +144,15 @@ rm -rf build.gz
 
 2. 启动某个项目：forever start 文件名
 
-   ![image](http://notecdn.heny.vip/images/linux%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C-01.png)
+   ![image](https://notecdn.heny.vip/images/server-03_linux常用-02.png)
 
 3. 查看后台运行的项目：forever list
 
-   ![image](http://notecdn.heny.vip/images/linux%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C-02.png)
+   ![image](https://notecdn.heny.vip/images/server-03_linux常用-03.png)
 
 4. 停止某个项目：forever stop [pid]
 
-   ![image](http://notecdn.heny.vip/images/linux%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C-03.png)
+   ![image](https://notecdn.heny.vip/images/server-03_linux常用-04.png)
 
 5. 停止所有项目：forever stopall
 
@@ -156,7 +160,7 @@ rm -rf build.gz
 
 
 
-## nohup实现后台运行程序及查看
+## nohup后台运行sh程序及查看
 
 1. <font color=red>后台执行.sh文件（使用nohup和&命令）</font>
 
@@ -168,6 +172,8 @@ rm -rf build.gz
    * &：加在一个命令的最后面，表示这个命令放在后台运行；
 
    执行之后会增加一个`nohup.out`文件查看执行日志
+
+   注意：在执行该.sh文件出错时，建议可以先手动运行一下sh文件有没有错误
 
 2. <font color=red>查看后台运行的命令（使用ps和jobs）</font>
 
@@ -195,9 +201,9 @@ rm -rf build.gz
 
 3. <font color=red>关闭当前后台运行的程序（使用kill）</font>
 
-   （1）通过jobs命令查看jobnum，然后执行`kill %jobnum`
+   （1）通过jobs命令查看jobnum，然后执行`kill jobnum`
 
-   （2）通过ps命令查看进程号PID，然后执行`kill %PID`
+   （2）通过ps命令查看进程号PID，然后执行`kill PID`
 
    （3）当前的前台的进程按`ctrl+c`就可以终止了
 
@@ -218,4 +224,39 @@ rm -rf build.gz
    将一个在后台暂停的命令，变成在后台继续执行；
 
    如果多个命令使用jobs查看，之后bg %jobnum；
+
+
+
+## ubuntu下使用nvm
+
+1. 从github克隆过来
+
+   需要先创建~/git目录，之后将git的东西放在里面；还需要`apt install git`；
+
+   ```sh
+   $ cd ~/git
+   $ git clone https://github.com/creationix/nvm.git
+   ```
+
+2. 配置终端启动时自动执行 source ~/git/nvm/nvm.sh,
+
+   在 ~/.bashrc, ~/.bash_profile, ~/.profile, 或者 ~/.zshrc 文件添加以下命令:
+
+   ```sh
+   source ~/git/nvm/nvm.sh
+   ```
+
+3. 重新打开
+
+4. 配置nvm环境变量
+
+   添加到上面一样的文件里面
+
+   ```sh
+   # nvm
+   export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+   source ~/git/nvm/nvm.sh
+   ```
+
+5. 之后就可以使用nvm来安装各版本的node了
 

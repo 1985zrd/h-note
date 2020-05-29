@@ -369,6 +369,76 @@ github地址： [https://github.com/WangYuLue/image-conversion](https://github.c
 
 官网： [https://github.com/fengyuanchen/viewerjs](https://github.com/fengyuanchen/viewerjs)
 
-
 ## 十、切片上传、断点续传
+
+### 文件切片
+
+```js
+/**
+* file 需要切片的文件
+* chunkSize 每个切片大小
+*/
+function createFileChunk(file, chunkSize = 10 * 1024 * 1024) {
+  // 创建数组保留切片数组
+  const fileChunkList = []
+  let cur = 0 // 切片当前数据
+  let i = 0 // 下标
+  while (cur < file.size) {
+    fileChunkList.push({
+      chunk: file.slice(cur, cur + chunkSize),
+      hash: file.name + '-' + i,
+      index: i,
+      percentage: 0
+    })
+    cur += chunkSize
+    i++
+  }
+  // 返回最后切片的数组
+  return fileChunkList
+}
+```
+
+### 切片上传
+
+```js
+async function uploadChunks(file, fileChunkList) {
+  // 创建Promise数组进行切片上传
+  const requestList = fileChunkList
+    .map(({ chunk, hash, fileHash }) => {
+      const formData = new FormData()
+      formData.append('chunk', chunk)
+      formData.append('hash', hash)
+      formData.append('filename', file.name)
+      formData.append('fileHash', fileHash)
+      return { formData }
+    })
+  	// request封装的请求方法
+    .map(async ({ formData }, index) => request({
+      url: `${baseURL}msg/upload`,
+      data: formData,
+      // 显示进度函数
+      onProgress: createProgressHandler(fileChunkList[index], file, fileChunkList)
+    })
+    )
+  // 上传
+  await Promise.all(requestList)
+  // 上传完成发送合并请求
+  await mergeRequest(file.name, setIsSelectFile, socket)
+}
+```
+
+### 断点续传
+
+断点续传的原理在于前端/服务端需要`记住`已上传的切片，这样下次上传就可以跳过之前已上传的部分，有两种方案实现记忆的功能
+
+- 前端使用 localStorage 记录已上传的切片 hash
+- 服务端保存已上传的切片 hash，前端每次上传前向服务端获取已上传的切片
+
+第一种是前端的解决方案，第二种是服务端，而前端方案有一个缺陷，如果换了个浏览器就失去了记忆的效果，所以这里选取后者
+
+
+
+### 文章地址
+
 地址： [https://juejin.im/post/5dff8a26e51d4558105420ed](https://juejin.im/post/5dff8a26e51d4558105420ed)
+

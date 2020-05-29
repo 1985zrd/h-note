@@ -20,7 +20,7 @@
 
    默认是ease，匀速是linear，写多个是和属性一一对应。
 
-   贝塞尔曲线，http://cubic-bezier.com，cubic-bezier()，括号写不同的值。
+   贝塞尔曲线，[http://cubic-bezier.com](http://cubic-bezier.com)，cubic-bezier()，括号写不同的值。
 
 4. 延长时间
 
@@ -147,9 +147,9 @@
 ## 四、动画
 1. animation必须配合keyframes使用。
 
-    keyframes里面写的关键帧是从0%写到100%，也可以写from，to。
+    keyframes里面写的关键帧是从0%写到100%，也可以写`from`，`to`。
     
-    @keyframes 动画的名字(必须写)；
+    `@keyframes 动画的名字`(必须写)；
 
 ```css
 canvas{

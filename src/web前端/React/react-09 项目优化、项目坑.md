@@ -91,7 +91,7 @@ function App(){
 
 ### 路由按需加载
 
-1. 安装：react-loadable
+1. 安装：`react-loadable`
 2. 使用
 ```jsx
 import Loadable from 'react-loadable' // 引入按需加载
@@ -108,10 +108,12 @@ const SelectComponent = Loadable({
 
 在有使用请求数据，数据为对象时，获取对象里面的对象会报错，可以在render(){}的return前面判断一下，如果没有数据，则return
 
+```js
 if(!this.state.list) return true // 则不会执行下面的;
 
 // 请求数组没有数据同理
 if(!arr.length) return true //true必须填写 否则报错;
+```
 
 2. 不要操作innerHTML，在html代码里面填写三目运算符;
 
@@ -121,7 +123,7 @@ if(!arr.length) return true //true必须填写 否则报错;
 
 原因：是因为第一次没有拿到数据就去渲染了，所以数据不是最新的，延时一下就解决了；
 
-![image](http://notecdn.heny.vip/images/react-09_项目优化、项目坑-01.png)
+![image](https://notecdn.heny.vip/images/react-09_项目优化、项目坑-01.png)
 
 
 5. 解决ios输入框导致页面上移
@@ -152,8 +154,8 @@ const inputFocus = e => {
 class Test extends React.Component {
     _isMounted = false
     componentDidMount(){
-        this.isMounted = true
-        this.isMounted && this.setState({...})
+        this._isMounted = true
+        this._isMounted && this.setState({...})
     }
     componentWillUnmount(){
         this._isMounted = false
@@ -193,5 +195,46 @@ const MyApi = {
 在window上面添加一个callback方法即可；
 ```jsx
 window.callback = function () {}
+```
+
+
+
+## 三、ant mobile的示例
+
+下拉刷新
+
+```jsx
+import {PullToRefresh, ListView} from 'antd-mobile'
+class App extends React.Component (){
+    constructor(props){
+        super(props)
+        const dataSource = new ListView.DataSource({
+          rowHasChanged: (row1, row2) => row1 !== row2
+        });
+        this.pageNo = 0 // 当前页数 放this对象不放state里面，可以进行直接修改操作
+        this.isMore = true // 是否更多
+        this.state = {
+            dataSource,
+            refreshing: true,
+            isLoading: false
+        }
+    }
+    render(){
+        return (
+            <div>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    onEndReachedThreshold={300} // 触发加载函数
+                    renderFooter={'ReactNode节点'} // 渲染底部，可以根据判断来渲染刷新时显示的内容
+                    renderRow={rowData => (<div>rowData.title</div>)} // 每行展示的节点
+                    pullToRefresh={<PullToRefresh/>} // 下拉组件
+                    onEndReached={this.onEndReached} // 加载时的组件, 当return则请求完毕结束
+                    pageSize={5} // 每次事件函数渲染的行数
+
+                ></ListView>
+            </div>
+        )
+    }
+}
 ```
 

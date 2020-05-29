@@ -268,72 +268,6 @@ box-shadow: 0px 0px 10px black (inset); 阴影样式:x轴 y轴 模糊值 颜色�
 
 
 
-## 八、背景
-1. 可以设置多个背景图，中间以逗号隔开，
-
-   多个定位用空格隔开，第一个写的在上面，第二个在下面。
-
-2. `backgrud-size`，背景大小
-
-    1. 一个值：默认是宽度，
-
-   2. 两个值：宽度，高度。
-     `cover`:等比例缩放，直到图片最后一条边重合边框大小，裁剪多余的部分；
-
-     `contain`:等比例缩放，直到图片完全进入方框，多余的填充背景颜色；
-
-   给img设置：
-   object-fit: cover/contain/none;
-
-3. background-origin，规定背景图片的定位区域
-
-   `border-box`  从border开始
-
-   `padding-box` 从padding开始
-
-   `content-box` 从content开始
-
-4. `background-clip`，规定背景的绘制区域
-
-   绘制区域，默认是从边框开始的，设置绘制区域代表从部分开始显
-
-   `content-box`：内容区域（如果需要仅绘制边框可以使用box-shadow，设置内阴影）
-
-   `border-box`: 边框区域（默认值）
-
-   `padding-box`: 内边距区域
-
-
-
-5. 背景渐变
-
-6. 线型渐变：渐变色可以多重叠加变成其他的颜色，可以写多个中间用逗号隔开。
-
-   linear-gradient(单位，颜色值，颜色值)，（也可以只写两个颜色值）
-
-   1. 单位可以写一个或两个方向，可以写度数。
-   2. 颜色值后面写占比，或者百分比。
-   3. 四个值的时候，前面两个值包含颜色一样的情况下，两个值不渐变；后两个值接第二个值开始写不渐变，不接着写渐变。
-
-`repeating-linear-gradient()`; 重复线性渐变。
-
-
-
-
-
-2. 径向渐变
-
-		1. radial-gradient()，
-		1. at改变圆心的位置，x轴，y轴；
-		2. repeating-radial-gradient()，重复的径向渐变；
-		3. circle，写在at前面，表示圆形；中间用逗号隔开。
-		4. 可以写多个径向渐变，中间用逗号隔开。
-
-
-
-
-
-
 ## 九、用户界面
 1. `resize`是否可由用户调整元素的尺寸。
 
@@ -352,28 +286,6 @@ box-shadow: 0px 0px 10px black (inset); 阴影样式:x轴 y轴 模糊值 颜色�
     box-sizing: border-box;    设置的padding、border往盒子里面收缩；
 
     box-sizing: content-box;(默认值)  设置的padding、border往外面长大；
-
-
-
-## 十、文本变点状
-1. 单行变点状：
-```css
-white-space:nowrap;     //超出文本不换行
-text-overflow:ellipsis;    //超出文本变点状
-overflow:hidden;        //超出文本内容隐藏
-```
-2. 多行变点状：
-```css
-display:-webkit-box;    //旧版弹性盒子;
--webkit-box-orient:vertical;    //项目往下排;
--webkit-line-clamp:2;    //超出两行文本变点状;
-overflow:hidden;        //超出内容隐藏;
-```
-3. white-space属性
-
-   （1）nowrap，文本不换行
-
-   （2）pre-line，保留换行符，在textarea输入的回车会换行；
 
 
 

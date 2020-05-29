@@ -123,7 +123,7 @@ export const getData = (url,data={},method='get')=>{
 
 * 在需要请求数据的地方引入getData即可
 
-![image](http://notecdn.heny.vip/images/vue-07_接口请求_跨域-01.png)
+![image](https://notecdn.heny.vip/images/vue-07_接口请求_跨域-01.png)
 
 
 
@@ -258,6 +258,9 @@ async function fetchData(){
     let res = await response.json()
     console.log(res)
 }
+
+// post方法
+fetch('http://localhost:3000/upload', {method: 'post', headers: 'Content-Type': '...', body: JSON.stringify({file: '...'})}).then(res => res.json()).then(data => ....)
 ```
 
 ### fetch与jQuery.ajax()的不同

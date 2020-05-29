@@ -6,9 +6,9 @@
 # 虚拟主机server块
 server {
     # 端口
-    listen   8080;
+    listen   80;
     # 匹配请求中的host值
-    server_name  localhost;
+    server_name  www.heny.vip;
     
     # 监听请求路径
     location / {
@@ -27,6 +27,12 @@ server {
 
 配置完之后执行`nginx -t`查看是否有错误，如果看到下面的就是成功了
 
+如果封装的docker执行：
+
+* 执行`docker ps` 查看`nginx`名字
+
+* `docker exec -it data_nginx_1 nginx -t`
+
 ```sh
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -41,55 +47,6 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 
 
-## 动态匹配（请求过滤）
-
-> 通常在开发环境或者测试环境的时候呢我们修改了代码，因为浏览器缓存，可能不会生效，需要手动清除缓存，才能看到修改后的效果，这里我们做一个配置让浏览器不缓存相关的资源。
-
-
-
-
-
-## 配置nginx反向代理
-
-注意api必须加上，检查api的地方，修改之后记得重启nginx服务器；
-
-```nginx
-location /api {
-    rewrite ^.+api/?(.*)$ /$1 break;
-    proxy_pass http://39.107.127.240:3000;
-    # 作用和proxyTable差不多  上传时记得删除这句话
-}
-```
-
-## nginx常用配置
-
-```nginx
-server {
-    listen 80;
-    server_name wyy.heny.vip;
-
-    # 避免非root路径404
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # 解决跨域
-    location /api {
-        proxy_pass http://wyy.heny.vip;
-    }
-
-    # 为带hash值的文件配置永久缓存
-    location ~* \.(?:css|js)$ {
-        try_files $uri =404;
-        expires 1y;
-        add_header Cache-Control "public";
-    }
-
-    location ~ ^.+\..+$ {
-        try_files $uri =404;
-    }
-}
-```
 
 ## 配置文件
 
@@ -181,6 +138,182 @@ http: {
 
 
 
+## 配置gzip压缩
+
+```nginx
+# 开启gzip 压缩
+gzip on;
+# 设置gzip所需的http协议最低版本 （HTTP/1.1, HTTP/1.0）
+gzip_http_version 1.1;
+# 设置压缩级别，压缩级别越高压缩时间越长  （1-9）
+gzip_comp_level 4;
+# 设置压缩的最小字节数， 页面Content-Length获取
+gzip_min_length 1000;
+# 设置压缩文件的类型  （text/html)
+gzip_types text/plain application/javascript text/css;
+```
+
+添加到对应的`conf`文件`server`下面，或者添加到全局的`nginx`配置`http`下面；
+
+
+
+## 代理node项目
+
+```nginx
+server {
+    listen	80;
+    server_name	chat-server.heny.vip;
+    
+    location ~ / {
+        # 本地地址不行就填服务器ip地址
+        proxy_pass http://127.0.0.1:8888;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+**node 项目上传流程**
+
+1. 打包除node_modules所有文件以及文件夹
+2. 上传打包文件
+3. 解压文件
+4. 安装依赖
+5. 启动项目
+
+
+
+## 配置https
+
+```nginx
+server {
+    listen	443 ssl;
+    ssl_certificate /etc/nginx/crt/3710899_web.heny.vip.pem;
+    ssl_certificate_key /etc/nginx/crt/3710899_web.heny.vip.key;
+    
+    # 如果有
+    include /etc/nginx/https-base.conf;
+        
+    # 强制转发https
+    if( $scheme = http ) {
+        # 如果$host不行就更换$server_name
+        return 301 https://$host$request_uri;
+    }
+}
+```
+
+`/etc/nginx/crt`为代理过的地址，在`/data/docker-compose.yml`查看
+
+
+
+## 配置http2.0
+
+1. 在ssl目录下面生成`dhparam.pem`文件
+
+```shell
+openssl dhparam -out dhparam.pem 2048
+```
+
+2. 新建`conf.d/https-base.conf`文件;
+
+```nginx
+listen                  443 ssl http2;
+listen                  [::]:443 ssl http2;
+# 配置共享会话缓存大小
+ssl_session_cache       shared:SSL:10m;
+# 配置会话超时时间
+ssl_session_timeout     10m;
+
+# 优先采取服务器算法
+ssl_prefer_server_ciphers on;
+# 使用 DH 文件
+ssl_dhparam 			ssl/dhparam.pem;
+# 协议版本
+ssl_protocols           TLSv1 TLSv1.1 TLSv1.2;
+# 定义算法
+ssl_ciphers			EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+
+# 启用 HSTS 。允许 https 网站要求浏览器总是通过 https 来访问
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains;preload" always;
+# 减少点击劫持
+add_header X-Frame-Options DENY;
+# 禁止服务器自动解析资源类型
+add_header X-Content-Type-Options nosniff;
+# 防XSS攻擊
+add_header X-Xss-Protection 1;
+```
+
+3. 之后在需要的文件里面加入即可
+
+```nginx
+server {
+    include https-base.conf
+}
+```
+
+4. `[::]:`表示ipv6配置
+
+
+
+## 动态匹配（请求过滤）
+
+> 通常在开发环境或者测试环境的时候呢我们修改了代码，因为浏览器缓存，可能不会生效，需要手动清除缓存，才能看到修改后的效果，这里我们做一个配置让浏览器不缓存相关的资源。
+
+
+
+
+
+## 配置nginx反向代理
+
+注意api必须加上，检查api的地方，修改之后记得重启nginx服务器；
+
+```nginx
+location /api {
+    rewrite ^.+api/?(.*)$ /$1 break;
+    proxy_pass http://39.107.127.240:3000;
+    # 作用和proxyTable差不多  上传时记得删除这句话
+}
+```
+
+
+
+## nginx常用配置
+
+```nginx
+server {
+    listen 80;
+    server_name wyy.heny.vip;
+
+    # 避免非root路径404
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 解决跨域
+    location /api {
+        proxy_pass http://wyy.heny.vip;
+    }
+
+    # 为带hash值的文件配置永久缓存
+    location ~* \.(?:css|js)$ {
+        try_files $uri =404;
+        expires 1y;
+        add_header Cache-Control "public";
+    }
+
+    location ~ ^.+\..+$ {
+        try_files $uri =404;
+    }
+}
+```
+
+
+
+
+
 ## 配置参数
 
 ```nginx
@@ -238,5 +371,7 @@ server {
 * http://jsanntq.cn/2020/04/07/Nginx/
 
 * [快狗打车前端团队 前端想要了解的Nginx](https://juejin.im/post/5cae9de95188251ae2324ec3)
+
+* [卖好车大前端团队 nginx 配置 https](https://juejin.im/post/5e44a2aa6fb9a07c9f3fd170#heading-15)
 
   
