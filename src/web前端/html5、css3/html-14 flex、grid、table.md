@@ -179,7 +179,11 @@ display: inline-flex; /* 设置弹性盒子（内联块） */
 `flex-shrink` 定义项目的缩小比例，默认为1，
 
 * 0的话，就是项目的width是多少就是多少。
+<<<<<<< HEAD
 * 超出容器宽度时的收缩比例，自己的flex-shrink与flex-basis乘积除以每一项的flex-shrink*flex-basis乘积之和，最后再拿得到的比例系数与乘以超出的宽度，从而得到该项目要收缩的空间数量；
+=======
+
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 * shrink定义项目缩小比例算法：
 
 ```

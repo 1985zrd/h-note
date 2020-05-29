@@ -106,7 +106,11 @@ export default class Todo extends Vue {
 
 
 
+<<<<<<< HEAD
 ## 三、tsx写法
+=======
+## 二、tsx写法
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 
 ```tsx
 import { Component, Prop, Vue, Emit, Watch} from 'vue-property-decorator';
@@ -146,6 +150,7 @@ export default class TodoItems extends Vue {
 
 
 
+<<<<<<< HEAD
 ## 四、框架推荐
 
 建议使用`ant-design-vue`的框架，该框架对`ts`封装处理的特别好，将`ant-design`react的组件封装了一遍；
@@ -166,3 +171,8 @@ declare module 'vue/types/vue' {
 }
 ```
 
+=======
+## 三、框架推荐
+
+建议使用`ant-design-vue`的框架，该框架对`ts`封装处理的特别好，将`ant-design`react的组件封装了一遍；
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b

@@ -115,8 +115,11 @@ font-size:10px;
 1. `text-indent`，首行缩进，单位:px em，一般使用2em（表示第一行空2格）
 
    em  是本身的font-size值相比较  font-size:20px  。1em=20px,2em=40px
+<<<<<<< HEAD
 
 2. `text-align`，文字对齐方式，可以继承,center/left/right。对inline元素都起作用；如果子元素都是span，可以给父级div设置
+=======
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 
    让文字两端对齐：
 
@@ -126,9 +129,15 @@ text-align-last:justify
 ```
 3. `text-decoration`，设置文本装饰，可以继承
 
+<<<<<<< HEAD
    `line-through`，中划线，`underline`，下划线，
 
    `overline`，上划线，，，`none`，去掉下划线
+=======
+   line-through，中划线，underline，下划线，
+
+   overline，上划线，，，none，去掉下划线
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 
 4. `letter-spacing`，字母与字母之间的距离，文字与文字之间的距离。
 5. `word-spacing`，单词与单词之间的距离，空白距离
@@ -155,6 +164,7 @@ text-align-last:justify
 `white-space: pre-wrap;` textarea保留换行；
 
 
+<<<<<<< HEAD
 
 ## 五、文本变点状
 
@@ -191,6 +201,15 @@ overflow:hidden;        /*超出内容隐藏;*/
 
 `a:hover`，鼠标滑过的样式。
 
+=======
+## 五、伪类选择器
+`a:link`，初始样式。
+
+`a:visited`，访问过后的样式。
+
+`a:hover`，鼠标滑过的样式。
+
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 `a:active`，鼠标按住的样式。
 
 顺序不能错乱：l-v-h-a。

@@ -100,7 +100,11 @@ const arrayMap = <T, U>(arr: T[], callback: (item: T, index?: number, array?: Re
 
 3. 创建相关文件夹
 
+<<<<<<< HEAD:src/web前端/Typescript/ts实战例子.md
    ```bash
+=======
+   ```
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b:src/web前端/Typescript/ts-09 实战例子.md
    config # 放置全局
    controller # 放置控制器
    model # 连接数据库

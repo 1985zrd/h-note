@@ -225,6 +225,7 @@ app.listen(80, ()=>{
 ```
 之后就可以直接npm start启动服务了
 
+<<<<<<< HEAD
 nodemon支持指定监听文件
 
 ```js
@@ -233,6 +234,8 @@ nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/i
 
 
 
+=======
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 
 
 ## 八、使用脚手架快速生成express框架

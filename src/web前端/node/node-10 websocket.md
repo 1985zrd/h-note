@@ -52,7 +52,10 @@ server.listen(3000);
 
 
 ## 四、互发消息
+<<<<<<< HEAD
 
+=======
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 1. `socket.emit()`；只让自己收到消息；
 2. `socket.broadcast.emit()`；除了自己其他人都会收到消息，当用户退出最有用，因为不需要给退出的用户得知
 3. `io.emit()`；都会收到消息；
@@ -125,6 +128,7 @@ soket.leave(room[,callback])
 
 
 
+<<<<<<< HEAD
 ### 官方服务器Socket的demo
 
 ```js
@@ -152,6 +156,8 @@ io.on('connection', socket => {
 
 
 
+=======
+>>>>>>> c63b3a25ef8bbd97aabe7691ed9a2effc2e6e49b
 ## 五、聊天室
 
 ```js
